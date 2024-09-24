@@ -1,13 +1,16 @@
 const express = require('express');
 const path = require('path');
+const bodyParser = require('body-parser');
+const nodemailer = require('nodemailer');
+require('dotenv').config();
+
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Serve static files from the 'public' directory
+// Middleware
 app.use(express.static('public'));
-
-// Parse JSON bodies
-app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Serve the main HTML file
 app.get('/', (req, res) => {
@@ -15,14 +18,50 @@ app.get('/', (req, res) => {
 });
 
 // Handle form submissions
-app.post('/submit-form', (req, res) => {
+app.post('/submit-form', async (req, res) => {
   const { name, email, message } = req.body;
-  
-  // Here you would typically save this data to a database
-  // or send an email notification
-  console.log('Form submission:', { name, email, message });
 
-  res.json({ success: true, message: 'Form submitted successfully' });
+  // Basic input validation
+  if (!name || !email || !message) {
+    return res.status(400).json({ success: false, message: 'All fields are required' });
+  }
+
+  // Email regex validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return res.status(400).json({ success: false, message: 'Invalid email format' });
+  }
+
+  try {
+    // Create a nodemailer transporter
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+      }
+    });
+
+    // Email options
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: '7ca808001@smtp-brevo.com', // Replace with your email
+      subject: 'New Contact Form Submission',
+      text: `
+        Name: ${name}
+        Email: ${email}
+        Message: ${message}
+      `
+    };
+
+    // Send email
+    await transporter.sendMail(mailOptions);
+
+    res.json({ success: true, message: 'Form submitted successfully' });
+  } catch (error) {
+    console.error('Error sending email:', error);
+    res.status(500).json({ success: false, message: 'An error occurred while submitting the form' });
+  }
 });
 
 app.listen(port, () => {
