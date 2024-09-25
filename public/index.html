@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laryson Loyyd - Portfolio</title>
-   <link href="style.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.3.0/alpine-ie11.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
         .gradient-bg {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -17,13 +18,26 @@
             border-radius: 10px;
             border: 1px solid rgba(255, 255, 255, 0.18);
         }
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .content {
+            position: relative;
+            z-index: 1;
+        }
     </style>
 </head>
-<body class="gradient-bg min-h-screen text-gray-800 font-sans">
-    <div x-data="{ showMessage: false, messageText: '' }" class="container mx-auto p-8">
+<body class="text-gray-800 font-sans">
+    <canvas id="bg-canvas"></canvas>
+    <div x-data="{ showMessage: false, messageText: '' }" class="container mx-auto p-8 content">
         <header class="text-right mb-12">
             <img src="pf.jpg" width="150" height="150" style="vertical-align:top"> 
-            <h1 id="laryson-loyyd" class="text-5xl font-bold text-white mb-2">Laryson Loyyd</h1>
+            <h1 id="laryson-loyyd" class="text-5xl font-bold text-white mb-2" align="">Laryson Loyyd</h1>
             <p class="text-xl text-gray-200">Front-end Developer & AI Promptor</p>
         </header>
 
@@ -112,6 +126,34 @@
                 }, 5000);
             }, 1000);
         }
+
+        // 3D Background
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg-canvas'), alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
+        const material = new THREE.MeshBasicMaterial({ color: 0x6366f1, wireframe: true });
+        const torus = new THREE.Mesh(geometry, material);
+        scene.add(torus);
+
+        camera.position.z = 30;
+
+        function animate() {
+            requestAnimationFrame(animate);
+            torus.rotation.x += 0.01;
+            torus.rotation.y += 0.005;
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
     </script>
 </body>
 </html>
