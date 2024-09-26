@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laryson Loyyd - Education & Extracurriculars</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body {
+            background-color: #1a202c;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body class="text-gray-300 font-sans">
+    <canvas id="bg-canvas"></canvas>
+    <div class="container mx-auto p-8 content">
+        <header class="text-center mb-12">
+            <h1 class="text-5xl font-bold text-white mb-2">Education & Extracurriculars</h1>
+            <a href="index.html" class="text-blue-400 hover:text-blue-300">Back to Home</a>
+        </header>
+
+        <main class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <section class="glass-effect p-6">
+                <h2 class="text-3xl font-semibold text-yellow-400 mb-4">Education</h2>
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-white">Bachelor of Science in Computer Science</h3>
+                        <p class="text-gray-400">University of Technology, 2018-2022</p>
+                        <p class="text-gray-300">GPA: 3.8/4.0</p>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-white">High School Diploma</h3>
+                        <p class="text-gray-400">Tech High School, 2014-2018</p>
+                        <p class="text-gray-300">Valedictorian</p>
+                    </div>
+                </div>
+            </section>
+            <section class="glass-effect p-6">
+                <h2 class="text-3xl font-semibold text-yellow-400 mb-4">Extracurriculars</h2>
+                <ul class="list-disc list-inside space-y-2">
+                    <li>President of the Computer Science Club (2020-2022)</li>
+                    <li>Volunteer at local Code Camp for high school students</li>
+                    <li>Participant in annual Hackathon events</li>
+                    <li>Member of the university's AI research group</li>
+                </ul>
+            </section>
+            <section class="glass-effect p-6">
+                <h2 class="text-3xl font-semibold text-yellow-400 mb-4">Certifications</h2>
+                <ul class="list-disc list-inside space-y-2">
+                    <li>AWS Certified Solutions Architect</li>
+                    <li>Google Cloud Professional Data Engineer</li>
+                    <li>Microsoft Certified: Azure Developer Associate</li>
+                </ul>
+            </section>
+            <section class="glass-effect p-6">
+                <h2 class="text-3xl font-semibold text-yellow-400 mb-4">Awards</h2>
+                <ul class="list-disc list-inside space-y-2">
+                    <li>Dean's List (All Semesters)</li>
+                    <li>Best Project Award - Senior Year Capstone</li>
+                    <li>1st Place - Regional Coding Competition 2021</li>
+                </ul>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg-canvas'), alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        const geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
+        const material = new THREE.MeshBasicMaterial({ color: 0x6366f1, wireframe: true });
+        const torusKnot = new THREE.Mesh(geometry, material);
+        scene.add(torusKnot);
+
+        camera.position.z = 30;
+
+        const starGeometry = new THREE.BufferGeometry();
+        const starMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.1 });
+
+        const starVertices = [];
+        for (let i = 0; i < 5000; i++) {
+            const x = (Math.random() - 0.5) * 2000;
+            const y = (Math.random() - 0.5) * 2000;
+            const z = (Math.random() - 0.5) * 2000;
+            starVertices.push(x, y, z);
+        }
+
+        starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starVertices, 3));
+        const stars = new THREE.Points(starGeometry, starMaterial);
+        scene.add(stars);
+
+        function animate() {
+            requestAnimationFrame(animate);
+            torusKnot.rotation.x += 0.005;
+            torusKnot.rotation.y += 0.005;
+            stars.rotation.x += 0.0002;
+            stars.rotation.y += 0.0002;
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>
