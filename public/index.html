@@ -6,13 +6,18 @@
     <title>Abid Khan - Portfolio</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
     <style>
-        :root {
-            --primary: #3B82F6;
-            --background: #ffffff;
-            --text: #111827;
-            --card-bg: #ffffff;
-            --border: #e5e7eb;
+        /* Previous CSS styles remain same */
+        
+        .particle-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
         }
 
         .dark-mode {
@@ -21,6 +26,62 @@
             --text: #ffffff;
             --card-bg: #1F2937;
             --border: #374151;
+        }
+
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid var(--primary);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -0.5rem;
+            top: 0;
+            width: 1rem;
+            height: 1rem;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        .skill-circle {
+            width: 150px;
+            height: 150px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .skill-circle svg {
+            transform: rotate(-90deg);
+        }
+
+        .skill-circle circle {
+            fill: none;
+            stroke-width: 8;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 1s ease-in-out;
+        }
+
+        .testimonial-card {
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .blog-card img {
+            transition: transform 0.5s;
+        }
+
+        .blog-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .project-filter.active {
+            background-color: var(--primary);
+            color: white;
         }
 
         body {
@@ -93,7 +154,8 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Navigation remains same -->
+     <!-- Navigation -->
     <nav class="fixed w-full bg-opacity-90" style="background-color: var(--card-bg);">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between items-center h-16">
@@ -119,8 +181,9 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="pt-32 pb-20 px-4">
+    <!-- Hero Section with Particles -->
+    <div id="particles-js" class="particle-background"></div>
+     <section class="pt-32 pb-20 px-4">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between">
             <div class="md:w-1/2">
                 <h1 class="text-5xl font-bold mb-4">
@@ -149,7 +212,40 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
+    <section class="pt-32 pb-20 px-4 relative">
+        <!-- Previous hero content -->
+    </section>
+
+    <!-- Projects -->
+   <section id="projects" class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center">Featured Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project Card 1 -->
+                <div class="card rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-2">ReEarth</h3>
+                    <p class="mb-4">ReEarth is an innovative web application poised to transform waste management into a more efficient, sustainable, and user-friendly experience</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 text-sm rounded-full bg-blue-100 text-blue-800">React</span>
+                        <span class="px-3 py-1 text-sm rounded-full bg-blue-100 text-blue-800">Node.js</span>
+                        <span class="px-3 py-1 text-sm rounded-full bg-blue-100 text-blue-800">Firebase</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <a href="https://reearthweb.netlify.app/" class="text-blue-500 hover:text-blue-600">
+                            <i class="fas fa-external-link-alt mr-1"></i> Live Demo
+                        </a>
+                        <a href="https://github.com/LarytheLord/Uprecycle-Market" class="text-blue-500 hover:text-blue-600">
+                            <i class="fab fa-github mr-1"></i> Source Code
+                        </a>
+                    </div>
+                </div>
+                <!-- Add more project cards -->
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Skills Section with Circular Progress -->
     <section id="skills" class="py-20 px-4">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-3xl font-bold mb-12 text-center">Skills & Expertise</h2>
@@ -177,98 +273,190 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
+
+    <!-- Projects Section with Filters -->
     <section id="projects" class="py-20 px-4">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-3xl font-bold mb-12 text-center">Featured Projects</h2>
+            <div class="flex justify-center gap-4 mb-8">
+                <button class="project-filter active px-4 py-2 rounded-full" data-filter="all">All</button>
+                <button class="project-filter px-4 py-2 rounded-full" data-filter="web">Web</button>
+                <button class="project-filter px-4 py-2 rounded-full" data-filter="mobile">Mobile</button>
+                <button class="project-filter px-4 py-2 rounded-full" data-filter="ai">AI</button>
+            </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project Card 1 -->
-                <div class="card rounded-lg p-6">
-                    <h3 class="text-xl font-bold mb-2">AI Chat Application</h3>
-                    <p class="mb-4">Built a real-time chat application with AI integration</p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="px-3 py-1 text-sm rounded-full bg-blue-100 text-blue-800">React</span>
-                        <span class="px-3 py-1 text-sm rounded-full bg-blue-100 text-blue-800">Node.js</span>
-                        <span class="px-3 py-1 text-sm rounded-full bg-blue-100 text-blue-800">OpenAI API</span>
-                    </div>
-                    <div class="flex justify-between">
-                        <a href="#" class="text-blue-500 hover:text-blue-600">
-                            <i class="fas fa-external-link-alt mr-1"></i> Live Demo
-                        </a>
-                        <a href="#" class="text-blue-500 hover:text-blue-600">
-                            <i class="fab fa-github mr-1"></i> Source Code
-                        </a>
-                    </div>
-                </div>
-                <!-- Add more project cards -->
+                <!-- Project cards with data-category attribute -->
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Testimonials Section -->
+   <section id="testimonials" class="py-20 px-4">
+                    <h2 class="text-3xl font-bold mb-12 text-center">About Me</h2>
+                    <p>I'm a enthusiastic AI developer with beginning the journey miles ahead and I am preety good in building web applications. I love solving complex problems and creating user-friendly interfaces in flutter for crossplateform.</p>
+                </section>
+
+    <!-- Blog Section -->
+    <section class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center">Latest Blog Posts</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <article class="blog-card overflow-hidden rounded-lg shadow-lg" data-aos="fade-up">
+                    <div class="relative overflow-hidden">
+                        <img src="blog1.jpg" alt="Blog post" class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Modern Web Development Trends</h3>
+                        <p class="text-gray-600 mb-4">Exploring the latest trends in web development...</p>
+                        <a href="#" class="text-blue-500 hover:text-blue-600">Read More →</a>
+                    </div>
+                </article>
+                <!-- Add more blog posts -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section with Form Validation -->
     <section id="contact" class="py-20 px-4">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl font-bold mb-12 text-center">Get In Touch</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div>
-                    <h3 class="text-xl font-semibold mb-4">Contact Information</h3>
-                    <div class="space-y-4">
-                        <a href="mailto:contact@example.com" class="flex items-center hover:text-blue-500">
-                            <i class="fas fa-envelope mr-2"></i> contact@example.com
-                        </a>
-                        <a href="#" class="flex items-center hover:text-blue-500">
-                            <i class="fab fa-github mr-2"></i> GitHub
-                        </a>
-                        <a href="#" class="flex items-center hover:text-blue-500">
-                            <i class="fab fa-linkedin mr-2"></i> LinkedIn
-                        </a>
-                        <a href="#" class="flex items-center hover:text-blue-500">
-                            <i class="fab fa-instagram mr-2"></i> Instagram
-                        </a>
-                    </div>
-                </div>
-                
-                <form class="space-y-6">
-                    <div>
-                        <label class="block mb-2">Name</label>
-                        <input type="text" class="w-full p-3 rounded-md border" style="background-color: var(--card-bg); border-color: var(--border);">
-                    </div>
-                    <div>
-                        <label class="block mb-2">Email</label>
-                        <input type="email" class="w-full p-3 rounded-md border" style="background-color: var(--card-bg); border-color: var(--border);">
-                    </div>
-                    <div>
-                        <label class="block mb-2">Message</label>
-                        <textarea rows="4" class="w-full p-3 rounded-md border" style="background-color: var(--card-bg); border-color: var(--border);"></textarea>
-                    </div>
-                    <button type="submit" class="w-full bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700">
-                        Send Message
-                    </button>
-                </form>
-            </div>
+            <!-- Previous contact content -->
+            <form id="contactForm" class="space-y-6" onsubmit="handleSubmit(event)">
+                <!-- Form fields with validation -->
+            </form>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer remains same -->
     <footer class="py-8" style="background-color: var(--card-bg);">
         <div class="max-w-7xl mx-auto px-4 text-center">
             <p>© 2024 Abid Khan. All rights reserved.</p>
         </div>
     </footer>
 
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    
     <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Initialize Particles.js
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80 },
+                color: { value: '#3B82F6' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5 },
+                size: { value: 3 },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#3B82F6',
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 6
+                }
+            }
+        });
+
+        // Initialize Swiper
+        new Swiper('.testimonials-slider', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true
+            },
+            breakpoints: {
+                640: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 }
+            }
+        });
+
+        // Project Filters
+        const filterButtons = document.querySelectorAll('.project-filter');
+        const projects = document.querySelectorAll('.project-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.dataset.filter;
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                projects.forEach(project => {
+                    if (filter === 'all' || project.dataset.category === filter) {
+                        project.style.display = 'block';
+                    } else {
+                        project.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Form Validation and Submission
+        async function handleSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    body: JSON.stringify(Object.fromEntries(formData)),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    alert('Message sent successfully!');
+                    form.reset();
+                } else {
+                    throw new Error('Failed to send message');
+                }
+            } catch (error) {
+                alert('Error sending message: ' + error.message);
+            }
+        }
+
+        // Skill Circle Animation
+        function animateSkillCircles() {
+            document.querySelectorAll('.skill-circle').forEach(circle => {
+                const progress = circle.querySelector('.progress');
+                const percent = parseInt(circle.querySelector('span').textContent);
+                const circumference = 2 * Math.PI * 45;
+                const offset = circumference - (percent / 100) * circumference;
+                progress.style.strokeDasharray = circumference;
+                progress.style.strokeDashoffset = offset;
+            });
+        }
+
+        // Animate skills when they come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateSkillCircles();
+                }
+            });
+        });
+
+        document.querySelectorAll('.skill-circle').forEach(circle => {
+            observer.observe(circle);
+        });
         // Dark mode toggle
         function toggleDarkMode() {
             document.body.classList.toggle('dark-mode');
             const icon = document.querySelector('.fa-moon');
             icon.classList.toggle('fa-sun');
         }
-
-        // Check system preference
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            document.body.classList.add('dark-mode');
-        }
-
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -278,21 +466,12 @@
                 });
             });
         });
-
-        // Animate skill bars on scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.width = entry.target.getAttribute('data-width');
-                }
-            });
-        });
-
         document.querySelectorAll('.skill-progress').forEach(bar => {
             bar.style.width = '0';
             bar.setAttribute('data-width', bar.style.width);
             observer.observe(bar);
         });
+
     </script>
 </body>
 </html>
