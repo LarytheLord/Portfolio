@@ -1,23 +1,22 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abid Khan - Portfolio</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
-    <style>
-        /* Previous CSS styles remain same */
-        
-        .particle-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Abid Khan - Portfolio</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" rel="stylesheet"/>
+<style>
+        :root {
+            --primary: #60A5FA;
+            --secondary: #F59E0B;
+            --background: #111827;
+            --text: #ffffff;
+            --card-bg: #1F2937;
+            --border: #374151;
         }
 
         .dark-mode {
@@ -28,65 +27,11 @@
             --border: #374151;
         }
 
-        
-        .timeline-item {
-            position: relative;
-            padding-left: 2rem;
-            border-left: 2px solid var(--primary);
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -0.5rem;
-            top: 0;
-            width: 1rem;
-            height: 1rem;
-            background: var(--primary);
-            border-radius: 50%;
-        }
-
-        .skill-circle {
-            width: 150px;
-            height: 150px;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .skill-circle svg {
-            transform: rotate(-90deg);
-        }
-
-        .skill-circle circle {
-            fill: none;
-            stroke-width: 8;
-            stroke-linecap: round;
-            transition: stroke-dashoffset 1s ease-in-out;
-        }
-
-        .testimonial-card {
-            backdrop-filter: blur(10px);
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .blog-card img {
-            transition: transform 0.5s;
-        }
-
-        .blog-card:hover img {
-            transform: scale(1.05);
-        }
-
-        .project-filter.active {
-            background-color: var(--primary);
-            color: white;
-        }
 
         body {
             background-color: var(--background);
             color: var(--text);
+            font-family: 'Inter', sans-serif;
             transition: background-color 0.3s, color 0.3s;
         }
 
@@ -98,7 +43,48 @@
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-link {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            transform: translateX(0);
+        }
+
+        .profile-img {
+            border: 4px solid var(--primary);
+            animation: float 6s ease-in-out infinite;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .particle-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
         }
 
         .skill-bar {
@@ -114,238 +100,407 @@
             transition: width 1s ease-in-out;
         }
 
-        .nav-link {
+        .timeline {
             position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .nav-link::after {
+        .timeline::after {
             content: '';
             position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
+            width: 6px;
             background-color: var(--primary);
-            transition: width 0.3s;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
         }
 
-        .nav-link:hover::after {
-            width: 100%;
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
         }
 
-        .profile-img {
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: var(--card-bg);
             border: 4px solid var(--primary);
-            animation: float 6s ease-in-out infinite;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        .left {
+            left: 0;
         }
 
-        .social-icon {
-            transition: transform 0.3s;
+        .right {
+            left: 50%;
         }
 
-        .social-icon:hover {
-            transform: translateY(-3px);
-            color: var(--primary);
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid var(--primary);
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent var(--primary);
+        }
+
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid var(--primary);
+            border-width: 10px 10px 10px 0;
+            border-color: transparent var(--primary) transparent transparent;
+        }
+
+        .right::after {
+            left: -16px;
+        }
+
+        .content {
+            padding: 20px 30px;
+            background-color: var(--card-bg);
+            position: relative;
+            border-radius: 6px;
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s, background-color 0.3s;
+            z-index: 1000;
+        }
+
+        .scroll-to-top:hover {
+            background-color: var(--secondary);
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+        }
+
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .language-switcher select {
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: var(--card-bg);
+            color: var(--text);
+            border: 1px solid var(--border);
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+            background-repeat: no-repeat;
+            background-position: right 10px top 50%;
+            background-size: 12px auto;
+            padding-right: 30px;
+        }
+
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .skill-tag {
+            display: inline-block;
+            padding: 5px 10px;
+            margin: 5px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background-color: var(--secondary);
+        }
+
+        .testimonial-card {
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: scale(1.05);
+        }
+
+        .blog-card img {
+            transition: transform 0.5s ease;
+        }
+
+        .blog-card:hover img {
+            transform: scale(1.1);
         }
     </style>
 </head>
-<body>
-    <!-- Navigation remains same -->
-     <!-- Navigation -->
-    <nav class="fixed w-full bg-opacity-90" style="background-color: var(--card-bg);">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center">
-                    <span class="text-xl font-bold">Abid Khan</span>
-                </div>
-                
-                <div class="hidden md:flex items-center space-x-8">
-                    <button onclick="toggleDarkMode()" class="p-2 rounded-full" style="background-color: var(--border);">
-                        <i class="fas fa-moon"></i>
-                    </button>
-                    
-                    <a href="#about" class="nav-link">About</a>
-                    <a href="#projects" class="nav-link">Projects</a>
-                    <a href="#skills" class="nav-link">Skills</a>
-                    <a href="#contact" class="nav-link">Contact</a>
-                    
-                    <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+<body class="">
+<div class="particle-background" id="particles-js"></div>
+<nav class="fixed w-full bg-opacity-90 z-50" style="background-color: var(--card-bg);">
+<div class="max-w-7xl mx-auto px-4">
+<div class="flex justify-between items-center h-16">
+<div class="flex items-center">
+<span class="text-xl font-bold">Abid Khan</span>
+</div>
+<div class="hidden md:flex items-center space-x-8">
+<button onclick="toggleDarkMode()" class="p-2 rounded-full" style="background-color: var(--border);">                        <i class="fas fa-moon"></i>
+</button>
+<a class="nav-link" href="#about">About</a>
+<a class="nav-link" href="#projects">Projects</a>
+<a class="nav-link" href="#skills">Skills</a>
+<a class="nav-link" href="#experience">Experience</a>
+<a class="nav-link" href="#contact">Contact</a>
+<button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300" location.href=" https://github.com/LarytheLord/Portfolio/blob/main/public/laryson-portfolio(1).md">
                         Download CV
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
+</button>
+</div>
+</div>
+</div>
+</nav>
 
-    <!-- Hero Section with Particles -->
-    <div id="particles-js" class="particle-background"></div>
-     <section class="pt-32 pb-20 px-4">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between">
-            <div class="md:w-1/2">
-                <h1 class="text-5xl font-bold mb-4">
-                    Front-end Developer <br>& AI Promptor
+<section class="pt-32 pb-20 px-4">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between">
+<div class="md:w-1/2" data-aos="fade-right">
+<h1 class="text-5xl font-bold mb-4">
+                    Front-end Developer <br/>&amp; AI Promptor
                 </h1>
-                <p class="text-xl mb-8">
+<p class="text-xl mb-8">
                     Crafting beautiful and functional web experiences with modern technologies
                 </p>
-                <div class="flex space-x-4">
-                    <a href="#contact" class="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700">
+<div class="flex space-x-4">
+<a class="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition duration-300" href="#contact">
                         Get in touch
                     </a>
-                    <a href="#projects" class="border px-6 py-3 rounded-md hover:bg-gray-100" style="border-color: var(--text);">
+<a class="border px-6 py-3 rounded-md hover:bg-gray-100 transition duration-300" href="#projects" style="border-color: var(--text);">
                         View Projects
                     </a>
-                </div>
-            </div>
-            
-            <div class="md:w-1/2 mt-8 md:mt-0">
-                <div class="relative">
-                    <div class="w-64 h-64 rounded-full overflow-hidden profile-img">
-                        <img src="pf.jpg" alt="Profile" class="w-full h-full object-cover">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="pt-32 pb-20 px-4 relative">
-        <!-- Previous hero content -->
-    </section>
-
-    <!-- Projects -->
-   <section id="projects" class="py-20 px-4">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl font-bold mb-12 text-center">Featured Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project Card 1 -->
-                <div class="card rounded-lg p-6">
-                    <h3 class="text-xl font-bold mb-2">ReEarth</h3>
-                    <p class="mb-4">ReEarth is an innovative web application poised to transform waste management into a more efficient, sustainable, and user-friendly experience</p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="px-3 py-1 text-sm rounded-full bg-blue-100 text-blue-800">React</span>
-                        <span class="px-3 py-1 text-sm rounded-full bg-blue-100 text-blue-800">Node.js</span>
-                        <span class="px-3 py-1 text-sm rounded-full bg-blue-100 text-blue-800">Firebase</span>
-                    </div>
-                    <div class="flex justify-between">
-                        <a href="https://reearthweb.netlify.app/" class="text-blue-500 hover:text-blue-600">
-                            <i class="fas fa-external-link-alt mr-1"></i> Live Demo
+</div>
+</div>
+<div class="md:w-1/2 mt-8 md:mt-0" data-aos="fade-left">
+<div class="relative">
+<div class="w-64 h-64 rounded-full overflow-hidden profile-img">
+<img alt="Profile" class="w-full h-full object-cover" src="pf.jpg"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 px-4" id="about">
+<div class="max-w-7xl mx-auto">
+<h2 class="text-3xl font-bold mb-12 text-center" data-aos="fade-up">About Me</h2>
+<div class="bg-gray-800 p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="200">
+<p class="text-lg leading-relaxed">
+                    I'm an enthusiastic AI developer and web application builder, with a journey that's just beginning but already miles ahead. My passion lies in solving complex problems and creating user-friendly interfaces, particularly in Flutter for cross-platform development. With a keen eye for detail and a drive for innovation, I'm constantly pushing the boundaries of what's possible in both AI and web technologies.
+                </p>
+</div>
+</div>
+</section>
+<section class="py-20 px-4" id="projects">
+<div class="max-w-7xl mx-auto">
+<h2 class="text-3xl font-bold mb-12 text-center" data-aos="fade-up">Featured Projects</h2>
+<div class="flex justify-center gap-4 mb-8" data-aos="fade-up" data-aos-delay="200">
+<button class="project-filter active px-4 py-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition duration-300" data-filter="all">All</button>
+<button class="project-filter px-4 py-2 rounded-full hover:bg-blue-600 hover:text-white transition duration-300" data-filter="web">Web</button>
+<button class="project-filter px-4 py-2 rounded-full hover:bg-blue-600 hover:text-white transition duration-300" data-filter="mobile">Mobile</button>
+<button class="project-filter px-4 py-2 rounded-full hover:bg-blue-600 hover:text-white transition duration-300" data-filter="ai">AI</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="project-card card rounded-lg p-6" data-aos="fade-up" data-aos-delay="300" data-category="web">
+<h3 class="text-xl font-bold mb-2">ReEarth</h3>
+<p class="mb-4">ReEarth is  an innovative web application poised to transform waste management into a more efficient, sustainable, and user-friendly experience</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="skill-tag">React</span>
+<span class="skill-tag">Node.js</span>
+<span class="skill-tag">Firebase</span>
+</div>
+<div class="flex justify-between">
+<a class="text-blue-500 hover:text-blue-600 transition duration-300" href="https://reearthweb.netlify.app/">
+<i class="fas fa-external-link-alt mr-1"></i> Live Demo
                         </a>
-                        <a href="https://github.com/LarytheLord/Uprecycle-Market" class="text-blue-500 hover:text-blue-600">
-                            <i class="fab fa-github mr-1"></i> Source Code
+<a class="text-blue-500 hover:text-blue-600 transition duration-300" href="https://github.com/LarytheLord/Uprecycle-Market">
+<i class="fab fa-github mr-1"></i> Source Code
                         </a>
-                    </div>
-                </div>
-                <!-- Add more project cards -->
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Skills Section with Circular Progress -->
-    <section id="skills" class="py-20 px-4">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl font-bold mb-12 text-center">Skills & Expertise</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="mb-6">
-                    <div class="flex justify-between mb-2">
-                        <span class="font-semibold">Flutter</span>
-                        <span>90%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 90%"></div>
-                    </div>
-                </div>
-                <div class="mb-6">
-                    <div class="flex justify-between mb-2">
-                        <span class="font-semibold">React</span>
-                        <span>85%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 85%"></div>
-                    </div>
-                </div>
-                <!-- Add more skills as needed -->
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Projects Section with Filters -->
-    <section id="projects" class="py-20 px-4">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl font-bold mb-12 text-center">Featured Projects</h2>
-            <div class="flex justify-center gap-4 mb-8">
-                <button class="project-filter active px-4 py-2 rounded-full" data-filter="all">All</button>
-                <button class="project-filter px-4 py-2 rounded-full" data-filter="web">Web</button>
-                <button class="project-filter px-4 py-2 rounded-full" data-filter="mobile">Mobile</button>
-                <button class="project-filter px-4 py-2 rounded-full" data-filter="ai">AI</button>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project cards with data-category attribute -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-   <section id="testimonials" class="py-20 px-4">
-                    <h2 class="text-3xl font-bold mb-12 text-center">About Me</h2>
-                    <p>I'm a enthusiastic AI developer with beginning the journey miles ahead and I am preety good in building web applications. I love solving complex problems and creating user-friendly interfaces in flutter for crossplateform.</p>
-                </section>
-
-    <!-- Blog Section -->
-    <section class="py-20 px-4">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl font-bold mb-12 text-center">Latest Blog Posts</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <article class="blog-card overflow-hidden rounded-lg shadow-lg" data-aos="fade-up">
-                    <div class="relative overflow-hidden">
-                        <img src="blog1.jpg" alt="Blog post" class="w-full h-48 object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Modern Web Development Trends</h3>
-                        <p class="text-gray-600 mb-4">Exploring the latest trends in web development...</p>
-                        <a href="#" class="text-blue-500 hover:text-blue-600">Read More →</a>
-                    </div>
-                </article>
-                <!-- Add more blog posts -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section with Form Validation -->
-    <section id="contact" class="py-20 px-4">
-        <div class="max-w-7xl mx-auto">
-            <!-- Previous contact content -->
-            <form id="contactForm" class="space-y-6" onsubmit="handleSubmit(event)">
-                <!-- Form fields with validation -->
-            </form>
-        </div>
-    </section>
-
-    <!-- Footer remains same -->
-    <footer class="py-8" style="background-color: var(--card-bg);">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <p>© 2024 Abid Khan. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-    
-    <script>
-        // Initialize AOS
+</div>
+</div>
+<!-- Add more project cards here -->
+</div>
+</div>
+</section>
+<section class="py-20 px-4" id="skills">
+<div class="max-w-7xl mx-auto">
+<h2 class="text-3xl font-bold mb-12 text-center">Skills &amp; Expertise</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="mb-6">
+<div class="flex justify-between mb-2">
+<span class="font-semibold">Flutter</span>
+<span>90%</span>
+</div>
+<div class="skill-bar">
+<div class="skill-progress" style="width: 90%"></div>
+</div>
+</div>
+<div class="mb-6">
+<div class="flex justify-between mb-2">
+<span class="font-semibold">React</span>
+<span>85%</span>
+</div>
+<div class="skill-bar">
+<div class="skill-progress" style="width: 85%"></div>
+</div>
+</div>
+<!-- Add more skills as needed -->
+</div>
+</div>
+</section>
+<section class="py-20 px-4" id="experience">
+<div class="max-w-7xl mx-auto">
+<h2 class="text-3xl font-bold mb-12 text-center" data-aos="fade-up">Work Experience</h2>
+<div class="timeline">
+<div class="timeline-item left" data-aos="fade-right">
+<div class="content">
+<h3 class="font-bold">Front-end Developer</h3>
+<p>2024 - Present</p>
+<p>Led a team of developers in creating responsive web applications using React and Vite.js.</p>
+</div>
+</div>
+<div class="timeline-item right" data-aos="fade-left">
+<div class="content">
+<h3 class="font-bold">AI Student</h3>
+<p>AI Innovations Lab | 2024 - Present</p>
+<p>Learning in developing and fine-tuning machine learning models for natural language processing tasks.</p>
+</div>
+</div>
+<!-- Add more timeline items as needed -->
+</div>
+</div>
+</section>
+<section class="py-20 px-4" id="testimonials">
+<div class="max-w-7xl mx-auto">
+<h2 class="text-3xl font-bold mb-12 text-center" data-aos="fade-up">Testimonials</h2>
+<div class="swiper-container testimonials-slider">
+<div class="swiper-wrapper">
+<div class="swiper-slide">
+<div class="testimonial-card p-6 rounded-lg" data-aos="fade-up">
+<p class="mb-4">""</p>
+<p class="font-bold">- </p>
+</div>
+</div>
+<!-- Add more testimonial slides -->
+</div>
+<div class="swiper-pagination"></div>
+</div>
+</div>
+</section>
+<section class="py-20 px-4">
+<div class="max-w-7xl mx-auto">
+<h2 class="text-3xl font-bold mb-12 text-center" data-aos="fade-up">Latest Posts</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<article class="blog-card overflow-hidden rounded-lg shadow-lg" data-aos="fade-up">
+<div class="relative overflow-hidden">
+<img alt="Blog post" class="w-full h-48 object-cover" src="https://i.ytimg.com/an_webp/LuCZahJArbs/mqdefault_6s.webp?du=3000&sqp=CPS6_LgG&rs=AOn4CLDaD89_IN09a3_ZOaMhOe_0SyHUlA"/>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold mb-2">ReEarth</h3>
+<p class="text-gray-400 mb-4">ReEarth envisions a sustainable future where waste is transformed into value. Our platform enables users to sell their scrap materials easily and responsibly.</p>
+<a class="text-blue-500 hover:text-blue-600 transition duration-300" href="https://youtu.be/LuCZahJArbs?si=dNGkjzJPQOE8bfOz">Know more →</a>
+</div>
+</article>
+<!-- Add more blog posts -->
+</div>
+</div>
+</section>
+<section class="py-20 px-4" id="contact">
+<div class="max-w-7xl mx-auto">
+<h2 class="text-3xl font-bold mb-12 text-center" data-aos="fade-up">Get in Touch</h2>
+<form class="space-y-6" data-aos="fade-up" id="contactForm" onsubmit="handleSubmit(event)">
+<div>
+<label class="block text-sm font-medium text-gray-300" for="name">Name</label>
+<input class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" id="name" name="name" required="" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-300" for="email">Email</label>
+<input class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" id="email" name="email" required="" type="email"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-300" for="message">Message</label>
+<textarea class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" id="message" name="message" required="" rows="4"></textarea>
+</div>
+<div>
+<button class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" type="submit">
+                        Send Message
+                    </button>
+</div>
+</form>
+</div>
+</section>
+<footer class="py-8" style="background-color: var(--card-bg);">
+<div class="max-w-7xl mx-auto px-4 text-center">
+<p>© 2024 Abid Khan. All rights reserved.</p>
+<div class="flex justify-center space-x-4 mt-4">
+<a class="text-gray-400 hover:text-white transition duration-300" href="#">
+<i class="fab fa-twitter"></i>
+</a>
+<a class="text-gray-400 hover:text-white transition duration-300" href="#">
+<i class="fab fa-linkedin"></i>
+</a>
+<a class="text-gray-400 hover:text-white transition duration-300" href="#">
+<i class="fab fa-github"></i>
+</a>
+</div>
+</div>
+</footer>
+<div class="scroll-to-top" id="scrollToTop">
+<i class="fas fa-arrow-up"></i>
+</div>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<script>
         AOS.init({
             duration: 1000,
             once: true
         });
 
-        // Initialize Particles.js
         particlesJS('particles-js', {
             particles: {
                 number: { value: 80 },
@@ -367,7 +522,6 @@
             }
         });
 
-        // Initialize Swiper
         new Swiper('.testimonials-slider', {
             slidesPerView: 1,
             spaceBetween: 30,
@@ -381,27 +535,33 @@
             }
         });
 
-        // Project Filters
         const filterButtons = document.querySelectorAll('.project-filter');
         const projects = document.querySelectorAll('.project-card');
 
         filterButtons.forEach(button => {
             button.addEventListener('click', () => {
                 const filter = button.dataset.filter;
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
+                filterButtons.forEach(btn => btn.classList.remove('active', 'bg-blue-600', 'text-white'));
+                button.classList.add('active', 'bg-blue-600', 'text-white');
                 
                 projects.forEach(project => {
                     if (filter === 'all' || project.dataset.category === filter) {
                         project.style.display = 'block';
+                        setTimeout(() => {
+                            project.style.opacity = '1';
+                            project.style.transform = 'translateY(0)';
+                        }, 50);
                     } else {
-                        project.style.display = 'none';
+                        project.style.opacity = '0';
+                        project.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            project.style.display = 'none';
+                        }, 300);
                     }
                 });
             });
         });
 
-        // Form Validation and Submission
         async function handleSubmit(event) {
             event.preventDefault();
             const form = event.target;
@@ -427,37 +587,34 @@
             }
         }
 
-        // Skill Circle Animation
-        function animateSkillCircles() {
-            document.querySelectorAll('.skill-circle').forEach(circle => {
-                const progress = circle.querySelector('.progress');
-                const percent = parseInt(circle.querySelector('span').textContent);
-                const circumference = 2 * Math.PI * 45;
-                const offset = circumference - (percent / 100) * circumference;
-                progress.style.strokeDasharray = circumference;
-                progress.style.strokeDashoffset = offset;
+        function animateSkillBars() {
+            document.querySelectorAll('.skill-progress').forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 100);
             });
         }
 
-        // Animate skills when they come into view
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    animateSkillCircles();
+                    animateSkillBars();
                 }
             });
         });
 
-        document.querySelectorAll('.skill-circle').forEach(circle => {
-            observer.observe(circle);
+        document.querySelectorAll('.skill-bar').forEach(bar => {
+            observer.observe(bar);
         });
-        // Dark mode toggle
+
         function toggleDarkMode() {
             document.body.classList.toggle('dark-mode');
             const icon = document.querySelector('.fa-moon');
             icon.classList.toggle('fa-sun');
         }
-        // Smooth scroll
+
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -466,12 +623,31 @@
                 });
             });
         });
-        document.querySelectorAll('.skill-progress').forEach(bar => {
-            bar.style.width = '0';
-            bar.setAttribute('data-width', bar.style.width);
-            observer.observe(bar);
+
+        const scrollToTopButton = document.getElementById('scrollToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopButton.classList.add('visible');
+            } else {
+                scrollToTopButton.classList.remove('visible');
+            }
         });
 
+        scrollToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        function changeLanguage() {
+            const lang = document.getElementById('languageSelect').value;
+            // In a real application, you would implement language switching logic here
+            console.log(`Language changed to ${lang}`);
+            // For demonstration, we'll just show an alert
+            alert(`Language changed to ${lang}. In a real application, the content would be updated.`);
+        }
     </script>
 </body>
 </html>
