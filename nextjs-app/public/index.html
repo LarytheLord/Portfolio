@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Abid Khan - Portfolio</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" rel="stylesheet"/>
+<style>
+        :root {
+            --primary: #60A5FA;
+            --secondary: #F59E0B;
+            --background: #111827;
+            --text: #ffffff;
+            --card-bg: #1F2937;
+            --border: #374151;
+        }
+
+        body.dark-mode {
+            --primary: #60A5FA;
+            --background: #111827;
+            --text: #ffffff;
+            --card-bg: #1F2937;
+            --border: #374151;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-link {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            transform: translateX(0);
+        }
+
+        .profile-img {
+            border: 4px solid var(--primary);
+            animation: float 6s ease-in-out infinite;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .particle-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .skill-bar {
+            background-color: var(--border);
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            background-color: var(--primary);
+            height: 100%;
+            transition: width 1s ease-in-out;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: var(--card-bg);
+            border: 4px solid var(--primary);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid var(--primary);
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent var(--primary);
+        }
+
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid var(--primary);
+            border-width: 10px 10px 10px 0;
+            border-color: transparent var(--primary) transparent transparent;
+        }
+
+        .right::after {
+            left: -16px;
+        }
+
+        .content {
+            padding: 20px 30px;
+            background-color: var(--card-bg);
+            position: relative;
+            border-radius: 6px;
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s, background-color 0.3s;
+            z-index: 1000;
+        }
+
+        .scroll-to-top:hover {
+            background-color: var(--secondary);
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+        }
+
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .skill-tag {
+            display: inline-block;
+            padding: 5px 10px;
+            margin: 5px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background-color: var(--secondary);
+        }
+    </style>
+</head>
+<body class="">
+<div class="particle-background" id="particles-js"></div>
+<nav class="fixed w-full bg-opacity-90 z-50" style="background-color: var(--card-bg);">
+<div class="max-w-7xl mx-auto px-4">
+<div class="flex justify-between items-center h-16">
+<div class="flex items-center">
+<span class="text-xl font-bold">Abid Khan</span>
+</div>
+<div class="hidden md:flex items-center space-x-8">
+ <button id="darkModeToggle" class="p-2 rounded-full" style="background-color: var(--border);">
+        <i id="darkModeIcon" class="fas fa-moon"></i>
+    </button>
+<a class="nav-link" href="#about">About</a>
+<a class="nav-link" href="project.html">Projects</a>
+<a class="nav-link" href="#skills">Skills</a>
+<a class="nav-link" href="MyCV.pdf">Experience</a>
+<a class="nav-link" href="https://bento.me/larythelord">Contact</a>
+<button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300" onclick="window.open('https://github.com/LarytheLord/Portfolio/blob/main/public/laryson-portfolio(1).md', '_blank')">
+                        Download CV
+</button>
+</div>
+</div>
+</div>
+</nav>
+
+<section class="pt-32 pb-20 px-4">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between">
+            <div class="md:w-1/2" data-aos="fade-right">
+                <h1 class="text-5xl font-bold mb-4">
+                    Front-end Developer <br>&amp; AI Enthusiast
+                </h1>
+                <p class="text-xl mb-8">
+                    Crafting beautiful and functional web experiences with modern technologies
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#contact" class="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition duration-300">
+                        Get in touch
+                    </a>
+                    <a href="#projects" class="border px-6 py-3 rounded-md hover:bg-gray-100 transition duration-300" style="border-color: var(--text);">
+                        View Projects
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2 mt-8 md:mt-0" data-aos="fade-left">
+                <div class="relative">
+                    <div class="w-64 h-64 rounded-full overflow-hidden profile-img">
+                        <img src="pf.jpg" alt="Profile" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-4">
+            
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/0n8u5TxTg0s?si=bthaI-FrQOwRIKQF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    
+    </section>
+
+    <section id="about" class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center" data-aos="fade-up">About Me</h2>
+            <div class="bg-gray-800 p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                <p class="text-lg leading-relaxed">
+                    I'm Abid Khan, a Computer Engineering graduate from GIDC Degree Engineering College, Gujarat Technological University. As an enthusiastic AI developer and web application builder, I specialize in front-end development, with expertise in React.js, Flutter, and various other modern technologies. My passion lies in solving complex problems and creating user-friendly interfaces, particularly in cross-platform development. With a keen eye for detail and a drive for innovation, I'm constantly pushing the boundaries of what's possible in both AI and web technologies.
+                </p>
+            </div>
+        </div>
+    </section>
+   
+    <section id="projects" class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center" data-aos="fade-up">Featured Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="project-card card rounded-lg p-6" data-aos="fade-up" data-aos-delay="300" data-category="web">
+                    <h3 class="text-xl font-bold mb-2">ReEarth</h3>
+                    <p class="mb-4">A circular economy web app for buying, selling, and trading second-hand goods, reducing waste via 3R principles. Features include a user-friendly interface, community engagement, and a gamified rewards system.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Circular Economy</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <a href="https://reearthweb.netlify.app/" class="text-blue-500 hover:text-blue-600 transition duration-300">
+                            <i class="fas fa-external-link-alt mr-1"></i> Live Demo
+                        </a>
+                        <a href="https://github.com/LarytheLord/hilander.io" class="text-blue-500 hover:text-blue-600 transition duration-300">
+                            <i class="fab fa-github mr-1"></i> Source Code
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card card rounded-lg p-6" data-aos="fade-up" data-aos-delay="400" data-category="web">
+                    <h3 class="text-xl font-bold mb-2">Hilander</h3>
+                    <p class="mb-4">A document management web app featuring an AI document manager that uploads documents from messaging apps, categorizing them by importance and subject.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Hugging Face</span>
+                        <span class="skill-tag">Supabase</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <a href="#" class="text-blue-500 hover:text-blue-600 transition duration-300">
+                            <i class="fas fa-external-link-alt mr-1"></i> Live Demo
+                        </a>
+                        <a href="#" class="text-blue-500 hover:text-blue-600 transition duration-300">
+                            <i class="fab fa-github mr-1"></i> Source Code
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card card rounded-lg p-6" data-aos="fade-up" data-aos-delay="500" data-category="web">
+                    <h3 class="text-xl font-bold mb-2">Hiking Buddy</h3>
+                    <p class="mb-4">An AR web app for nature exploration, identifying plants and animals and overlaying information to enhance outdoor experiences.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">AR.js</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Vite.js</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <a href="https://hiking-buddy.vercel.app/" class="text-blue-500 hover:text-blue-600 transition duration-300">
+                            <i class="fas fa-external-link-alt mr-1"></i> Live Demo
+                        </a>
+                        <a href="https://github.com/Super1115/hikingBuddy" class="text-blue-500 hover:text-blue-600 transition duration-300">
+                            <i class="fab fa-github mr-1"></i> Source Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center">Skills &amp; Expertise</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="mb-6">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold">Python</span>
+                        <span>90%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold">Flutter</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold">JavaScript/TypeScript</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%"></div>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold">React.js</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold">Node.js</span>
+                        <span>75%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 75%"></div>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold">AWS</span>
+                        <span>70%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 70%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center" data-aos="fade-up">Work Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item left" data-aos="fade-right">
+                    <div class="content">
+                        <h3 class="font-bold">Hackathon Winner</h3>
+                        <p>Team MorphoLogic AI at BioML Hackathon by LUX Capital</p>
+                        <p>Won the RXRX prize for innovative AI solution in cellular analysis</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-8" style="background-color: var(--card-bg);">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p>© 2024 Abid Khan. All rights reserved.</p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <a class="text-gray-400 hover:text-white transition duration-300" href="https://x.com/larysonlawliet">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a class="text-gray-400 hover:text-white transition duration-300" href="https://www.linkedin.com/in/abikhn/">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a class="text-gray-400 hover:text-white transition duration-300" href="https://github.com/LarytheLord">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <div class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80 },
+                color: { value: '#3B82F6' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5 },
+                size: { value: 3 },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#3B82F6',
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 6
+                }
+            }
+        });
+
+        function animateSkillBars() {
+            document.querySelectorAll('.skill-progress').forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 100);
+            });
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateSkillBars();
+                }
+            });
+        });
+
+        document.querySelectorAll('.skill-bar').forEach(bar => {
+            observer.observe(bar);
+        });
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const icon = document.getElementById('darkModeIcon');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        }
+ 
+        document.getElementById('darkModeToggle').addEventListener('click', toggleDarkMode);
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                document.body.classList.add('dark-mode');
+                document.getElementById('darkModeIcon').classList.remove('fa-moon');
+                document.getElementById('darkModeIcon').classList.add('fa-sun');
+            }
+            animateSkillBars();
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        const scrollToTopButton = document.getElementById('scrollToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopButton.classList.add('visible');
+            } else {
+                scrollToTopButton.classList.remove('visible');
+            }
+        });
+
+        scrollToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+
+'use client';
+
+import { useEffect } from 'react';
+import Head from 'next/head';
+import Link from 'next/link';
+
+const Education = () => {
+  useEffect(() => {
+    const THREE = require('three');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000
+    );
+    const renderer = new THREE.WebGLRenderer({
+      canvas: document.getElementById('bg-canvas'),
+      alpha: true,
+    });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    const geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
+    const material = new THREE.MeshBasicMaterial({ color: 0x6366f1, wireframe: true });
+    const torusKnot = new THREE.Mesh(geometry, material);
+    scene.add(torusKnot);
+
+    camera.position.z = 30;
+
+    const starGeometry = new THREE.BufferGeometry();
+    const starMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.1 });
+
+    const starVertices = [];
+    for (let i = 0; i < 5000; i++) {
+      const x = (Math.random() - 0.5) * 2000;
+      const y = (Math.random() - 0.5) * 2000;
+      const z = (Math.random() - 0.5) * 2000;
+      starVertices.push(x, y, z);
+    }
+
+    starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starVertices, 3));
+    const stars = new THREE.Points(starGeometry, starMaterial);
+    scene.add(stars);
+
+    function animate() {
+      requestAnimationFrame(animate);
+      torusKnot.rotation.x += 0.005;
+      torusKnot.rotation.y += 0.005;
+      stars.rotation.x += 0.0002;
+      stars.rotation.y += 0.0002;
+      renderer.render(scene, camera);
+    }
+
+    animate();
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+  }, []);
+
+  return (
+    <>
+      <Head>
+        <title>Laryson Loyyd - Education & Extracurriculars</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+      </Head>
+      <body className="text-gray-300 font-sans">
+        <canvas id="bg-canvas"></canvas>
+        <div className="container mx-auto p-8 content">
+          <header className="text-center mb-12">
+            <h1 className="text-5xl font-bold text-white mb-2">
+              Education & Extracurriculars
+            </h1>
+            <Link href="/" className="text-blue-400 hover:text-blue-300">
+              Back to Home
+            </Link>
+          </header>
+
+          <main className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <section className="glass-effect p-6">
+              <h2 className="text-3xl font-semibold text-yellow-400 mb-4">
+                Education
+              </h2>
+              <div className="space-y-4">
+                <div>
+                  <h3 className="text-2xl font-semibold text-white">
+                    Bachelor of Engineering in Computer Engineering
+                  </h3>
+                  <p className="text-gray-400">
+                    GIDC Degree Engineering Collage, 2024 - Present
+                  </p>
+                  <p className="text-gray-300"></p>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-semibold text-white">
+                    High School Diploma
+                  </h3>
+                  <p className="text-gray-400">Tech High School, 2020-2024</p>
+                  <p className="text-gray-300">GPS Atladara</p>
+                </div>
+              </div>
+            </section>
+            <section className="glass-effect p-6">
+              <h2 className="text-3xl font-semibold text-yellow-400 mb-4">
+                Extracurriculars
+              </h2>
+              <ul className="list-disc list-inside space-y-2">
+                <li>Cheif member of the Computer Science Club (2020-2022)</li>
+                <li>Cheif of Science Model Making Club (2017-2020)</li>
+                <li>Participant in annual Hackathon events</li>
+                <li>
+                  Member of the university's SaaS research development group
+                </li>
+              </ul>
+            </section>
+            <section className="glass-effect p-6">
+              <h2 className="text-3xl font-semibold text-yellow-400 mb-4">
+                Certifications
+              </h2>
+              <ul className="list-disc list-inside space-y-2">
+                <li>Excelent Member and participant in IMUn</li>
+                <li>
+                  Best Model in Robotics section in regional Science Models
+                  (2018-2021)
+                </li>
+                <li></li>
+              </ul>
+            </section>
+            <section className="glass-effect p-6">
+              <h2 className="text-3xl font-semibold text-yellow-400 mb-4">
+                Awards
+              </h2>
+              <ul className="list-disc list-inside space-y-2">
+                <li>Best Delegate for IMUn</li>
+                <li>Best Project Award - Senior Year Capstone</li>
+                <li></li>
+              </ul>
+            </section>
+          </main>
+        </div>
+      </body>
+    </>
+  );
+};
+
+export default Education;
