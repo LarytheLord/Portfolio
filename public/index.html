@@ -3,18 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abid Khan — Full Stack Developer</title>
+    <title>Abid Khan — Full Stack Developer & Founder</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --black: #000000;
-            --white: #ffffff;
+            --black: #000;
+            --white: #fff;
             --gray-50: #fafafa;
             --gray-100: #f5f5f5;
             --gray-200: #e5e5e5;
@@ -29,564 +24,96 @@
             --purple: #7c3aed;
             --green: #00d9ff;
         }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', sans-serif;
             background: var(--white);
             color: var(--black);
             line-height: 1.5;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
-
-        /* Navigation - Inspired by Linear */
-        .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--gray-200);
-            transition: all 0.2s ease;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            height: 64px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .nav-logo {
-            font-weight: 600;
-            font-size: 18px;
-            color: var(--black);
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            align-items: center;
-        }
-
-        .nav-link {
-            color: var(--gray-600);
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: 500;
-            transition: color 0.2s ease;
-        }
-
-        .nav-link:hover {
-            color: var(--black);
-        }
-
-        .nav-cta {
-            background: var(--black);
-            color: var(--white);
-            padding: 8px 16px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: all 0.2s ease;
-        }
-
-        .nav-cta:hover {
-            background: var(--gray-800);
-            transform: translateY(-1px);
-        }
-
-        /* Hero Section - Inspired by Stripe */
-        .hero {
-            padding: 120px 0 80px;
-            background: linear-gradient(180deg, var(--white) 0%, var(--gray-50) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            text-align: center;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--gray-100);
-            border: 1px solid var(--gray-200);
-            border-radius: 20px;
-            padding: 6px 12px;
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--gray-700);
-            margin-bottom: 24px;
-        }
-
-        .status-dot {
-            width: 6px;
-            height: 6px;
-            background: var(--green);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .hero-title {
-            font-size: clamp(48px, 8vw, 80px);
-            font-weight: 700;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-            margin-bottom: 24px;
-            background: linear-gradient(135deg, var(--black) 0%, var(--gray-600) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-subtitle {
-            font-size: 20px;
-            color: var(--gray-600);
-            max-width: 600px;
-            margin: 0 auto 40px;
-            line-height: 1.6;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: 500;
-            font-size: 15px;
-            text-decoration: none;
-            transition: all 0.2s ease;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary {
-            background: var(--black);
-            color: var(--white);
-        }
-
-        .btn-primary:hover {
-            background: var(--gray-800);
-            transform: translateY(-1px);
-        }
-
-        .btn-secondary {
-            background: var(--white);
-            color: var(--black);
-            border: 1px solid var(--gray-300);
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--gray-400);
-            transform: translateY(-1px);
-        }
-
-        /* Grid Background - Inspired by Vercel */
-        .grid-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                linear-gradient(var(--gray-200) 1px, transparent 1px),
-                linear-gradient(90deg, var(--gray-200) 1px, transparent 1px);
-            background-size: 40px 40px;
-            opacity: 0.5;
-            mask: radial-gradient(circle at center, black 0%, transparent 70%);
-        }
-
-        /* Projects Section - Inspired by GitHub */
-        .projects {
-            padding: 80px 0;
-            background: var(--white);
-        }
-
-        .projects-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 64px;
-        }
-
-        .section-title {
-            font-size: 36px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            letter-spacing: -0.01em;
-        }
-
-        .section-subtitle {
-            font-size: 18px;
-            color: var(--gray-600);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 24px;
-        }
-
-        .project-card {
-            background: var(--white);
-            border: 1px solid var(--gray-200);
-            border-radius: 12px;
-            padding: 24px;
-            transition: all 0.2s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card:hover {
-            border-color: var(--gray-300);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .project-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-
-        .project-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--gray-100);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-        }
-
-        .project-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--black);
-        }
-
-        .project-description {
-            color: var(--gray-600);
-            line-height: 1.6;
-            margin-bottom: 16px;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 16px;
-        }
-
-        .tech-tag {
-            background: var(--gray-100);
-            color: var(--gray-700);
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 500;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 16px;
-        }
-
-        .project-link {
-            color: var(--gray-600);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            transition: color 0.2s ease;
-        }
-
-        .project-link:hover {
-            color: var(--black);
-        }
-
-        /* About Section - Inspired by Notion */
-        .about {
-            padding: 80px 0;
-            background: var(--gray-50);
-        }
-
-        .about-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 64px;
-            align-items: center;
-        }
-
-        .about-content h2 {
-            font-size: 36px;
-            font-weight: 700;
-            margin-bottom: 24px;
-            letter-spacing: -0.01em;
-        }
-
-        .about-content p {
-            font-size: 16px;
-            color: var(--gray-600);
-            line-height: 1.7;
-            margin-bottom: 24px;
-        }
-
-        .about-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            margin-top: 32px;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--black);
-            display: block;
-            margin-bottom: 4px;
-        }
-
-        .stat-label {
-            font-size: 14px;
-            color: var(--gray-600);
-            font-weight: 500;
-        }
-
-        .about-image {
-            position: relative;
-        }
-
-        .about-image img {
-            width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Skills Section - Inspired by Figma */
-        .skills {
-            padding: 80px 0;
-            background: var(--white);
-        }
-
-        .skills-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            margin-top: 64px;
-        }
-
-        .skill-category {
-            background: var(--white);
-            border: 1px solid var(--gray-200);
-            border-radius: 12px;
-            padding: 24px;
-            transition: all 0.2s ease;
-        }
-
-        .skill-category:hover {
-            border-color: var(--gray-300);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .skill-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 16px;
-        }
-
-        .skill-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .skill-item {
-            background: var(--gray-100);
-            color: var(--gray-700);
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: 500;
-            transition: all 0.2s ease;
-        }
-
-        .skill-item:hover {
-            background: var(--black);
-            color: var(--white);
-        }
-
-        /* Contact Section - Inspired by Linear */
-        .contact {
-            padding: 80px 0;
-            background: var(--gray-50);
-        }
-
-        .contact-container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 0 24px;
-            text-align: center;
-        }
-
-        .contact h2 {
-            font-size: 36px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            letter-spacing: -0.01em;
-        }
-
-        .contact p {
-            font-size: 18px;
-            color: var(--gray-600);
-            margin-bottom: 40px;
-        }
-
-        .contact-methods {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .contact-method {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--white);
-            border: 1px solid var(--gray-200);
-            border-radius: 8px;
-            padding: 12px 20px;
-            text-decoration: none;
-            color: var(--black);
-            font-weight: 500;
-            transition: all 0.2s ease;
-        }
-
-        .contact-method:hover {
-            border-color: var(--gray-300);
-            transform: translateY(-1px);
-        }
+        /* Navigation */
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid var(--gray-200); transition: all .2s; }
+        .nav-container { max-width: 1200px; margin: auto; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+        .nav-logo { font-weight: 700; font-size: 18px; color: var(--black); text-decoration: none; }
+        .nav-links { display: flex; gap: 32px; align-items: center; }
+        .nav-link { color: var(--gray-600); text-decoration: none; font-size: 15px; font-weight: 500; transition: .2s; }
+        .nav-link:hover { color: var(--black); }
+        .nav-cta { background: var(--black); color: var(--white); padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: 500; }
+        .nav-cta:hover { background: var(--gray-800); }
+
+        /* Hero */
+        .hero { padding: 120px 0 80px; background: linear-gradient(180deg, var(--white), var(--gray-50)); text-align: center; position: relative; overflow: hidden; }
+        .grid-bg { position: absolute; inset: 0; background-image: linear-gradient(var(--gray-200) 1px,transparent 1px), linear-gradient(90deg,var(--gray-200) 1px,transparent 1px); background-size: 40px 40px; opacity: .4; mask: radial-gradient(circle at center,black 0%,transparent 70%); }
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--gray-100); border: 1px solid var(--gray-200); border-radius: 20px; padding: 6px 12px; font-size: 13px; font-weight: 500; margin-bottom: 24px; color: var(--gray-700); }
+        .status-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:.5;} }
+        .hero-title { font-size: clamp(48px,8vw,80px); font-weight: 800; background: linear-gradient(135deg,var(--black),var(--gray-600)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 24px; }
+        .hero-subtitle { font-size: 20px; color: var(--gray-600); max-width: 650px; margin: auto auto 40px; line-height: 1.6; }
+        .hero-actions { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+        .btn { padding: 12px 24px; border-radius: 8px; font-weight: 500; font-size: 15px; text-decoration: none; transition: .2s; }
+        .btn-primary { background: var(--black); color: var(--white); }
+        .btn-primary:hover { background: var(--gray-800); }
+        .btn-secondary { background: var(--white); color: var(--black); border: 1px solid var(--gray-300); }
+        .btn-secondary:hover { border-color: var(--gray-400); }
+
+        /* Projects */
+        .projects { padding: 80px 0; }
+        .projects-container { max-width: 1200px; margin: auto; padding: 0 24px; }
+        .section-header { text-align: center; margin-bottom: 64px; }
+        .section-title { font-size: 36px; font-weight: 700; margin-bottom: 16px; }
+        .section-subtitle { font-size: 18px; color: var(--gray-600); max-width: 600px; margin: auto; }
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(360px,1fr)); gap: 24px; }
+        .project-card { border: 1px solid var(--gray-200); border-radius: 12px; padding: 24px; transition: .2s; background: var(--white); }
+        .project-card:hover { transform: translateY(-2px); border-color: var(--gray-300); box-shadow: 0 8px 25px rgba(0,0,0,.1); }
+        .project-header { display: flex; gap: 12px; align-items: center; margin-bottom: 16px; }
+        .project-icon { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--gray-100); border-radius: 8px; }
+        .project-title { font-size: 18px; font-weight: 600; }
+        .project-description { color: var(--gray-600); line-height: 1.6; margin-bottom: 16px; }
+        .project-tech { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+        .tech-tag { background: var(--gray-100); padding: 4px 8px; border-radius: 4px; font-size: 12px; }
+        .project-links { display: flex; gap: 16px; }
+        .project-link { font-size: 14px; color: var(--gray-600); text-decoration: none; }
+        .project-link:hover { color: var(--black); }
+
+        /* About */
+        .about { padding: 80px 0; background: var(--gray-50); }
+        .about-container { max-width: 1200px; margin: auto; padding: 0 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+        .about-content h2 { font-size: 36px; font-weight: 700; margin-bottom: 24px; }
+        .about-content p { font-size: 16px; color: var(--gray-600); margin-bottom: 20px; line-height: 1.7; }
+        .about-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 32px; }
+        .stat-number { font-size: 32px; font-weight: 700; display: block; margin-bottom: 4px; }
+        .stat-label { font-size: 14px; color: var(--gray-600); }
+        .about-image img { width: 100%; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,.1); }
+
+        /* Skills */
+        .skills { padding: 80px 0; }
+        .skills-container { max-width: 1200px; margin: auto; padding: 0 24px; }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 24px; margin-top: 64px; }
+        .skill-category { border: 1px solid var(--gray-200); border-radius: 12px; padding: 24px; background: var(--white); }
+        .skill-category:hover { transform: translateY(-2px); border-color: var(--gray-300); box-shadow: 0 8px 25px rgba(0,0,0,.1); }
+        .skill-title { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
+        .skill-list { display: flex; flex-wrap: wrap; gap: 8px; }
+        .skill-item { background: var(--gray-100); padding: 6px 12px; border-radius: 6px; font-size: 14px; }
+        .skill-item:hover { background: var(--black); color: var(--white); }
+
+        /* Contact */
+        .contact { padding: 80px 0; background: var(--gray-50); text-align: center; }
+        .contact-container { max-width: 600px; margin: auto; padding: 0 24px; }
+        .contact h2 { font-size: 36px; font-weight: 700; margin-bottom: 16px; }
+        .contact p { font-size: 18px; color: var(--gray-600); margin-bottom: 40px; }
+        .contact-methods { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+        .contact-method { display: flex; align-items: center; gap: 8px; border: 1px solid var(--gray-200); border-radius: 8px; padding: 12px 20px; text-decoration: none; color: var(--black); background: var(--white); }
+        .contact-method:hover { border-color: var(--gray-300); }
 
         /* Footer */
-        .footer {
-            padding: 40px 0;
-            border-top: 1px solid var(--gray-200);
-            background: var(--white);
-        }
+        .footer { padding: 40px 0; border-top: 1px solid var(--gray-200); text-align: center; }
+        .footer p { color: var(--gray-500); font-size: 14px; }
 
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            text-align: center;
-        }
-
-        .footer p {
-            color: var(--gray-500);
-            font-size: 14px;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero {
-                padding: 100px 0 60px;
-            }
-
-            .hero-title {
-                font-size: 48px;
-            }
-
-            .hero-actions {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .about-container {
-                grid-template-columns: 1fr;
-                gap: 40px;
-                text-align: center;
-            }
-
-            .about-stats {
-                grid-template-columns: 1fr;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-methods {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
+        @media(max-width:768px){ .nav-links{display:none;} .about-container{grid-template-columns:1fr;text-align:center;gap:40px;} .about-stats{grid-template-columns:1fr;} }
     </style>
-</head><body>
- 
-   <!-- Navigation -->
+</head>
+<body>
+    <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
             <a href="#" class="nav-logo">Abid Khan</a>
@@ -600,19 +127,13 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero">
         <div class="grid-bg"></div>
         <div class="hero-container">
-            <div class="hero-badge">
-                <div class="status-dot"></div>
-                Available for new opportunities
-            </div>
-            <h1 class="hero-title">Building products that matter</h1>
-            <p class="hero-subtitle">
-                Full-stack developer and startup founder focused on creating 
-                exceptional digital experiences that scale from zero to millions of users.
-            </p>
+            <div class="hero-badge"><div class="status-dot"></div>Founder @ Adventurers Guild | Available for collaborations</div>
+            <h1 class="hero-title">Turning ideas into reality</h1>
+            <p class="hero-subtitle">I'm Abid Khan, a full-stack developer, AI enthusiast, and startup founder passionate about building products that scale, communities that thrive, and experiences that inspire.</p>
             <div class="hero-actions">
                 <a href="#projects" class="btn btn-primary">View my work</a>
                 <a href="#contact" class="btn btn-secondary">Get in touch</a>
@@ -620,338 +141,58 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- Projects -->
     <section class="projects" id="projects">
         <div class="projects-container">
             <div class="section-header">
-                <h2 class="section-title">Selected work</h2>
-                <p class="section-subtitle">
-                    A collection of projects that showcase my approach to solving 
-                    complex problems with simple, elegant solutions.
-                </p>
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">A few highlights from my journey of coding, building, and leading communities.</p>
             </div>
             <div class="projects-grid">
+                <!-- Updated project cards remain as in your code -->
+                <!-- Joy Hacks -->
                 <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">🎵</div>
-                        <h3 class="project-title">Echo</h3>
-                    </div>
-                    <p class="project-description">
-                        Privacy-first social audio platform with geo-fenced anonymous chat rooms. 
-                        Built with React Native and Firebase, featuring end-to-end encryption.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">React Native</span>
-                        <span class="tech-tag">Firebase</span>
-                        <span class="tech-tag">WebRTC</span>
-                        <span class="tech-tag">Expo</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/LarytheLord/Echo" class="project-link">
-                            View code →
-                        </a>
-                    </div>
+                    <div class="project-header"><div class="project-icon">💻</div><h3 class="project-title">Joy Hacks</h3></div>
+                    <p class="project-description">A social media platform where developers share code in a reels format along with their output. Interactive, fun, and educational.</p>
+                    <div class="project-tech"><span class="tech-tag">Next.js</span><span class="tech-tag">Supabase</span><span class="tech-tag">TailwindCSS</span><span class="tech-tag">Monaco</span></div>
+                    <div class="project-links"><a href="https://github.com/LarytheLord/Joy-Hacks" class="project-link">View code →</a></div>
                 </div>
 
+                <!-- Adventurers Guild -->
                 <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">💻</div>
-                        <h3 class="project-title">Joy Hacks</h3>
-                    </div>
-                    <p class="project-description">
-                        Developer community platform for sharing interactive code snippets. 
-                        Features live code execution and TikTok-style content discovery.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Next.js</span>
-                        <span class="tech-tag">Supabase</span>
-                        <span class="tech-tag">TailwindCSS</span>
-                        <span class="tech-tag">Monaco</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/LarytheLord/Joy-Hacks" class="project-link">
-                            View code →
-                        </a>
-                    </div>
+                    <div class="project-header"><div class="project-icon">👥</div><h3 class="project-title">The Adventurers Guild</h3></div>
+                    <p class="project-description">A gamified community that transforms computer science education into quests, connecting students, professionals, and companies worldwide.</p>
+                    <div class="project-tech"><span class="tech-tag">Next.js</span><span class="tech-tag">TypeScript</span><span class="tech-tag">Supabase</span><span class="tech-tag">Prisma</span></div>
+                    <div class="project-links"><a href="#" class="project-link">Coming soon →</a></div>
                 </div>
 
+                <!-- Hiking Buddy -->
                 <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">♻️</div>
-                        <h3 class="project-title">ReEarth</h3>
-                    </div>
-                    <p class="project-description">
-                        Sustainable marketplace promoting circular economy through second-hand goods trading. 
-                        Gamified experience with environmental impact tracking.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">MongoDB</span>
-                        <span class="tech-tag">Stripe</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://reearthweb.netlify.app/" class="project-link">
-                            View live →
-                        </a>
-                        <a href="https://github.com/LarytheLord/hilander.io" class="project-link">
-                            View code →
-                        </a>
-                    </div>
+                    <div class="project-header"><div class="project-icon">🏔️</div><h3 class="project-title">Hiking Buddy</h3></div>
+                    <p class="project-description">An AR-powered app for nature exploration that identifies flora and fauna in real-time without heavy ML models or Unity.</p>
+                    <div class="project-tech"><span class="tech-tag">React</span><span class="tech-tag">AR.js</span><span class="tech-tag">Vite</span></div>
+                    <div class="project-links"><a href="https://hiking-buddy.vercel.app/" class="project-link">View live →</a></div>
                 </div>
 
+                <!-- AI Hackathon Project -->
                 <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">🏔️</div>
-                        <h3 class="project-title">Hiking Buddy</h3>
-                    </div>
-                    <p class="project-description">
-                        AR-powered nature exploration app that identifies flora and fauna in real-time. 
-                        Uses computer vision to enhance outdoor experiences.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">AR.js</span>
-                        <span class="tech-tag">TensorFlow.js</span>
-                        <span class="tech-tag">Vite</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://hiking-buddy.vercel.app/" class="project-link">
-                            View live →
-                        </a>
-                        <a href="https://github.com/Super1115/hikingBuddy" class="project-link">
-                            View code →
-                        </a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">🤖</div>
-                        <h3 class="project-title">AI Document Manager</h3>
-                    </div>
-                    <p class="project-description">
-                        Intelligent document processing system using GPT-4 and LangChain. 
-                        Automatically categorizes and extracts insights from document collections.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">LangChain</span>
-                        <span class="tech-tag">OpenAI</span>
-                        <span class="tech-tag">FastAPI</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/LarytheLord/farm-objection-hack" class="project-link">
-                            View code →
-                        </a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">👥</div>
-                        <h3 class="project-title">Adventurers Guild</h3>
-                    </div>
-                    <p class="project-description">
-                        Open-source community platform connecting developers worldwide. 
-                        Features project collaboration tools and gamified contribution tracking.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">TypeScript</span>
-                        <span class="tech-tag">Supabase</span>
-                        <span class="tech-tag">Next.js</span>
-                        <span class="tech-tag">Prisma</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link">
-                            Coming soon →
-                        </a>
-                    </div>
+                    <div class="project-header"><div class="project-icon">🤖</div><h3 class="project-title">AI Factory Farm Objection</h3></div>
+                    <p class="project-description">Built during a hackathon with Open Paws & Electric Sheep, an AI-powered objection system automating ethical concerns in factory farming.</p>
+                    <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">LangChain</span><span class="tech-tag">FastAPI</span><span class="tech-tag">OpenAI</span></div>
+                    <div class="project-links"><a href="https://github.com/LarytheLord/farm-objection-hack" class="project-link">View code →</a></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- About -->
     <section class="about" id="about">
         <div class="about-container">
             <div class="about-content">
-                <h2>Building the future, one project at a time</h2>
-                <p>
-                    I'm Abid Khan, a Computer Science student at GIDC Degree Engineering College, 
-                    Gujarat Technological University. I specialize in creating products that solve 
-                    real problems and scale to millions of users.
-                </p>
-                <p>
-                    My approach combines technical excellence with user-centered design. Whether 
-                    it's building AI-powered applications or crafting seamless mobile experiences, 
-                    I focus on creating solutions that make a meaningful impact.
-                </p>
+                <h2>About Me</h2>
+                <p>I'm Abid Khan, a Computer Science student at Gujarat Technological University and founder of <strong>The Adventurers Guild</strong>. I focus on blending AI, full-stack development, and community building to craft meaningful products.</p>
+                <p>I believe in solving real problems with simple, elegant solutions. From hackathons to startups, I thrive in environments where innovation and collaboration meet.</p>
                 <div class="about-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">50+</span>
-                        <span class="stat-label">Projects</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">3+</span>
-                        <span class="stat-label">Years</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">8.1</span>
-                        <span class="stat-label">CGPA</span>
-                    </div>
-                </div>
-            </div>
-            <div class="about-image">
-                <img src="pf.jpg" alt="Abid Khan">
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section class="skills" id="skills">
-        <div class="skills-container">
-            <div class="section-header">
-                <h2 class="section-title">Skills & expertise</h2>
-                <p class="section-subtitle">
-                    Technologies and tools I use to bring ideas to life.
-                </p>
-            </div>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3 class="skill-title">Frontend</h3>
-                    <div class="skill-list">
-                        <span class="skill-item">React</span>
-                        <span class="skill-item">Next.js</span>
-                        <span class="skill-item">TypeScript</span>
-                        <span class="skill-item">React Native</span>
-                        <span class="skill-item">Flutter</span>
-                        <span class="skill-item">TailwindCSS</span>
-                        <span class="skill-item">Framer Motion</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3 class="skill-title">Backend</h3>
-                    <div class="skill-list">
-                        <span class="skill-item">Node.js</span>
-                        <span class="skill-item">Python</span>
-                        <span class="skill-item">PostgreSQL</span>
-                        <span class="skill-item">MongoDB</span>
-                        <span class="skill-item">GraphQL</span>
-                        <span class="skill-item">REST APIs</span>
-                        <span class="skill-item">Prisma</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3 class="skill-title">AI & ML</h3>
-                    <div class="skill-list">
-                        <span class="skill-item">OpenAI API</span>
-                        <span class="skill-item">LangChain</span>
-                        <span class="skill-item">TensorFlow</span>
-                        <span class="skill-item">Computer Vision</span>
-                        <span class="skill-item">NLP</span>
-                        <span class="skill-item">Hugging Face</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3 class="skill-title">Tools</h3>
-                    <div class="skill-list">
-                        <span class="skill-item">Git</span>
-                        <span class="skill-item">Docker</span>
-                        <span class="skill-item">AWS</span>
-                        <span class="skill-item">Vercel</span>
-                        <span class="skill-item">Firebase</span>
-                        <span class="skill-item">Supabase</span>
-                        <span class="skill-item">Figma</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="contact-container">
-            <h2>Let's work together</h2>
-            <p>
-                I'm always interested in new opportunities and interesting projects. 
-                Let's discuss how we can bring your ideas to life.
-            </p>
-            <div class="contact-methods">
-                <a href="mailto:llawlietbagsum@gmail.com" class="contact-method">
-                    📧 Email
-                </a>
-                <a href="https://www.linkedin.com/in/abikhn/" class="contact-method">
-                    💼 LinkedIn
-                </a>
-                <a href="https://github.com/LarytheLord" class="contact-method">
-                    🐙 GitHub
-                </a>
-                <a href="https://x.com/larysonlawliet" class="contact-method">
-                    🐦 Twitter
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <p>© 2024 Abid Khan. Designed and built with care.</p>
-        </div>
-    </footer>
-
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    const offsetTop = target.offsetTop - 80;
-                    window.scrollTo({
-                        top: offsetTop,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Navigation background on scroll
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('.nav');
-            if (window.scrollY > 50) {
-                nav.style.background = 'rgba(255, 255, 255, 0.95)';
-            } else {
-                nav.style.background = 'rgba(255, 255, 255, 0.8)';
-            }
-        });
-
-        // Simple fade-in animation for elements
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Apply fade-in to sections
-        document.querySelectorAll('.section-header, .project-card, .skill-category, .about-content, .about-image').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
-        });
-    </script>
-</body>
-</html>
+                    <div class="stat-item"><span class="stat-number">50+</span><span class="stat-label">Projects</span></div>
+                    <div class="stat-item"><span class="stat-number">3+</span><span class="stat-label">Years of Coding</span></div>
+                    <div class="stat-item"><span class="stat-number">8.1</span><span class="stat-label">SPI (Sem
