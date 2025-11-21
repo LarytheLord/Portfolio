@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LunaBot - NASA Space Apps Challenge Finalist</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root {
+            --primary-color: #0a0e27;
+            --secondary-color: #ff6b35;
+            --accent-color: #ff6b35;
+            --light-color: #c4c4c4;
+            --dark-color: #050714;
+            --text-color: #e0e0e0;
+            --bg-color: #0a0e27;
+            --card-bg: #151b3b;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        .hero {
+            background: linear-gradient(180deg, #000000 0%, #0a0e27 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: radial-gradient(white 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.1;
+        }
+
+        .blog-card,
+        .feature,
+        .stage,
+        .team-member,
+        .data-source,
+        .framework {
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            border: 1px solid #2a3b55;
+        }
+
+        .blog-content p,
+        .container p,
+        .post-content p {
+            color: #b0b0b0;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: white !important;
+        }
+
+        .tech-tag {
+            background: rgba(255, 107, 53, 0.2);
+            color: #ff6b35;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <h1><a href="/" style="color: white;">Abid.</a></h1>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="index.html">Blogs</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container hero-content">
+                <span class="tech-tag">NASA Space Apps Challenge Finalist</span>
+                <h1>LunaBot: Autonomous Lunar Reconnaissance</h1>
+                <p>Building an autonomous lunar reconnaissance rover that scouts landing sites before Artemis III
+                    astronauts arrive.</p>
+            </div>
+        </section>
+
+        <article class="container post-content">
+            <div class="post-meta">
+                <span>Robotics</span>
+                <span>AI/ML</span>
+                <span>Space Tech</span>
+            </div>
+
+            <section id="problem">
+                <h2>The Problem</h2>
+                <p>Current NASA challenges involve 6 months of manual analysis by 50+ specialists to identify safe
+                    landing zones. There is zero ground-truth verification before the crew lands, and orbital imagery
+                    limitations (0.5m/pixel) are insufficient for detecting surface hazards that could jeopardize a
+                    mission.</p>
+            </section>
+
+            <section id="solution">
+                <h2>The Solution</h2>
+                <p>LunaBot is designed for autonomous reconnaissance 6-12 months pre-mission. It carries a 17kg sensor
+                    payload with 9 integrated systems, all TRL 7-9 space-qualified. The rover performs real-time hazard
+                    detection for boulders, craters, slopes, and radiation using an NVIDIA Jetson AGX Orin 64GB
+                    computing unit delivering 275 TOPS of AI performance.</p>
+            </section>
+
+            <section id="technical">
+                <h2>Technical Deep Dive</h2>
+                <div class="feature-grid">
+                    <div class="feature">
+                        <h3>Core Framework</h3>
+                        <p>Built on ROS2 Humble (TRL 9 space-proven) for robust robot control.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Simulation</h3>
+                        <p>Webots R2025 simulation environment with physics-accurate lunar conditions.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Stack</h3>
+                        <p>Python for sensor fusion and AI algorithms, C++ for low-latency ROS2 nodes, and
+                            JavaScript/React for the mission dashboard.</p>
+                    </div>
+                </div>
+                <p>Power is managed via 200W solar panels and Li-ion batteries designed for 30-day lunar night survival.
+                    Communication utilizes S-band direct-to-Earth and X-band Gateway relay systems.</p>
+            </section>
+
+            <section id="impact">
+                <h2>The Impact</h2>
+                <p>This project reduces mission risk for the $93B Artemis program by enabling data-driven landing site
+                    selection. It generates 1-meter resolution terrain models across a 10km² operational area, providing
+                    a real-world application for lunar base site selection.</p>
+            </section>
+
+            <section id="lessons">
+                <h2>Lessons Learned</h2>
+                <ul>
+                    <li>Building for extreme environments and strict hardware constraints.</li>
+                    <li>Simulating physics-accurate lunar conditions to validate software.</li>
+                    <li>Balancing autonomy with remote control capabilities.</li>
+                    <li>Communicating complex technical concepts to non-technical judges.</li>
+                </ul>
+            </section>
+
+            <div class="buttons">
+                <a href="#" class="read-more">View on GitHub</a>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Abid Khan. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

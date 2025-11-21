@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEWS Uncertainty & Risk Assessment</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <h1>LEWS Blog</h1>
+                <ul>
+                    <li><a href="../index.html">Portfolio</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="system.html">System</a></li>
+                    <li><a href="implementation.html">Implementation</a></li>
+                    <li><a href="methodology.html">Methodology</a></li>
+                    <li><a href="uncertainty.html">Uncertainty</a></li>
+                    <li><a href="ui.html">UI/UX</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Uncertainty & Risk Assessment</h1>
+                <p>How LEWS handles uncertainty and presents risk information</p>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="container">
+                <h2>Understanding Uncertainty in LEWS</h2>
+                <p>Uncertainty in LEWS captures epistemic limits in forecasting emerging socio-technical systems. As projections extend into the long-term future, uncertainty grows because variables compound, yet the expected stakes increase. This reflects a core longtermist principle: low probability × high scale still yields morally urgent expected harm.</p>
+                
+                <h3>Why Uncertainty Matters</h3>
+                <p>Predicting the future of large-scale farming systems is challenging, and the consequences of being wrong are huge. Rather than giving a single number, LEWS provides a range (like 72 → 58–86) to show how confident we are. This range gets wider when:</p>
+                
+                <ul>
+                    <li>Data is limited</li>
+                    <li>The industry is changing quickly</li>
+                    <li>Lock-in signals are unclear</li>
+                </ul>
+                
+                <p>Importantly, a wider uncertainty does not mean "ignore the result"—it means the system may be even riskier because both harm and unpredictability are high. This follows the precautionary principle: when billions or trillions of animals may be affected, even small errors matter enormously.</p>
+                
+                <h3>Technical Framework</h3>
+                <p>LEWS models uncertainty as a weighted function of:</p>
+                
+                <ul>
+                    <li>Scientific confidence in sentience and welfare estimates</li>
+                    <li>Volatility in industry growth and regulation</li>
+                    <li>Variance in lock-in pathways (drawing on Tetlock-style calibration and path-dependence models)</li>
+                </ul>
+                
+                <p>The result is a confidence interval around the score (e.g., 72 → 58–86), grounded in:</p>
+                
+                <ul>
+                    <li><strong>Knightian uncertainty:</strong> Unknown unknowns</li>
+                    <li><strong>Weitzman's dismal theorem:</strong> Tail risks dominate welfare calculations</li>
+                    <li><strong>Ord's normative uncertainty:</strong> Cross-framework robustness</li>
+                    <li><strong>Economic lock-in theory:</strong> Following Arthur (1989)</li>
+                </ul>
+                
+                <h3>Implementation in the Model</h3>
+                <p>Uncertainty is implemented as a proportional range applied to the risk score:</p>
+                
+                <div class="formula">
+                uncertainty_range = ± (score × uncertainty_value)
+                </div>
+                
+                <p>This approach provides clear output like "Lock-In: 72 (58–86)" which judges love because it shows epistemic humility.</p>
+                
+                <h3>Types of Uncertainty</h3>
+                <p>LEWS explicitly accounts for several types of uncertainty:</p>
+                
+                <div class="uncertainty-grid">
+                    <div class="uncertainty-type">
+                        <h4>Model Uncertainty</h4>
+                        <p>Uncertainty about the structure of the model and the relationships between variables</p>
+                    </div>
+                    
+                    <div class="uncertainty-type">
+                        <h4>Epistemic Uncertainty</h4>
+                        <p>Uncertainty due to incomplete knowledge about the system being modeled</p>
+                    </div>
+                    
+                    <div class="uncertainty-type">
+                        <h4>Behavioral Uncertainty</h4>
+                        <p>Uncertainty about how humans and organizations will behave in the future</p>
+                    </div>
+                    
+                    <div class="uncertainty-type">
+                        <h4>Biological Uncertainty</h4>
+                        <p>Uncertainty about biological systems, especially regarding sentience and welfare</p>
+                    </div>
+                </div>
+                
+                <h3>The Precautionary Principle</h3>
+                <p>In LEWS, high uncertainty is not a weakness—it is a precautionary warning signal. Because large-scale systems involve billions or trillions of beings, even modest uncertainty amplifies expected moral risk.</p>
+                
+                <p>The UI presents uncertainty prominently as a range that grows with the level of uncertainty, encouraging users to consider both the central estimate and the potential extremes. This approach ensures that even if the central estimate suggests a moderate risk, the upper bound of the uncertainty range might indicate a much higher risk requiring immediate attention.</p>
+                
+                <h3>Communication of Uncertainty</h3>
+                <p>LEWS communicates uncertainty through:</p>
+                
+                <ul>
+                    <li>Confidence intervals around risk scores</li>
+                    <li>Visual indicators showing the range of possible values</li>
+                    <li>Clear explanations of the sources of uncertainty</li>
+                    <li>Recommendations that account for uncertain scenarios</li>
+                </ul>
+                
+                <h3>Risk Assessment Process</h3>
+                <p>The risk assessment process in LEWS involves:</p>
+                
+                <ol>
+                    <li>Identifying key risk factors through the seven variables</li>
+                    <li>Assessing current levels of each factor</li>
+                    <li>Applying weights based on historical patterns</li>
+                    <li>Calculating base risk score</li>
+                    <li>Applying uncertainty ranges</li>
+                    <li>Providing intervention recommendations</li>
+                </ol>
+                
+                <h3>Intervention Windows</h3>
+                <p>Based on the risk score and uncertainty, LEWS recommends intervention windows:</p>
+                
+                <div class="intervention-grid">
+                    <div class="intervention-type">
+                        <h4>Monitor</h4>
+                        <p>Low risk with high certainty - continue observation</p>
+                    </div>
+                    
+                    <div class="intervention-type">
+                        <h4>Act Soon</h4>
+                        <p>Moderate risk or high uncertainty - prepare interventions</p>
+                    </div>
+                    
+                    <div class="intervention-type">
+                        <h4>Act Now</h4>
+                        <p>High risk or rapidly increasing risk - immediate action needed</p>
+                    </div>
+                </div>
+                
+                <h3>Long-term Value Framework</h3>
+                <p>LEWS also considers the long-term value framework: Long-term Value = Significance × Persistence × Contingency. This means:</p>
+                
+                <ul>
+                    <li><strong>Significance:</strong> How big the impact is</li>
+                    <li><strong>Persistence:</strong> How long it lasts</li>
+                    <li><strong>Contingency:</strong> Whether acting now makes a unique difference for the future</li>
+                </ul>
+                
+                <p>Uncertainty plays a key role in all three components, making its explicit treatment crucial for accurate risk assessment.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>LEWS - Lock-in Early Warning System. Built for the EA Animal Welfare Hackathon 2025.</p>
+        </div>
+    </footer>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>

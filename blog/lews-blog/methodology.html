@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEWS Scoring Methodology</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <h1>LEWS Blog</h1>
+                <ul>
+                    <li><a href="../index.html">Portfolio</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="system.html">System</a></li>
+                    <li><a href="implementation.html">Implementation</a></li>
+                    <li><a href="methodology.html">Methodology</a></li>
+                    <li><a href="uncertainty.html">Uncertainty</a></li>
+                    <li><a href="ui.html">UI/UX</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Scoring Methodology</h1>
+                <p>How LEWS calculates risk scores and determines lock-in probabilities</p>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="container">
+                <h2>Overview of the Scoring System</h2>
+                <p>The LEWS scoring system is based on a linear weighted model that combines seven key variables to produce a 0-100 lock-in risk score. The methodology is inspired by GiveWell-style weighted scoring, early-warning systems in AI governance, and epidemiological risk models.</p>
+                
+                <h3>Core Variables and Weights</h3>
+                <p>The scoring formula uses the following weights:</p>
+                
+                <div class="formula">
+                risk_score =<br>
+                  0.30 × scale_norm +<br>
+                  0.20 × suffering_norm +<br>
+                  0.15 × sentience_norm +<br>
+                  0.20 × momentum_norm +<br>
+                  0.10 × advocacy_gap_norm +<br>
+                  0.05 × time_to_lockin_norm<br>
+                </div>
+                
+                <p>Where each variable is normalized to a 0-1 scale before applying the weights.</p>
+                
+                <div class="weights-table">
+                    <div class="weight-row">
+                        <div class="variable-name">Population Scale</div>
+                        <div class="weight">30%</div>
+                        <div class="description">Largest weight because scale directly correlates with total suffering</div>
+                    </div>
+                    
+                    <div class="weight-row">
+                        <div class="variable-name">Suffering Intensity</div>
+                        <div class="weight">20%</div>
+                        <div class="description">How much each individual experiences suffering</div>
+                    </div>
+                    
+                    <div class="weight-row">
+                        <div class="variable-name">Industry Momentum</div>
+                        <div class="weight">20%</div>
+                        <div class="description">Rate of growth and institutional adoption</div>
+                    </div>
+                    
+                    <div class="weight-row">
+                        <div class="variable-name">Sentience Probability</div>
+                        <div class="weight">15%</div>
+                        <div class="description">Likelihood that beings can experience suffering</div>
+                    </div>
+                    
+                    <div class="weight-row">
+                        <div class="variable-name">Advocacy Gap</div>
+                        <div class="weight">10%</div>
+                        <div class="description">How much attention the issue receives</div>
+                    </div>
+                    
+                    <div class="weight-row">
+                        <div class="variable-name">Time to Lock-in</div>
+                        <div class="weight">5%</div>
+                        <div class="description">How close the system is to irreversible lock-in</div>
+                    </div>
+                </div>
+                
+                <h3>Variable Normalization</h3>
+                <p>All inputs are normalized to a 0-1 scale using the following approach:</p>
+                
+                <ul>
+                    <li><strong>Population Scale:</strong> Normalized by comparing to historical maximums in similar systems</li>
+                    <li><strong>Senience Probability:</strong> Already on a 0-1 scale (0-100%)</li>
+                    <li><strong>Suffering Intensity:</strong> Normalized using the -10 to +10 valence scale</li>
+                    <li><strong>Industry Momentum:</strong> Normalized based on historical growth rates</li>
+                    <li><strong>Advocacy Gap:</strong> Normalized with 0 being strong advocacy and 1 being no advocacy</li>
+                    <li><strong>Time to Lock-in:</strong> Normalized with 0 being already locked in and 1 being far from lock-in</li>
+                </ul>
+                
+                <h3>Data Sources</h3>
+                <p>The scoring methodology relies on multiple authoritative data sources:</p>
+                
+                <div class="data-source-grid">
+                    <div class="data-source">
+                        <h4>Population Data</h4>
+                        <ul>
+                            <li>Our World in Data (slaughter numbers)</li>
+                            <li>FAO Aquaculture Databases</li>
+                            <li>Rethink Priorities (insect, shrimp, fish estimations)</li>
+                            <li>Rowe (2020-2023) for insect-scale estimates</li>
+                            <li>Mood & Brooke for fish and shrimp</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="data-source">
+                        <h4>Sentience Research</h4>
+                        <ul>
+                            <li>Rethink Priorities Sentience Project (2020-2023)</li>
+                            <li>Birch, Browning, Crump papers on invertebrate sentience (2022-2023)</li>
+                            <li>EFSA insect sentience evaluations</li>
+                            <li>Cambridge Declaration on Consciousness</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="data-source">
+                        <h4>Suffering Intensity</h4>
+                        <ul>
+                            <li>Welfare Footprint Project</li>
+                            <li>Peer-reviewed ethology and animal welfare science</li>
+                            <li>Species-specific welfare audits</li>
+                            <li>Behavioral restriction indicators</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h3>Scoring Stages</h3>
+                <p>The system classifies lock-in risk into three stages:</p>
+                
+                <div class="stage-grid">
+                    <div class="stage">
+                        <h4>Research Stage</h4>
+                        <p>(0-30) Early development with limited deployment</p>
+                    </div>
+                    
+                    <div class="stage">
+                        <h4>Scaling Stage</h4>
+                        <p>(31-65) Growing adoption and institutional support</p>
+                    </div>
+                    
+                    <div class="stage">
+                        <h4>Lock-in Approaching</h4>
+                        <p>(66-100) System becoming self-reinforcing and difficult to change</p>
+                    </div>
+                </div>
+                
+                <h3>Historical Calibration</h3>
+                <p>The scoring methodology was calibrated using historical examples of lock-in:</p>
+                
+                <ul>
+                    <li>Battery cages in poultry (locked in between 1950-1970)</li>
+                    <li>Modern factory farming systems for chickens</li>
+                    <li>Aquaculture development patterns</li>
+                    <li>Insect farming industry progression</li>
+                </ul>
+                
+                <p>These historical patterns help establish baseline weights and thresholds for the model.</p>
+                
+                <h3>Pattern Matching</h3>
+                <p>For trajectory comparison, the system uses simple similarity matching to determine how current technologies compare to historical examples:</p>
+                
+                <div class="formula">
+                Closest score match = 1952<br>
+                Output: "Insect farming today ≈ 1952"
+                </div>
+                
+                <p>This comparison helps users understand how close current systems are to historical lock-in points.</p>
+                
+                <h3>Quality Assurance</h3>
+                <p>The methodology includes several quality assurance measures:</p>
+                
+                <ul>
+                    <li>Explicit uncertainty ranges for all estimates</li>
+                    <li>Sensitivity analysis for key parameters</li>
+                    <li>Historical validation against known outcomes</li>
+                    <li>Peer review of weight assignments</li>
+                    <li>Regular calibration updates</li>
+                </ul>
+                
+                <h3>Limitations and Assumptions</h3>
+                <p>The scoring methodology makes several important assumptions:</p>
+                
+                <ul>
+                    <li>Linear relationships between variables (simplified version)</li>
+                    <li>Historical patterns predict future outcomes</li>
+                    <li>Quantifiable metrics correlate with actual risk</li>
+                    <li>Current trends continue without major disruptions</li>
+                </ul>
+                
+                <p>These assumptions are clearly communicated to users to ensure appropriate interpretation of results.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>LEWS - Lock-in Early Warning System. Built for the EA Animal Welfare Hackathon 2025.</p>
+        </div>
+    </footer>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>

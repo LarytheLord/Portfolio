@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEWS Technical Implementation</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <h1>LEWS Blog</h1>
+                <ul>
+                    <li><a href="../index.html">Portfolio</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="system.html">System</a></li>
+                    <li><a href="implementation.html">Implementation</a></li>
+                    <li><a href="methodology.html">Methodology</a></li>
+                    <li><a href="uncertainty.html">Uncertainty</a></li>
+                    <li><a href="ui.html">UI/UX</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Technical Implementation</h1>
+                <p>How the LEWS system was built and the technology behind it</p>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="container">
+                <h2>Architecture Overview</h2>
+                <p>The LEWS system was designed with simplicity and maintainability in mind for the hackathon context. The architecture consists of a Node.js/Express backend with JSON data storage and a modern frontend with slider controls and visualization.</p>
+                
+                <h3>Backend Implementation</h3>
+                <p>The backend uses Node.js with Express to handle API requests:</p>
+                
+                <ul>
+                    <li><strong>Technology:</strong> Node.js with Express.js framework</li>
+                    <li><strong>Data Storage:</strong> Local JSON files rather than a database (factory_farming.json, insect_farming.json, etc.)</li>
+                    <li><strong>Endpoints:</strong> Simple REST API with /calculate endpoint that receives 6 inputs and returns score + stage + year match + window</li>
+                    <li><li><strong>Optional Endpoint:</strong> /trajectory that returns JSON data for charts</li>
+                </ul>
+                
+                <p>Key design decisions included avoiding authentication, databases, and external APIs to keep the system simple and focused.</p>
+                
+                <h3>Frontend Architecture</h3>
+                <p>The frontend was built with React components and includes:</p>
+                
+                <ul>
+                    <li><strong>Slider Interface:</strong> 6 input sliders (1-5 values) with weighted scoring to generate 0-100 lock-in scores</li>
+                    <li><strong>Result Display:</strong> Clean result box showing risk score, stage classification, and intervention window</li>
+                    <li><strong>Visualization:</strong> Simple line chart showing factory farming trajectory</li>
+                    <li><strong>Export Functionality:</strong> Optional PDF export capability</li>
+                </ul>
+                
+                <h3>Data Management</h3>
+                <p>The system uses a JSON-based approach where:</p>
+                
+                <ul>
+                    <li>Each animal farming technology has its own JSON file with 7 inputs:</li>
+                    <ol>
+                        <li>Population scale (1-POPULATION_SCALE)</li>
+                        <li>Sentience probability (2-SENTIENCE)</li>
+                        <li>Suffering intensity (3-SUFFERING)</li>
+                        <li>Industry momentum (4-MOMENTUM)</li>
+                        <li>Advocacy gap (5-ADVOCACY)</li>
+                        <li>Lock-in signals (6-LOCKIN)</li>
+                        <li>Uncertainty (7-UNCERTAINTY)</li>
+                    </ol>
+                    <li>Each JSON file contains default slider values, min/max ranges, plain-language notes, and source metadata</li>
+                    <li>Frontend loads JSON automatically when user selects chicken, shrimp, fish, or insect farming</li>
+                </ul>
+                
+                <h3>Scoring Algorithm</h3>
+                <p>The core scoring formula uses a linear weighted model:</p>
+                
+                <div class="formula">
+                risk_score =<br>
+                  0.30 × scale_norm +<br>
+                  0.20 × suffering_norm +<br>
+                  0.15 × sentience_norm +<br>
+                  0.20 × momentum_norm +<br>
+                  0.10 × advocacy_gap_norm +<br>
+                  0.05 × time_to_lockin_norm<br><br>
+
+                Then apply uncertainty:<br>
+                lower = score × (1 - uncertainty)<br>
+                upper = score × (1 + uncertainty)
+                </div>
+                
+                <h3>Pattern Matching Algorithm</h3>
+                <p>For historical trajectory comparison, the system uses simple similarity matching to compare scores to factory farming and return the closest historical year match. For example: "Current shrimp farming today ≈ chicken farming in 1952".</p>
+                
+                <h3>Uncertainty Handling</h3>
+                <p>Uncertainty is implemented as a proportional range applied to the score:</p>
+                
+                <div class="formula">
+                uncertainty_range = ± (score × uncertainty_value)
+                </div>
+                
+                <p>This approach provides the familiar output format: "Lock-In: 72 (58–86)".</p>
+                
+                <h3>Integration Approach</h3>
+                <p>The team followed a clear integration plan:</p>
+                
+                <ul>
+                    <li><strong>Backend Development:</strong> API endpoints and mock data by early Sunday</li>
+                    <li><strong>Frontend Development:</strong> UI components built first, then connected to the API</li>
+                    <li><strong>Integration Milestone:</strong> Complete integration by Hour 15 on Sunday</li>
+                </ul>
+                
+                <h3>Optional Features</h3>
+                <p>Additional functionality that could be implemented includes:</p>
+                
+                <ul>
+                    <li>More sophisticated similarity matching using Dynamic Time Warping (DTW) or regression</li>
+                    <li>Multi-technology comparison views</li>
+                    <li>Scenario forecasting capabilities</li>
+                    <li>Historical retrodiction to validate the model</li>
+                </ul>
+                
+                <h3>Future Improvements</h3>
+                <p>Potential enhancements beyond the hackathon MVP:</p>
+                
+                <ul>
+                    <li>Full Bayesian model for more sophisticated uncertainty handling</li>
+                    <li>Non-linear weighting based on empirical validation</li>
+                    <li>Cross-species calibration for consistent scoring</li>
+                    <li>Machine learning for momentum estimation</li>
+                    <li>Multi-technology comparison dashboard</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>LEWS - Lock-in Early Warning System. Built for the EA Animal Welfare Hackathon 2025.</p>
+        </div>
+    </footer>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>

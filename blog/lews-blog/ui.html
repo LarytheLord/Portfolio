@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEWS UI/UX Design</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <h1>LEWS Blog</h1>
+                <ul>
+                    <li><a href="../index.html">Portfolio</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="system.html">System</a></li>
+                    <li><a href="implementation.html">Implementation</a></li>
+                    <li><a href="methodology.html">Methodology</a></li>
+                    <li><a href="uncertainty.html">Uncertainty</a></li>
+                    <li><a href="ui.html">UI/UX</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>UI/UX Design</h1>
+                <p>The user interface and experience of the LEWS system</p>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="container">
+                <h2>Interface Overview</h2>
+                <p>The LEWS interface is designed to be intuitive and accessible while presenting complex risk assessment data. The design follows the principle of making complex systems understandable to non-experts while preserving the detailed information needed by subject matter experts.</p>
+                
+                <h3>Core UI Elements</h3>
+                <p>The main interface consists of seven slider controls, each representing one of the key variables:</p>
+                
+                <div class="ui-grid">
+                    <div class="ui-component">
+                        <h4>1. Uncertainty</h4>
+                        <p>❓ Low [════●══════════════════] High<br>±30 points</p>
+                    </div>
+                    
+                    <div class="ui-component">
+                        <h4>2. # Animals</h4>
+                        <p>🔢 Low [══════●═══════════════] High<br>440B/yr • ↑ 8%/yr</p>
+                    </div>
+                    
+                    <div class="ui-component">
+                        <h4>3. Can They Feel?</h4>
+                        <p>🧠 0% [══════●════════════════] 100%<br>60% • Medium evidence</p>
+                    </div>
+                    
+                    <div class="ui-component">
+                        <h4>4. Suffering</h4>
+                        <p>💔 Low [══════●═══════════════] High<br>4,701 hours lifetime pain</p>
+                    </div>
+                    
+                    <div class="ui-component">
+                        <h4>5. Growth</h4>
+                        <p>📈 Slow [══════●═══════════════] Fast<br>$400M • multi-country</p>
+                    </div>
+                    
+                    <div class="ui-component">
+                        <h4>6. Support</h4>
+                        <p>🧩 Strong [●════════════════════] Weak<br>Near-zero advocacy</p>
+                    </div>
+                    
+                    <div class="ui-component">
+                        <h4>7. Path Dependence</h4>
+                        <p>🔗 Low [══════●═══════════════] High<br>System becoming entrenched</p>
+                    </div>
+                </div>
+                
+                <h3>Results Display</h3>
+                <p>The results are displayed in a clear, actionable format:</p>
+                
+                <div class="results-preview">
+                    <h4>🔥 Lock-in Risk Score</h4>
+                    <p class="score">72 / 100</p>
+                    
+                    <h4>⏰ Time Until Lock-in</h4>
+                    <p>~5–8 years</p>
+                    
+                    <h4>🚨 Intervention Window</h4>
+                    <p class="intervention">ACT SOON</p>
+                    
+                    <h4>Range: 58 – 86</h4>
+                    <div class="progress-bar">███████████████░░░░░░░░</div>
+                    
+                    <h4>Key Metrics</h4>
+                    <ul>
+                        <li>• 264B animals/year</li>
+                        <li>• 1.24T hours suffering</li>
+                        <li>• 0 orgs today</li>
+                        <li>• Lock-in ~5–8 years</li>
+                    </ul>
+                    
+                    <div class="buttons">
+                        <button>View Trajectory</button>
+                        <button>Download</button>
+                        <button>Share</button>
+                    </div>
+                </div>
+                
+                <h3>Technology Selection</h3>
+                <p>The interface allows users to select between different animal farming technologies:</p>
+                
+                <div class="tech-selection">
+                    <button class="tech-option">Battery Cages 🐔</button>
+                    <button class="tech-option">AI Aquaculture 🦐</button>
+                    <button class="tech-option">Insect Farms 🦗</button>
+                </div>
+                
+                <h3>Historical Trajectory View</h3>
+                <p>When users click "View Trajectory", a modal appears showing historical data:</p>
+                
+                <div class="trajectory-preview">
+                    <h4>Historical Trajectory Comparison</h4>
+                    <pre>
+Lock-in Score
+100 ┤                                              ● CURRENT
+ 80 ┤                                       ●●●
+ 60 ┤                           ●●●      ← Chicken 1950
+ 40 ┤                  ●●●
+ 20 ┤          ●●●
+  0 └──────────────────────────────────────────────────────────
+     1920   1930   1940   1950   1960   1970
+
+Analysis:
+• Current shrimp ≈ chicken farming in 1950.
+• Expected lock-in at current momentum: 2029–2032.
+                    </pre>
+                </div>
+                
+                <h3>Design Philosophy</h3>
+                <p>The UI/UX design follows several key principles:</p>
+                
+                <ul>
+                    <li><strong>Clarity:</strong> Complex data presented in an accessible format</li>
+                    <li><strong>Immediate Actionability:</strong> Clear intervention window recommendations</li>
+                    <li><strong>Transparency:</strong> All variables and their impact visible</li>
+                    <li><strong>Visual Hierarchy:</strong> Most critical information prominently displayed</li>
+                    <li><strong>Responsive Design:</strong> Works well on different device sizes</li>
+                </ul>
+                
+                <h3>Accessibility Considerations</h3>
+                <p>The interface includes features to support accessibility:</p>
+                
+                <ul>
+                    <li>High contrast color schemes</li>
+                    <li>Clear typography with appropriate sizing</li>
+                    <li>Keyboard navigation support</li>
+                    <li>Aria labels for screen readers</li>
+                    <li>Color-blind friendly visualizations</li>
+                </ul>
+                
+                <h3>Visual Design Elements</h3>
+                <p>The interface uses several visual elements to enhance understanding:</p>
+                
+                <ul>
+                    <li><strong>Progress Bars:</strong> To visualize ranges and percentages</li>
+                    <li><strong>Icons:</strong> To quickly convey information types</li>
+                    <li><strong>Color Coding:</strong> Red for high risk, green for low risk</li>
+                    <li><strong>Visual Hierarchy:</strong> Typography and spacing to guide attention</li>
+                    <li><strong>Charts:</strong> For historical trajectory visualization</li>
+                </ul>
+                
+                <h3>User Flow</h3>
+                <p>The user flow is designed to be simple and intuitive:</p>
+                
+                <ol>
+                    <li>User selects a farming technology (chicken, shrimp, insect farming)</li>
+                    <li>Default values load based on historical data for that technology</li>
+                    <li>User adjusts sliders to reflect current conditions</li>
+                    <li>Real-time risk score updates as sliders are adjusted</li>
+                    <li>Results are displayed with intervention recommendations</li>
+                    <li>User can view historical trajectory for context</li>
+                </ol>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>LEWS - Lock-in Early Warning System. Built for the EA Animal Welfare Hackathon 2025.</p>
+        </div>
+    </footer>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>

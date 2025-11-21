@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog Portfolio - Multiple Blog Sites</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <h1>My Blog Portfolio</h1>
+                <div class="search-container">
+                    <input type="text" id="blog-search" placeholder="Search blogs...">
+                </div>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#blogs">Blogs</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Welcome to My Blog Portfolio</h1>
+                <p>Explore my collection of specialized blogs on various topics</p>
+            </div>
+        </section>
+
+        <section id="blogs" class="blogs-listing">
+            <div class="container">
+                <h2>Available Blogs</h2>
+                <div class="blog-filters">
+                    <button class="filter-btn active" data-filter="all">All Blogs</button>
+                    <button class="filter-btn" data-filter="technology">Technology</button>
+                    <button class="filter-btn" data-filter="research">Research</button>
+                    <button class="filter-btn" data-filter="ea">Effective Altruism</button>
+                </div>
+                <div class="blog-grid">
+                    <!-- LunaBot -->
+                    <article class="blog-card" data-category="technology research">
+                        <div class="blog-content">
+                            <h3>LunaBot</h3>
+                            <p>Autonomous lunar reconnaissance rover scouting landing sites before Artemis III
+                                astronauts arrive.</p>
+                            <div class="blog-tags">
+                                <span class="tag">Robotics</span>
+                                <span class="tag">Space Tech</span>
+                            </div>
+                            <a href="lunabot.html" class="read-more">Read Post</a>
+                        </div>
+                    </article>
+
+                    <!-- AFOG -->
+                    <article class="blog-card" data-category="technology ea">
+                        <div class="blog-content">
+                            <h3>AFOG</h3>
+                            <p>Building AI that democratizes legal advocacy - from hackathon to production.</p>
+                            <div class="blog-tags">
+                                <span class="tag">Civic Tech</span>
+                                <span class="tag">AI</span>
+                            </div>
+                            <a href="afog.html" class="read-more">Read Post</a>
+                        </div>
+                    </article>
+
+                    <!-- Knight Medicare -->
+                    <article class="blog-card" data-category="technology research">
+                        <div class="blog-content">
+                            <h3>Knight Medicare</h3>
+                            <p>Building accessible mental health infrastructure with AI-assisted CBT therapy.</p>
+                            <div class="blog-tags">
+                                <span class="tag">HealthTech</span>
+                                <span class="tag">Startup</span>
+                            </div>
+                            <a href="knight-medicare.html" class="read-more">Read Post</a>
+                        </div>
+                    </article>
+
+                    <!-- Adventurers Guild -->
+                    <article class="blog-card" data-category="technology">
+                        <div class="blog-content">
+                            <h3>Adventurers Guild</h3>
+                            <p>Connecting CS students with real-world projects through RPG-inspired learning.</p>
+                            <div class="blog-tags">
+                                <span class="tag">EdTech</span>
+                                <span class="tag">Gamification</span>
+                            </div>
+                            <a href="adventurers-guild.html" class="read-more">Read Post</a>
+                        </div>
+                    </article>
+
+                    <!-- RAG Chatbot -->
+                    <article class="blog-card" data-category="technology research">
+                        <div class="blog-content">
+                            <h3>RAG Chatbot Portfolio</h3>
+                            <p>Building intelligent knowledge systems: From podcast transcripts to resource databases.
+                            </p>
+                            <div class="blog-tags">
+                                <span class="tag">AI/LLM</span>
+                                <span class="tag">RAG</span>
+                            </div>
+                            <a href="rag-chatbot.html" class="read-more">Read Post</a>
+                        </div>
+                    </article>
+
+                    <!-- Gemini Ambassador -->
+                    <article class="blog-card" data-category="technology">
+                        <div class="blog-content">
+                            <h3>Gemini Ambassador</h3>
+                            <p>Bringing cutting-edge AI tools to students through workshops and community building.</p>
+                            <div class="blog-tags">
+                                <span class="tag">Community</span>
+                                <span class="tag">Education</span>
+                            </div>
+                            <a href="gemini-ambassador.html" class="read-more">Read Post</a>
+                        </div>
+                    </article>
+
+                    <!-- Building in Public -->
+                    <article class="blog-card" data-category="ea">
+                        <div class="blog-content">
+                            <h3>Building in Public</h3>
+                            <p>Lessons from balancing college, CTO role, hackathons, and personal growth.</p>
+                            <div class="blog-tags">
+                                <span class="tag">Career</span>
+                                <span class="tag">Growth</span>
+                            </div>
+                            <a href="building-in-public.html" class="read-more">Read Post</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <h2>About This Portfolio</h2>
+                <p>This is my personal blog portfolio where I share insights, research, and projects across various
+                    domains. Each blog focuses on a specific topic, allowing for deep-dive analysis and specialized
+                    content.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 My Personal Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

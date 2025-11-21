@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building in Public - Lessons Learned</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root {
+            --primary-color: #1a1a1a;
+            --secondary-color: #00d9ff;
+            --accent-color: #ff3366;
+            --light-color: #e0e0e0;
+            --dark-color: #000000;
+            --text-color: #e0e0e0;
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
+        }
+
+        .blog-card,
+        .feature,
+        .stage,
+        .team-member,
+        .data-source,
+        .framework {
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            border: 1px solid #333;
+        }
+
+        .blog-content p,
+        .container p,
+        .post-content p {
+            color: #b0b0b0;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: white !important;
+        }
+
+        .tech-tag {
+            background: rgba(0, 217, 255, 0.1);
+            color: #00d9ff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            border: 1px solid #00d9ff;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <h1><a href="/" style="color: white;">Abid.</a></h1>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="index.html">Blogs</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container hero-content">
+                <span class="tech-tag"
+                    style="background: rgba(255,255,255,0.2); color: white; border: 1px solid white;">Meta-Narrative</span>
+                <h1>Building in Public</h1>
+                <p>Lessons from balancing college, CTO role, hackathons, and personal growth.</p>
+            </div>
+        </section>
+
+        <article class="container post-content">
+            <div class="post-meta">
+                <span>Personal Growth</span>
+                <span>Career</span>
+                <span>Productivity</span>
+            </div>
+
+            <section id="series">
+                <h2>Blog Series</h2>
+                <div class="blog-grid">
+                    <div class="blog-card">
+                        <div class="blog-content">
+                            <h3>From Student to CTO</h3>
+                            <p>Building Knight Medicare while in college: balancing academics with leadership.</p>
+                            <a href="#" class="read-more">Read Post</a>
+                        </div>
+                    </div>
+                    <div class="blog-card">
+                        <div class="blog-content">
+                            <h3>Hackathon Mastery</h3>
+                            <p>How I won 3 hackathons in 6 months and what I learned about rapid prototyping.</p>
+                            <a href="#" class="read-more">Read Post</a>
+                        </div>
+                    </div>
+                    <div class="blog-card">
+                        <div class="blog-content">
+                            <h3>The RAG Stack</h3>
+                            <p>A practical guide to building production chatbots with modern AI stacks.</p>
+                            <a href="#" class="read-more">Read Post</a>
+                        </div>
+                    </div>
+                    <div class="blog-card">
+                        <div class="blog-content">
+                            <h3>Remote Leadership</h3>
+                            <p>Scaling AFOG across 3 continents: managing time zones and async work.</p>
+                            <a href="#" class="read-more">Read Post</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="buttons">
+                <a href="#" class="read-more">Subscribe to Newsletter</a>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Abid Khan. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

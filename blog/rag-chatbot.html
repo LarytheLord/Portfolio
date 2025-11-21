@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG Chatbot Portfolio - Intelligent Knowledge Systems</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --secondary-color: #8b5cf6;
+            --accent-color: #f97316;
+            --light-color: #eff6ff;
+            --dark-color: #1e3a8a;
+            --text-color: #1f2937;
+            --bg-color: #ffffff;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        }
+
+        .tech-tag {
+            background: rgba(59, 130, 246, 0.1);
+            color: #3b82f6;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            border: 1px solid #3b82f6;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <h1><a href="/" style="color: white;">Abid.</a></h1>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="index.html">Blogs</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container hero-content">
+                <span class="tech-tag"
+                    style="background: rgba(255,255,255,0.2); color: white; border: 1px solid white;">Client Work</span>
+                <h1>RAG Chatbot Portfolio</h1>
+                <p>Building intelligent knowledge systems: From podcast transcripts to resource databases.</p>
+            </div>
+        </section>
+
+        <article class="container post-content">
+            <div class="post-meta">
+                <span>AI/LLM</span>
+                <span>RAG</span>
+                <span>Vector DB</span>
+            </div>
+
+            <section id="rag">
+                <h2>What is RAG?</h2>
+                <p>Retrieval-Augmented Generation (RAG) enables accurate, citation-backed AI responses by retrieving
+                    relevant information before generating an answer. It's essential for customer support, knowledge
+                    bases, and research assistants.</p>
+            </section>
+
+            <section id="showcase1">
+                <h2>Showcase: Dwarkesh Patel Podcast Chatbot</h2>
+                <p>We transformed 100+ hours of podcast transcripts into a conversational interface. Using OpenAI
+                    embeddings, Supabase pgvector for storage, and hybrid search, we optimized query latency from 2.3s
+                    to 0.4s, creating a searchable, quotable knowledge base.</p>
+            </section>
+
+            <section id="showcase2">
+                <h2>Showcase: AfA Resource Chatbot</h2>
+                <p>This project involved multi-document processing for animal welfare resources, using a custom
+                    embeddings pipeline for domain-specific content. It features real-time monitoring and handles
+                    diverse content types like PDFs and videos.</p>
+            </section>
+
+            <section id="technical">
+                <h2>Technical Deep Dive</h2>
+                <div class="feature-grid">
+                    <div class="feature">
+                        <h3>Vector Databases</h3>
+                        <p>Comparing Supabase vs. Pinecone vs. Chroma for different use cases.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Embeddings</h3>
+                        <p>Strategies for chunking (fixed-size vs. semantic) and context window management.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Optimization</h3>
+                        <p>Cost optimization and deployment using Vercel + Next.js for production.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="lessons">
+                <h2>Lessons in Production AI</h2>
+                <ul>
+                    <li>Balancing accuracy vs. speed.</li>
+                    <li>Handling edge cases like insufficient content or duplicate data.</li>
+                    <li>Monitoring system health and error tracking.</li>
+                    <li>Managing client expectations.</li>
+                </ul>
+            </section>
+
+            <div class="buttons">
+                <a href="#" class="read-more">View Architecture</a>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Abid Khan. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

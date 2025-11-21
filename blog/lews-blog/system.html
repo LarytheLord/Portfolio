@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEWS System Overview</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <h1>LEWS Blog</h1>
+                <ul>
+                    <li><a href="../index.html">Portfolio</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="system.html">System</a></li>
+                    <li><a href="implementation.html">Implementation</a></li>
+                    <li><a href="methodology.html">Methodology</a></li>
+                    <li><a href="uncertainty.html">Uncertainty</a></li>
+                    <li><a href="ui.html">UI/UX</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>The LEWS System</h1>
+                <p>A comprehensive look at the Lock-in Early Warning System architecture and functionality</p>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="container">
+                <h2>Understanding Lock-in in Animal Agriculture</h2>
+                <p>Lock-in occurs when technology, infrastructure, regulation, and norms converge so the system becomes self-reinforcing and extremely hard to reverse. The LEWS system is designed to identify the early warning signs of this process before it becomes irreversible.</p>
+                
+                <h3>Historical Context</h3>
+                <p>One of the most prominent historical examples of lock-in in animal agriculture is the adoption of battery cages between 1950–1970. Once the system became entrenched, it proved extremely difficult to reverse despite growing awareness of animal welfare issues.</p>
+                
+                <h2>The Seven Core Variables</h2>
+                <p>LEWS tracks seven key variables that indicate the likelihood of lock-in:</p>
+                
+                <div class="variable-grid">
+                    <div class="variable">
+                        <h3>Population Scale</h3>
+                        <p>Based on data from Our World in Data, FAO Aquaculture Databases, and Rethink Priorities. Tracks annual slaughter numbers and standing populations.</p>
+                    </div>
+                    
+                    <div class="variable">
+                        <h3>Sentience Probability</h3>
+                        <p>Derived from Rethink Priorities Sentience Project, Birch/Browning/Crump papers, and EFSA evaluations. Expressed as 0-100% probability.</p>
+                    </div>
+                    
+                    <div class="variable">
+                        <h3>Suffering Intensity</h3>
+                        <p>Based on Welfare Footprint Project data and peer-reviewed ethology. Converted to a -10 to +10 valence scale for usability.</p>
+                    </div>
+                    
+                    <div class="variable">
+                        <h3>Industry Momentum</h3>
+                        <p>Quantified through investment data, corporate announcements, FAO growth rates, and patent activity. Converted to qualitative scores 0-100.</p>
+                    </div>
+                    
+                    <div class="variable">
+                        <h3>Advocacy Gap</h3>
+                        <p>Based on Animal Charity Evaluators, Open Philanthropy, and a directory of organizations working on each species. Shows how much advocacy exists.</p>
+                    </div>
+                    
+                    <div class="variable">
+                        <h3>Lock-in Signals</h3>
+                        <p>Derived from political science theory: regulatory capture, harmonization, capital fixity, path dependence, and standardization.</p>
+                    </div>
+                    
+                    <div class="variable">
+                        <h3>Uncertainty</h3>
+                        <p>Explicit uncertainty ranges that reflect model uncertainty, epistemic uncertainty, behavioral uncertainty, and biological uncertainty.</p>
+                    </div>
+                </div>
+
+                <h2>How LEWS Works</h2>
+                <p>The LEWS system uses a linear weighted model to calculate a 0-100 lock-in risk score:</p>
+                
+                <div class="formula">
+                    risk_score = 0.30 × scale_norm + 0.20 × suffering_norm + 0.15 × sentience_norm + 0.20 × momentum_norm + 0.10 × advocacy_gap_norm + 0.05 × time_to_lockin_norm
+                </div>
+                
+                <p>Each variable is normalized to 0-1 and weighted based on empirical relevance. The system then applies uncertainty ranges to provide confidence intervals.</p>
+                
+                <h3>Output Components</h3>
+                <ul>
+                    <li><strong>Risk Range:</strong> A confidence interval like "Lock-In: 72 (58–86)"</li>
+                    <li><strong>Stage Classification:</strong> Research → Scaling → Lock-in phases</li>
+                    <li><strong>Intervention Urgency:</strong> Monitor / Act Soon / Act Now recommendations</li>
+                    <li><strong>Key Metrics:</strong> Suffering hours, animal numbers, and other relevant statistics</li>
+                </ul>
+                
+                <h2>Technology Comparison</h2>
+                <p>LEWS allows for comparison between different animal farming technologies. For example, it might determine that "Current shrimp farming ≈ chicken farming in 1950", providing historical context for current risk assessment.</p>
+                
+                <h3>Data Sources</h3>
+                <p>LEWS is grounded in authoritative data sources including:
+                    <ul>
+                        <li>Our World in Data for slaughter numbers</li>
+                        <li>FAO Aquaculture Databases</li>
+                        <li>Rethink Priorities (insect, shrimp, fish estimations)</li>
+                        <li>Rowe (2020–2023) for insect-scale estimates</li>
+                        <li>Mood & Brooke for fish and shrimp data</li>
+                        <li>Welfare Footprint Project for suffering intensity</li>
+                        <li>Investment databases like Crunchbase and AgFunder</li>
+                    </ul>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>LEWS - Lock-in Early Warning System. Built for the EA Animal Welfare Hackathon 2025.</p>
+        </div>
+    </footer>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>

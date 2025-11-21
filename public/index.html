@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abid Khan — Developer & Creator</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap"
+        rel="stylesheet">
     <style>
         /* Base Reset & Variables */
         * {
@@ -30,7 +33,7 @@
             --retro-green: #20c20e;
             --retro-amber: #ff9f1c;
             --retro-purple: #8b5cf6;
-            
+
             --border-radius: 8px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -50,7 +53,12 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4, h5, h6 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             color: var(--white);
             font-weight: 600;
             line-height: 1.2;
@@ -87,7 +95,7 @@
             .grid-cols-2 {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
+
             .grid-cols-3 {
                 grid-template-columns: repeat(3, 1fr);
             }
@@ -117,13 +125,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: repeating-linear-gradient(
-                0deg,
-                rgba(0, 0, 0, 0.15),
-                rgba(0, 0, 0, 0.15) 1px,
-                transparent 1px,
-                transparent 2px
-            );
+            background: repeating-linear-gradient(0deg,
+                    rgba(0, 0, 0, 0.15),
+                    rgba(0, 0, 0, 0.15) 1px,
+                    transparent 1px,
+                    transparent 2px);
             pointer-events: none;
             z-index: 99;
             opacity: 0.3;
@@ -161,51 +167,175 @@
         }
 
         @keyframes glitch-anim {
-            0% { clip: rect(42px, 9999px, 44px, 0); }
-            5% { clip: rect(12px, 9999px, 59px, 0); }
-            10% { clip: rect(48px, 9999px, 29px, 0); }
-            15% { clip: rect(42px, 9999px, 73px, 0); }
-            20% { clip: rect(63px, 9999px, 27px, 0); }
-            25% { clip: rect(34px, 9999px, 55px, 0); }
-            30% { clip: rect(86px, 9999px, 73px, 0); }
-            35% { clip: rect(20px, 9999px, 20px, 0); }
-            40% { clip: rect(26px, 9999px, 60px, 0); }
-            45% { clip: rect(25px, 9999px, 66px, 0); }
-            50% { clip: rect(57px, 9999px, 98px, 0); }
-            55% { clip: rect(5px, 9999px, 46px, 0); }
-            60% { clip: rect(82px, 9999px, 31px, 0); }
-            65% { clip: rect(54px, 9999px, 27px, 0); }
-            70% { clip: rect(28px, 9999px, 99px, 0); }
-            75% { clip: rect(45px, 9999px, 69px, 0); }
-            80% { clip: rect(23px, 9999px, 85px, 0); }
-            85% { clip: rect(1px, 9999px, 83px, 0); }
-            90% { clip: rect(72px, 9999px, 11px, 0); }
-            95% { clip: rect(18px, 9999px, 44px, 0); }
-            100% { clip: rect(6px, 9999px, 44px, 0); }
+            0% {
+                clip: rect(42px, 9999px, 44px, 0);
+            }
+
+            5% {
+                clip: rect(12px, 9999px, 59px, 0);
+            }
+
+            10% {
+                clip: rect(48px, 9999px, 29px, 0);
+            }
+
+            15% {
+                clip: rect(42px, 9999px, 73px, 0);
+            }
+
+            20% {
+                clip: rect(63px, 9999px, 27px, 0);
+            }
+
+            25% {
+                clip: rect(34px, 9999px, 55px, 0);
+            }
+
+            30% {
+                clip: rect(86px, 9999px, 73px, 0);
+            }
+
+            35% {
+                clip: rect(20px, 9999px, 20px, 0);
+            }
+
+            40% {
+                clip: rect(26px, 9999px, 60px, 0);
+            }
+
+            45% {
+                clip: rect(25px, 9999px, 66px, 0);
+            }
+
+            50% {
+                clip: rect(57px, 9999px, 98px, 0);
+            }
+
+            55% {
+                clip: rect(5px, 9999px, 46px, 0);
+            }
+
+            60% {
+                clip: rect(82px, 9999px, 31px, 0);
+            }
+
+            65% {
+                clip: rect(54px, 9999px, 27px, 0);
+            }
+
+            70% {
+                clip: rect(28px, 9999px, 99px, 0);
+            }
+
+            75% {
+                clip: rect(45px, 9999px, 69px, 0);
+            }
+
+            80% {
+                clip: rect(23px, 9999px, 85px, 0);
+            }
+
+            85% {
+                clip: rect(1px, 9999px, 83px, 0);
+            }
+
+            90% {
+                clip: rect(72px, 9999px, 11px, 0);
+            }
+
+            95% {
+                clip: rect(18px, 9999px, 44px, 0);
+            }
+
+            100% {
+                clip: rect(6px, 9999px, 44px, 0);
+            }
         }
 
         @keyframes glitch-anim2 {
-            0% { clip: rect(65px, 9999px, 100px, 0); }
-            5% { clip: rect(52px, 9999px, 74px, 0); }
-            10% { clip: rect(79px, 9999px, 85px, 0); }
-            15% { clip: rect(75px, 9999px, 5px, 0); }
-            20% { clip: rect(67px, 9999px, 61px, 0); }
-            25% { clip: rect(14px, 9999px, 79px, 0); }
-            30% { clip: rect(1px, 9999px, 66px, 0); }
-            35% { clip: rect(86px, 9999px, 30px, 0); }
-            40% { clip: rect(23px, 9999px, 98px, 0); }
-            45% { clip: rect(85px, 9999px, 72px, 0); }
-            50% { clip: rect(71px, 9999px, 75px, 0); }
-            55% { clip: rect(2px, 9999px, 48px, 0); }
-            60% { clip: rect(30px, 9999px, 16px, 0); }
-            65% { clip: rect(59px, 9999px, 50px, 0); }
-            70% { clip: rect(41px, 9999px, 62px, 0); }
-            75% { clip: rect(2px, 9999px, 82px, 0); }
-            80% { clip: rect(47px, 9999px, 73px, 0); }
-            85% { clip: rect(3px, 9999px, 27px, 0); }
-            90% { clip: rect(26px, 9999px, 55px, 0); }
-            95% { clip: rect(42px, 9999px, 97px, 0); }
-            100% { clip: rect(38px, 9999px, 49px, 0); }
+            0% {
+                clip: rect(65px, 9999px, 100px, 0);
+            }
+
+            5% {
+                clip: rect(52px, 9999px, 74px, 0);
+            }
+
+            10% {
+                clip: rect(79px, 9999px, 85px, 0);
+            }
+
+            15% {
+                clip: rect(75px, 9999px, 5px, 0);
+            }
+
+            20% {
+                clip: rect(67px, 9999px, 61px, 0);
+            }
+
+            25% {
+                clip: rect(14px, 9999px, 79px, 0);
+            }
+
+            30% {
+                clip: rect(1px, 9999px, 66px, 0);
+            }
+
+            35% {
+                clip: rect(86px, 9999px, 30px, 0);
+            }
+
+            40% {
+                clip: rect(23px, 9999px, 98px, 0);
+            }
+
+            45% {
+                clip: rect(85px, 9999px, 72px, 0);
+            }
+
+            50% {
+                clip: rect(71px, 9999px, 75px, 0);
+            }
+
+            55% {
+                clip: rect(2px, 9999px, 48px, 0);
+            }
+
+            60% {
+                clip: rect(30px, 9999px, 16px, 0);
+            }
+
+            65% {
+                clip: rect(59px, 9999px, 50px, 0);
+            }
+
+            70% {
+                clip: rect(41px, 9999px, 62px, 0);
+            }
+
+            75% {
+                clip: rect(2px, 9999px, 82px, 0);
+            }
+
+            80% {
+                clip: rect(47px, 9999px, 73px, 0);
+            }
+
+            85% {
+                clip: rect(3px, 9999px, 27px, 0);
+            }
+
+            90% {
+                clip: rect(26px, 9999px, 55px, 0);
+            }
+
+            95% {
+                clip: rect(42px, 9999px, 97px, 0);
+            }
+
+            100% {
+                clip: rect(38px, 9999px, 49px, 0);
+            }
         }
 
         /* Terminal Style Elements */
@@ -253,9 +383,17 @@
             border-radius: 50%;
         }
 
-        .dot-red { background-color: #ff5f56; }
-        .dot-yellow { background-color: #ffbd2e; }
-        .dot-green { background-color: #27c93f; }
+        .dot-red {
+            background-color: #ff5f56;
+        }
+
+        .dot-yellow {
+            background-color: #ffbd2e;
+        }
+
+        .dot-green {
+            background-color: #27c93f;
+        }
 
         .terminal-content {
             position: relative;
@@ -278,8 +416,15 @@
         }
 
         @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
         }
 
         /* Navigation */
@@ -380,8 +525,15 @@
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.4;
+            }
         }
 
         .hero-title {
@@ -741,40 +893,40 @@
             .container {
                 padding: 0 16px;
             }
-            
+
             .hero {
                 padding: 140px 0 80px;
             }
-            
+
             .hero-title {
                 font-size: 48px;
             }
-            
+
             .hero-subtitle {
                 font-size: 18px;
             }
-            
+
             .hero-actions {
                 flex-direction: column;
             }
-            
+
             .btn {
                 width: 100%;
                 justify-content: center;
             }
-            
+
             .nav-links {
                 gap: 16px;
             }
-            
+
             .section {
                 padding: 80px 0;
             }
-            
+
             .section-title {
                 font-size: 32px;
             }
-            
+
             .stats-grid {
                 grid-template-columns: 1fr;
             }
@@ -793,10 +945,11 @@
         }
     </style>
 </head>
+
 <body>
     <!-- 3D Background Canvas -->
     <canvas id="background-canvas"></canvas>
-    
+
     <!-- Scanlines Effect -->
     <div class="scanlines"></div>
 
@@ -809,6 +962,7 @@
                 <div class="nav-links">
                     <a href="#about" class="nav-link">About</a>
                     <a href="#projects" class="nav-link">Projects</a>
+                    <a href="/blog" class="nav-link">Blog</a>
                     <a href="#skills" class="nav-link">Skills</a>
                     <a href="#contact" class="nav-link">Contact</a>
                 </div>
@@ -824,9 +978,11 @@
                         <span>Available for collaborations</span>
                     </div>
                     <h1 class="hero-title">
-                        <span class="glitch-title" data-text="Full Stack Developer">Full Stack <span>Developer</span></span>
+                        <span class="glitch-title" data-text="Full Stack Developer">Full Stack
+                            <span>Developer</span></span>
                     </h1>
-                    <p class="hero-subtitle">I build scalable web applications and lead developer communities. Currently focused on AI integration and open-source contributions.</p>
+                    <p class="hero-subtitle">I build scalable web applications and lead developer communities. Currently
+                        focused on AI integration and open-source contributions.</p>
                     <div class="hero-actions">
                         <a href="#projects" class="btn btn-primary">
                             <span>View Projects</span>
@@ -846,7 +1002,7 @@
                     <h2 class="section-title">About Me</h2>
                     <p class="section-subtitle">A bit about who I am and what I do</p>
                 </div>
-                
+
                 <div class="grid grid-cols-2">
                     <div class="terminal fade-in">
                         <div class="terminal-header">
@@ -875,12 +1031,16 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="card fade-in">
                         <h3 class="card-title">My Journey</h3>
-                        <p class="card-description">I'm a Computer Science student at Gujarat Technological University and founder of The Adventurers Guild. I specialize in blending AI, full-stack development, and community building to craft meaningful products.</p>
-                        <p class="card-description">My expertise in artificial intelligence includes natural language processing, machine learning model deployment, and creating AI-powered applications that solve real-world problems. I'm passionate about making AI accessible and ethical.</p>
-                        
+                        <p class="card-description">I'm a Computer Science student at Gujarat Technological University
+                            and founder of The Adventurers Guild. I specialize in blending AI, full-stack development,
+                            and community building to craft meaningful products.</p>
+                        <p class="card-description">My expertise in artificial intelligence includes natural language
+                            processing, machine learning model deployment, and creating AI-powered applications that
+                            solve real-world problems. I'm passionate about making AI accessible and ethical.</p>
+
                         <div class="stats-grid">
                             <div class="stat-item">
                                 <div class="stat-number">50+</div>
@@ -907,88 +1067,152 @@
                     <h2 class="section-title">Featured Projects</h2>
                     <p class="section-subtitle">Some of my recent work</p>
                 </div>
-                
+
                 <div class="grid grid-cols-2">
-                    <!-- Joy Hacks -->
+                    <!-- LunaBot -->
                     <div class="card project-card fade-in">
                         <div class="card-header">
-                            <div class="card-icon">💻</div>
+                            <div class="card-icon">🌑</div>
                             <div>
-                                <h3 class="card-title">Joy Hacks</h3>
-                                <p class="card-description">Social platform for developers</p>
+                                <h3 class="card-title">LunaBot</h3>
+                                <p class="card-description">NASA Space Apps Finalist</p>
                             </div>
                         </div>
-                        <p class="card-description">A social media platform where developers share code in a reels format along with their output. Interactive, fun, and educational.</p>
+                        <p class="card-description">Autonomous lunar reconnaissance rover scouting landing sites before
+                            Artemis III astronauts arrive.</p>
                         <div class="tech-tags">
-                            <span class="tech-tag">Next.js</span>
-                            <span class="tech-tag">Supabase</span>
-                            <span class="tech-tag">TailwindCSS</span>
+                            <span class="tech-tag">ROS2</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">NVIDIA Jetson</span>
                         </div>
                         <div class="card-links">
-                            <a href="https://github.com/LarytheLord/Joy-Hacks" class="card-link">View Code</a>
-                            <a href="#" class="card-link">Live Demo</a>
+                            <a href="/blog/lunabot.html" class="card-link">Read Case Study</a>
+                        </div>
+                    </div>
+
+                    <!-- AFOG -->
+                    <div class="card project-card fade-in">
+                        <div class="card-header">
+                            <div class="card-icon">⚖️</div>
+                            <div>
+                                <h3 class="card-title">AFOG</h3>
+                                <p class="card-description">Civic Tech Hackathon Finalist</p>
+                            </div>
+                        </div>
+                        <p class="card-description">AI that democratizes legal advocacy, turning a 10-hour hackathon
+                            project into production-ready civic infrastructure.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Gemini API</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                        </div>
+                        <div class="card-links">
+                            <a href="/blog/afog.html" class="card-link">Read Case Study</a>
+                        </div>
+                    </div>
+
+                    <!-- Knight Medicare -->
+                    <div class="card project-card fade-in">
+                        <div class="card-header">
+                            <div class="card-icon">🧠</div>
+                            <div>
+                                <h3 class="card-title">Knight Medicare</h3>
+                                <p class="card-description">AI-Powered Therapy Platform</p>
+                            </div>
+                        </div>
+                        <p class="card-description">Building accessible mental health infrastructure with AI-assisted
+                            CBT therapy as a student CTO.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">AI/ML</span>
+                        </div>
+                        <div class="card-links">
+                            <a href="/blog/knight-medicare.html" class="card-link">Read Case Study</a>
                         </div>
                     </div>
 
                     <!-- Adventurers Guild -->
                     <div class="card project-card fade-in">
                         <div class="card-header">
-                            <div class="card-icon">👥</div>
+                            <div class="card-icon">⚔️</div>
                             <div>
                                 <h3 class="card-title">Adventurers Guild</h3>
-                                <p class="card-description">Gamified learning platform</p>
+                                <p class="card-description">Gamified EdTech Platform</p>
                             </div>
                         </div>
-                        <p class="card-description">A gamified community that transforms computer science education into quests, connecting students, professionals, and companies worldwide.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Next.js</span>
-                            <span class="tech-tag">TypeScript</span>
-                            <span class="tech-tag">Supabase</span>
-                        </div>
-                        <div class="card-links">
-                            <a href="#" class="card-link">Coming Soon</a>
-                        </div>
-                    </div>
-
-                    <!-- Hiking Buddy -->
-                    <div class="card project-card fade-in">
-                        <div class="card-header">
-                            <div class="card-icon">🏔️</div>
-                            <div>
-                                <h3 class="card-title">Hiking Buddy</h3>
-                                <p class="card-description">AR-powered nature app</p>
-                            </div>
-                        </div>
-                        <p class="card-description">An AR-powered app for nature exploration that identifies flora and fauna in real-time without heavy ML models or Unity.</p>
+                        <p class="card-description">Connecting CS students with real-world projects through RPG-inspired
+                            learning mechanics.</p>
                         <div class="tech-tags">
                             <span class="tech-tag">React</span>
-                            <span class="tech-tag">AR.js</span>
-                            <span class="tech-tag">Vite</span>
+                            <span class="tech-tag">Gamification</span>
+                            <span class="tech-tag">EdTech</span>
                         </div>
                         <div class="card-links">
-                            <a href="https://hiking-buddy.vercel.app/" class="card-link">View Live</a>
-                            <a href="#" class="card-link">View Code</a>
+                            <a href="/blog/adventurers-guild.html" class="card-link">Read Case Study</a>
                         </div>
                     </div>
 
-                    <!-- AI Factory Farm -->
+                    <!-- RAG Chatbot -->
                     <div class="card project-card fade-in">
                         <div class="card-header">
-                            <div class="card-icon">🤖</div>
+                            <div class="card-icon">💬</div>
                             <div>
-                                <h3 class="card-title">AI Factory Farm</h3>
-                                <p class="card-description">Hackathon project</p>
+                                <h3 class="card-title">RAG Chatbot Portfolio</h3>
+                                <p class="card-description">Intelligent Knowledge Systems</p>
                             </div>
                         </div>
-                        <p class="card-description">Built during a hackathon with Open Paws & Electric Sheep, an AI-powered objection system automating ethical concerns in factory farming.</p>
+                        <p class="card-description">Building intelligent knowledge systems: From podcast transcripts to
+                            resource databases.</p>
                         <div class="tech-tags">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">LangChain</span>
-                            <span class="tech-tag">FastAPI</span>
-                            <span class="tech-tag">OpenAI</span>
+                            <span class="tech-tag">RAG</span>
+                            <span class="tech-tag">Vector DB</span>
+                            <span class="tech-tag">LLMs</span>
                         </div>
                         <div class="card-links">
-                            <a href="https://github.com/LarytheLord/farm-objection-hack" class="card-link">View Code</a>
+                            <a href="/blog/rag-chatbot.html" class="card-link">Read Case Study</a>
+                        </div>
+                    </div>
+
+                    <!-- Gemini Ambassador -->
+                    <div class="card project-card fade-in">
+                        <div class="card-header">
+                            <div class="card-icon">✨</div>
+                            <div>
+                                <h3 class="card-title">Gemini Ambassador</h3>
+                                <p class="card-description">Google AI Education</p>
+                            </div>
+                        </div>
+                        <p class="card-description">Bringing cutting-edge AI tools to students through workshops and
+                            community building.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Google AI</span>
+                            <span class="tech-tag">Education</span>
+                            <span class="tech-tag">Community</span>
+                        </div>
+                        <div class="card-links">
+                            <a href="/blog/gemini-ambassador.html" class="card-link">Read Case Study</a>
+                        </div>
+                    </div>
+
+                    <!-- Building in Public -->
+                    <div class="card project-card fade-in" style="grid-column: 1 / -1;">
+                        <div class="card-header">
+                            <div class="card-icon">📢</div>
+                            <div>
+                                <h3 class="card-title">Building in Public</h3>
+                                <p class="card-description">Lessons Learned & Personal Growth</p>
+                            </div>
+                        </div>
+                        <p class="card-description">A series on balancing college, CTO roles, hackathons, and personal
+                            growth.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Writing</span>
+                            <span class="tech-tag">Career</span>
+                            <span class="tech-tag">Growth</span>
+                        </div>
+                        <div class="card-links">
+                            <a href="/blog/building-in-public.html" class="card-link">Read Series</a>
                         </div>
                     </div>
                 </div>
@@ -1002,7 +1226,7 @@
                     <h2 class="section-title">Skills & Technologies</h2>
                     <p class="section-subtitle">Tools and technologies I work with</p>
                 </div>
-                
+
                 <div class="skills-grid">
                     <div class="card skill-category fade-in">
                         <h3 class="skill-title">Frontend Development</h3>
@@ -1014,7 +1238,7 @@
                             <span class="skill-item">HTML5/CSS3</span>
                         </div>
                     </div>
-                    
+
                     <div class="card skill-category fade-in">
                         <h3 class="skill-title">Backend Development</h3>
                         <div class="skill-list">
@@ -1025,7 +1249,7 @@
                             <span class="skill-item">PostgreSQL</span>
                         </div>
                     </div>
-                    
+
                     <div class="card skill-category fade-in">
                         <h3 class="skill-title">AI & Machine Learning</h3>
                         <div class="skill-list">
@@ -1037,7 +1261,7 @@
                             <span class="skill-item">Computer Vision</span>
                         </div>
                     </div>
-                    
+
                     <div class="card skill-category fade-in">
                         <h3 class="skill-title">Tools & Platforms</h3>
                         <div class="skill-list">
@@ -1059,20 +1283,20 @@
                     <h2 class="section-title">Get In Touch</h2>
                     <p class="section-subtitle">Let's work together on something amazing</p>
                 </div>
-                
+
                 <div class="contact-grid">
                     <a href="mailto:llawlietbagsum@gmail.com" class="card contact-item fade-in">
                         <div class="contact-icon">📧</div>
                         <div class="contact-label">Email</div>
                         <div class="contact-value">llawlietbagsum@gmail.com</div>
                     </a>
-                    
+
                     <a href="https://linkedin.com/in/abikhn" class="card contact-item fade-in">
                         <div class="contact-icon">💼</div>
                         <div class="contact-label">LinkedIn</div>
                         <div class="contact-value">linkedin.com/in/abikhn</div>
                     </a>
-                    
+
                     <a href="https://github.com/LarytheLord" class="card contact-item fade-in">
                         <div class="contact-icon">🐙</div>
                         <div class="contact-label">GitHub</div>
@@ -1086,13 +1310,13 @@
         <footer class="footer">
             <div class="container">
                 <p class="footer-text">Building the future with AI and code.</p>
-                
+
                 <div class="social-links">
                     <a href="https://github.com/LarytheLord" class="social-link">GitHub</a>
                     <a href="https://linkedin.com/in/abikhn" class="social-link">LinkedIn</a>
                     <a href="https://twitter.com" class="social-link">Twitter</a>
                 </div>
-                
+
                 <p class="copyright">&copy; 2024 Abid Khan. All rights reserved.</p>
             </div>
         </footer>
@@ -1100,26 +1324,26 @@
 
     <script>
         // Advanced 3D Background with WebGL
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Get canvas and WebGL context
             const canvas = document.getElementById('background-canvas');
             const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-            
+
             if (!gl) {
                 console.error('WebGL not supported');
                 return;
             }
-            
+
             // Set canvas size
             function resizeCanvas() {
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
                 gl.viewport(0, 0, canvas.width, canvas.height);
             }
-            
+
             window.addEventListener('resize', resizeCanvas);
             resizeCanvas();
-            
+
             // Vertex shader source
             const vertexShaderSource = `
                 attribute vec2 aPosition;
@@ -1127,7 +1351,7 @@
                     gl_Position = vec4(aPosition, 0.0, 1.0);
                 }
             `;
-            
+
             // Fragment shader source with advanced 3D effects
             const fragmentShaderSource = `
                 precision highp float;
@@ -1212,88 +1436,88 @@
                     gl_FragColor = vec4(color, 1.0);
                 }
             `;
-            
+
             // Compile shader
             function compileShader(source, type) {
                 const shader = gl.createShader(type);
                 gl.shaderSource(shader, source);
                 gl.compileShader(shader);
-                
+
                 if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
                     console.error('Shader compile error:', gl.getShaderInfoLog(shader));
                     gl.deleteShader(shader);
                     return null;
                 }
-                
+
                 return shader;
             }
-            
+
             // Create shaders
             const vertexShader = compileShader(vertexShaderSource, gl.VERTEX_SHADER);
             const fragmentShader = compileShader(fragmentShaderSource, gl.FRAGMENT_SHADER);
-            
+
             // Create shader program
             const program = gl.createProgram();
             gl.attachShader(program, vertexShader);
             gl.attachShader(program, fragmentShader);
             gl.linkProgram(program);
-            
+
             if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
                 console.error('Program link error:', gl.getProgramInfoLog(program));
             }
-            
+
             gl.useProgram(program);
-            
+
             // Set up vertex data for full-screen quad
             const vertices = new Float32Array([
                 -1.0, -1.0,
-                 1.0, -1.0,
-                -1.0,  1.0,
-                 1.0,  1.0
+                1.0, -1.0,
+                -1.0, 1.0,
+                1.0, 1.0
             ]);
-            
+
             const vertexBuffer = gl.createBuffer();
             gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
             gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
-            
+
             const positionAttrib = gl.getAttribLocation(program, 'aPosition');
             gl.enableVertexAttribArray(positionAttrib);
             gl.vertexAttribPointer(positionAttrib, 2, gl.FLOAT, false, 0, 0);
-            
+
             // Get uniform locations
             const timeUniform = gl.getUniformLocation(program, 'uTime');
             const resolutionUniform = gl.getUniformLocation(program, 'uResolution');
             const mouseUniform = gl.getUniformLocation(program, 'uMouse');
-            
+
             // Mouse position tracking
             let mouseX = 0;
             let mouseY = 0;
-            
+
             document.addEventListener('mousemove', (e) => {
                 mouseX = e.clientX;
                 mouseY = e.clientY;
             });
-            
+
             // Animation loop
             let startTime = Date.now();
-            
+
             function animate() {
                 const currentTime = (Date.now() - startTime) / 1000;
-                
+
                 // Set uniforms
                 gl.uniform1f(timeUniform, currentTime);
                 gl.uniform2f(resolutionUniform, canvas.width, canvas.height);
                 gl.uniform2f(mouseUniform, mouseX, mouseY);
-                
+
                 // Draw
                 gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-                
+
                 requestAnimationFrame(animate);
             }
-            
+
             // Start animation
             animate();
-            
+
             // Intersection Observer for fade-in animations
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -1313,7 +1537,7 @@
 
             // Smooth scrolling for navigation links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
+                anchor.addEventListener('click', function (e) {
                     e.preventDefault();
                     const target = document.querySelector(this.getAttribute('href'));
                     if (target) {
@@ -1328,19 +1552,20 @@
             // Add hover effect to all interactive elements
             const interactiveElements = document.querySelectorAll('.btn, .nav-link, .card, .skill-item, .contact-item, .social-link');
             interactiveElements.forEach(el => {
-                el.addEventListener('mouseenter', function() {
-                    this.style.transform = this.style.transform ? 
-                        this.style.transform + ' translateY(-2px)' : 
+                el.addEventListener('mouseenter', function () {
+                    this.style.transform = this.style.transform ?
+                        this.style.transform + ' translateY(-2px)' :
                         'translateY(-2px)';
                 });
-                
-                el.addEventListener('mouseleave', function() {
-                    this.style.transform = this.style.transform ? 
-                        this.style.transform.replace(' translateY(-2px)', '') : 
+
+                el.addEventListener('mouseleave', function () {
+                    this.style.transform = this.style.transform ?
+                        this.style.transform.replace(' translateY(-2px)', '') :
                         '';
                 });
             });
         });
     </script>
 </body>
+
 </html>
