@@ -28,3 +28,6 @@ build/
 # Temporary files
 *.tmp
 *.temp
+
+# Zip archives
+*.zip

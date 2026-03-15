@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Claude Code Manages Everything — Abid Khan</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root { --primary-color: #1a0a2e; --secondary-color: #8b5cf6; --accent-color: #a78bfa; --text-color: #e0e0e0; --bg-color: #0c0a1a; --card-bg: #1a1040; }
+        body { background-color: var(--bg-color); color: var(--text-color); }
+        .hero { background: linear-gradient(135deg, #1a0a2e 0%, #0c0a1a 100%); }
+        .feature, .stage { background-color: var(--card-bg); color: var(--text-color); border: 1px solid #2d1f5e; }
+        .post-content p { color: #b0b0b0; }
+        h1, h2, h3 { color: white !important; }
+        .tech-tag { background: rgba(139, 92, 246, 0.2); color: #a78bfa; padding: 4px 12px; border-radius: 20px; font-size: 0.9rem; display: inline-block; margin-right: 8px; margin-bottom: 8px; }
+        .domain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 24px 0; }
+        .domain-card { background: var(--card-bg); border: 1px solid #2d1f5e; border-radius: 8px; padding: 20px; }
+        .domain-card h3 { font-size: 1rem; margin-bottom: 8px; }
+        .domain-card .projects { font-size: 0.85rem; color: #a78bfa; margin-bottom: 8px; }
+        .domain-card p { font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <header><nav><div class="nav-container"><h1><a href="/" style="color: white;">Abid.</a></h1><ul><li><a href="/">Home</a></li><li><a href="index.html">Blogs</a></li></ul></div></nav></header>
+    <main>
+        <section class="hero">
+            <div class="container hero-content">
+                <span class="tech-tag">11 Active Projects</span>
+                <span class="tech-tag">4 Domains</span>
+                <span class="tech-tag">~6-7 Sessions/Day</span>
+                <h1>How Claude Code Manages Everything</h1>
+                <p>Running 11 projects across civic tech, healthcare AI, EdTech, and open source — with Claude Code as the operational backbone. This is the full workflow.</p>
+            </div>
+        </section>
+        <article class="container post-content">
+            <div class="post-meta"><span>Claude Code</span><span>Workflow</span><span>Productivity</span><span>Operations</span></div>
+
+            <section>
+                <h2>The Scale of Operations</h2>
+                <p>At any given time, I'm running 11+ active projects across 4 domains. That's not a workload a 19-year-old CS student handles alone. Claude Code is how it's possible.</p>
+                <div class="domain-grid">
+                    <div class="domain-card"><h3>Civic Tech</h3><div class="projects">Open Permit</div><p>Codebase dev, pitch decks, funder outreach, legal framework expansion, CSV data pipelines, Brevo campaigns</p></div>
+                    <div class="domain-card"><h3>Healthcare AI</h3><div class="projects">Knight Medicare</div><p>Full stack dev, Supabase schema, abstraction layers, clinical data modeling, safety architecture</p></div>
+                    <div class="domain-card"><h3>EdTech</h3><div class="projects">Adventurers Guild</div><p>Next.js/Prisma codebase, financial modeling, feature specs, PM audit, quest system</p></div>
+                    <div class="domain-card"><h3>Open Source</h3><div class="projects">Open Paws (multiple repos)</div><p>RAG systems, data pipelines, Project Slingshot, LEWS, structured coding tools, 40+ external PRs</p></div>
+                    <div class="domain-card"><h3>Infrastructure</h3><div class="projects">Cross-project</div><p>Yotta migration evaluation, Supabase alternatives, self-hosting analysis, SMS providers, abstraction layers</p></div>
+                    <div class="domain-card"><h3>Fundraising</h3><div class="projects">Open Permit + broader</div><p>Grant pitches (SFF), funder databases (197 contacts), outreach campaigns, Dasra warm leads, pitch iterations</p></div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Pattern 1: Architecture Sessions</h2>
+                <p>When starting a new feature, I open a Claude Code session with full context — what exists, what needs to exist, what could go wrong. The back-and-forth surfaces edge cases, suggests patterns from other domains, and challenges assumptions.</p>
+                <p><strong>Example:</strong> Knight Medicare's abstraction layer. When the Supabase India block hit, I needed to decouple the entire data layer from Supabase-specific APIs. Claude Code designed the abstraction so swapping providers requires changing adapter code, not business logic. That pattern now protects all 11 projects.</p>
+            </section>
+
+            <section>
+                <h2>Pattern 2: Data Pipeline Development</h2>
+                <p>A surprising amount of work is data pipelines, not web UIs:</p>
+                <div class="feature-grid">
+                    <div class="feature"><h3>Open Permit</h3><p>CSV processing for 197 funder contacts across 75 countries, recipient routing for objection letters, permit data normalization.</p></div>
+                    <div class="feature"><h3>Project Slingshot</h3><p>12+ API sources feeding Supabase for UK factory farming discourse — media, parliamentary, social sentiment.</p></div>
+                    <div class="feature"><h3>Financial Analysis</h3><p>Personal bank data analysis (6.5 months IDFC First Bank), investment strategy modeling, Adventurers Guild financial model.</p></div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Pattern 3: Pitch & Strategy Work</h2>
+                <p>A huge amount of Claude Code usage is non-technical. AARC Demo Day pitch deck iterations. SFF grant pitch framing Open Permit as an institutional learning mechanism. Dasra outreach strategy. ALPN collaboration drafts. Adventurers Guild financial model with Indian market rates. Every strategic document runs through Claude Code.</p>
+            </section>
+
+            <section>
+                <h2>Pattern 4: OSS Contribution Workflow</h2>
+                <p>For contributing to repos with thousands of stars: (1) codebase understanding — "explain how this module works," (2) PR preparation — clear descriptions matching repo conventions, (3) review iteration — when maintainers request changes, Claude Code helps iterate fast. This workflow produced 56+ merged PRs in 2026.</p>
+            </section>
+
+            <section>
+                <h2>Pattern 5: Infrastructure Decisions</h2>
+                <p>The Yotta evaluation (29 services, 11 projects, 63% cost reduction), SMS provider selection (MSG91 + Plivo dual approach), Supabase alternatives analysis — all complex tradeoff evaluations managed through Claude Code. Migration scripts, Docker Compose configs, health checks, rollback procedures — all built collaboratively.</p>
+            </section>
+
+            <section>
+                <h2>What Claude Code Doesn't Do</h2>
+                <p>Clinical decisions for Knight Medicare — that's the Harvard PhD's domain. Relationship building — funder meetings, hackathon networking, team management. Creative vision — "what should we build" decisions. Shipping discipline — deciding what to ship today vs. next month. Accountability — when code breaks at 2 AM, that's on me.</p>
+            </section>
+
+            <section>
+                <h2>The Force Multiplier</h2>
+                <p>Without Claude Code, I'd be running 2-3 projects. With it, I run 11. That's a ~4-5x force multiplier (conservative). The real value isn't any individual code generation — it's the <strong>compounding context</strong> across 100+ conversations about how all 11 projects relate.</p>
+                <p>The analogy: Batman doesn't fight crime because he has a Batcave full of gadgets. He fights crime because he has the judgment to use them effectively. The gadgets extend his reach. Claude Code is my Batcave.</p>
+            </section>
+
+            <div class="buttons">
+                <a href="index.html" class="read-more">← Back to All Posts</a>
+            </div>
+        </article>
+    </main>
+    <footer><div class="container"><p>&copy; 2026 Abid Khan.</p></div></footer>
+</body>
+</html>

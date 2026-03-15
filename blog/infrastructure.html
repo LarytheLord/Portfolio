@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infrastructure: 29 Services, Yotta Migration — Abid Khan</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root { --primary-color: #1a1a1a; --secondary-color: #ef4444; --accent-color: #f87171; --text-color: #e0e0e0; --bg-color: #0a0a0f; --card-bg: #18181b; }
+        body { background-color: var(--bg-color); color: var(--text-color); }
+        .hero { background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0f 100%); }
+        .feature { background-color: var(--card-bg); color: var(--text-color); border: 1px solid #27272a; }
+        .post-content p { color: #b0b0b0; }
+        h1, h2, h3 { color: white !important; }
+        .tech-tag { background: rgba(239, 68, 68, 0.2); color: #f87171; padding: 4px 12px; border-radius: 20px; font-size: 0.9rem; display: inline-block; margin-right: 8px; margin-bottom: 8px; }
+        .arch-block { background: var(--card-bg); border: 1px solid #27272a; border-radius: 8px; padding: 20px; margin: 16px 0; font-family: monospace; font-size: 0.85rem; line-height: 1.8; color: #a1a1aa; white-space: pre-wrap; }
+        .db-table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+        .db-table th { text-align: left; padding: 10px; border-bottom: 2px solid #27272a; color: #a1a1aa; font-size: 0.8rem; text-transform: uppercase; }
+        .db-table td { padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <header><nav><div class="nav-container"><h1><a href="/" style="color: white;">Abid.</a></h1><ul><li><a href="/">Home</a></li><li><a href="index.html">Blogs</a></li></ul></div></nav></header>
+    <main>
+        <section class="hero">
+            <div class="container hero-content">
+                <span class="tech-tag">29 Services</span>
+                <span class="tech-tag">11 Projects</span>
+                <span class="tech-tag">63% Cost Reduction</span>
+                <h1>Infrastructure: The Supabase India Block, Yotta Migration, and 29 Services</h1>
+                <p>When your primary database provider gets blocked in your country, you learn how important infrastructure abstraction is. This is the story of evaluating a full migration to Indian sovereign cloud.</p>
+            </div>
+        </section>
+        <article class="container post-content">
+            <div class="post-meta"><span>Infrastructure</span><span>DevOps</span><span>Cloud</span><span>Migration</span></div>
+
+            <section>
+                <h2>The Supabase India Block</h2>
+                <p>Supabase was blocked in India. The impact was immediate across multiple production projects:</p>
+                <p><strong>Knight Medicare</strong> — CBT therapy platform, production data layer. <strong>Open Permit</strong> — civic intelligence platform, core database. <strong>Adventurers Guild</strong> — developer marketplace, user data and quest storage. <strong>AfA Resource Chatbot</strong> — RAG system, vector storage (pgvector). <strong>Project Slingshot UK</strong> — data pipeline, 12+ API sources.</p>
+                <p>When your primary database provider gets blocked in your country, you learn very quickly how important infrastructure abstraction is.</p>
+            </section>
+
+            <section>
+                <h2>The Three Options</h2>
+                <div class="feature-grid">
+                    <div class="feature"><h3>Option A: Wait It Out</h3><p>Hope the block reverses. Verdict: unacceptable for production platforms. No control over timeline.</p></div>
+                    <div class="feature"><h3>Option B: Yotta Self-Hosted ✓</h3><p>Migrate to Yotta Data Centre (Panvel). Self-hosted Supabase on 4 vCPU/16GB KVM VM. 63%+ cost reduction. Full data sovereignty.</p></div>
+                    <div class="feature"><h3>Option C: Alternative BaaS</h3><p>Firebase (no PostgreSQL), PlanetScale (no pgvector), Neon (works for new projects but complex migration for existing ones).</p></div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Migration Scope: 29 Services</h2>
+                <div class="arch-block">Migration Inventory:
+├── Knight Medicare: Auth, Database, Realtime, Storage
+├── Open Permit: Auth, Database, Edge Functions
+├── Project Slingshot: Database, Scheduled Functions
+├── AfA Chatbot: pgvector, Database
+└── [7 more projects]: Various Supabase services
+Total: 29 services across 11 projects</div>
+            </section>
+
+            <section>
+                <h2>Abstraction Layer Strategy</h2>
+                <p>The key decision: <strong>don't just migrate, abstract.</strong> Claude Code helped design database abstraction layers so swapping from Supabase Cloud to self-hosted PostgreSQL requires changing adapter code, not business logic. The pattern: define generic interface → implement Supabase adapter (current) → implement self-hosted adapter (target) → swap via environment variable → run both in parallel during validation.</p>
+                <p>This means the next infrastructure disruption doesn't require rewriting business logic across 11 projects.</p>
+            </section>
+
+            <section>
+                <h2>Database Strategy by Project</h2>
+                <table class="db-table">
+                    <thead><tr><th>Project</th><th>Current</th><th>Target</th><th>Why</th></tr></thead>
+                    <tbody>
+                        <tr><td>Knight Medicare</td><td>Supabase Cloud</td><td>Yotta Self-Hosted</td><td>Data sovereignty, healthcare compliance</td></tr>
+                        <tr><td>Open Permit</td><td>Supabase Cloud</td><td>Yotta Self-Hosted</td><td>Core platform, needs reliability</td></tr>
+                        <tr><td>Adventurers Guild</td><td>Neon Postgres</td><td>Keep Neon</td><td>Already on Neon, no India block</td></tr>
+                        <tr><td>AfA Chatbot</td><td>Supabase pgvector</td><td>Yotta Self-Hosted</td><td>Vector search needs to be local</td></tr>
+                        <tr><td>Project Slingshot</td><td>Supabase Cloud</td><td>Yotta Self-Hosted</td><td>Data pipeline reliability</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <h2>Yotta Data Center Visit (March 11)</h2>
+                <p>Visited the Yotta Data Center in Panvel. Evaluated physical security, network connectivity/latency, VM provisioning tools, support SLAs, and partnership possibilities. Confirmed as the right choice for Indian sovereign hosting — single-digit millisecond latency to Mumbai, reasonable nationwide.</p>
+            </section>
+
+            <section>
+                <h2>SMS Provider: Dual Approach</h2>
+                <p>Knight Medicare and other projects need SMS for auth/notifications. Solution: <strong>MSG91</strong> for India (best domestic rates, DLT compliance built-in) + <strong>Plivo</strong> for international. Dual routing based on user geography. Evaluated through Claude Code comparing pricing, API capabilities, delivery rates, and DLT requirements.</p>
+            </section>
+
+            <section>
+                <h2>Key Lessons</h2>
+                <p><strong>Never lock into a single provider.</strong> Abstraction layers aren't overengineering — they're insurance. <strong>Self-hosting is cheaper at scale</strong> — for 11 projects with 29 services, a single VM saves 63%+ vs. managed services. <strong>Indian sovereign cloud matters</strong> — latency advantage, reliability, and compliance. <strong>Infrastructure planning is product planning</strong> — reliable infra means therapy sessions don't drop, objection letters generate on time, quest assignments don't fail.</p>
+            </section>
+
+            <div class="buttons">
+                <a href="index.html" class="read-more">← Back to All Posts</a>
+            </div>
+        </article>
+    </main>
+    <footer><div class="container"><p>&copy; 2026 Abid Khan.</p></div></footer>
+</body>
+</html>
