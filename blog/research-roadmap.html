@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research Roadmap: From Projects to Papers</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/post.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="nav-container">
+      <h1><a href="/">Abid Khan</a></h1>
+      <a href="index.html" class="nav-back">← All Posts</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="post-hero">
+    <div class="post-hero-inner">
+      <span class="post-eyebrow">Research · Academia · Future</span>
+      <h1>Research Roadmap: From Projects to Papers</h1>
+      <p class="post-hero-lead">Moving from building systems to publishing research. Five concrete paper opportunities grounded in real project work — with methodology, datasets, and reviewers already accessible.</p>
+      <div class="post-meta-row">
+        <span class="badge blue">5 Paper Ideas</span>
+        <span class="badge amber">LEWS Methodology Paper First</span>
+        <span class="badge green">EA Animal Welfare</span>
+        <span class="badge purple">CS + Social Impact</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="post-hero-inner">
+    <div class="stat-strip">
+      <div class="stat-strip-item"><strong>5</strong><span>Paper opportunities</span></div>
+      <div class="stat-strip-item"><strong>LEWS</strong><span>First target</span></div>
+      <div class="stat-strip-item"><strong>2026</strong><span>Start year</span></div>
+      <div class="stat-strip-item"><strong>EA + CS</strong><span>Research domains</span></div>
+      <div class="stat-strip-item"><strong>arXiv</strong><span>Target venue</span></div>
+    </div>
+  </div>
+
+  <div class="post-layout">
+    <aside class="post-toc">
+      <div class="toc-title">Contents</div>
+      <ul class="toc-list">
+        <li><a href="#why-research">Why Research</a></li>
+        <li><a href="#paper-1">Paper 1: LEWS</a></li>
+        <li><a href="#paper-2">Paper 2: Open Permit</a></li>
+        <li><a href="#paper-3">Paper 3: Speciesism NLP</a></li>
+        <li><a href="#paper-4">Paper 4: Infrastructure</a></li>
+        <li><a href="#paper-5">Paper 5: Gamification</a></li>
+        <li><a href="#how-to-start">How to Start Writing</a></li>
+        <li><a href="#venues">Target Venues</a></li>
+        <li><a href="#lesson">Key Lesson</a></li>
+      </ul>
+    </aside>
+
+    <article class="post-article">
+
+      <section id="why-research">
+        <span class="section-label">Motivation</span>
+        <h2>Why Research (and Why Now)</h2>
+        <div class="callout blue">
+          <p>Research papers aren't just academic exercises. They're the highest-leverage way to spread methodology. If LEWS works, a paper means other organizations can replicate it. If Open Permit's legal AI approach generalizes, a paper makes it available to the field.</p>
+        </div>
+        <p>I've spent the last two years building systems that solve real problems across animal welfare, civic tech, CS education, and healthcare. Each of those systems has a methodology — a way of framing the problem, designing the solution, and measuring whether it worked. That methodology currently lives in code, documentation, and my head. A research paper turns it into a citable, replicable, peer-reviewed artifact.</p>
+        <p>The timing is right for a specific reason: the data exists. LEWS produced real scoring data. Open Permit has 200+ processed permits. The Adventurers Guild has user progression metrics. The Supabase India block produced a natural experiment in infrastructure resilience. I'm not proposing hypothetical research — I'm proposing to write up what already happened.</p>
+      </section>
+
+      <section id="paper-1">
+        <span class="section-label">Priority 1</span>
+        <h2>Paper 1 (Priority): LEWS — Formalizing Lock-in Early Warning for Emerging Animal Technologies</h2>
+        <p>
+          <span class="badge amber">First Priority</span>
+        </p>
+        <p>LEWS (Lock-in Early Warning System) was built at the EA Animal Welfare Hackathon 2025 to assess lock-in risk for emerging animal farming technologies before they become irreversible. The scoring methodology is novel, the dataset is real, and the team is intact. This is the paper that writes itself.</p>
+        <div class="card-grid">
+          <div class="info-card">
+            <span class="card-icon">❓</span>
+            <h4>Research Question</h4>
+            <p>Can lock-in risk be quantified for emerging animal farming technologies before irreversibility? What variables are most predictive of high lock-in trajectories, and how should uncertainty in early-stage assessments be represented?</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">📊</span>
+            <h4>Dataset</h4>
+            <p>LEWS 7-variable scoring data from the EA Animal Welfare Hackathon 2025. Scored assessments across multiple emerging technologies with uncertainty bounds, historical trajectory comparisons, and variable weighting documentation.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🔬</span>
+            <h4>Methodology</h4>
+            <p>Variable normalization across the 7-factor scoring framework, uncertainty integration using credence-based weighting, historical trajectory comparison against known lock-in cases. The methodology section is mostly documented in the LEWS system itself.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🎯</span>
+            <h4>Target Venue</h4>
+            <p>Animal welfare journals, EA research forums (EA Forum long-form), arXiv cs.AI for the technical methodology. Workshop track at a relevant conference as a first step before full journal submission.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">👥</span>
+            <h4>Co-authors</h4>
+            <p>LEWS team: Tim, Thomas, Rapha + project lead. All intact from the hackathon. Roles: Abid (technical methodology, AI components), Tim + Thomas + Rapha (domain expertise, welfare framework grounding, review).</p>
+          </div>
+        </div>
+        <div class="callout amber">
+          <p>The LEWS hackathon produced real scoring data. The methodology paper writes itself — we just need to formalize what we already built into a structure that passes peer review.</p>
+        </div>
+      </section>
+
+      <section id="paper-2">
+        <span class="section-label">Priority 2</span>
+        <h2>Paper 2: Open Permit — AI-Assisted Legal Objection Generation at Scale</h2>
+        <p>
+          <span class="badge blue">High Priority</span>
+        </p>
+        <p>Open Permit has processed 200+ real planning permits across 8+ countries and built 40 jurisdiction-specific legal frameworks. That's a dataset unique in the world — no one else has systematically applied LLMs to cross-jurisdictional civic objection generation at this scale.</p>
+        <div class="card-grid">
+          <div class="info-card">
+            <span class="card-icon">❓</span>
+            <h4>Research Question</h4>
+            <p>How effective is LLM-generated legal content for civic objection letters across jurisdictions? What factors most affect letter quality, legal accuracy, and jurisdiction coverage completeness?</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">📊</span>
+            <h4>Dataset</h4>
+            <p>200+ permits across 8+ countries, 40 legal frameworks with jurisdiction-specific citation formats, objection letter quality metrics from human review, permit type distribution across factory farming, development, and environmental categories.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🔬</span>
+            <h4>Methodology</h4>
+            <p>Human evaluation of letter quality by legal practitioners in target jurisdictions, legal accuracy assessment via citation validity checking, jurisdiction coverage analysis — how well does the system generalize to jurisdictions not in the training corpus?</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🎯</span>
+            <h4>Target Venue</h4>
+            <p>ACL workshop on legal NLP, or ICAIL (International Conference on Artificial Intelligence and Law). Both have strong communities for exactly this problem space.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">💡</span>
+            <h4>Unique Angle</h4>
+            <p>First systematic study of cross-jurisdictional AI civic advocacy. No comparable paper exists — the closest work is in legal document summarization, not objection generation. The civic advocacy framing + multi-country scope is genuinely novel.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="paper-3">
+        <span class="section-label">Priority 3</span>
+        <h2>Paper 3: Speciesist Language Detection — Extending Inclusive Language Tools</h2>
+        <p>
+          <span class="badge green">Medium Priority (Open Paws work)</span>
+        </p>
+        <p>Open Paws maintains a no-animal-violence rule corpus for language moderation. The underlying NLP problem — detecting speciesist framing in text — is analogous to existing racial and gender bias detection work but has received almost no systematic treatment in academic NLP.</p>
+        <div class="card-grid">
+          <div class="info-card">
+            <span class="card-icon">❓</span>
+            <h4>Research Question</h4>
+            <p>Can NLP tools reliably detect speciesist framing in text, analogous to racial and gender bias detection? What are the precision/recall characteristics, and where do false positives cluster?</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">📊</span>
+            <h4>Dataset</h4>
+            <p>Open Paws no-animal-violence rule corpus (annotated examples), supplemented by academic grounding from Hagendorff (2022), Takeshita (2023), and Leach (2024) speciesism NLP papers. Existing academic work provides the theoretical frame; Open Paws provides the practical dataset.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🔬</span>
+            <h4>Methodology</h4>
+            <p>Rule-based detection pipeline (current Open Paws implementation), false positive analysis across different text types (news, social media, academic), comparison with existing bias detection toolkits (Perspective API, Detoxify) on the same corpus.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🎯</span>
+            <h4>Target Venue</h4>
+            <p>FAccT (Fairness, Accountability, and Transparency), or ACL BioNLP workshop. FAccT is the highest-signal venue for this type of bias detection work; the animal welfare framing would be novel in that community.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="paper-4">
+        <span class="section-label">Priority 4</span>
+        <h2>Paper 4: Infrastructure Abstraction for Resilient Multi-Service Deployments</h2>
+        <p>
+          <span class="badge purple">Medium Priority</span>
+        </p>
+        <p>The Supabase India block in 2025 took down 29 services simultaneously and forced a full infrastructure migration. That incident produced a natural experiment in cloud provider dependency, migration complexity, and architectural patterns for regional resilience.</p>
+        <div class="card-grid">
+          <div class="info-card">
+            <span class="card-icon">❓</span>
+            <h4>Research Question</h4>
+            <p>What architectural patterns minimize downtime risk when a cloud provider becomes unavailable in a specific region? How does migration complexity scale with service count and data interdependency?</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">📊</span>
+            <h4>Dataset</h4>
+            <p>Supabase India block incident data (3-day outage, 29 services affected), before/after latency measurements, migration timeline per service, cost analysis pre- and post-Yotta migration, architectural diagrams before and after.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🔬</span>
+            <h4>Methodology</h4>
+            <p>Case study methodology documenting the incident, migration execution, and architectural changes. Before/after latency comparison, cost analysis, migration complexity scoring by service type. Generalization section: what patterns would have prevented the incident.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🎯</span>
+            <h4>Target Venue</h4>
+            <p>IEEE Cloud Computing, or USENIX SREcon. SREcon is particularly relevant — it's practitioner-focused and values real incident postmortems as research contributions.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="paper-5">
+        <span class="section-label">Priority 5</span>
+        <h2>Paper 5: Gamification as Mechanism for CS Skill Development in Emerging Markets</h2>
+        <p>
+          <span class="badge purple">Future Priority</span>
+        </p>
+        <p>Adventurers Guild uses RPG-style progression (F-rank to S-rank) to structure CS skill development. As the platform passes 500+ users, longitudinal data on engagement and skill acquisition is accumulating — enough to ask whether the gamification design actually produces different outcomes than traditional approaches.</p>
+        <div class="card-grid">
+          <div class="info-card">
+            <span class="card-icon">❓</span>
+            <h4>Research Question</h4>
+            <p>Does RPG-style progression (F→S rank) improve sustained engagement and skill acquisition compared to traditional internship or course models? What rank transitions correlate with measurable skill jumps?</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">📊</span>
+            <h4>Dataset</h4>
+            <p>Adventurers Guild user progression data: quest completion rates, rank advancement timelines, dropout rates by rank, skill assessment results before and after rank progression events. Cohort data from first 500 users.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🔬</span>
+            <h4>Methodology</h4>
+            <p>Cohort analysis comparing engagement metrics across rank levels, skill assessment before/after rank progression milestones, dropout analysis, comparison with published engagement metrics from non-gamified CS learning platforms.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🎯</span>
+            <h4>Target Venue</h4>
+            <p>ICER (International Computing Education Research), or CHI. ICER is the top venue for computing education research; CHI is broader but highly respected for gamification and engagement work.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="how-to-start">
+        <span class="section-label">Execution</span>
+        <h2>How to Start Writing</h2>
+        <p>The biggest obstacle to writing the first paper isn't skill — it's starting. This is a concrete 6-step path for Paper 1 (LEWS) that avoids the paralysis of "I need to do more research before I can write."</p>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot">1</div>
+            <div class="timeline-content">
+              <h4>Pick Paper 1 (LEWS) — team is intact, data exists</h4>
+              <p>The LEWS team (Tim, Thomas, Rapha) worked together at the hackathon and all expressed interest in formalizing the methodology. The scoring data exists. The methodology is documented in the system. Activation energy is lowest here.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">2</div>
+            <div class="timeline-content">
+              <h4>Write the Methods section first</h4>
+              <p>The Methods section is already implicit in the LEWS blog post. Start there — describe the 7-variable scoring framework, the uncertainty integration approach, and the historical trajectory comparison in formal academic language. The rest of the paper structure falls out from a solid Methods section.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">3</div>
+            <div class="timeline-content">
+              <h4>Get a senior researcher as co-author or advisor</h4>
+              <p>EA network, GTU faculty, or Open Paws academic connections. A senior co-author provides: (a) access to venues that require institutional affiliation, (b) peer review credibility, (c) accountability for actually finishing. Approach via EA Forum or direct email to relevant researchers.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">4</div>
+            <div class="timeline-content">
+              <h4>Submit to arXiv first</h4>
+              <p>arXiv establishes a timestamp and gets the work in front of the community before formal peer review. EA Forum can amplify the arXiv post. Community feedback from EA Animal Welfare researchers is accessible and constructive — use it to improve the paper before journal submission.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">5</div>
+            <div class="timeline-content">
+              <h4>Iterate based on reviews</h4>
+              <p>EA Animal Welfare community is unusually accessible and engaged. Post to EA Forum, share in relevant Slack channels, reach out directly to researchers cited in the paper. Incorporate substantive feedback into the revised version. This iteration loop is faster in EA than in most academic communities.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">6</div>
+            <div class="timeline-content">
+              <h4>Target a workshop paper first</h4>
+              <p>Workshop papers have lower bars than full conference papers, faster turnaround (3-4 months vs 12+), and provide genuine community feedback. One accepted workshop paper builds the publication record needed for full conference submissions. Don't aim for Nature on the first paper — aim for published.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="venues">
+        <span class="section-label">Reference</span>
+        <h2>Target Venues</h2>
+        <div class="data-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Venue</th>
+                <th>Type</th>
+                <th>Relevance</th>
+                <th>Difficulty</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="td-em">arXiv cs.AI</td>
+                <td>Preprint</td>
+                <td>All papers</td>
+                <td class="td-green">Easy (no review)</td>
+              </tr>
+              <tr>
+                <td class="td-em">EA Forum</td>
+                <td>Community</td>
+                <td>LEWS, Open Permit</td>
+                <td class="td-green">Easy</td>
+              </tr>
+              <tr>
+                <td class="td-em">Animal Welfare journals</td>
+                <td>Peer-reviewed</td>
+                <td>LEWS</td>
+                <td class="td-amber">Medium</td>
+              </tr>
+              <tr>
+                <td class="td-em">ACL workshops</td>
+                <td>Workshop paper</td>
+                <td>Open Permit, Speciesism</td>
+                <td class="td-amber">Medium</td>
+              </tr>
+              <tr>
+                <td class="td-em">FAccT</td>
+                <td>Full conference</td>
+                <td>Speciesism, Gamification</td>
+                <td class="td-code">Hard</td>
+              </tr>
+              <tr>
+                <td class="td-em">ICER</td>
+                <td>Full conference</td>
+                <td>Adventurers Guild</td>
+                <td class="td-code">Hard</td>
+              </tr>
+              <tr>
+                <td class="td-em">USENIX SREcon</td>
+                <td>Full conference</td>
+                <td>Infrastructure</td>
+                <td class="td-code">Hard</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="lesson">
+        <span class="section-label">Takeaway</span>
+        <h2>Key Lesson</h2>
+        <div class="callout green">
+          <p>The hardest part of academic writing isn't the writing — it's realizing you already have the data, the methodology, and the results. You just haven't written it up yet. That's where we are with LEWS. The scoring framework is novel. The dataset is real. The team is intact. The only missing piece is sitting down and writing it in academic format.</p>
+        </div>
+        <div class="callout amber">
+          <p>If you're a researcher working in animal welfare tech, civic AI, or inclusive language NLP — reach out. These papers are better written collaboratively. I have the systems, the data, and the implementation. I'm looking for co-authors who bring domain expertise, academic affiliation, or experience navigating the specific venues. Email or EA Forum DM.</p>
+        </div>
+      </section>
+
+    </article>
+  </div>
+
+  <nav class="post-footer-nav">
+    <a href="building-in-public.html" class="btn-ghost">← Building in Public</a>
+    <a href="index.html" class="btn-ghost">← All Posts</a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-left">
+      <strong>Abid Khan</strong>
+      <span class="footer-muted">Builder, Operator, Shipper</span>
+    </div>
+    <div class="footer-links">
+      <a href="/">Portfolio</a>
+      <a href="index.html">Blog</a>
+      <a href="https://github.com/LarytheLord" target="_blank">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const headings = document.querySelectorAll('.post-article h2, .post-article h3');
+const tocLinks = document.querySelectorAll('.toc-list a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      tocLinks.forEach(l => l.classList.remove('active'));
+      const link = document.querySelector(`.toc-list a[href="#${e.target.id}"]`);
+      if (link) link.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+headings.forEach(h => { if(h.id) observer.observe(h); });
+</script>
+
+</body>
+</html>

@@ -338,93 +338,136 @@
             }
         }
 
-        /* Terminal Style Elements */
+        /* ===== INTERACTIVE TERMINAL ===== */
         .terminal {
-            background-color: var(--black);
-            border: 1px solid var(--gray-800);
+            background-color: #0d0d0d;
+            border: 1px solid var(--gray-700);
             border-radius: var(--border-radius);
-            padding: 24px;
-            box-shadow: var(--shadow-lg);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 360px;
+            transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
         }
-
-        .terminal::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 30px;
-            background: var(--gray-800);
-            border-bottom: 1px solid var(--gray-700);
+        .terminal.fullscreen {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            border-radius: 0;
+            min-height: 100vh;
+            border: none;
         }
-
         .terminal-header {
             display: flex;
             align-items: center;
-            margin-bottom: 20px;
-            position: relative;
-            height: 30px;
+            justify-content: space-between;
+            background: #1a1a1a;
+            border-bottom: 1px solid #2a2a2a;
+            padding: 0 14px;
+            height: 36px;
+            flex-shrink: 0;
+            user-select: none;
         }
-
         .terminal-dots {
-            position: absolute;
-            top: 50%;
-            left: 12px;
-            transform: translateY(-50%);
             display: flex;
+            gap: 7px;
+            align-items: center;
+        }
+        .terminal-dot {
+            width: 12px; height: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: filter 0.15s;
+        }
+        .terminal-dot:hover { filter: brightness(1.3); }
+        .dot-red   { background: #ff5f57; }
+        .dot-yellow{ background: #febc2e; }
+        .dot-green { background: #28c840; }
+        .terminal-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            color: #666;
+            letter-spacing: 0.02em;
+        }
+        .terminal-actions {
+            display: flex;
+            align-items: center;
             gap: 8px;
         }
-
-        .terminal-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
+        .term-btn {
+            background: none;
+            border: 1px solid #333;
+            color: #666;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'JetBrains Mono', monospace;
+            transition: all 0.15s;
         }
-
-        .dot-red {
-            background-color: #ff5f56;
+        .term-btn:hover { color: var(--retro-green); border-color: var(--retro-green); }
+        .terminal-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 14px 16px 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.825rem;
+            line-height: 1.65;
+            color: #d4d4d4;
+            min-height: 0;
+            scrollbar-width: thin;
+            scrollbar-color: #333 transparent;
         }
-
-        .dot-yellow {
-            background-color: #ffbd2e;
+        .terminal-body::-webkit-scrollbar { width: 4px; }
+        .terminal-body::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+        .term-line { white-space: pre-wrap; word-break: break-word; }
+        .term-line.cmd  { color: #e2e2e2; }
+        .term-line.prompt-sym { color: var(--retro-green); }
+        .term-line.output { color: #a0aec0; }
+        .term-line.error  { color: #f87171; }
+        .term-line.success{ color: var(--retro-green); }
+        .term-line.info   { color: #60a5fa; }
+        .term-line.dim    { color: #4a5568; }
+        .term-input-row {
+            display: flex;
+            align-items: center;
+            padding: 10px 16px 14px;
+            gap: 6px;
+            flex-shrink: 0;
+            border-top: 1px solid #1a1a1a;
+            margin-top: 4px;
         }
-
-        .dot-green {
-            background-color: #27c93f;
-        }
-
-        .terminal-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .terminal-prompt {
+        .term-input-prompt {
             color: var(--retro-green);
-            margin-right: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.825rem;
+            white-space: nowrap;
+            user-select: none;
         }
-
+        .term-input {
+            flex: 1;
+            background: none;
+            border: none;
+            outline: none;
+            color: #e2e2e2;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.825rem;
+            caret-color: var(--retro-green);
+        }
         .terminal-cursor {
             display: inline-block;
             width: 8px;
-            height: 16px;
+            height: 14px;
             background-color: var(--retro-green);
             animation: blink 1s infinite;
             vertical-align: middle;
             margin-left: 2px;
         }
-
         @keyframes blink {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0;
-            }
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
 
         /* Navigation */
@@ -1003,38 +1046,213 @@
                 </div>
 
                 <div class="grid grid-cols-2">
-                    <div class="terminal fade-in">
+                    <div class="terminal fade-in" id="portfolio-terminal">
                         <div class="terminal-header">
                             <div class="terminal-dots">
-                                <div class="terminal-dot dot-red"></div>
-                                <div class="terminal-dot dot-yellow"></div>
-                                <div class="terminal-dot dot-green"></div>
+                                <div class="terminal-dot dot-red" title="close" onclick="document.getElementById('portfolio-terminal').classList.remove('fullscreen')"></div>
+                                <div class="terminal-dot dot-yellow" title="minimize"></div>
+                                <div class="terminal-dot dot-green" title="fullscreen" onclick="document.getElementById('portfolio-terminal').classList.toggle('fullscreen');document.getElementById('term-input').focus()"></div>
+                            </div>
+                            <span class="terminal-title">abid@portfolio:~</span>
+                            <div class="terminal-actions">
+                                <button class="term-btn" onclick="termClear()">clear</button>
+                                <button class="term-btn" onclick="document.getElementById('portfolio-terminal').classList.toggle('fullscreen');document.getElementById('term-input').focus()">⛶ fullscreen</button>
                             </div>
                         </div>
-                        <div class="terminal-content">
-                            <div class="mono">
-                                <div>$ whoami</div>
-                                <div>> Abid Khan — 19, CS @ GTU (2027)</div>
-                                <br>
-                                <div>$ cat roles.txt</div>
-                                <div>> CTO & Co-founder @ Knight Medicare</div>
-                                <div>> Software Engineer @ Open Paws</div>
-                                <div>> Local Director @ Open Paws India Pvt Ltd</div>
-                                <div>> Founder @ Open Permit</div>
-                                <div>> Founder @ The Adventurers Guild</div>
-                                <div>> Google Gemini Campus Ambassador</div>
-                                <br>
-                                <div>$ git log --oneline -5</div>
-                                <div>> 500+ contributions (2026 YTD)</div>
-                                <div>> 56+ merged PRs across OSS repos</div>
-                                <div>> 86 public repositories</div>
-                                <div>> NASA Space Apps Global Finalist</div>
-                                <div>> Code4Compassion Mumbai Winner</div>
-                                <br>
-                                <div>$ <span class="terminal-cursor"></span></div>
-                            </div>
+                        <div class="terminal-body" id="term-body"></div>
+                        <div class="term-input-row">
+                            <span class="term-input-prompt">abid@portfolio:~$</span>
+                            <input class="term-input" id="term-input" type="text" autocomplete="off" autocorrect="off" spellcheck="false" placeholder="type a command — try 'help'" aria-label="Terminal input">
                         </div>
                     </div>
+
+                    <script>
+(function(){
+const body = document.getElementById('term-body');
+const input = document.getElementById('term-input');
+let history = [], hIdx = -1;
+
+const COMMANDS = {
+  whoami: () => ['Abid Khan — 19, CS @ GTU (2027)', 'Builder. Operator. Shipper.'],
+  'cat roles.txt': () => [
+    'CTO & Co-founder @ Knight Medicare',
+    'Software Engineer @ Open Paws',
+    'Local Director @ Open Paws India Pvt Ltd',
+    'Founder @ Open Permit',
+    'Founder @ The Adventurers Guild',
+    'Google Gemini Campus Ambassador',
+  ],
+  'cat skills.txt': () => [
+    'Languages:  TypeScript · Python · JavaScript · Go',
+    'Frontend:   Next.js · React 19 · Tailwind CSS',
+    'Backend:    Express · FastAPI · Node.js',
+    'Database:   PostgreSQL · Supabase · Neon · Prisma',
+    'AI/ML:      RAG systems · Gemini · OpenAI · LangChain',
+    'DevOps:     Docker · Vercel · Railway · ROS2',
+  ],
+  'cat projects.txt': () => [
+    '01  Knight Medicare     — AI CBT therapy platform (CTO)',
+    '02  Open Permit         — Civic intel, 8+ countries',
+    '03  Adventurers Guild   — Gamified dev marketplace, 500+ users',
+    '04  LunaBot             — NASA Space Apps Global Finalist',
+    '05  Open Paws           — AI tools for animal advocacy',
+    '06  Project Slingshot   — UK factory farm discourse pipeline',
+    '07  RAG Chatbot         — Dual vector storage knowledge system',
+    '08  LEWS                — Lock-in Early Warning System',
+    '09  AFOG                — Origin of Open Permit',
+    '10  Gemini Ambassador   — AI education at GTU',
+    '11  OSS Contributions   — 56+ merged PRs in prod repos',
+  ],
+  'git log --oneline -5': () => [
+    'a3f9c2e feat: 56+ merged PRs across OSS repos',
+    'b12d8a1 feat: Knight Medicare CBT engine v2.0',
+    'c9e4f3b feat: Open Permit live in 8+ countries',
+    'd7c2190 feat: NASA Space Apps Global Finalist',
+    'e1a4f82 feat: 500+ GitHub contributions (2026 YTD)',
+  ],
+  'git status': () => ['On branch main', 'Nothing to commit — all systems shipping.'],
+  ls: () => [
+    'projects/     blog/         cv.pdf',
+    'open-permit/  knight/       adventurers-guild/',
+    'lunabot/      lews/         open-paws/',
+  ],
+  'ls -la': () => [
+    'drwxr-xr-x  projects/',
+    'drwxr-xr-x  blog/',
+    '-rw-r--r--  cv.pdf       (27KB)',
+    '-rw-r--r--  README.md    (coming soon)',
+  ],
+  pwd: () => ['/Users/abid/portfolio'],
+  date: () => [new Date().toDateString() + ' — still shipping'],
+  uname: () => ['MacOS (mind) + Linux (servers) + Cloud (soul)'],
+  'cat readme.md': () => [
+    '# Abid Khan',
+    '',
+    'Building civic tech, healthcare AI, and EdTech.',
+    'Running 11 projects while studying CS.',
+    'Using Claude Code as force multiplier.',
+    '',
+    'Contact: see portfolio → /about',
+  ],
+  help: () => [
+    'Available commands:',
+    '',
+    '  whoami              who is Abid?',
+    '  cat roles.txt       current roles & positions',
+    '  cat skills.txt      technical skill stack',
+    '  cat projects.txt    all 11 active projects',
+    '  cat readme.md       the short bio',
+    '  git log --oneline -5  recent achievements',
+    '  git status          current state',
+    '  ls / ls -la         list portfolio items',
+    '  pwd                 current directory',
+    '  date                current date',
+    '  uname               system info',
+    '  clear               clear screen',
+    '  history             command history',
+    '',
+    'Tip: press ↑↓ to navigate command history',
+  ],
+  history: () => history.length ? history.map((h,i) => `  ${i+1}  ${h}`) : ['No history yet.'],
+  clear: () => null,
+};
+
+function addLine(text, cls='output') {
+  if (text === '') { const br = document.createElement('br'); body.appendChild(br); return; }
+  const d = document.createElement('div');
+  d.className = 'term-line ' + cls;
+  d.textContent = text;
+  body.appendChild(d);
+}
+
+function run(cmd) {
+  const trimmed = cmd.trim();
+  if (!trimmed) return;
+  history.unshift(trimmed);
+  hIdx = -1;
+
+  // show the prompt + command
+  addLine('abid@portfolio:~$ ' + trimmed, 'cmd');
+
+  if (trimmed === 'clear') { termClear(); return; }
+
+  const fn = COMMANDS[trimmed] || COMMANDS[trimmed.toLowerCase()];
+  if (fn) {
+    const lines = fn();
+    if (lines) lines.forEach(l => addLine(l || '', 'output'));
+  } else {
+    addLine('bash: ' + trimmed + ': command not found', 'error');
+    addLine('Type \'help\' to see available commands.', 'dim');
+  }
+  addLine('');
+  body.scrollTop = body.scrollHeight;
+}
+
+window.termClear = function() {
+  body.innerHTML = '';
+  addLine('Terminal cleared. Type \'help\' for commands.', 'dim');
+  addLine('');
+};
+
+// Boot sequence
+const boot = [
+  {t:'info', l:'Last login: ' + new Date().toDateString()},
+  {t:'dim',  l:'──────────────────────────────────────────'},
+  {t:'success', l:'Welcome to Abid\'s portfolio terminal.'},
+  {t:'dim',  l:'Type \'help\' to see available commands.'},
+  {t:'', l:''},
+];
+let i = 0;
+function nextBoot() {
+  if (i >= boot.length) {
+    // then auto-run the intro
+    setTimeout(() => { run('whoami'); }, 200);
+    setTimeout(() => { run('cat roles.txt'); }, 600);
+    setTimeout(() => { run('git log --oneline -5'); }, 1100);
+    return;
+  }
+  addLine(boot[i].l, boot[i].t);
+  body.scrollTop = body.scrollHeight;
+  i++;
+  setTimeout(nextBoot, 80);
+}
+setTimeout(nextBoot, 300);
+
+// Input handling
+input.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') {
+    run(this.value);
+    this.value = '';
+  } else if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    if (hIdx < history.length - 1) { hIdx++; this.value = history[hIdx]; }
+  } else if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    if (hIdx > 0) { hIdx--; this.value = history[hIdx]; }
+    else { hIdx = -1; this.value = ''; }
+  } else if (e.key === 'Tab') {
+    e.preventDefault();
+    // Tab complete
+    const partial = this.value.trim();
+    const matches = Object.keys(COMMANDS).filter(k => k.startsWith(partial));
+    if (matches.length === 1) this.value = matches[0];
+    else if (matches.length > 1) { addLine(matches.join('  '), 'dim'); body.scrollTop = body.scrollHeight; }
+  } else if (e.key === 'l' && e.ctrlKey) {
+    e.preventDefault(); termClear();
+  }
+});
+
+// Click anywhere on terminal body → focus input
+body.addEventListener('click', () => input.focus());
+
+// Escape = exit fullscreen
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.getElementById('portfolio-terminal').classList.remove('fullscreen');
+  }
+});
+})();
+                    </script>
 
                     <div class="card fade-in">
                         <h3 class="card-title">My Journey</h3>
@@ -1609,6 +1827,76 @@
                             block: 'start'
                         });
                     }
+                });
+            });
+
+            // ── Stat counter animation ──────────────────────────────────────
+            function animateCounter(el) {
+                const raw = el.textContent.trim();
+                const suffix = raw.replace(/[\d.]/g, '');
+                const num = parseFloat(raw);
+                if (isNaN(num)) return;
+                const duration = 1600;
+                const start = performance.now();
+                function step(now) {
+                    const p = Math.min((now - start) / duration, 1);
+                    const ease = 1 - Math.pow(1 - p, 3);
+                    el.textContent = (num < 10 ? (num * ease).toFixed(1) : Math.round(num * ease)) + suffix;
+                    if (p < 1) requestAnimationFrame(step);
+                    else el.textContent = raw;
+                }
+                requestAnimationFrame(step);
+            }
+            const statObserver = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        animateCounter(e.target);
+                        statObserver.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            document.querySelectorAll('.stat-number').forEach(el => statObserver.observe(el));
+
+            // ── Project card expand on click ────────────────────────────────
+            document.querySelectorAll('.project-card').forEach(card => {
+                const desc = card.querySelector('.card-description');
+                const tags = card.querySelector('.card-tags');
+                if (!desc) return;
+                card.style.cursor = 'pointer';
+                card.setAttribute('title', 'Click to expand');
+                card.addEventListener('click', function(e) {
+                    if (e.target.closest('a')) return; // don't capture link clicks
+                    const isOpen = card.classList.contains('expanded');
+                    document.querySelectorAll('.project-card.expanded').forEach(c => {
+                        c.classList.remove('expanded');
+                        const d = c.querySelector('.card-description');
+                        const t = c.querySelector('.card-tags');
+                        if (d) d.style.webkitLineClamp = '3';
+                        if (t) t.style.display = '';
+                    });
+                    if (!isOpen) {
+                        card.classList.add('expanded');
+                        if (desc) desc.style.webkitLineClamp = 'unset';
+                        if (tags) tags.style.display = 'flex';
+                        card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }
+                });
+            });
+
+            // ── Skill item: copy-to-clipboard tooltip ───────────────────────
+            document.querySelectorAll('.skill-item').forEach(el => {
+                el.title = 'Click to copy';
+                el.addEventListener('click', function() {
+                    navigator.clipboard?.writeText(this.textContent.trim()).catch(()=>{});
+                    const orig = this.textContent;
+                    this.textContent = '✓ copied';
+                    this.style.background = 'rgba(32,194,14,0.15)';
+                    this.style.borderColor = 'var(--retro-green)';
+                    setTimeout(() => {
+                        this.textContent = orig;
+                        this.style.background = '';
+                        this.style.borderColor = '';
+                    }, 1200);
                 });
             });
 
