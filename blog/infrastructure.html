@@ -1,106 +1,336 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infrastructure: 29 Services, Yotta Migration — Abid Khan</title>
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-        :root { --primary-color: #1a1a1a; --secondary-color: #ef4444; --accent-color: #f87171; --text-color: #e0e0e0; --bg-color: #0a0a0f; --card-bg: #18181b; }
-        body { background-color: var(--bg-color); color: var(--text-color); }
-        .hero { background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0f 100%); }
-        .feature { background-color: var(--card-bg); color: var(--text-color); border: 1px solid #27272a; }
-        .post-content p { color: #b0b0b0; }
-        h1, h2, h3 { color: white !important; }
-        .tech-tag { background: rgba(239, 68, 68, 0.2); color: #f87171; padding: 4px 12px; border-radius: 20px; font-size: 0.9rem; display: inline-block; margin-right: 8px; margin-bottom: 8px; }
-        .arch-block { background: var(--card-bg); border: 1px solid #27272a; border-radius: 8px; padding: 20px; margin: 16px 0; font-family: monospace; font-size: 0.85rem; line-height: 1.8; color: #a1a1aa; white-space: pre-wrap; }
-        .db-table { width: 100%; border-collapse: collapse; margin: 16px 0; }
-        .db-table th { text-align: left; padding: 10px; border-bottom: 2px solid #27272a; color: #a1a1aa; font-size: 0.8rem; text-transform: uppercase; }
-        .db-table td { padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.9rem; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infrastructure: The Supabase India Block, Yotta Migration, and 29 Services Across 11 Projects</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/post.css">
 </head>
 <body>
-    <header><nav><div class="nav-container"><h1><a href="/" style="color: white;">Abid.</a></h1><ul><li><a href="/">Home</a></li><li><a href="index.html">Blogs</a></li></ul></div></nav></header>
-    <main>
-        <section class="hero">
-            <div class="container hero-content">
-                <span class="tech-tag">29 Services</span>
-                <span class="tech-tag">11 Projects</span>
-                <span class="tech-tag">63% Cost Reduction</span>
-                <h1>Infrastructure: The Supabase India Block, Yotta Migration, and 29 Services</h1>
-                <p>When your primary database provider gets blocked in your country, you learn how important infrastructure abstraction is. This is the story of evaluating a full migration to Indian sovereign cloud.</p>
-            </div>
-        </section>
-        <article class="container post-content">
-            <div class="post-meta"><span>Infrastructure</span><span>DevOps</span><span>Cloud</span><span>Migration</span></div>
 
-            <section>
-                <h2>The Supabase India Block</h2>
-                <p>Supabase was blocked in India. The impact was immediate across multiple production projects:</p>
-                <p><strong>Knight Medicare</strong> — CBT therapy platform, production data layer. <strong>Open Permit</strong> — civic intelligence platform, core database. <strong>Adventurers Guild</strong> — developer marketplace, user data and quest storage. <strong>AfA Resource Chatbot</strong> — RAG system, vector storage (pgvector). <strong>Project Slingshot UK</strong> — data pipeline, 12+ API sources.</p>
-                <p>When your primary database provider gets blocked in your country, you learn very quickly how important infrastructure abstraction is.</p>
-            </section>
+<header>
+  <nav>
+    <div class="nav-container">
+      <h1><a href="/">Abid Khan</a></h1>
+      <a href="index.html" class="nav-back">← All Posts</a>
+    </div>
+  </nav>
+</header>
 
-            <section>
-                <h2>The Three Options</h2>
-                <div class="feature-grid">
-                    <div class="feature"><h3>Option A: Wait It Out</h3><p>Hope the block reverses. Verdict: unacceptable for production platforms. No control over timeline.</p></div>
-                    <div class="feature"><h3>Option B: Yotta Self-Hosted ✓</h3><p>Migrate to Yotta Data Centre (Panvel). Self-hosted Supabase on 4 vCPU/16GB KVM VM. 63%+ cost reduction. Full data sovereignty.</p></div>
-                    <div class="feature"><h3>Option C: Alternative BaaS</h3><p>Firebase (no PostgreSQL), PlanetScale (no pgvector), Neon (works for new projects but complex migration for existing ones).</p></div>
-                </div>
-            </section>
+<main>
+  <section class="post-hero">
+    <div class="post-hero-inner">
+      <span class="post-eyebrow">DevOps · Infrastructure · Case Study</span>
+      <h1>Infrastructure: The Supabase India Block, Yotta Migration, and 29 Services Across 11 Projects</h1>
+      <p class="post-hero-lead">When Supabase got blocked in India, 5 production platforms were affected. The response: evaluate migrating 29 services to Indian sovereign cloud with 63%+ cost reduction. This is how infrastructure decisions work at scale.</p>
+      <div class="post-meta-row">
+        <span class="badge red">Supabase India Block</span>
+        <span class="badge green">Yotta Selected</span>
+        <span class="badge amber">63%+ Cost Reduction</span>
+        <span class="badge blue">29 Services · 11 Projects</span>
+      </div>
+    </div>
+  </section>
 
-            <section>
-                <h2>Migration Scope: 29 Services</h2>
-                <div class="arch-block">Migration Inventory:
-├── Knight Medicare: Auth, Database, Realtime, Storage
-├── Open Permit: Auth, Database, Edge Functions
-├── Project Slingshot: Database, Scheduled Functions
-├── AfA Chatbot: pgvector, Database
-└── [7 more projects]: Various Supabase services
-Total: 29 services across 11 projects</div>
-            </section>
+  <div class="post-hero-inner">
+    <div class="stat-strip">
+      <div class="stat-strip-item"><strong>29</strong><span>Services to migrate</span></div>
+      <div class="stat-strip-item"><strong>11</strong><span>Affected projects</span></div>
+      <div class="stat-strip-item"><strong>63%+</strong><span>Cost reduction</span></div>
+      <div class="stat-strip-item"><strong>4 vCPU</strong><span>Yotta VM spec</span></div>
+      <div class="stat-strip-item"><strong>16GB</strong><span>RAM</span></div>
+    </div>
+  </div>
 
-            <section>
-                <h2>Abstraction Layer Strategy</h2>
-                <p>The key decision: <strong>don't just migrate, abstract.</strong> Claude Code helped design database abstraction layers so swapping from Supabase Cloud to self-hosted PostgreSQL requires changing adapter code, not business logic. The pattern: define generic interface → implement Supabase adapter (current) → implement self-hosted adapter (target) → swap via environment variable → run both in parallel during validation.</p>
-                <p>This means the next infrastructure disruption doesn't require rewriting business logic across 11 projects.</p>
-            </section>
+  <div class="post-layout">
+    <aside class="post-toc">
+      <div class="toc-title">Contents</div>
+      <ul class="toc-list">
+        <li><a href="#supabase-block">The Block</a></li>
+        <li><a href="#evaluation">Three Options</a></li>
+        <li><a href="#migration-plan">Migration Plan</a></li>
+        <li><a href="#abstraction-strategy">Abstraction Strategy</a></li>
+        <li><a href="#cross-project-decisions">Cross-Project Decisions</a></li>
+        <li><a href="#claude-code">Claude Code's Role</a></li>
+        <li><a href="#lessons">Key Lessons</a></li>
+      </ul>
+    </aside>
 
-            <section>
-                <h2>Database Strategy by Project</h2>
-                <table class="db-table">
-                    <thead><tr><th>Project</th><th>Current</th><th>Target</th><th>Why</th></tr></thead>
-                    <tbody>
-                        <tr><td>Knight Medicare</td><td>Supabase Cloud</td><td>Yotta Self-Hosted</td><td>Data sovereignty, healthcare compliance</td></tr>
-                        <tr><td>Open Permit</td><td>Supabase Cloud</td><td>Yotta Self-Hosted</td><td>Core platform, needs reliability</td></tr>
-                        <tr><td>Adventurers Guild</td><td>Neon Postgres</td><td>Keep Neon</td><td>Already on Neon, no India block</td></tr>
-                        <tr><td>AfA Chatbot</td><td>Supabase pgvector</td><td>Yotta Self-Hosted</td><td>Vector search needs to be local</td></tr>
-                        <tr><td>Project Slingshot</td><td>Supabase Cloud</td><td>Yotta Self-Hosted</td><td>Data pipeline reliability</td></tr>
-                    </tbody>
-                </table>
-            </section>
+    <article class="post-article">
 
-            <section>
-                <h2>Yotta Data Center Visit (March 11)</h2>
-                <p>Visited the Yotta Data Center in Panvel. Evaluated physical security, network connectivity/latency, VM provisioning tools, support SLAs, and partnership possibilities. Confirmed as the right choice for Indian sovereign hosting — single-digit millisecond latency to Mumbai, reasonable nationwide.</p>
-            </section>
+      <section id="supabase-block">
+        <span class="section-label">Incident</span>
+        <h2>The Supabase India Block</h2>
+        <p>Supabase was blocked in India. The impact was immediate — not a degraded experience, a hard block. Production platforms stopped working for Indian users simultaneously.</p>
+        <div class="card-grid">
+          <div class="info-card">
+            <span class="card-icon">🏥</span>
+            <h4>Knight Medicare</h4>
+            <p>CBT therapy platform. Production data layer — auth, session storage, clinical logs. Users in active therapy sessions lost access.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">⚖</span>
+            <h4>Open Permit</h4>
+            <p>Civic intelligence platform. Core database for permit storage and legal frameworks. The 21-day objection windows don't pause for infrastructure outages.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">⚔</span>
+            <h4>Adventurers Guild</h4>
+            <p>Already migrated to Neon Postgres before this incident — a decision that proved correct. Zero impact on the Guild.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🤖</span>
+            <h4>AfA Chatbot + Slingshot</h4>
+            <p>RAG vector storage (pgvector) and data pipeline storage both on Supabase. Both offline. Research and advocacy work blocked.</p>
+          </div>
+        </div>
+      </section>
 
-            <section>
-                <h2>SMS Provider: Dual Approach</h2>
-                <p>Knight Medicare and other projects need SMS for auth/notifications. Solution: <strong>MSG91</strong> for India (best domestic rates, DLT compliance built-in) + <strong>Plivo</strong> for international. Dual routing based on user geography. Evaluated through Claude Code comparing pricing, API capabilities, delivery rates, and DLT requirements.</p>
-            </section>
+      <section id="evaluation">
+        <span class="section-label">Analysis</span>
+        <h2>The Evaluation: Three Options</h2>
+        <div class="decision-grid">
+          <div class="decision-box rejected">
+            <div class="decision-label">Rejected</div>
+            <h4>Option A: Wait It Out</h4>
+            <p>Hope the block reverses. No timeline control — could be days or permanent. Unacceptable for production platforms serving real users. Ruled out immediately.</p>
+          </div>
+          <div class="decision-box selected">
+            <div class="decision-label">Selected</div>
+            <h4>Option B: Yotta Self-Hosted</h4>
+            <p>Indian sovereign cloud (Panvel data center). Self-hosted Supabase on 4 vCPU / 16GB KVM VM. 63%+ cost reduction vs. Supabase Cloud. Full data sovereignty and no vendor dependency.</p>
+          </div>
+          <div class="decision-box neutral">
+            <div class="decision-label">Partial Use</div>
+            <h4>Option C: Alternative BaaS</h4>
+            <p>Firebase lacks Postgres. PlanetScale lacks pgvector. Neon works for new projects but migration complexity is high for existing projects with pgvector. Use for new projects only.</p>
+          </div>
+        </div>
+      </section>
 
-            <section>
-                <h2>Key Lessons</h2>
-                <p><strong>Never lock into a single provider.</strong> Abstraction layers aren't overengineering — they're insurance. <strong>Self-hosting is cheaper at scale</strong> — for 11 projects with 29 services, a single VM saves 63%+ vs. managed services. <strong>Indian sovereign cloud matters</strong> — latency advantage, reliability, and compliance. <strong>Infrastructure planning is product planning</strong> — reliable infra means therapy sessions don't drop, objection letters generate on time, quest assignments don't fail.</p>
-            </section>
+      <section id="migration-plan">
+        <span class="section-label">Scope</span>
+        <h2>The Migration Plan</h2>
+        <div class="code-block">
+          <div class="code-block-header"><span>Migration Inventory — 29 Services</span></div>
+          <pre>
+Migration Inventory
+├── Knight Medicare (4 services)
+│   ├── Auth (GoTrue)
+│   ├── Database (PostgreSQL)
+│   ├── Realtime (WebSocket subscriptions)
+│   └── Storage (session attachments)
+├── Open Permit (3 services)
+│   ├── Auth (GoTrue)
+│   ├── Database (PostgreSQL + legal frameworks)
+│   └── Edge Functions (permit processing)
+├── AfA Resource Chatbot (2 services)
+│   ├── Database (PostgreSQL)
+│   └── pgvector (embeddings store)
+├── Project Slingshot UK (2 services)
+│   ├── Database (pipeline storage)
+│   └── Scheduled Functions (ingestion cron)
+└── [7 additional projects] (18 services)
+    └── Various auth, database, storage combinations
+Total: 29 services across 11 projects</pre>
+        </div>
+      </section>
 
-            <div class="buttons">
-                <a href="index.html" class="read-more">← Back to All Posts</a>
-            </div>
-        </article>
-    </main>
-    <footer><div class="container"><p>&copy; 2026 Abid Khan.</p></div></footer>
+      <section id="abstraction-strategy">
+        <span class="section-label">Architecture</span>
+        <h2>Abstraction Layer Strategy</h2>
+        <p>The critical decision wasn't which provider to migrate to — it was how to migrate without rewriting business logic across 11 projects. The answer: abstract before migrating.</p>
+        <div class="code-block">
+          <div class="code-block-header"><span>Before: Supabase-Specific</span></div>
+          <pre>
+// Before: Supabase-specific everywhere
+import { createClient } from '@supabase/supabase-js'
+const supabase = createClient(url, key)
+const { data } = await supabase.from('sessions').select('*')</pre>
+        </div>
+        <div class="code-block">
+          <div class="code-block-header"><span>After: Provider-Agnostic Interface</span></div>
+          <pre>
+// After: abstracted interface
+import { getDB } from '@/lib/db'
+const db = getDB() // resolves to Supabase or Yotta adapter
+const sessions = await db.sessions.findMany()
+
+// Adapter swap = environment variable change
+// Business logic = untouched</pre>
+        </div>
+        <div class="callout green">
+          <p>"Don't just migrate — abstract. The next infrastructure disruption shouldn't require rewriting business logic across 11 projects. Build the abstraction layer once, migrate cleanly, and future provider changes cost hours not weeks."</p>
+        </div>
+
+        <h3>Yotta Data Center Visit (March 11, 2025)</h3>
+        <div class="card-grid">
+          <div class="info-card">
+            <span class="card-icon">🔒</span>
+            <h4>Physical Security</h4>
+            <p>Tier III+ facility in Panvel. Biometric access, 24/7 monitoring, redundant power. Adequate for healthcare and civic data compliance requirements.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">📶</span>
+            <h4>Network Latency</h4>
+            <p>Single-digit millisecond latency to Mumbai. Reasonable nationwide. Faster than Supabase Cloud for Indian users even before the block.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🖥</span>
+            <h4>VM Provisioning</h4>
+            <p>KVM-based VMs. 4 vCPU / 16GB RAM target configuration. Confirmed self-hosted Supabase stack runs correctly on this spec with headroom.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">📞</span>
+            <h4>Support SLAs</h4>
+            <p>4-hour response SLA for critical issues. Direct escalation path. Better than Supabase Cloud support response times for non-enterprise plans.</p>
+          </div>
+          <div class="info-card highlight-card">
+            <span class="card-icon">🤝</span>
+            <h4>Partnership Possibilities</h4>
+            <p>Yotta expressed interest in partnering on the Open Paws India entity for data sovereignty positioning. Potential for preferential rates in exchange for case study.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="cross-project-decisions">
+        <span class="section-label">Decisions</span>
+        <h2>Cross-Project Decisions</h2>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Project</th>
+              <th>Current</th>
+              <th>Target</th>
+              <th>Why</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-em">Knight Medicare</td>
+              <td>Supabase Cloud</td>
+              <td class="td-green">Yotta Self-Hosted</td>
+              <td>Healthcare data sovereignty + compliance requirements</td>
+            </tr>
+            <tr>
+              <td class="td-em">Open Permit</td>
+              <td>Supabase Cloud</td>
+              <td class="td-green">Yotta Self-Hosted</td>
+              <td>Core platform reliability, civic data shouldn't leave India</td>
+            </tr>
+            <tr>
+              <td class="td-em">Adventurers Guild</td>
+              <td class="td-green">Neon Postgres</td>
+              <td class="td-green">Keep Neon</td>
+              <td>Already migrated pre-block, no disruption, serverless scales well</td>
+            </tr>
+            <tr>
+              <td class="td-em">AfA Chatbot</td>
+              <td>Supabase pgvector</td>
+              <td class="td-amber">Yotta Self-Hosted</td>
+              <td>pgvector support on self-hosted, vector search stays local</td>
+            </tr>
+            <tr>
+              <td class="td-em">Project Slingshot</td>
+              <td>Supabase Cloud</td>
+              <td class="td-amber">Yotta Self-Hosted</td>
+              <td>Data pipeline reliability, UK discourse data with Indian processing</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>SMS Provider: MSG91 + Plivo</h3>
+        <div class="card-grid">
+          <div class="info-card">
+            <span class="card-icon">🇮🇳</span>
+            <h4>MSG91 — India Domestic</h4>
+            <p>Best domestic delivery rates. DLT compliance built-in for transactional SMS. Required for Knight Medicare OTP and Adventurers Guild notifications within India.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🌍</span>
+            <h4>Plivo — International</h4>
+            <p>International coverage for non-India users. Open Permit's 8+ countries require a global SMS provider. Dual routing based on user geography via environment detection.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="claude-code">
+        <span class="section-label">Workflow</span>
+        <h2>Claude Code's Role</h2>
+        <div class="card-grid">
+          <div class="info-card highlight-card">
+            <span class="card-icon">📋</span>
+            <h4>Service Inventory</h4>
+            <p>Cataloging all 29 services across 11 projects — what each uses, dependencies, migration complexity scores, and priority order. The inventory itself was the foundation for all planning.</p>
+          </div>
+          <div class="info-card highlight-card">
+            <span class="card-icon">🐳</span>
+            <h4>Docker Compose Design</h4>
+            <p>Self-hosted Supabase stack configuration for Yotta: GoTrue, PostgREST, Realtime, Kong API gateway. Health checks, restart policies, volume mounts for persistent storage.</p>
+          </div>
+          <div class="info-card highlight-card">
+            <span class="card-icon">🔄</span>
+            <h4>Migration Scripts</h4>
+            <p>Database dump/restore procedures, pgvector extension setup, GoTrue user data migration, environment variable mapping between Supabase Cloud and self-hosted equivalents.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="lessons">
+        <span class="section-label">Takeaway</span>
+        <h2>Key Lessons</h2>
+        <div class="callout amber">
+          <p><strong>Never lock into a single provider.</strong> Abstraction layers aren't overengineering — they're insurance against incidents you can't predict. The Supabase India block wasn't a failure of judgment. Not having abstractions in place would have been.</p>
+        </div>
+        <div class="callout green">
+          <p><strong>Self-hosting is cheaper at scale.</strong> For 11 projects with 29 services, a single Yotta VM saves 63%+ vs. managed services. At early-stage scale, the operational overhead is manageable. The savings fund other infrastructure.</p>
+        </div>
+        <div class="callout">
+          <p><strong>Indian sovereign cloud matters.</strong> Latency advantage, regulatory compliance, and data sovereignty for healthcare and civic data. Users notice when their therapy platform is served from a data center in their country.</p>
+        </div>
+        <div class="callout purple">
+          <p><strong>Infrastructure is product.</strong> Reliable infra means therapy sessions don't drop, objection letters generate on time, quest assignments don't fail. Every infrastructure decision has a user-facing consequence somewhere downstream.</p>
+        </div>
+      </section>
+
+    </article>
+  </div>
+
+  <nav class="post-footer-nav">
+    <a href="open-paws-india.html" class="btn-ghost">← Open Paws India</a>
+    <a href="claude-code.html" class="btn-ghost">Next: Claude Code Workflow →</a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-left">
+      <strong>Abid Khan</strong>
+      <span class="footer-muted">Builder, Operator, Shipper</span>
+    </div>
+    <div class="footer-links">
+      <a href="/">Portfolio</a>
+      <a href="index.html">Blog</a>
+      <a href="https://github.com/LarytheLord" target="_blank">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const headings = document.querySelectorAll('.post-article h2, .post-article h3');
+const tocLinks = document.querySelectorAll('.toc-list a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      tocLinks.forEach(l => l.classList.remove('active'));
+      const link = document.querySelector(`.toc-list a[href="#${e.target.id}"]`);
+      if (link) link.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+headings.forEach(h => { if(h.id) observer.observe(h); });
+</script>
+
 </body>
 </html>

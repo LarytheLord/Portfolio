@@ -1,140 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Knight Medicare - AI-Powered Therapy Platform</title>
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-        :root {
-            --primary-color: #4a90e2;
-            --secondary-color: #7ed321;
-            --accent-color: #4a90e2;
-            --light-color: #f0f8ff;
-            --dark-color: #2c3e50;
-            --text-color: #333333;
-            --bg-color: #ffffff;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-        }
-
-        .hero {
-            background: linear-gradient(135deg, #4a90e2 0%, #50e3c2 100%);
-        }
-
-        .tech-tag {
-            background: rgba(74, 144, 226, 0.1);
-            color: #4a90e2;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            display: inline-block;
-            margin-right: 8px;
-            margin-bottom: 8px;
-            border: 1px solid #4a90e2;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Knight Medicare — Building an AI Therapy Platform as a 19-Year-Old CTO</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/post.css">
 </head>
-
 <body>
-    <header>
-        <nav>
-            <div class="nav-container">
-                <h1><a href="/" style="color: white;">Abid.</a></h1>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="index.html">Blogs</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
 
-    <main>
-        <section class="hero">
-            <div class="container hero-content">
-                <span class="tech-tag"
-                    style="background: rgba(255,255,255,0.2); color: white; border: 1px solid white;">CTO & Co-founder</span>
-                <h1>Knight Medicare: AI-Powered CBT Therapy Platform</h1>
-                <p>Building accessible mental health infrastructure with a Harvard PhD psychologist. 27 disorders, 10 therapy modalities, Next.js 15, React 19, Supabase. Serving as CTO.</p>
-            </div>
-        </section>
+<header>
+  <nav>
+    <div class="nav-container">
+      <h1><a href="/">Abid Khan</a></h1>
+      <a href="index.html" class="nav-back">← All Posts</a>
+    </div>
+  </nav>
+</header>
 
-        <article class="container post-content">
-            <div class="post-meta">
-                <span>HealthTech</span>
-                <span>AI/ML</span>
-                <span>Startup</span>
-            </div>
+<main>
+  <section class="post-hero">
+    <div class="post-hero-inner">
+      <span class="post-eyebrow">HealthTech · AI · Case Study</span>
+      <h1>Knight Medicare: Building an AI Therapy Platform as a 19-Year-Old CTO</h1>
+      <p class="post-hero-lead">AI-powered CBT therapy co-founded with a Harvard PhD psychologist. 27 psychiatric disorders, 10 therapy modalities. Full-stack CTO at 19.</p>
+      <div class="post-meta-row">
+        <span class="badge green">Live Product</span>
+        <span class="badge amber">27 Disorders · 10 Modalities</span>
+        <span class="badge blue">Harvard PhD Co-founder</span>
+        <span class="badge purple">CTO at 19</span>
+      </div>
+    </div>
+  </section>
 
-            <section id="gap">
-                <h2>The Healthcare Gap</h2>
-                <p>We are facing a mental health accessibility crisis. Traditional therapy is expensive, time-intensive,
-                    and has limited reach. Our vision was to create an AI-assisted therapy platform to bridge this gap.
-                </p>
-            </section>
+  <div class="post-hero-inner">
+    <div class="stat-strip">
+      <div class="stat-strip-item"><strong>27</strong><span>Psychiatric disorders</span></div>
+      <div class="stat-strip-item"><strong>10</strong><span>Therapy modalities</span></div>
+      <div class="stat-strip-item"><strong>19</strong><span>Age of CTO</span></div>
+      <div class="stat-strip-item"><strong>24/7</strong><span>AI availability</span></div>
+    </div>
+  </div>
 
-            <section id="experts">
-                <h2>Building with Experts</h2>
-                <p>We collaborated with a Harvard PhD psychologist to ensure clinical rigor. As CTO, my role was
-                    translating this clinical expertise into a technical product, balancing the need for strict
-                    adherence to therapy protocols with a seamless user experience.</p>
-            </section>
+  <div class="post-layout">
+    <aside class="post-toc">
+      <div class="toc-title">Contents</div>
+      <ul class="toc-list">
+        <li><a href="#why-it-exists">Why It Exists</a></li>
+        <li><a href="#partnership">The Partnership</a></li>
+        <li><a href="#architecture">Architecture</a></li>
+        <li><a href="#safety">Safety Architecture</a></li>
+        <li><a href="#claude-code">Claude Code's Role</a></li>
+        <li><a href="#cto-experience">CTO at 19</a></li>
+        <li><a href="#whats-next">What's Next</a></li>
+        <li><a href="#lesson">Key Lesson</a></li>
+      </ul>
+    </aside>
 
-            <section id="technical">
-                <h2>Technical Foundation</h2>
-                <div class="feature-grid">
-                    <div class="feature">
-                        <h3>Architecture</h3>
-                        <p>Next.js 15 + React 19 with TypeScript. Server components for fast loads, streaming for therapeutic conversation interfaces. Supabase for auth, real-time, and PostgreSQL.</p>
-                    </div>
-                    <div class="feature">
-                        <h3>Coverage</h3>
-                        <p>27 psychiatric disorders — from depression and anxiety to PTSD, OCD, eating disorders, and substance use. 10 therapy modalities including CBT core, behavioral activation, exposure therapy, and mindfulness.</p>
-                    </div>
-                    <div class="feature">
-                        <h3>Safety</h3>
-                        <p>Crisis detection and escalation pathways. Session logging for clinical review. Explicit disclaimers and therapist referral triggers. Abstraction layers built after the Supabase India block.</p>
-                    </div>
-                </div>
-            </section>
+    <article class="post-article">
 
-            <section id="claude-code">
-                <h2>How Claude Code Runs the Technical Side</h2>
-                <p>The full Next.js 15 / React 19 codebase was built through Claude Code sessions. The therapeutic conversation engine, Supabase schema design, auth flows, and abstraction layers — all developed collaboratively. When the Supabase India block hit, Claude Code designed abstraction layers so swapping providers requires changing adapter code, not business logic. The 27×10 disorder-modality data model, therapy session state machines, progress tracking structures — all designed through Claude Code.</p>
-            </section>
-
-            <section id="vision">
-                <h2>The Product Vision</h2>
-                <p>The platform features therapist-client matching algorithms, automated administrative tasks
-                    (scheduling, notes, insurance), and AI-powered therapy insights like sentiment analysis and progress
-                    tracking.</p>
-            </section>
-
-            <section id="lessons">
-                <h2>Lessons in Health Tech</h2>
-                <ul>
-                    <li>Navigating regulatory complexity.</li>
-                    <li>Building trust in sensitive domains.</li>
-                    <li>Balancing innovation with clinical validation.</li>
-                    <li>The critical importance of domain expert partnerships.</li>
-                </ul>
-            </section>
-
-            <div class="buttons">
-                <a href="#" class="read-more">Visit Website</a>
-            </div>
-        </article>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Abid Khan. All rights reserved.</p>
+      <section id="why-it-exists">
+        <span class="section-label">Context</span>
+        <h2>Why This Exists</h2>
+        <p>Global mental healthcare has a fundamental access problem. Therapists are expensive, scarce, and concentrated in urban areas. Waitlists are months long. In most of the world, structured therapy is simply not available to most people who need it.</p>
+        <p>CBT (Cognitive Behavioral Therapy) is different from other therapy modalities in one critical way: it is structured, protocol-driven, and evidence-backed. That structure makes it uniquely suited for AI augmentation — the exercises, worksheets, and frameworks can be digitized and delivered consistently.</p>
+        <div class="callout">
+          <p>"You don't replace therapists — you extend their reach. AI handles structured CBT exercises; human therapists focus on complex cases, crisis intervention, and relationship-based work that genuinely requires a human."</p>
         </div>
-    </footer>
-</body>
+      </section>
 
+      <section id="partnership">
+        <span class="section-label">Team</span>
+        <h2>The Partnership</h2>
+        <p>Knight Medicare is built on a clean division of expertise between two co-founders. Neither side steps into the other's domain.</p>
+        <div class="card-grid">
+          <div class="info-card">
+            <span class="card-icon">🧠</span>
+            <h4>Clinical Side — Harvard PhD</h4>
+            <p>Clinical protocol design. Disorder mapping across 27 conditions. Modality selection and validation. Safety thresholds and crisis detection criteria. Final say on all clinical content.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">💻</span>
+            <h4>Technical Side — Abid (CTO)</h4>
+            <p>Full-stack architecture. AI integration and CBT engine. Supabase data layer, authentication, session management. Safety system implementation. Infrastructure and deployment.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="architecture">
+        <span class="section-label">Technical</span>
+        <h2>Technical Architecture</h2>
+        <div class="card-grid">
+          <div class="info-card">
+            <span class="card-icon">⚛</span>
+            <h4>Next.js 15 + React 19</h4>
+            <p>App Router for streaming therapy sessions. Server components for session history. React 19 concurrent features for real-time interaction without layout jank.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🔷</span>
+            <h4>TypeScript Throughout</h4>
+            <p>Strict mode. Clinical data structures typed at the boundary layer. The CBT engine's disorder-modality combinations are compile-time safe.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🗄</span>
+            <h4>Supabase Data Layer</h4>
+            <p>Session logging, user profiles, progress tracking, clinical notes. Row Level Security enforces that users can only access their own session data.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🧩</span>
+            <h4>Abstraction Layers</h4>
+            <p>AI provider is abstracted behind an interface. Following the Supabase India block, the data layer was also abstracted — one migration, not a rewrite.</p>
+          </div>
+        </div>
+        <div class="metric-grid">
+          <div class="metric-card">
+            <div class="metric-val">27</div>
+            <div class="metric-label">Psychiatric disorders</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val blue">10</div>
+            <div class="metric-label">Therapy modalities</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val green">270</div>
+            <div class="metric-label">Disorder-modality combinations</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val purple">1</div>
+            <div class="metric-label">Harvard PhD psychologist</div>
+          </div>
+        </div>
+        <div class="tech-grid">
+          <span class="tech-pill">Next.js 15</span>
+          <span class="tech-pill">React 19</span>
+          <span class="tech-pill">TypeScript</span>
+          <span class="tech-pill">Supabase</span>
+          <span class="tech-pill purple">CBT Engine</span>
+          <span class="tech-pill amber">AI/ML</span>
+        </div>
+      </section>
+
+      <section id="safety">
+        <span class="section-label">Critical</span>
+        <h2>Safety Architecture</h2>
+        <p>Healthcare AI has unique safety requirements that go beyond standard software engineering. Every session has safety layers operating in parallel with the therapeutic content.</p>
+        <div class="card-grid">
+          <div class="info-card">
+            <span class="card-icon">🚨</span>
+            <h4>Crisis Detection</h4>
+            <p>Real-time monitoring of session content for crisis indicators. Triggers immediate escalation pathway with emergency resources and human therapist contact.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🔲</span>
+            <h4>Clear Boundaries</h4>
+            <p>The AI is explicitly scoped to CBT exercises. It does not diagnose, prescribe, or handle crises. Scope violations are hard constraints, not soft suggestions.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">📋</span>
+            <h4>Session Logging</h4>
+            <p>Full audit trail of every session, mood tracking, and progress metrics. Clinical co-founder reviews flagged sessions. Data encrypted at rest and in transit.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🔗</span>
+            <h4>Referral Triggers</h4>
+            <p>Automatic suggestions to seek professional help when session patterns indicate severity beyond CBT scope. Human-in-the-loop, not AI-as-final-word.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="claude-code">
+        <span class="section-label">Workflow</span>
+        <h2>Claude Code's Role</h2>
+        <div class="card-grid">
+          <div class="info-card highlight-card">
+            <span class="card-icon">🏗</span>
+            <h4>Codebase Architecture</h4>
+            <p>The full Next.js + Supabase stack was architected through Claude Code sessions — data models, API routes, component structure, auth flows. Iterated rapidly without sacrificing structure.</p>
+          </div>
+          <div class="info-card highlight-card">
+            <span class="card-icon">🛡</span>
+            <h4>Infrastructure Hardening</h4>
+            <p>When the Supabase India block hit, the abstraction layer strategy was designed through Claude Code — decoupling business logic from the data provider to survive future disruptions.</p>
+          </div>
+          <div class="info-card highlight-card">
+            <span class="card-icon">🧬</span>
+            <h4>Clinical Data Modeling</h4>
+            <p>Translating the Harvard PhD's clinical frameworks into database schemas and TypeScript types. 27 disorders x 10 modalities requires precise data architecture to avoid therapeutic category errors.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="cto-experience">
+        <span class="section-label">Personal</span>
+        <h2>The CTO Experience at 19</h2>
+        <div class="callout">
+          <p><strong>Claude Code as force multiplier:</strong> Building what would normally require a 3-4 person engineering team. The key insight is knowing which problems require judgment (architecture, clinical data modeling, safety design) versus which can be accelerated (boilerplate, migrations, test writing).</p>
+        </div>
+        <div class="callout amber">
+          <p><strong>Ruthless prioritization:</strong> Healthcare AI has stakes that consumer apps don't. Safety architecture isn't a feature — it's a prerequisite. Every sprint, the question isn't "what's exciting" but "what's necessary before this can be trusted by a user in distress."</p>
+        </div>
+        <div class="callout green">
+          <p><strong>Async collaboration:</strong> The Harvard PhD is in a different timezone. Everything runs async. Crystal-clear documentation, typed interfaces at the clinical-technical boundary, and weekly syncs that are always agenda-first. The constraint makes the work cleaner.</p>
+        </div>
+      </section>
+
+      <section id="whats-next">
+        <span class="section-label">Roadmap</span>
+        <h2>What's Next</h2>
+        <ul>
+          <li>Complete Yotta migration following Supabase India block</li>
+          <li>Clinical validation study with Harvard PhD oversight — sample sessions with supervised users</li>
+          <li>Therapist dashboard for professionals who want to assign AI-assisted CBT homework</li>
+          <li>Expand modality coverage to DBT and ACT — two more evidence-based frameworks</li>
+          <li>HIPAA compliance audit in preparation for US market entry</li>
+          <li>Partnerships with mental health NGOs for subsidized access programs</li>
+        </ul>
+      </section>
+
+      <section id="lesson">
+        <span class="section-label">Takeaway</span>
+        <h2>Key Lesson</h2>
+        <div class="callout green">
+          <p>Healthcare AI is about scaling access to evidence-based care. 27 x 10 = 270 therapeutic paths. No single therapist delivers all of them. AI can, 24/7. The constraint isn't the technology — it's the clinical rigor required to do it safely. That's why the Harvard PhD co-founder isn't optional. Domain expertise is the moat.</p>
+        </div>
+      </section>
+
+    </article>
+  </div>
+
+  <nav class="post-footer-nav">
+    <a href="adventurers-guild.html" class="btn-ghost">← Adventurers Guild</a>
+    <a href="lunabot.html" class="btn-ghost">Next: LunaBot →</a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-left">
+      <strong>Abid Khan</strong>
+      <span class="footer-muted">Builder, Operator, Shipper</span>
+    </div>
+    <div class="footer-links">
+      <a href="/">Portfolio</a>
+      <a href="index.html">Blog</a>
+      <a href="https://github.com/LarytheLord" target="_blank">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const headings = document.querySelectorAll('.post-article h2, .post-article h3');
+const tocLinks = document.querySelectorAll('.toc-list a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      tocLinks.forEach(l => l.classList.remove('active'));
+      const link = document.querySelector(`.toc-list a[href="#${e.target.id}"]`);
+      if (link) link.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+headings.forEach(h => { if(h.id) observer.observe(h); });
+</script>
+
+</body>
 </html>

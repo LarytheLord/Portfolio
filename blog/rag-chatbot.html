@@ -1,135 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RAG Chatbot Portfolio - Intelligent Knowledge Systems</title>
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-        :root {
-            --primary-color: #3b82f6;
-            --secondary-color: #8b5cf6;
-            --accent-color: #f97316;
-            --light-color: #eff6ff;
-            --dark-color: #1e3a8a;
-            --text-color: #1f2937;
-            --bg-color: #ffffff;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-        }
-
-        .hero {
-            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-        }
-
-        .tech-tag {
-            background: rgba(59, 130, 246, 0.1);
-            color: #3b82f6;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            display: inline-block;
-            margin-right: 8px;
-            margin-bottom: 8px;
-            border: 1px solid #3b82f6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RAG Systems: Building Intelligent Knowledge Retrieval Across 4 Projects</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/post.css">
 </head>
-
 <body>
-    <header>
-        <nav>
-            <div class="nav-container">
-                <h1><a href="/" style="color: white;">Abid.</a></h1>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="index.html">Blogs</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
 
-    <main>
-        <section class="hero">
-            <div class="container hero-content">
-                <span class="tech-tag"
-                    style="background: rgba(255,255,255,0.2); color: white; border: 1px solid white;">Client Work</span>
-                <h1>RAG Chatbot Portfolio</h1>
-                <p>Building intelligent knowledge systems: From podcast transcripts to resource databases.</p>
-            </div>
-        </section>
+<header>
+  <nav>
+    <div class="nav-container">
+      <h1><a href="/">Abid Khan</a></h1>
+      <a href="index.html" class="nav-back">← All Posts</a>
+    </div>
+  </nav>
+</header>
 
-        <article class="container post-content">
-            <div class="post-meta">
-                <span>AI/LLM</span>
-                <span>RAG</span>
-                <span>Vector DB</span>
-            </div>
+<main>
+  <section class="post-hero">
+    <div class="post-hero-inner">
+      <span class="post-eyebrow">AI/ML · RAG · Architecture</span>
+      <h1>RAG Systems: Building Intelligent Knowledge Retrieval Across 4 Projects</h1>
+      <p class="post-hero-lead">From podcast transcript retrieval to animal advocacy knowledge bases — building production RAG systems with dual vector storage, semantic search, and conversational interfaces.</p>
+      <div class="post-meta-row">
+        <span class="badge blue">Dual Vector Storage</span>
+        <span class="badge green">Production RAG</span>
+        <span class="badge amber">Pinecone + pgvector</span>
+        <span class="badge purple">OpenAI Embeddings</span>
+      </div>
+    </div>
+  </section>
 
-            <section id="rag">
-                <h2>What is RAG?</h2>
-                <p>Retrieval-Augmented Generation (RAG) enables accurate, citation-backed AI responses by retrieving
-                    relevant information before generating an answer. It's essential for customer support, knowledge
-                    bases, and research assistants.</p>
-            </section>
+  <div class="post-hero-inner">
+    <div class="stat-strip">
+      <div class="stat-strip-item"><strong>4</strong><span>RAG systems built</span></div>
+      <div class="stat-strip-item"><strong>2</strong><span>Vector stores (Pinecone+pgvector)</span></div>
+      <div class="stat-strip-item"><strong>Semantic</strong><span>Search type</span></div>
+      <div class="stat-strip-item"><strong>Real-time</strong><span>Retrieval</span></div>
+      <div class="stat-strip-item"><strong>OpenAI</strong><span>Embeddings</span></div>
+    </div>
+  </div>
 
-            <section id="showcase1">
-                <h2>Showcase: Dwarkesh Patel Podcast Chatbot</h2>
-                <p>We transformed 100+ hours of podcast transcripts into a conversational interface. Using OpenAI
-                    embeddings, Supabase pgvector for storage, and hybrid search, we optimized query latency from 2.3s
-                    to 0.4s, creating a searchable, quotable knowledge base.</p>
-            </section>
+  <div class="post-layout">
+    <aside class="post-toc">
+      <div class="toc-title">Contents</div>
+      <ul class="toc-list">
+        <li><a href="#what-is-rag">What is RAG?</a></li>
+        <li><a href="#systems-built">Systems I've Built</a></li>
+        <li><a href="#architecture">Core Architecture</a></li>
+        <li><a href="#dual-storage">Dual Vector Storage</a></li>
+        <li><a href="#challenges">The Challenges</a></li>
+        <li><a href="#lesson">Key Lesson</a></li>
+      </ul>
+    </aside>
 
-            <section id="showcase2">
-                <h2>Showcase: AfA Resource Chatbot</h2>
-                <p>This project involved multi-document processing for animal welfare resources, using a custom
-                    embeddings pipeline for domain-specific content. It features real-time monitoring and handles
-                    diverse content types like PDFs and videos.</p>
-            </section>
+    <article class="post-article">
 
-            <section id="technical">
-                <h2>Technical Deep Dive</h2>
-                <div class="feature-grid">
-                    <div class="feature">
-                        <h3>Vector Databases</h3>
-                        <p>Comparing Supabase vs. Pinecone vs. Chroma for different use cases.</p>
-                    </div>
-                    <div class="feature">
-                        <h3>Embeddings</h3>
-                        <p>Strategies for chunking (fixed-size vs. semantic) and context window management.</p>
-                    </div>
-                    <div class="feature">
-                        <h3>Optimization</h3>
-                        <p>Cost optimization and deployment using Vercel + Next.js for production.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="lessons">
-                <h2>Lessons in Production AI</h2>
-                <ul>
-                    <li>Balancing accuracy vs. speed.</li>
-                    <li>Handling edge cases like insufficient content or duplicate data.</li>
-                    <li>Monitoring system health and error tracking.</li>
-                    <li>Managing client expectations.</li>
-                </ul>
-            </section>
-
-            <div class="buttons">
-                <a href="#" class="read-more">View Architecture</a>
-            </div>
-        </article>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Abid Khan. All rights reserved.</p>
+      <section id="what-is-rag">
+        <span class="section-label">Foundation</span>
+        <h2>What is RAG (and why it matters)</h2>
+        <div class="callout blue">
+          <p>RAG solves the core problem with LLMs: they don't know your data. By retrieving relevant context before generating, you get answers grounded in your actual knowledge base — not hallucinated plausibility.</p>
         </div>
-    </footer>
-</body>
+        <p>The pattern is simple in concept and surprisingly tricky in production. You embed your documents into a vector space, store those vectors, and at query time you find the closest vectors to your question, pull those chunks as context, and pass them to a language model to synthesize an answer. The model doesn't need to memorize anything — it reads from its retrieved context the same way a human would skim a document before answering a question.</p>
+        <p>Where it gets hard: chunking strategy, embedding model selection, context window management, and evaluation. Each of these can quietly degrade retrieval quality without obvious error signals. Building four RAG systems across very different domains forced me to understand each of these failure modes concretely, not just theoretically.</p>
+        <div class="tech-grid">
+          <span class="tech-pill purple">OpenAI Embeddings</span>
+          <span class="tech-pill amber">Pinecone</span>
+          <span class="tech-pill green">Supabase pgvector</span>
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill blue">LangChain</span>
+          <span class="tech-pill green">FastAPI</span>
+        </div>
+      </section>
 
+      <section id="systems-built">
+        <span class="section-label">Portfolio</span>
+        <h2>Systems I've Built</h2>
+        <p>Four production RAG systems across animal welfare, media, civic tech, and personal productivity. Each had a different knowledge structure, a different user interaction model, and a different set of constraints.</p>
+        <div class="card-grid">
+          <div class="info-card highlight-card">
+            <span class="card-icon">🐾</span>
+            <h4>AfA Resource Chatbot (Open Paws)</h4>
+            <p>Animal advocacy knowledge base for the Animals, Food, and Agriculture (AfA) working group. OpenAI embeddings over a curated corpus of advocacy resources, policy documents, and research papers. Conversational Q&amp;A interface that cites sources and acknowledges when information is absent. Built to let advocates find resources they didn't know existed without manually searching 200+ documents.</p>
+          </div>
+          <div class="info-card highlight-card">
+            <span class="card-icon">🎙</span>
+            <h4>Podcast Transcript Retrieval</h4>
+            <p>Semantic search across a large corpus of audio transcripts — enabling search by concept rather than keyword. Multi-source ingestion pipeline: transcripts from multiple podcasters, normalized into a uniform chunk format. Supports queries like "what did he say about AI risk in 2023" and returns the closest relevant transcript passages with timestamps.</p>
+          </div>
+          <div class="info-card highlight-card">
+            <span class="card-icon">⚖</span>
+            <h4>Open Permit Legal Framework Search</h4>
+            <p>40 legal frameworks made semantically searchable by permit type and jurisdiction. The RAG layer sits between the user's permit document and Gemini's letter generation — it retrieves the relevant legal framework before the generation step, grounding the output in the correct jurisdiction's statutes rather than Gemini's training data.</p>
+          </div>
+          <div class="info-card highlight-card">
+            <span class="card-icon">🧠</span>
+            <h4>Personal Knowledge Graph</h4>
+            <p>Cross-project context retrieval for my own development workflow. Notes, architecture decisions, prior Claude Code sessions, and project-specific constraints embedded and retrievable. The problem this solves: starting a new session on an existing project and needing to re-explain context that I've already documented somewhere. RAG surfaces it instead.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="architecture">
+        <span class="section-label">Technical</span>
+        <h2>Core Architecture</h2>
+        <p>Every RAG system I've built follows the same fundamental pipeline, with variations at each stage based on the domain's constraints.</p>
+        <div class="code-block">
+          <div class="code-block-header"><span>RAG Pipeline</span></div>
+          <pre>
+1. Documents     →  Raw source material (PDFs, URLs, transcripts, markdown)
+2. Chunking      →  Split into overlapping segments (512-1024 tokens typical)
+3. Embedding     →  OpenAI text-embedding-3-small or -large → float vectors
+4. Vector Store  →  Upsert to Pinecone or Supabase pgvector with metadata
+                                    ↓
+5. Query         →  User question → embed with same model
+6. Retrieve      →  Cosine similarity search → top-k chunks
+7. Augment       →  Inject retrieved chunks into LLM prompt as context
+8. Generate      →  LLM synthesizes answer grounded in retrieved context
+9. Cite          →  Return source metadata alongside the answer</pre>
+        </div>
+        <p>The most consequential decisions happen at stages 2 and 6. Chunking strategy determines what information units are retrievable. Retrieval k-value and reranking strategy determine what the model actually sees. Both are domain-specific — what works for legal documents doesn't work the same way for podcast transcripts.</p>
+      </section>
+
+      <section id="dual-storage">
+        <span class="section-label">Infrastructure</span>
+        <h2>Dual Vector Storage Strategy</h2>
+        <p>I use both Pinecone and Supabase pgvector across my RAG projects — not as redundancy, but because they serve genuinely different use cases. Using both was a deliberate architectural decision, not indecision.</p>
+        <div class="decision-grid">
+          <div class="decision-box selected">
+            <div class="decision-label">Selected</div>
+            <h4>Pinecone</h4>
+            <p>Cloud-managed vector database. Fast cold starts with no infrastructure to manage. Production-ready with SLA guarantees. Best choice when vector search is the primary operation and you want to stay out of the infrastructure layer. Used for Open Permit legal framework search and podcast retrieval where performance matters most.</p>
+          </div>
+          <div class="decision-box selected">
+            <div class="decision-label">Selected</div>
+            <h4>Supabase pgvector</h4>
+            <p>PostgreSQL extension for vector similarity search. SQL joins with structured data — combine semantic search with exact-match filters in a single query. Self-hostable and cost-effective at medium scale. Used for AfA Resource Chatbot where I need to join embedding results with structured metadata stored in the same Supabase instance.</p>
+          </div>
+        </div>
+        <div class="callout">
+          <p>The real question isn't "which vector store is better" — it's "what other data does this vector search need to interact with?" If your use case requires SQL joins or you already have Supabase, pgvector is often the right call. If you need a managed, standalone service with minimal ops overhead, Pinecone wins.</p>
+        </div>
+      </section>
+
+      <section id="challenges">
+        <span class="section-label">Learnings</span>
+        <h2>The Challenges</h2>
+        <p>Four RAG systems across different domains produced four different failure modes. These aren't theoretical — each one bit me in production.</p>
+        <div class="card-grid">
+          <div class="info-card">
+            <span class="card-icon">✂</span>
+            <h4>Chunking Strategy</h4>
+            <p>Chunk size is a fundamental recall tradeoff. Too small: individual chunks lack enough context to be meaningful. Too large: you include irrelevant text that dilutes the signal and eats context window. Overlapping windows help but increase storage cost. Legal documents and conversational transcripts need entirely different strategies.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">💰</span>
+            <h4>Embedding Model Selection</h4>
+            <p>OpenAI's text-embedding-3-large outperforms -small on most benchmarks, but costs 5x more per token. For a small knowledge base, the quality gain justifies the cost. For a large corpus with frequent re-indexing, -small is often good enough. I default to -small and only upgrade to -large when retrieval quality evaluation shows meaningful gaps.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">📏</span>
+            <h4>Context Window Management</h4>
+            <p>More retrieved chunks is not always better. Stuffing 10 chunks into the prompt increases coverage but degrades synthesis quality — the model has more to process and more noise to ignore. I use k=3-5 by default and add reranking on top-10 results to get the most relevant 3-5. Quality over quantity in the context window.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">📊</span>
+            <h4>Evaluation</h4>
+            <p>Measuring RAG quality is genuinely hard. Precision at k gives you retrieval quality. Answer faithfulness (does the answer stick to the context?) and answer relevance (does the answer address the question?) require LLM-as-judge or human evaluation. I use a small golden dataset per project and run eval on every significant change to the chunking or retrieval config.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="lesson">
+        <span class="section-label">Takeaway</span>
+        <h2>Key Lesson</h2>
+        <div class="callout green">
+          <p>RAG is infrastructure work, not just prompt engineering. The quality of your retrieval determines the quality of your generation. You can't prompt-engineer your way out of bad chunking, a mismatched embedding model, or a context window stuffed with irrelevant passages. Get the retrieval right first — generation is easy once the right context is in front of the model.</p>
+        </div>
+      </section>
+
+    </article>
+  </div>
+
+  <nav class="post-footer-nav">
+    <a href="index.html" class="btn-ghost">← All Posts</a>
+    <a href="lews-blog/index.html" class="btn-ghost">Next: LEWS Research →</a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-left">
+      <strong>Abid Khan</strong>
+      <span class="footer-muted">Builder, Operator, Shipper</span>
+    </div>
+    <div class="footer-links">
+      <a href="/">Portfolio</a>
+      <a href="index.html">Blog</a>
+      <a href="https://github.com/LarytheLord" target="_blank">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const headings = document.querySelectorAll('.post-article h2, .post-article h3');
+const tocLinks = document.querySelectorAll('.toc-list a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      tocLinks.forEach(l => l.classList.remove('active'));
+      const link = document.querySelector(`.toc-list a[href="#${e.target.id}"]`);
+      if (link) link.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+headings.forEach(h => { if(h.id) observer.observe(h); });
+</script>
+
+</body>
 </html>
