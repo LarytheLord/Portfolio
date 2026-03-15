@@ -15,18 +15,16 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Mobile menu toggle functionality
 document.addEventListener('DOMContentLoaded', function() {
-    // Check if we need a mobile menu (on smaller screens)
     const navContainer = document.querySelector('.nav-container');
     const navList = document.querySelector('nav ul');
 
-    if (window.innerWidth <= 768) {
-        // Create mobile menu toggle
+    // Only set up mobile menu if a nav ul exists (lews-blog pages)
+    if (navList && window.innerWidth <= 768) {
         const menuToggle = document.createElement('button');
         menuToggle.classList.add('menu-toggle');
         menuToggle.innerHTML = '☰';
         menuToggle.setAttribute('aria-label', 'Toggle navigation menu');
 
-        // Add CSS for mobile menu
         const style = document.createElement('style');
         style.textContent = `
             .menu-toggle {
@@ -37,12 +35,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 font-size: 1.5rem;
                 cursor: pointer;
             }
-
             @media (max-width: 768px) {
-                .menu-toggle {
-                    display: block;
-                }
-
+                .menu-toggle { display: block; }
                 nav ul {
                     display: none;
                     flex-direction: column;
@@ -50,37 +44,28 @@ document.addEventListener('DOMContentLoaded', function() {
                     top: 100%;
                     left: 0;
                     right: 0;
-                    background: var(--primary-color);
+                    background: var(--bg2, #13131f);
                     padding: 1rem;
-                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                    box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+                    border-bottom: 1px solid var(--border, #2a2a4e);
                 }
-
-                nav ul.show {
-                    display: flex;
-                }
-
-                nav ul li {
-                    margin: 0.5rem 0;
-                }
+                nav ul.show { display: flex; }
+                nav ul li { margin: 0.5rem 0; }
             }
         `;
         document.head.appendChild(style);
-
         navContainer.insertBefore(menuToggle, navList);
 
         menuToggle.addEventListener('click', function() {
             navList.classList.toggle('show');
         });
-    }
 
-    // Close mobile menu when clicking on a link
-    document.querySelectorAll('nav a').forEach(link => {
-        link.addEventListener('click', () => {
-            if (navList.classList.contains('show')) {
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
                 navList.classList.remove('show');
-            }
+            });
         });
-    });
+    }
 });
 
 // Add active class to current page in navigation
@@ -155,33 +140,6 @@ function initBlogFiltering() {
 document.addEventListener('DOMContentLoaded', function() {
     initBlogFiltering();
 });
-
-// Search functionality for blogs
-function initSearch() {
-    const searchInput = document.getElementById('blog-search');
-    if (!searchInput) return; // Only run if search input exists
-
-    searchInput.addEventListener('input', function() {
-        const searchTerm = this.value.toLowerCase();
-        const blogCards = document.querySelectorAll('.blog-card');
-        
-        blogCards.forEach(card => {
-            const title = card.querySelector('h3').textContent.toLowerCase();
-            const description = card.querySelector('p').textContent.toLowerCase();
-            const tags = Array.from(card.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase());
-            
-            const matches = title.includes(searchTerm) || 
-                          description.includes(searchTerm) || 
-                          tags.some(tag => tag.includes(searchTerm));
-            
-            if (matches) {
-                card.classList.remove('hidden');
-            } else {
-                card.classList.add('hidden');
-            }
-        });
-    });
-}
 
 // Search functionality for blogs
 function initSearch() {

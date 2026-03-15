@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>56+ Merged PRs in Production OSS — Abid Khan</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root { --primary-color: #1a1a2e; --secondary-color: #e94560; --accent-color: #f59e0b; --text-color: #e0e0e0; --bg-color: #0f0f1a; --card-bg: #16213e; }
+        body { background-color: var(--bg-color); color: var(--text-color); }
+        .hero { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); }
+        .feature, .stage { background-color: var(--card-bg); color: var(--text-color); border: 1px solid #1e3a5f; }
+        .post-content p { color: #b0b0b0; }
+        h1, h2, h3 { color: white !important; }
+        .tech-tag { background: rgba(245, 158, 11, 0.2); color: #f59e0b; padding: 4px 12px; border-radius: 20px; font-size: 0.9rem; display: inline-block; margin-right: 8px; margin-bottom: 8px; }
+        .pr-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+        .pr-table th { text-align: left; padding: 12px; border-bottom: 2px solid #1e3a5f; color: #94a3b8; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .pr-table td { padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .pr-table tr:hover td { background: rgba(255,255,255,0.02); }
+        .pr-repo { font-weight: 600; color: white; }
+        .pr-stars { color: #f59e0b; font-size: 0.85rem; }
+        .pr-link a { color: #60a5fa; }
+        .pr-desc { color: #94a3b8; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <header><nav><div class="nav-container"><h1><a href="/" style="color: white;">Abid.</a></h1><ul><li><a href="/">Home</a></li><li><a href="index.html">Blogs</a></li></ul></div></nav></header>
+    <main>
+        <section class="hero">
+            <div class="container hero-content">
+                <span class="tech-tag">500+ Contributions (2026)</span>
+                <span class="tech-tag">56+ Merged PRs</span>
+                <span class="tech-tag">86 Public Repos</span>
+                <h1>Open Source: 56+ Merged PRs Across Production Repositories</h1>
+                <p>High-signal, reviewer-approved contributions to established codebases. Not spray-and-pray — real code changes that pass real review from maintainers with thousands of stars.</p>
+            </div>
+        </section>
+        <article class="container post-content">
+            <div class="post-meta"><span>Open Source</span><span>Contributions</span><span>Code Review</span></div>
+
+            <section>
+                <h2>The Contribution Table</h2>
+                <table class="pr-table">
+                    <thead><tr><th>Repository</th><th>Stars</th><th>PR</th><th>What I Did</th></tr></thead>
+                    <tbody>
+                        <tr><td class="pr-repo">thoughtbot/shoulda-matchers</td><td class="pr-stars">★ 3.6k</td><td class="pr-link"><a href="https://github.com/thoughtbot/shoulda-matchers/pull/1700" target="_blank">#1700</a></td><td class="pr-desc">Fixed broken README anchor for matcher usage docs</td></tr>
+                        <tr><td class="pr-repo">nextflow-io/nextflow</td><td class="pr-stars">★ 3.3k</td><td class="pr-link"><a href="https://github.com/nextflow-io/nextflow/pull/6869" target="_blank">#6869</a></td><td class="pr-desc">Clarified Path.name behavior for staged process path inputs</td></tr>
+                        <tr><td class="pr-repo">scverse/scanpy</td><td class="pr-stars">★ 2k+</td><td class="pr-link"><a href="https://github.com/scverse/scanpy/pull/3986" target="_blank">#3986</a></td><td class="pr-desc">Reduced duplicated parameter docs for Louvain/Leiden clustering</td></tr>
+                        <tr><td class="pr-repo">mlco2/codecarbon</td><td class="pr-stars">★ 1k+</td><td class="pr-link"><a href="https://github.com/mlco2/codecarbon/pull/1080" target="_blank">#1080</a></td><td class="pr-desc">CLI robustness fix for auth/config failures (code change, not docs)</td></tr>
+                        <tr><td class="pr-repo">mlco2/codecarbon</td><td class="pr-stars">★ 1k+</td><td class="pr-link"><a href="https://github.com/mlco2/codecarbon/pull/1081" target="_blank">#1081</a></td><td class="pr-desc">Quickstart docs improved for no-API and auth edge cases</td></tr>
+                        <tr><td class="pr-repo">sustainable-computing-io/kepler</td><td class="pr-stars">★ 1k+</td><td class="pr-link"><a href="https://github.com/sustainable-computing-io/kepler/pull/2431" target="_blank">#2431</a></td><td class="pr-desc">Added minimal install path without Prometheus Operator</td></tr>
+                        <tr><td class="pr-repo">protontypes/open-sustainable-technology</td><td class="pr-stars">★ 2k+</td><td class="pr-link"><a href="https://github.com/protontypes/open-sustainable-technology/pull/1369" target="_blank">#1369</a></td><td class="pr-desc">Fixed broken sustainability resources and reference links</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <h2>Philosophy</h2>
+                <p>OSS contributions are the highest-signal portfolio item a developer can have. Anyone can build a todo app. Not everyone can get a PR merged into a repo with 3.6k stars. Maintainers don't care about your resume — they care about whether your code solves a real problem and passes their standards.</p>
+                <p>I target repos with 1k+ stars, active maintenance, real production users, and meaningful issues. Focus areas: sustainability tech, scientific computing, developer infrastructure — domains where the impact compounds.</p>
+            </section>
+
+            <section>
+                <h2>How Claude Code Accelerates OSS Work</h2>
+                <p>The bottleneck in OSS contribution isn't coding — it's <strong>understanding unfamiliar codebases quickly enough to contribute meaningfully.</strong> Claude Code sessions handle:</p>
+                <div class="feature-grid">
+                    <div class="feature"><h3>Codebase Understanding</h3><p>Large repos (nextflow, scanpy) have complex architectures. Claude Code helps quickly understand module relationships, build systems, and contribution guidelines.</p></div>
+                    <div class="feature"><h3>PR Preparation</h3><p>Drafting clear PR descriptions, commit messages, and change justifications that align with each repo's conventions.</p></div>
+                    <div class="feature"><h3>Review Iteration</h3><p>When maintainers request changes, Claude Code helps iterate quickly — understanding their feedback and adapting the code accordingly.</p></div>
+                </div>
+                <p>This workflow turned me from occasional contributor to 56+ merged PRs in 2026 — with 45+ more currently in review across various repos.</p>
+            </section>
+
+            <section>
+                <h2>By The Numbers (March 2026)</h2>
+                <p><strong>500+</strong> total GitHub contributions in 2026 YTD. <strong>56+</strong> merged PRs (40 in external OSS). <strong>45+</strong> open PRs currently in review. <strong>86</strong> public repositories. <strong>25</strong> GitHub followers. The pipeline keeps growing.</p>
+            </section>
+
+            <div class="buttons">
+                <a href="https://github.com/LarytheLord" target="_blank" class="read-more">View GitHub Profile →</a>
+            </div>
+        </article>
+    </main>
+    <footer><div class="container"><p>&copy; 2026 Abid Khan.</p></div></footer>
+</body>
+</html>

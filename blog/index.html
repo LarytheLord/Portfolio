@@ -1,162 +1,314 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Blog Portfolio - Multiple Blog Sites</title>
+    <title>Abid Khan — Blog & Case Studies</title>
+    <meta name="description" content="Case studies, deep dives, and operational breakdowns of everything I build — from 10-hour hackathon prototypes to production platforms.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
+
+    <!-- STICKY NAV -->
     <header>
         <nav>
             <div class="nav-container">
-                <h1>My Blog Portfolio</h1>
+                <a href="/" class="nav-back">← Portfolio</a>
+                <span class="nav-brand">Abid Khan — Writing</span>
                 <div class="search-container">
-                    <input type="text" id="blog-search" placeholder="Search blogs...">
+                    <input type="text" id="blog-search" placeholder="Search posts...">
                 </div>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="#blogs">Blogs</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
             </div>
         </nav>
     </header>
 
     <main>
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Welcome to My Blog Portfolio</h1>
-                <p>Explore my collection of specialized blogs on various topics</p>
+
+        <!-- HERO -->
+        <section class="hero blog-hero">
+            <div class="container hero-content">
+                <div class="hero-eyebrow">Case Studies &amp; Deep Dives</div>
+                <h1>Building in Public.<br><span class="hero-accent">Shipping with Urgency.</span></h1>
+                <p class="hero-subtitle">
+                    Breakdowns of everything I build — from 10-hour hackathon prototypes
+                    to production platforms serving 8+ countries. All managed with Claude Code.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat glass">
+                        <h3>12</h3>
+                        <p>Posts</p>
+                    </div>
+                    <div class="stat glass">
+                        <h3>11</h3>
+                        <p>Active Projects</p>
+                    </div>
+                    <div class="stat glass">
+                        <h3>8+</h3>
+                        <p>Countries</p>
+                    </div>
+                    <div class="stat glass">
+                        <h3>56+</h3>
+                        <p>Merged PRs</p>
+                    </div>
+                </div>
             </div>
         </section>
 
+        <!-- BLOG GRID -->
         <section id="blogs" class="blogs-listing">
             <div class="container">
-                <h2>Available Blogs</h2>
-                <div class="blog-filters">
-                    <button class="filter-btn active" data-filter="all">All Blogs</button>
-                    <button class="filter-btn" data-filter="technology">Technology</button>
-                    <button class="filter-btn" data-filter="research">Research</button>
-                    <button class="filter-btn" data-filter="ea">Effective Altruism</button>
-                </div>
-                <div class="blog-grid">
-                    <!-- LunaBot -->
-                    <article class="blog-card" data-category="technology research">
-                        <div class="blog-content">
-                            <h3>LunaBot</h3>
-                            <p>Autonomous lunar reconnaissance rover scouting landing sites before Artemis III
-                                astronauts arrive.</p>
-                            <div class="blog-tags">
-                                <span class="tag">Robotics</span>
-                                <span class="tag">Space Tech</span>
-                            </div>
-                            <a href="lunabot.html" class="read-more">Read Post</a>
-                        </div>
-                    </article>
 
-                    <!-- AFOG -->
+                <div class="filter-bar">
+                    <div class="blog-filters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="technology">Technology</button>
+                        <button class="filter-btn" data-filter="research">Research</button>
+                        <button class="filter-btn" data-filter="ea">Effective Altruism</button>
+                    </div>
+                </div>
+
+                <div class="blog-grid">
+
+                    <!-- Open Permit -->
                     <article class="blog-card" data-category="technology ea">
+                        <div class="blog-card-header">
+                            <span class="blog-category-badge">Civic Tech</span>
+                        </div>
                         <div class="blog-content">
-                            <h3>AFOG</h3>
-                            <p>Building AI that democratizes legal advocacy - from hackathon to production.</p>
+                            <h3>Open Permit</h3>
+                            <p>From 10-hour hackathon to civic intelligence platform. 8+ countries, 200+ permits, 40 legal frameworks. Code4Compassion winner &amp; AARC Pre-Accelerator.</p>
                             <div class="blog-tags">
                                 <span class="tag">Civic Tech</span>
                                 <span class="tag">AI</span>
+                                <span class="tag">Live Product</span>
                             </div>
-                            <a href="afog.html" class="read-more">Read Post</a>
+                            <a href="open-permit.html" class="read-more">Read Case Study →</a>
                         </div>
                     </article>
 
                     <!-- Knight Medicare -->
                     <article class="blog-card" data-category="technology research">
+                        <div class="blog-card-header">
+                            <span class="blog-category-badge">HealthTech</span>
+                        </div>
                         <div class="blog-content">
                             <h3>Knight Medicare</h3>
-                            <p>Building accessible mental health infrastructure with AI-assisted CBT therapy.</p>
+                            <p>Building accessible mental health infrastructure with AI-assisted CBT therapy. 27 disorders, 10 therapy modalities, Harvard PhD co-founder.</p>
                             <div class="blog-tags">
                                 <span class="tag">HealthTech</span>
                                 <span class="tag">Startup</span>
+                                <span class="tag">CTO</span>
                             </div>
-                            <a href="knight-medicare.html" class="read-more">Read Post</a>
+                            <a href="knight-medicare.html" class="read-more">Read Case Study →</a>
                         </div>
                     </article>
 
                     <!-- Adventurers Guild -->
                     <article class="blog-card" data-category="technology">
+                        <div class="blog-card-header">
+                            <span class="blog-category-badge">EdTech</span>
+                        </div>
                         <div class="blog-content">
-                            <h3>Adventurers Guild</h3>
-                            <p>Connecting CS students with real-world projects through RPG-inspired learning.</p>
+                            <h3>The Adventurers Guild</h3>
+                            <p>Connecting CS students with real-world projects through RPG-inspired learning. 500+ users, GSSoC 2025 participant, F-to-S ranking system.</p>
                             <div class="blog-tags">
                                 <span class="tag">EdTech</span>
                                 <span class="tag">Gamification</span>
+                                <span class="tag">500+ Users</span>
                             </div>
-                            <a href="adventurers-guild.html" class="read-more">Read Post</a>
+                            <a href="adventurers-guild.html" class="read-more">Read Case Study →</a>
+                        </div>
+                    </article>
+
+                    <!-- LunaBot -->
+                    <article class="blog-card" data-category="technology research">
+                        <div class="blog-card-header">
+                            <span class="blog-category-badge">Space Tech</span>
+                        </div>
+                        <div class="blog-content">
+                            <h3>LunaBot</h3>
+                            <p>Autonomous lunar reconnaissance rover scouting landing sites before Artemis III astronauts arrive. NASA Space Apps Challenge finalist.</p>
+                            <div class="blog-tags">
+                                <span class="tag">Robotics</span>
+                                <span class="tag">Space Tech</span>
+                                <span class="tag">NASA</span>
+                            </div>
+                            <a href="lunabot.html" class="read-more">Read Post →</a>
+                        </div>
+                    </article>
+
+                    <!-- OSS Contributions -->
+                    <article class="blog-card" data-category="technology">
+                        <div class="blog-card-header">
+                            <span class="blog-category-badge">Open Source</span>
+                        </div>
+                        <div class="blog-content">
+                            <h3>56+ Merged PRs in Production OSS</h3>
+                            <p>Breakdown of reviewer-approved contributions across repos with 1k–3.6k stars. Real impact in production codebases.</p>
+                            <div class="blog-tags">
+                                <span class="tag">Open Source</span>
+                                <span class="tag">Contributions</span>
+                            </div>
+                            <a href="oss-contributions.html" class="read-more">Read Breakdown →</a>
+                        </div>
+                    </article>
+
+                    <!-- Open Paws India -->
+                    <article class="blog-card" data-category="technology ea">
+                        <div class="blog-card-header">
+                            <span class="blog-category-badge">Leadership</span>
+                        </div>
+                        <div class="blog-content">
+                            <h3>Open Paws: SWE to Local Director</h3>
+                            <p>From software engineer to Local Director &amp; second shareholder of Open Paws India Pvt Ltd. The full story of a role evolution.</p>
+                            <div class="blog-tags">
+                                <span class="tag">Open Paws</span>
+                                <span class="tag">Leadership</span>
+                            </div>
+                            <a href="open-paws-india.html" class="read-more">Read Story →</a>
+                        </div>
+                    </article>
+
+                    <!-- Claude Code -->
+                    <article class="blog-card" data-category="technology">
+                        <div class="blog-card-header">
+                            <span class="blog-category-badge">Workflow</span>
+                        </div>
+                        <div class="blog-content">
+                            <h3>How Claude Code Manages Everything</h3>
+                            <p>Running 11 projects across 4 domains with Claude Code as the operational backbone. ~6–7 sessions/day, full workflow breakdown.</p>
+                            <div class="blog-tags">
+                                <span class="tag">Claude Code</span>
+                                <span class="tag">Workflow</span>
+                                <span class="tag">Operations</span>
+                            </div>
+                            <a href="claude-code.html" class="read-more">Read Deep Dive →</a>
+                        </div>
+                    </article>
+
+                    <!-- Infrastructure -->
+                    <article class="blog-card" data-category="technology">
+                        <div class="blog-card-header">
+                            <span class="blog-category-badge">DevOps</span>
+                        </div>
+                        <div class="blog-content">
+                            <h3>Infrastructure: 29 Services, Yotta Migration</h3>
+                            <p>The Supabase India block, self-hosted cloud evaluation, 63% cost reduction, and the abstraction layer strategy across 11 projects.</p>
+                            <div class="blog-tags">
+                                <span class="tag">Infrastructure</span>
+                                <span class="tag">DevOps</span>
+                                <span class="tag">63% Cost Cut</span>
+                            </div>
+                            <a href="infrastructure.html" class="read-more">Read Analysis →</a>
+                        </div>
+                    </article>
+
+                    <!-- AFOG -->
+                    <article class="blog-card" data-category="technology ea">
+                        <div class="blog-card-header">
+                            <span class="blog-category-badge">Civic Tech</span>
+                        </div>
+                        <div class="blog-content">
+                            <h3>AFOG → Open Permit</h3>
+                            <p>The origin story of AFOG (Animal-Friendly Open Government) and how it evolved into the Open Permit civic intelligence platform.</p>
+                            <div class="blog-tags">
+                                <span class="tag">Civic Tech</span>
+                                <span class="tag">AI</span>
+                                <span class="tag">Hackathon</span>
+                            </div>
+                            <a href="afog.html" class="read-more">Read Post →</a>
+                        </div>
+                    </article>
+
+                    <!-- LEWS -->
+                    <article class="blog-card" data-category="technology ea research">
+                        <div class="blog-card-header">
+                            <span class="blog-category-badge">Research</span>
+                        </div>
+                        <div class="blog-content">
+                            <h3>LEWS: Lock-in Early Warning System</h3>
+                            <p>Predicting when emerging animal technologies approach irreversibility. Built at C4C Berlin. Full methodology, model design, and results.</p>
+                            <div class="blog-tags">
+                                <span class="tag">Predictive</span>
+                                <span class="tag">Data Science</span>
+                                <span class="tag">EA</span>
+                            </div>
+                            <a href="lews-blog/index.html" class="read-more">Read Case Study →</a>
                         </div>
                     </article>
 
                     <!-- RAG Chatbot -->
                     <article class="blog-card" data-category="technology research">
+                        <div class="blog-card-header">
+                            <span class="blog-category-badge">AI/ML</span>
+                        </div>
                         <div class="blog-content">
                             <h3>RAG Chatbot Portfolio</h3>
-                            <p>Building intelligent knowledge systems: From podcast transcripts to resource databases.
-                            </p>
+                            <p>Building intelligent knowledge systems: from podcast transcripts to resource databases. Full implementation breakdown.</p>
                             <div class="blog-tags">
                                 <span class="tag">AI/LLM</span>
                                 <span class="tag">RAG</span>
                             </div>
-                            <a href="rag-chatbot.html" class="read-more">Read Post</a>
+                            <a href="rag-chatbot.html" class="read-more">Read Post →</a>
                         </div>
                     </article>
 
                     <!-- Gemini Ambassador -->
                     <article class="blog-card" data-category="technology">
+                        <div class="blog-card-header">
+                            <span class="blog-category-badge">Education</span>
+                        </div>
                         <div class="blog-content">
                             <h3>Gemini Ambassador</h3>
-                            <p>Bringing cutting-edge AI tools to students through workshops and community building.</p>
+                            <p>Bringing cutting-edge AI tools to students through workshops and community building. The Google Gemini Ambassador program experience.</p>
                             <div class="blog-tags">
                                 <span class="tag">Community</span>
                                 <span class="tag">Education</span>
                             </div>
-                            <a href="gemini-ambassador.html" class="read-more">Read Post</a>
+                            <a href="gemini-ambassador.html" class="read-more">Read Post →</a>
                         </div>
                     </article>
 
                     <!-- Building in Public -->
                     <article class="blog-card" data-category="ea">
+                        <div class="blog-card-header">
+                            <span class="blog-category-badge">Career</span>
+                        </div>
                         <div class="blog-content">
                             <h3>Building in Public</h3>
-                            <p>Lessons from balancing college, CTO role, hackathons, and personal growth.</p>
+                            <p>Lessons from balancing college, a CTO role, hackathons, and personal growth — all at once. The honest account.</p>
                             <div class="blog-tags">
                                 <span class="tag">Career</span>
                                 <span class="tag">Growth</span>
                             </div>
-                            <a href="building-in-public.html" class="read-more">Read Post</a>
+                            <a href="building-in-public.html" class="read-more">Read Post →</a>
                         </div>
                     </article>
-                </div>
+
+                </div><!-- end .blog-grid -->
             </div>
         </section>
 
-        <section id="about" class="about">
-            <div class="container">
-                <h2>About This Portfolio</h2>
-                <p>This is my personal blog portfolio where I share insights, research, and projects across various
-                    domains. Each blog focuses on a specific topic, allowing for deep-dive analysis and specialized
-                    content.</p>
-            </div>
-        </section>
     </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 My Personal Portfolio. All rights reserved.</p>
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-left">
+                <strong>Abid Khan</strong>
+                <span class="footer-muted">Builder, Operator, Shipper</span>
+            </div>
+            <div class="footer-links">
+                <a href="/">Portfolio</a>
+                <a href="https://github.com/LarytheLord" target="_blank" rel="noopener">GitHub</a>
+            </div>
+            <p class="footer-muted">&copy; 2026 Abid Khan. Built with intent, shipped with urgency.</p>
         </div>
     </footer>
 
     <script src="js/main.js"></script>
 </body>
-
 </html>

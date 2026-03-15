@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Permit — From Hackathon to 8+ Countries</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root { --primary-color: #064e3b; --secondary-color: #10b981; --accent-color: #34d399; --text-color: #e0e0e0; --bg-color: #0a1628; --card-bg: #112240; }
+        body { background-color: var(--bg-color); color: var(--text-color); }
+        .hero { background: linear-gradient(135deg, #064e3b 0%, #0a1628 100%); }
+        .blog-card, .feature, .stage { background-color: var(--card-bg); color: var(--text-color); border: 1px solid #1e3a5f; }
+        .blog-content p, .container p, .post-content p { color: #b0b0b0; }
+        h1, h2, h3, h4, h5, h6 { color: white !important; }
+        .tech-tag { background: rgba(16, 185, 129, 0.2); color: #34d399; padding: 4px 12px; border-radius: 20px; font-size: 0.9rem; display: inline-block; margin-right: 8px; margin-bottom: 8px; }
+        .metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; margin: 24px 0; }
+        .metric { background: var(--card-bg); border: 1px solid #1e3a5f; border-radius: 8px; padding: 20px; text-align: center; }
+        .metric .num { font-size: 2rem; font-weight: 700; color: #34d399; }
+        .metric .label { font-size: 0.85rem; color: #94a3b8; margin-top: 4px; }
+    </style>
+</head>
+<body>
+    <header><nav><div class="nav-container"><h1><a href="/" style="color: white;">Abid.</a></h1><ul><li><a href="/">Home</a></li><li><a href="index.html">Blogs</a></li></ul></div></nav></header>
+    <main>
+        <section class="hero">
+            <div class="container hero-content">
+                <span class="tech-tag">Live — 8+ Countries</span>
+                <span class="tech-tag">AARC Pre-Accelerator</span>
+                <span class="tech-tag">Code4Compassion Winner</span>
+                <h1>Open Permit: From 10-Hour Hackathon to Civic Intelligence Platform</h1>
+                <p>How a prototype built at Code4Compassion Mumbai became a platform serving citizens, NGOs, and governments across 8+ countries with 200+ permits and 40 legal frameworks.</p>
+            </div>
+        </section>
+        <article class="container post-content">
+            <div class="post-meta"><span>Civic Tech</span><span>AI/NLP</span><span>Legal Tech</span><span>Open Source</span></div>
+
+            <div class="metric-grid">
+                <div class="metric"><div class="num">200+</div><div class="label">Permits Ingested</div></div>
+                <div class="metric"><div class="num">40</div><div class="label">Legal Frameworks</div></div>
+                <div class="metric"><div class="num">8+</div><div class="label">Countries</div></div>
+                <div class="metric"><div class="num">197</div><div class="label">Funder Contacts</div></div>
+            </div>
+
+            <section>
+                <h2>The Problem</h2>
+                <p>Communities worldwide lose battles against harmful development proposals — factory farms, polluting facilities, questionable zoning changes — because they lack the legal expertise to file proper objections within tight regulatory deadlines. A single factory farm permit can affect thousands of people, but the window to object might be 21 days and the legal language required is impenetrable.</p>
+                <p>The legal advocacy pipeline is broken: hiring lawyers costs thousands, deadlines are unforgiving, citation requirements vary by jurisdiction, and NGOs can't cover every permit in every country.</p>
+            </section>
+
+            <section>
+                <h2>Origin: Code4Compassion Mumbai</h2>
+                <p>Built in a 10-hour hackathon sprint. The original prototype — called AFOG (Automated Factory Farm Objection Generator) — could ingest a planning permit, analyze it using Google Gemini, and generate a legally-sound objection letter with relevant citations in seconds. Work that would normally take lawyers weeks.</p>
+                <p>We won the hackathon. But the real question was: could this scale beyond factory farms, beyond India, beyond a demo?</p>
+            </section>
+
+            <section>
+                <h2>Scaling Through AARC Pre-Accelerator</h2>
+                <p>Open Permit was accepted into the <strong>AARC Pre-Accelerator in Bangalore</strong>. The transformation was massive:</p>
+                <p><strong>Rebrand:</strong> AFOG → Open Permit. The tech was jurisdiction-agnostic — it could handle any government permit, not just factory farms. The name needed to reflect that broader civic intelligence vision.</p>
+                <p><strong>Multi-country expansion:</strong> Went from India-only to 8+ countries. Each country required understanding local permit filing systems, building legal framework parsers, adapting letter templates to local standards, and localizing AI prompts.</p>
+                <p><strong>Fundraising infrastructure:</strong> Built a funder outreach database of 197 contacts across 75 countries. Multiple pitch deck iterations for AARC Demo Day (delivered March 7, 2025). Warm leads at Dasra. SFF grant pitch framing Open Permit as an institutional learning mechanism. Bulk outreach campaigns via Brevo targeting ~150 NGOs/funders across 30+ countries.</p>
+            </section>
+
+            <section>
+                <h2>Technical Architecture</h2>
+                <div class="feature-grid">
+                    <div class="feature"><h3>AI & NLP</h3><p>Google Gemini API for permit analysis, legal text generation, and multi-language NLP processing across jurisdictions.</p></div>
+                    <div class="feature"><h3>Backend</h3><p>Express.js API managing a legal citation library, permit tracking system, and recipient routing for objection letters.</p></div>
+                    <div class="feature"><h3>Frontend</h3><p>Next.js interface with permit ingestion pipeline, chatbot infrastructure, and real-time status tracking.</p></div>
+                    <div class="feature"><h3>Data Layer</h3><p>Supabase with PostgreSQL. Permit data, legal frameworks, user submissions, and CSV-based bulk operations for outreach campaigns.</p></div>
+                </div>
+                <p>Full stack is open source under Apache 2.0, deployed on Vercel. The automation pipeline detects new permit filings and generates timely responses.</p>
+            </section>
+
+            <section>
+                <h2>How Claude Code Manages This</h2>
+                <p>Claude Code is deeply embedded in Open Permit's development. The entire Next.js + Express stack was iterated through Claude Code sessions — complex features like the permit ingestion pipeline, Gemini API integration, and recipient routing system all built through collaborative conversations.</p>
+                <p>Beyond code: every version of the AARC Demo Day pitch deck, the funder outreach database structure, the SFF grant framing, CSV data pipeline work (permit normalization, funder contacts, recipient routing, Brevo campaign structuring) — all developed through Claude Code.</p>
+                <p>Each new country's legal framework expansion — researching jurisdiction requirements, drafting legal templates, validating citation formats — runs through Claude Code sessions before going into the platform.</p>
+            </section>
+
+            <section>
+                <h2>Team & Operations</h2>
+                <p>Coordinating across 3 continents (India, USA, Canada) with 12-hour timezone spreads. Strict async collaboration, clear ownership, aggressive shipping timelines. Currently pursuing partnerships through ALPN for India-specific permit work and evaluating infrastructure migration to Yotta (Indian sovereign cloud) following the Supabase India block.</p>
+            </section>
+
+            <div class="buttons">
+                <a href="https://openpermit.vercel.app" target="_blank" class="read-more">Visit Open Permit →</a>
+                <a href="https://github.com/LarytheLord/Automated-Factory-Farm-Objection-Generator" target="_blank" class="read-more" style="background-color: #1e293b;">View Source →</a>
+            </div>
+        </article>
+    </main>
+    <footer><div class="container"><p>&copy; 2026 Abid Khan.</p></div></footer>
+</body>
+</html>
