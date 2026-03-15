@@ -1,180 +1,314 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LunaBot - NASA Space Apps Challenge Finalist</title>
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-        :root {
-            --primary-color: #0a0e27;
-            --secondary-color: #ff6b35;
-            --accent-color: #ff6b35;
-            --light-color: #c4c4c4;
-            --dark-color: #050714;
-            --text-color: #e0e0e0;
-            --bg-color: #0a0e27;
-            --card-bg: #151b3b;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-        }
-
-        .hero {
-            background: linear-gradient(180deg, #000000 0%, #0a0e27 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: radial-gradient(white 1px, transparent 1px);
-            background-size: 50px 50px;
-            opacity: 0.1;
-        }
-
-        .blog-card,
-        .feature,
-        .stage,
-        .team-member,
-        .data-source,
-        .framework {
-            background-color: var(--card-bg);
-            color: var(--text-color);
-            border: 1px solid #2a3b55;
-        }
-
-        .blog-content p,
-        .container p,
-        .post-content p {
-            color: #b0b0b0;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            color: white !important;
-        }
-
-        .tech-tag {
-            background: rgba(255, 107, 53, 0.2);
-            color: #ff6b35;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            display: inline-block;
-            margin-right: 8px;
-            margin-bottom: 8px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LunaBot — NASA Space Apps Global Finalist: Autonomous Lunar Reconnaissance</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/post.css">
 </head>
-
 <body>
-    <header>
-        <nav>
-            <div class="nav-container">
-                <h1><a href="/" style="color: white;">Abid.</a></h1>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="index.html">Blogs</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
 
-    <main>
-        <section class="hero">
-            <div class="container hero-content">
-                <span class="tech-tag">NASA Space Apps Challenge Finalist</span>
-                <h1>LunaBot: Autonomous Lunar Reconnaissance</h1>
-                <p>Building an autonomous lunar reconnaissance rover that scouts landing sites before Artemis III
-                    astronauts arrive.</p>
-            </div>
-        </section>
+<header>
+  <nav>
+    <div class="nav-container">
+      <h1><a href="/">Abid Khan</a></h1>
+      <a href="index.html" class="nav-back">← All Posts</a>
+    </div>
+  </nav>
+</header>
 
-        <article class="container post-content">
-            <div class="post-meta">
-                <span>Robotics</span>
-                <span>AI/ML</span>
-                <span>Space Tech</span>
-            </div>
+<main>
+  <section class="post-hero">
+    <div class="post-hero-inner">
+      <span class="post-eyebrow">Space Tech · Robotics · Case Study</span>
+      <h1>LunaBot: NASA Space Apps Global Finalist — Autonomous Lunar Reconnaissance</h1>
+      <p class="post-hero-lead">Autonomous lunar reconnaissance rover for Artemis III pre-mission site selection. ROS2, Webots simulation, multi-sensor array, React mission dashboard. Global Finalist, pitched at NASA.</p>
+      <div class="post-meta-row">
+        <span class="badge amber">NASA Global Finalist</span>
+        <span class="badge green">ROS2 + Webots</span>
+        <span class="badge blue">Artemis III</span>
+        <span class="badge purple">NVIDIA Jetson Target</span>
+      </div>
+      <div class="post-hero-links">
+        <a href="https://github.com/LarytheLord/Civilization-in-Space-Nasa-Space-App-Challenge" target="_blank" class="btn-ghost">GitHub →</a>
+      </div>
+    </div>
+  </section>
 
-            <section id="problem">
-                <h2>The Problem</h2>
-                <p>Current NASA challenges involve 6 months of manual analysis by 50+ specialists to identify safe
-                    landing zones. There is zero ground-truth verification before the crew lands, and orbital imagery
-                    limitations (0.5m/pixel) are insufficient for detecting surface hazards that could jeopardize a
-                    mission.</p>
-            </section>
+  <div class="post-hero-inner">
+    <div class="stat-strip">
+      <div class="stat-strip-item"><strong>8</strong><span>ROS2 nodes</span></div>
+      <div class="stat-strip-item"><strong>4</strong><span>Site scoring axes</span></div>
+      <div class="stat-strip-item"><strong>5</strong><span>Sensor types</span></div>
+      <div class="stat-strip-item"><strong>Global</strong><span>Finalist rank</span></div>
+    </div>
+  </div>
 
-            <section id="solution">
-                <h2>The Solution</h2>
-                <p>LunaBot is designed for autonomous reconnaissance 6-12 months pre-mission. It carries a 17kg sensor
-                    payload with 9 integrated systems, all TRL 7-9 space-qualified. The rover performs real-time hazard
-                    detection for boulders, craters, slopes, and radiation using an NVIDIA Jetson AGX Orin 64GB
-                    computing unit delivering 275 TOPS of AI performance.</p>
-            </section>
+  <div class="post-layout">
+    <aside class="post-toc">
+      <div class="toc-title">Contents</div>
+      <ul class="toc-list">
+        <li><a href="#challenge">The Challenge</a></li>
+        <li><a href="#what-we-built">What We Built</a></li>
+        <li><a href="#sensors">Multi-Sensor Array</a></li>
+        <li><a href="#dashboard">Mission Dashboard</a></li>
+        <li><a href="#nasa-pitch">NASA Pitch</a></li>
+        <li><a href="#decisions">Technical Decisions</a></li>
+        <li><a href="#claude-code">Claude Code's Role</a></li>
+        <li><a href="#lesson">Key Lesson</a></li>
+      </ul>
+    </aside>
 
-            <section id="technical">
-                <h2>Technical Deep Dive</h2>
-                <div class="feature-grid">
-                    <div class="feature">
-                        <h3>Core Framework</h3>
-                        <p>Built on ROS2 Humble (TRL 9 space-proven) for robust robot control.</p>
-                    </div>
-                    <div class="feature">
-                        <h3>Simulation</h3>
-                        <p>Webots R2025 simulation environment with physics-accurate lunar conditions.</p>
-                    </div>
-                    <div class="feature">
-                        <h3>Stack</h3>
-                        <p>Python for sensor fusion and AI algorithms, C++ for low-latency ROS2 nodes, and
-                            JavaScript/React for the mission dashboard.</p>
-                    </div>
-                </div>
-                <p>Power is managed via 200W solar panels and Li-ion batteries designed for 30-day lunar night survival.
-                    Communication utilizes S-band direct-to-Earth and X-band Gateway relay systems.</p>
-            </section>
+    <article class="post-article">
 
-            <section id="impact">
-                <h2>The Impact</h2>
-                <p>This project reduces mission risk for the $93B Artemis program by enabling data-driven landing site
-                    selection. It generates 1-meter resolution terrain models across a 10km² operational area, providing
-                    a real-world application for lunar base site selection.</p>
-            </section>
-
-            <section id="lessons">
-                <h2>Lessons Learned</h2>
-                <ul>
-                    <li>Building for extreme environments and strict hardware constraints.</li>
-                    <li>Simulating physics-accurate lunar conditions to validate software.</li>
-                    <li>Balancing autonomy with remote control capabilities.</li>
-                    <li>Communicating complex technical concepts to non-technical judges.</li>
-                </ul>
-            </section>
-
-            <div class="buttons">
-                <a href="https://github.com/LarytheLord/Civilization-in-Space-Nasa-Space-App-Challenge" target="_blank" class="read-more">View on GitHub →</a>
-            </div>
-        </article>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Abid Khan. All rights reserved.</p>
+      <section id="challenge">
+        <span class="section-label">Context</span>
+        <h2>The Challenge</h2>
+        <p>NASA's Artemis III mission requires selecting a pre-mission landing site on the lunar south pole. The problem: real-time Earth control is impractical due to communication delay. Orbital imagery resolution (0.5m/pixel) is insufficient for detecting surface-level hazards like boulders, small craters, and unstable regolith. Manual analysis by specialists takes months and still lacks ground-truth verification before astronauts land.</p>
+        <p>The solution had to be fully autonomous — a rover that could navigate, characterize terrain, score potential habitat sites, and stream data back to Earth without waiting for command confirmations on every action.</p>
+        <div class="tech-grid">
+          <span class="tech-pill amber">ROS2</span>
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill amber">Webots</span>
+          <span class="tech-pill">React</span>
+          <span class="tech-pill">TypeScript</span>
+          <span class="tech-pill green">Docker</span>
+          <span class="tech-pill">WebSocket</span>
+          <span class="tech-pill purple">NVIDIA Jetson</span>
         </div>
-    </footer>
-</body>
+      </section>
 
+      <section id="what-we-built">
+        <span class="section-label">System</span>
+        <h2>Autonomous Rover System</h2>
+        <p>Eight ROS2 nodes form the cognitive and operational architecture. Each node has a single responsibility and communicates via the ROS2 pub/sub system — loosely coupled, independently testable, and resilient to individual node failures.</p>
+        <div class="card-grid">
+          <div class="info-card">
+            <span class="card-icon">🧭</span>
+            <h4>1. Navigation Controller</h4>
+            <p>Path planning with lunar terrain optimizations — handles low-gravity dynamics, regolith slip, and slope constraints. Implements A* with terrain cost maps.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🔭</span>
+            <h4>2. Sensor Fusion</h4>
+            <p>Integrates LiDAR, stereo cameras, and IMU via SLAM (Simultaneous Localization and Mapping). Builds a real-time 3D terrain model as the rover moves.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🏠</span>
+            <h4>3. Habitat Monitor</h4>
+            <p>Tracks environmental parameters — temperature, radiation levels, dust density. Maintains alert thresholds and flags conditions outside mission parameters.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🔧</span>
+            <h4>4. Maintenance Patrol</h4>
+            <p>Automated inspection routines for rover systems. Battery management, motor health monitoring, sensor calibration checks on schedule.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🧠</span>
+            <h4>5. AI Decision Engine</h4>
+            <p>Cognitive layer. Synthesizes data from all other nodes to make high-level mission decisions — when to investigate a candidate site, when to retreat from hazards.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">📊</span>
+            <h4>6. Habitat Site Analyzer</h4>
+            <p>Scores candidate sites on 4 axes: safety, buildability, resource score, and expandability. Produces ranked site recommendations for Mission Control.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">📡</span>
+            <h4>7. WebSocket Bridge</h4>
+            <p>Streams live telemetry, terrain data, and site scores from the ROS2 network to the browser dashboard. Sub-second latency for mission-critical monitoring.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🖥</span>
+            <h4>8. Web Dashboard</h4>
+            <p>React frontend providing Mission Control with live telemetry, interactive terrain maps, site ranking tables, and mission timeline visualization.</p>
+          </div>
+        </div>
+
+        <h3>Landing Site Scoring</h3>
+        <div class="metric-grid">
+          <div class="metric-card">
+            <div class="metric-val blue">Safety</div>
+            <div class="metric-label">Terrain roughness + slope angle analysis</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val green">Buildability</div>
+            <div class="metric-label">Surface flatness + soil uniformity scoring</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val">Resource</div>
+            <div class="metric-label">Solar exposure hours + water ice proximity</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val purple">Expandability</div>
+            <div class="metric-label">Available flat area for habitat growth</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="sensors">
+        <span class="section-label">Hardware</span>
+        <h2>Multi-Sensor Array</h2>
+        <div class="tech-grid">
+          <span class="tech-pill">LIDAR</span>
+          <span class="tech-pill">Stereo Cameras</span>
+          <span class="tech-pill">IMU</span>
+          <span class="tech-pill">Temperature Sensors</span>
+          <span class="tech-pill">Spectrometer Simulation</span>
+        </div>
+        <div class="card-grid">
+          <div class="info-card">
+            <span class="card-icon">📡</span>
+            <h4>LiDAR</h4>
+            <p>Primary terrain mapping sensor. Generates point clouds for obstacle detection and slope calculation. Critical for SLAM localization in a GPS-free environment.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">📷</span>
+            <h4>Stereo Cameras</h4>
+            <p>Depth perception for close-range hazard detection. Visual odometry as IMU backup. Surface texture analysis for regolith stability assessment.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🔄</span>
+            <h4>IMU</h4>
+            <p>Inertial Measurement Unit tracks orientation and acceleration. Essential for maintaining stability on uneven terrain and detecting tip-over risk.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🌡</span>
+            <h4>Temperature Sensors</h4>
+            <p>Monitors lunar surface temperature extremes (-173°C to 127°C). Feeds habitat monitoring node — critical for identifying thermally stable zones.</p>
+          </div>
+          <div class="info-card highlight-card">
+            <span class="card-icon">🔬</span>
+            <h4>Spectrometer Simulation</h4>
+            <p>Simulated spectral analysis for water ice detection. Lunar south pole permanently shadowed regions are the primary target for resource scoring.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="dashboard">
+        <span class="section-label">Interface</span>
+        <h2>React Mission Dashboard</h2>
+        <div class="card-grid">
+          <div class="info-card">
+            <span class="card-icon">📊</span>
+            <h4>Live Telemetry</h4>
+            <p>Real-time rover state — battery, motor health, sensor status, current coordinates. WebSocket stream with 1Hz update rate for critical metrics.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🗺</span>
+            <h4>Terrain Map Generation</h4>
+            <p>Live-rendered 3D terrain map updating as SLAM processes new LiDAR data. Interactive — Mission Control can click candidate zones for site analysis.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🏆</span>
+            <h4>Site Ranking</h4>
+            <p>Scored site list updates in real-time. Sortable by any of the 4 scoring axes. Visual overlay on terrain map shows site positions and composite scores.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">📅</span>
+            <h4>Mission Timeline</h4>
+            <p>Planned vs. actual mission progress. Tracks exploration coverage, sites evaluated, and estimated remaining battery life against mission objectives.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="nasa-pitch">
+        <span class="section-label">Achievement</span>
+        <h2>NASA Pitch</h2>
+        <p>LunaBot reached the Global Finalist stage of the NASA Space Apps Challenge — one of the largest hackathons in the world. The pitch to NASA evaluators covered the full system: architecture, simulation results, scoring methodology, and the path from prototype to flight hardware.</p>
+        <p>The key differentiator in the evaluation wasn't the simulation — it was the architecture. Eight ROS2 nodes, clean separation of concerns, and a mission dashboard that made the autonomous decision-making legible to non-technical judges. Judges can't evaluate code. They evaluate whether you understand the problem deeply enough to explain the solution clearly.</p>
+      </section>
+
+      <section id="decisions">
+        <span class="section-label">Architecture</span>
+        <h2>Technical Decisions</h2>
+        <div class="decision-grid">
+          <div class="decision-box selected">
+            <div class="decision-label">Selected</div>
+            <h4>ROS2 over ROS1</h4>
+            <p>Real-time capabilities, DDS security layer, multi-robot support, and active maintenance. ROS1 is end-of-life — the right choice for a system targeting flight hardware.</p>
+          </div>
+          <div class="decision-box selected">
+            <div class="decision-label">Selected</div>
+            <h4>Webots over Gazebo</h4>
+            <p>Better lunar environment simulation out of the box — regolith physics, vacuum conditions, solar illumination angles. Lower setup overhead for a hackathon timeline.</p>
+          </div>
+          <div class="decision-box neutral">
+            <div class="decision-label">Considered</div>
+            <h4>NVIDIA Jetson as target</h4>
+            <p>The compute-to-power ratio is optimal for solar-powered lunar operations. Jetson AGX Orin delivers 275 TOPS at 60W — no other hardware matches that for the use case.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="claude-code">
+        <span class="section-label">Workflow</span>
+        <h2>Claude Code's Role</h2>
+        <div class="card-grid">
+          <div class="info-card highlight-card">
+            <span class="card-icon">🤖</span>
+            <h4>ROS2 Architecture</h4>
+            <p>Designing the 8-node system, message type definitions, topic/service naming conventions, and launch file structure. ROS2 has a steep learning curve — Claude Code compressed weeks of documentation into working patterns.</p>
+          </div>
+          <div class="info-card highlight-card">
+            <span class="card-icon">🌕</span>
+            <h4>Simulation Setup</h4>
+            <p>Webots world configuration for lunar terrain, gravity, and lighting. Physics parameters for regolith simulation. ROS2-Webots bridge configuration for sensor data routing.</p>
+          </div>
+          <div class="info-card highlight-card">
+            <span class="card-icon">📱</span>
+            <h4>Dashboard Development</h4>
+            <p>React dashboard architecture, WebSocket integration with the ROS2 bridge node, terrain visualization components, and real-time state management for mission-critical data.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="lesson">
+        <span class="section-label">Takeaway</span>
+        <h2>Key Lesson</h2>
+        <div class="callout amber">
+          <p>Hackathon quality and production quality aren't mutually exclusive. The right abstractions (ROS2, Webots, React) combined with Claude Code for boilerplate meant the focus could stay on the novel parts — the scoring algorithm, the sensor fusion logic, the decision engine. You win hackathons by solving hard problems clearly, not by building more features.</p>
+        </div>
+      </section>
+
+    </article>
+  </div>
+
+  <nav class="post-footer-nav">
+    <a href="knight-medicare.html" class="btn-ghost">← Knight Medicare</a>
+    <a href="oss-contributions.html" class="btn-ghost">Next: OSS Contributions →</a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-left">
+      <strong>Abid Khan</strong>
+      <span class="footer-muted">Builder, Operator, Shipper</span>
+    </div>
+    <div class="footer-links">
+      <a href="/">Portfolio</a>
+      <a href="index.html">Blog</a>
+      <a href="https://github.com/LarytheLord" target="_blank">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const headings = document.querySelectorAll('.post-article h2, .post-article h3');
+const tocLinks = document.querySelectorAll('.toc-list a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      tocLinks.forEach(l => l.classList.remove('active'));
+      const link = document.querySelector(`.toc-list a[href="#${e.target.id}"]`);
+      if (link) link.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+headings.forEach(h => { if(h.id) observer.observe(h); });
+</script>
+
+</body>
 </html>

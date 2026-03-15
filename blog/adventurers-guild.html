@@ -1,144 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Adventurers Guild - Gamified EdTech Platform</title>
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-        :root {
-            --primary-color: #9b59b6;
-            --secondary-color: #f39c12;
-            --accent-color: #27ae60;
-            --light-color: #fdf2e9;
-            --dark-color: #2c3e50;
-            --text-color: #2c3e50;
-            --bg-color: #fdfefe;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-        }
-
-        .hero {
-            background: linear-gradient(135deg, #8e44ad 0%, #f39c12 100%);
-        }
-
-        .tech-tag {
-            background: rgba(155, 89, 182, 0.1);
-            color: #8e44ad;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            display: inline-block;
-            margin-right: 8px;
-            margin-bottom: 8px;
-            border: 1px solid #9b59b6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Adventurers Guild — Gamified Developer Marketplace</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/post.css">
 </head>
-
 <body>
-    <header>
-        <nav>
-            <div class="nav-container">
-                <h1><a href="/" style="color: white;">Abid.</a></h1>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="index.html">Blogs</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
 
-    <main>
-        <section class="hero">
-            <div class="container hero-content">
-                <span class="tech-tag"
-                    style="background: rgba(255,255,255,0.2); color: white; border: 1px solid white;">500+ Users</span>
-                <span class="tech-tag"
-                    style="background: rgba(255,255,255,0.2); color: white; border: 1px solid white;">GSSoC 2025</span>
-                <h1>The Adventurers Guild: Gamified Developer Marketplace</h1>
-                <p>Companies post "quests," CS students complete them for XP/rewards. F-to-S ranking system. 500+ users. GirlScript Summer of Code 2025. Operating under Open Paws.</p>
-            </div>
-        </section>
+<header>
+  <nav>
+    <div class="nav-container">
+      <h1><a href="/">Abid Khan</a></h1>
+      <a href="index.html" class="nav-back">← All Posts</a>
+    </div>
+  </nav>
+</header>
 
-        <article class="container post-content">
-            <div class="post-meta">
-                <span>EdTech</span>
-                <span>Gamification</span>
-                <span>React</span>
-            </div>
+<main>
+  <section class="post-hero">
+    <div class="post-hero-inner">
+      <span class="post-eyebrow">EdTech · Case Study</span>
+      <h1>The Adventurers Guild: Gamified Developer Marketplace</h1>
+      <p class="post-hero-lead">Companies post quests. CS students complete them for XP, rewards, and rank progression. 500+ users, GirlScript Summer of Code 2025, lean-bootstrapped for the Indian market.</p>
+      <div class="post-meta-row">
+        <span class="badge green">500+ Users</span>
+        <span class="badge amber">GirlScript SoC 2025</span>
+        <span class="badge blue">Open Source</span>
+        <span class="badge purple">Under Open Paws</span>
+      </div>
+      <div class="post-hero-links">
+        <a href="https://adventurersguild.space" target="_blank" class="btn-primary">Visit the Guild ↗</a>
+        <a href="https://github.com/LarytheLord/Adventurers-Guild" target="_blank" class="btn-ghost">GitHub →</a>
+      </div>
+    </div>
+  </section>
 
-            <section id="problem">
-                <h2>The Problem</h2>
-                <p>There is a significant gap between academic CS education and industry needs. Students often lack
-                    real-world project experience, and traditional internships are competitive and limited in
-                    availability.</p>
-            </section>
+  <div class="post-hero-inner">
+    <div class="stat-strip">
+      <div class="stat-strip-item"><strong>500+</strong><span>Users</span></div>
+      <div class="stat-strip-item"><strong>F→S</strong><span>Ranking tiers</span></div>
+      <div class="stat-strip-item"><strong>15–30%</strong><span>Platform fee</span></div>
+      <div class="stat-strip-item"><strong>11</strong><span>Stars on GitHub</span></div>
+      <div class="stat-strip-item"><strong>25</strong><span>Forks</span></div>
+    </div>
+  </div>
 
-            <section id="gamification">
-                <h2>The Gamification Approach</h2>
-                <p>We applied RPG mechanics to learning—using XP, levels, and achievements to motivate progress.
-                    Real-world projects become "quests" (client work, open-source contributions), and skill trees are
-                    mapped to industry demands. The platform also fosters peer collaboration and mentorship.</p>
-            </section>
+  <div class="post-layout">
+    <aside class="post-toc">
+      <div class="toc-title">Contents</div>
+      <ul class="toc-list">
+        <li><a href="#tldr">TL;DR</a></li>
+        <li><a href="#problem">The Problem</a></li>
+        <li><a href="#solution">The Solution</a></li>
+        <li><a href="#architecture">Architecture</a></li>
+        <li><a href="#girlscript">GirlScript SoC</a></li>
+        <li><a href="#decisions">Key Decisions</a></li>
+        <li><a href="#whats-next">What's Next</a></li>
+        <li><a href="#lesson">Key Lesson</a></li>
+      </ul>
+    </aside>
 
-            <section id="platform">
-                <h2>Technical Platform</h2>
-                <div class="feature-grid">
-                    <div class="feature">
-                        <h3>Stack</h3>
-                        <p>Next.js with Prisma ORM and Neon Postgres. TypeScript throughout. Chose Neon over Supabase after the India block.</p>
-                    </div>
-                    <div class="feature">
-                        <h3>Ranking System</h3>
-                        <p>F → E → D → C → B → A → S progression. Higher ranks unlock more complex, higher-value quests. Merit-based access to client projects.</p>
-                    </div>
-                    <div class="feature">
-                        <h3>Revenue Model</h3>
-                        <p>Guild takes 15-30% service fee on completed commissions. Lean bootstrapped model built around Indian market compensation rates.</p>
-                    </div>
-                </div>
-            </section>
+    <article class="post-article">
 
-            <section id="integration">
-                <h2>Open Paws Integration</h2>
-                <p>The Adventurers Guild operates under Open Paws, creating a symbiotic relationship. Two-track system: 20 quality interns handle D+ rank work (backlog, features), bootcamp students handle F/E rank tasks (learning, guided projects). QA team: Open Paws founder + me + a mentor being hired + 1 senior dev. All under Open Paws India Pvt Ltd once registration completes.</p>
-            </section>
-
-            <section id="claude-code">
-                <h2>How Claude Code Built This</h2>
-                <p>PM-reviewed Phase 1 codebase audit through Claude Code. Each major feature — quest pipeline, XP calculation engine, client dashboard, admin panel — developed through structured Claude Code sessions. Financial model with Indian market rates built collaboratively. GirlScript Summer of Code brought 10 stars, 25 forks, and community validation.</p>
-            </section>
-
-            <section id="impact">
-                <h2>Impact and Iteration</h2>
-                <p>We've seen positive student outcomes in terms of projects completed and skills gained. Challenges
-                    included team coordination and scope management, which led us to pivot based on user feedback and
-                    learn valuable lessons in community building.</p>
-            </section>
-
-            <section id="future">
-                <h2>Future Vision</h2>
-                <p>We plan to scale to multiple universities, establish industry partnerships for project sourcing, and
-                    explore monetization strategies like freemium models and B2B services.</p>
-            </section>
-
-            <div class="buttons">
-                <a href="https://adventurersguild.space" target="_blank" class="read-more">Visit the Guild →</a>
-                <a href="https://github.com/LarytheLord/Adventurers-Guild" target="_blank" class="read-more" style="background-color: #34495e;">GitHub →</a>
-            </div>
-        </article>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Abid Khan. All rights reserved.</p>
+      <section id="tldr">
+        <span class="section-label">Overview</span>
+        <h2>TL;DR</h2>
+        <p>The Adventurers Guild is an RPG-flavored developer marketplace where companies post "quests" and CS students complete them for XP, rewards, and rank progression. It's bootstrapped, Indian-market focused, operates under Open Paws, and was selected for GirlScript Summer of Code 2025 within weeks of launch.</p>
+        <div class="tech-grid">
+          <span class="tech-pill">Next.js 15</span>
+          <span class="tech-pill">TypeScript</span>
+          <span class="tech-pill">Prisma</span>
+          <span class="tech-pill">Neon Postgres</span>
+          <span class="tech-pill">NextAuth</span>
+          <span class="tech-pill amber">Playwright</span>
+          <span class="tech-pill green">shadcn/ui</span>
         </div>
-    </footer>
-</body>
+      </section>
 
+      <section id="problem">
+        <span class="section-label">Context</span>
+        <h2>The Problem</h2>
+        <p>There's a fundamental gap between academic CS education and what the industry actually needs. Traditional pathways fail most students before they even get started.</p>
+        <div class="card-grid">
+          <div class="info-card">
+            <span class="card-icon">🏢</span>
+            <h4>Internships</h4>
+            <p>Gatekept behind grades, networks, and referrals. The students who need experience most rarely get first-round interviews.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">💼</span>
+            <h4>Freelancing</h4>
+            <p>Requires existing reputation. Catch-22: can't get clients without a portfolio, can't build a portfolio without clients.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🐙</span>
+            <h4>Open Source</h4>
+            <p>Steep learning curve. Most student contributors never get their first PR merged. The "good first issue" label is often a lie.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🎓</span>
+            <h4>Bootcamps</h4>
+            <p>Expensive, no direct placement pipeline, and outcomes data is routinely misleading for the Indian market.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="solution">
+        <span class="section-label">Product</span>
+        <h2>The Solution: RPG Mechanics for Real Work</h2>
+
+        <h3>Ranking System (F → S)</h3>
+        <p>Every student starts at F-rank. Work your way up through real project completions, not just skill assessments.</p>
+        <div class="rank-list">
+          <div class="rank-item">
+            <span class="rank-badge">F</span>
+            <p>Entry level. Guided projects, learning tasks. Get the first commit shipped.</p>
+          </div>
+          <div class="rank-item">
+            <span class="rank-badge">E → D</span>
+            <p>Real client tasks begin. Small features, bug fixes, documentation improvements.</p>
+          </div>
+          <div class="rank-item">
+            <span class="rank-badge">C → B → A</span>
+            <p>Full features, architecture decisions, mentorship of lower-rank members.</p>
+          </div>
+          <div class="rank-item">
+            <span class="rank-badge">S</span>
+            <p>Top-tier. Eligible for lead engineer quests, direct Open Paws intern roles.</p>
+          </div>
+        </div>
+
+        <h3>Quest System</h3>
+        <p>Companies post real projects scoped as quests. The Guild acts as QA intermediary — reviewing all deliverables before client handoff. Platform fee: 15–30% of commission value. Students get paid, build portfolios, and accumulate XP simultaneously.</p>
+
+        <h3>Integration with Open Paws</h3>
+        <p>Two-track system: 20 quality interns (D+ rank) handle backlog and features directly. Bootcamp students (F/E rank) handle guided tasks. All under Open Paws India Pvt Ltd once registration completes — sharing brand, payments, legal infrastructure, and client relationships.</p>
+      </section>
+
+      <section id="architecture">
+        <span class="section-label">Technical</span>
+        <h2>Technical Architecture</h2>
+        <div class="code-block">
+          <div class="code-block-header"><span>Stack Overview</span></div>
+          <pre>
+Frontend    →  Next.js 15 (App Router) + shadcn/ui — Vercel deployment
+API Layer   →  Next.js API Routes + server actions
+ORM         →  Prisma with Neon Postgres (serverless)
+Auth        →  NextAuth (GitHub + Google OAuth)
+Testing     →  Playwright (E2E), Jest (unit)
+CI/CD       →  GitHub Actions</pre>
+        </div>
+        <p>Chose Neon over Supabase after the Supabase India block. Neon's serverless Postgres scales to zero between requests, keeping costs near-zero for bootstrapped early-stage traffic. Prisma provides a typed ORM layer that makes database migrations safe across the team.</p>
+      </section>
+
+      <section id="girlscript">
+        <span class="section-label">Recognition</span>
+        <h2>GirlScript Summer of Code 2025</h2>
+        <p>Selected for GirlScript SoC 2025 — one of India's largest open source programs. This brought contributors, community validation, and the first real stress test of the codebase.</p>
+        <div class="metric-grid">
+          <div class="metric-card">
+            <div class="metric-val blue">11</div>
+            <div class="metric-label">GitHub Stars</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val green">25</div>
+            <div class="metric-label">Forks</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val">171</div>
+            <div class="metric-label">Commits</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val purple">500+</div>
+            <div class="metric-label">Users</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="decisions">
+        <span class="section-label">Architecture</span>
+        <h2>Key Decisions</h2>
+        <div class="decision-grid">
+          <div class="decision-box selected">
+            <div class="decision-label">Selected</div>
+            <h4>Why Neon over Supabase?</h4>
+            <p>After the Supabase India block hit production platforms, Neon's serverless Postgres became the obvious choice — no vendor lock-in, same Postgres interface, better India latency.</p>
+          </div>
+          <div class="decision-box selected">
+            <div class="decision-label">Selected</div>
+            <h4>Why under Open Paws?</h4>
+            <p>Brand recognition, payment infrastructure, legal entity, and shared mission. Building inside an existing organization de-risks the cold-start problem and provides immediate client access.</p>
+          </div>
+          <div class="decision-box neutral">
+            <div class="decision-label">Considered</div>
+            <h4>Why bootstrapped?</h4>
+            <p>Prove unit economics first. 15–30% platform fee on Indian market rates is sustainable without external capital. Show the model works before raising.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="whats-next">
+        <span class="section-label">Roadmap</span>
+        <h2>What's Next</h2>
+        <ul>
+          <li>Complete Open Paws India Pvt Ltd registration — move all payments under legal entity</li>
+          <li>Hire senior developer mentor to lead the D+ intern cohort</li>
+          <li>Build automated quest matching — skills assessment maps students to appropriate quests</li>
+          <li>Launch bootcamp cohort track with structured 8-week curriculum</li>
+          <li>External client pipeline beyond Open Paws — target Indian SaaS companies needing affordable dev capacity</li>
+        </ul>
+      </section>
+
+      <section id="lesson">
+        <span class="section-label">Takeaway</span>
+        <h2>Key Lesson</h2>
+        <div class="callout purple">
+          <p>500 users wasn't luck — it was the right abstraction applied to a real problem. RPG mechanics aren't decoration on top of a jobs board. They change what students are optimizing for. When you make progress visible and incremental, people keep going. That's the product insight. Everything else is execution.</p>
+        </div>
+      </section>
+
+    </article>
+  </div>
+
+  <nav class="post-footer-nav">
+    <a href="open-permit.html" class="btn-ghost">← Open Permit</a>
+    <a href="knight-medicare.html" class="btn-ghost">Next: Knight Medicare →</a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-left">
+      <strong>Abid Khan</strong>
+      <span class="footer-muted">Builder, Operator, Shipper</span>
+    </div>
+    <div class="footer-links">
+      <a href="/">Portfolio</a>
+      <a href="index.html">Blog</a>
+      <a href="https://github.com/LarytheLord" target="_blank">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const headings = document.querySelectorAll('.post-article h2, .post-article h3');
+const tocLinks = document.querySelectorAll('.toc-list a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      tocLinks.forEach(l => l.classList.remove('active'));
+      const link = document.querySelector(`.toc-list a[href="#${e.target.id}"]`);
+      if (link) link.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+headings.forEach(h => { if(h.id) observer.observe(h); });
+</script>
+
+</body>
 </html>

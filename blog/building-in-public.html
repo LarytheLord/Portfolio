@@ -1,147 +1,278 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Building in Public - Lessons Learned</title>
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-        :root {
-            --primary-color: #1a1a1a;
-            --secondary-color: #00d9ff;
-            --accent-color: #ff3366;
-            --light-color: #e0e0e0;
-            --dark-color: #000000;
-            --text-color: #e0e0e0;
-            --bg-color: #121212;
-            --card-bg: #1e1e1e;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-        }
-
-        .hero {
-            background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
-        }
-
-        .blog-card,
-        .feature,
-        .stage,
-        .team-member,
-        .data-source,
-        .framework {
-            background-color: var(--card-bg);
-            color: var(--text-color);
-            border: 1px solid #333;
-        }
-
-        .blog-content p,
-        .container p,
-        .post-content p {
-            color: #b0b0b0;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            color: white !important;
-        }
-
-        .tech-tag {
-            background: rgba(0, 217, 255, 0.1);
-            color: #00d9ff;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            display: inline-block;
-            margin-right: 8px;
-            margin-bottom: 8px;
-            border: 1px solid #00d9ff;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Building in Public: College Student, CTO, Director, OSS Contributor — All at Once</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/post.css">
 </head>
-
 <body>
-    <header>
-        <nav>
-            <div class="nav-container">
-                <h1><a href="/" style="color: white;">Abid.</a></h1>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="index.html">Blogs</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
 
-    <main>
-        <section class="hero">
-            <div class="container hero-content">
-                <span class="tech-tag"
-                    style="background: rgba(255,255,255,0.2); color: white; border: 1px solid white;">Meta-Narrative</span>
-                <h1>Building in Public</h1>
-                <p>Lessons from balancing college, CTO role, hackathons, and personal growth.</p>
-            </div>
-        </section>
+<header>
+  <nav>
+    <div class="nav-container">
+      <h1><a href="/">Abid Khan</a></h1>
+      <a href="index.html" class="nav-back">← All Posts</a>
+    </div>
+  </nav>
+</header>
 
-        <article class="container post-content">
-            <div class="post-meta">
-                <span>Personal Growth</span>
-                <span>Career</span>
-                <span>Productivity</span>
-            </div>
+<main>
+  <section class="post-hero">
+    <div class="post-hero-inner">
+      <span class="post-eyebrow">Career · Reflection · Building in Public</span>
+      <h1>Building in Public: College Student, CTO, Director, OSS Contributor — All at Once</h1>
+      <p class="post-hero-lead">This is the honest account of running 11 projects while studying CS at GTU. The chaos, the systems, the wins, the lessons. No polish.</p>
+      <div class="post-meta-row">
+        <span class="badge blue">19 Years Old</span>
+        <span class="badge green">11 Active Projects</span>
+        <span class="badge amber">GTU CS 2027</span>
+        <span class="badge purple">Open to Collaborate</span>
+      </div>
+    </div>
+  </section>
 
-            <section id="series">
-                <h2>Blog Series</h2>
-                <div class="blog-grid">
-                    <div class="blog-card">
-                        <div class="blog-content">
-                            <h3>From Student to CTO</h3>
-                            <p>Building Knight Medicare while in college: balancing academics with leadership.</p>
-                            <a href="#" class="read-more">Read Post</a>
-                        </div>
-                    </div>
-                    <div class="blog-card">
-                        <div class="blog-content">
-                            <h3>Hackathon Mastery</h3>
-                            <p>How I won 3 hackathons in 6 months and what I learned about rapid prototyping.</p>
-                            <a href="#" class="read-more">Read Post</a>
-                        </div>
-                    </div>
-                    <div class="blog-card">
-                        <div class="blog-content">
-                            <h3>The RAG Stack</h3>
-                            <p>A practical guide to building production chatbots with modern AI stacks.</p>
-                            <a href="#" class="read-more">Read Post</a>
-                        </div>
-                    </div>
-                    <div class="blog-card">
-                        <div class="blog-content">
-                            <h3>Remote Leadership</h3>
-                            <p>Scaling AFOG across 3 continents: managing time zones and async work.</p>
-                            <a href="#" class="read-more">Read Post</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
+  <div class="post-hero-inner">
+    <div class="stat-strip">
+      <div class="stat-strip-item"><strong>19</strong><span>Age</span></div>
+      <div class="stat-strip-item"><strong>11</strong><span>Active projects</span></div>
+      <div class="stat-strip-item"><strong>4</strong><span>Roles held simultaneously</span></div>
+      <div class="stat-strip-item"><strong>2026</strong><span>Year</span></div>
+      <div class="stat-strip-item"><strong>GTU</strong><span>University (2027)</span></div>
+    </div>
+  </div>
 
-            <div class="buttons">
-                <a href="#" class="read-more">Subscribe to Newsletter</a>
-            </div>
-        </article>
-    </main>
+  <div class="post-layout">
+    <aside class="post-toc">
+      <div class="toc-title">Contents</div>
+      <ul class="toc-list">
+        <li><a href="#who-i-am">Who I Am</a></li>
+        <li><a href="#the-setup">The Setup</a></li>
+        <li><a href="#how-i-manage">How I Actually Manage This</a></li>
+        <li><a href="#wins">Wins Worth Noting</a></li>
+        <li><a href="#failures">Things That Went Wrong</a></li>
+        <li><a href="#whats-ahead">What's Ahead</a></li>
+        <li><a href="#advice">Key Lesson</a></li>
+      </ul>
+    </aside>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Abid Khan. All rights reserved.</p>
+    <article class="post-article">
+
+      <section id="who-i-am">
+        <span class="section-label">Introduction</span>
+        <h2>Who I Am</h2>
+        <p>19-year-old CS student at Gujarat Technological University, graduating 2027. That's the simple version. The fuller version: CTO at Knight Medicare (healthcare AI startup), Local Director at Open Paws India (animal welfare org), founder of Open Permit (civic tech) and Adventurers Guild (edtech), Google Gemini Campus Ambassador, and active contributor to open source repos with 1k–3.6k stars.</p>
+        <p>I'm not writing this to brag. I'm writing it because the "how do you manage all this" question gets asked constantly, and the honest answer is more nuanced than the LinkedIn-friendly version. There's a real system underneath — and also real failures, real burnout, and real chaos. Both are true simultaneously.</p>
+        <p>This post is the unedited version.</p>
+      </section>
+
+      <section id="the-setup">
+        <span class="section-label">Context</span>
+        <h2>The Setup</h2>
+        <p>Four primary roles, running in parallel, with different accountability structures, different stakeholders, and very different work types. Each demands different cognitive modes.</p>
+        <div class="card-grid">
+          <div class="info-card">
+            <span class="card-icon">🏥</span>
+            <h4>CTO — Knight Medicare</h4>
+            <p>Healthcare AI startup. Technical architecture, roadmap, and engineering execution. Real product, real patients downstream, real stakes. The hardest role to context-switch out of because the systems are genuinely complex and bugs have consequences.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🐾</span>
+            <h4>Local Director — Open Paws India</h4>
+            <p>Organizational leadership for Open Paws India operations. Community management, event coordination, team building, stakeholder relationships with global Open Paws leadership. More people management than code.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🛠</span>
+            <h4>Founder — Open Permit + Adventurers Guild</h4>
+            <p>Two products: Open Permit (civic tech, permit objection AI) and Adventurers Guild (CS education RPG). Both early-stage, both need product decisions, both need code. The founder role means being the last person responsible for everything in the build.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🎓</span>
+            <h4>Student — GTU, Batch 2027</h4>
+            <p>CS degree. Classes, exams, labs, projects. Cannot be fully deprioritized — the degree matters, the credits matter, the finals happen whether or not a product launch is also happening that week. The role that least tolerates flexibility.</p>
+          </div>
         </div>
-    </footer>
-</body>
+      </section>
 
+      <section id="how-i-manage">
+        <span class="section-label">Workflow</span>
+        <h2>How I Actually Manage This</h2>
+        <div class="callout amber">
+          <p>The honest answer: Claude Code is how. 6-7 sessions per day. 4-5x force multiplier on output. Without it, I'd run 2-3 projects max — not 11. This isn't an exaggeration; it's the actual arithmetic of how much gets done per hour with and without AI-assisted development.</p>
+        </div>
+        <p>But tooling alone isn't the answer. The structure underneath matters too. A typical day runs in four modes — each protecting a different type of work from context-switching contamination.</p>
+        <div class="card-grid">
+          <div class="info-card">
+            <span class="card-icon">🌅</span>
+            <h4>Morning: Code Reviews + Pipeline Checks</h4>
+            <p>Start with the things that can block others. Review PRs, check deployment health, resolve any overnight issues in production systems. Low cognitive load, high unblocking value. The goal is clearing the queue before doing deep work.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">☀</span>
+            <h4>Afternoon: Architecture + New Features</h4>
+            <p>The best cognitive hours go to the hardest technical work. New feature design, architecture decisions, complex debugging sessions. Claude Code sessions during this window are the most productive — the quality of the session depends on the quality of the thinking going in.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🌙</span>
+            <h4>Evening: OSS Contributions + College Work</h4>
+            <p>OSS contributions are evenings and weekends — the work is self-directed, the stakes are lower if interrupted, and the reviewing maintainer is often in a different timezone anyway. College assignments here too. Not ideal, but it works.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">📬</span>
+            <h4>Async: Pitch Decks + Funder Outreach</h4>
+            <p>Everything that doesn't require synchronous focus — funder emails, pitch deck iterations, Brevo campaign management, documentation. Batched and done in async blocks rather than interrupting deep work time. Mostly Claude Code sessions driving drafts, me steering and approving.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="wins">
+        <span class="section-label">Results</span>
+        <h2>Wins Worth Noting</h2>
+        <p>Not humble-bragging — recording these because the system needs to produce real outputs or it's not a system, it's just busyness. These are the markers that confirm the model works.</p>
+        <div class="metric-grid">
+          <div class="metric-card">
+            <div class="metric-val blue">NASA</div>
+            <div class="metric-label">Global Finalist</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val green">C4C</div>
+            <div class="metric-label">Code4Compassion Winner</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val amber">56+</div>
+            <div class="metric-label">Merged PRs in OSS</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val purple">500+</div>
+            <div class="metric-label">Adventurers Guild users</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val">19</div>
+            <div class="metric-label">Age as Local Director</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="failures">
+        <span class="section-label">Honesty</span>
+        <h2>Things That Went Wrong</h2>
+        <p>The system has failure modes. These aren't hypothetical — they happened. Putting them here because the "building in public" framing is meaningless without the failures.</p>
+        <div class="callout purple">
+          <p>Running many projects doesn't mean running them perfectly. Here are four times the wheels came off:</p>
+        </div>
+        <div class="card-grid">
+          <div class="info-card">
+            <span class="card-icon">💥</span>
+            <h4>Supabase India Block — 3 Days Down</h4>
+            <p>Supabase blocked Indian IP addresses with no warning. Production down for 3 days across multiple services while migrating infrastructure. Every project that relied on Supabase was affected simultaneously. The fix (Yotta migration) was the right long-term call, but those 3 days were brutal. Lesson: single-vendor dependency on cloud infrastructure is a risk you can't ignore.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">⏰</span>
+            <h4>Missed Hackathon Deadline</h4>
+            <p>Timezone confusion on a submission deadline. Built something real, shipped nothing. The kind of mistake that's preventable with basic calendar hygiene, which I didn't have at the time. Now every hackathon deadline is in the calendar 3 days early with a reminder. Simple fix, should have been in place already.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">📉</span>
+            <h4>Underestimated AARC Pitch Prep</h4>
+            <p>The AARC Pre-Accelerator pitch required more preparation than I estimated. Showed up with good product, undersold it with insufficient pitch polish. Investor pitch is a specific skill that doesn't transfer directly from "can explain the product to a developer." Spent two weeks after that doing nothing but pitch iteration — wouldn't have needed to if I'd planned ahead.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🔋</span>
+            <h4>Burnout (College Finals + Product Deadline)</h4>
+            <p>GTU finals and a Knight Medicare deployment landed in the same week. Not a scheduling accident — both had fixed dates that happened to overlap. The week was survivable; the week after was not. Output dropped to near zero for 5 days while recovery happened. The system doesn't have enough buffer for simultaneous hard constraints. Still working on this.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="whats-ahead">
+        <span class="section-label">Roadmap</span>
+        <h2>What's Ahead</h2>
+        <p>Five concrete milestones in the next 12 months. Not aspirations — actual targets with defined success states.</p>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot">1</div>
+            <div class="timeline-content">
+              <h4>Open Paws India Pvt Ltd Registration</h4>
+              <p>Formalizing the India entity for legal operations, banking, and grant eligibility. Currently operating as an informal local chapter; registration unlocks funding sources and government partnerships that require a registered entity.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">2</div>
+            <div class="timeline-content">
+              <h4>Knight Medicare Mental Health Org Pilot</h4>
+              <p>First live pilot with a mental health organization using Knight Medicare's AI triage and documentation tools. Moving from internal testing to real clinicians and real patients. The pilot that proves the product works in production.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">3</div>
+            <div class="timeline-content">
+              <h4>Open Permit Fundraising Round</h4>
+              <p>SFF grant application and first angel round for Open Permit. The product is post-AARC, has 8+ country coverage, and has validated demand. The round funds the infrastructure expansion and dedicated legal framework research capacity.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">4</div>
+            <div class="timeline-content">
+              <h4>Adventurers Guild 1000 Users</h4>
+              <p>From 500 to 1000 active users. Growth is primarily referral-driven right now; scaling to 1000 requires a more systematic acquisition channel — probably university partnerships and GTU ambassador network leverage.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">5</div>
+            <div class="timeline-content">
+              <h4>LEWS Methodology Research Paper</h4>
+              <p>Formalizing the LEWS scoring methodology as a publishable research paper. Dataset exists from the EA Animal Welfare Hackathon. Co-authors (Tim, Thomas, Rapha) are intact. The paper documents what we built so others can replicate it.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="advice">
+        <span class="section-label">Takeaway</span>
+        <h2>Key Lesson</h2>
+        <div class="callout green">
+          <p>The secret is not being exceptional. It's having systems. Systems beat talent when talent doesn't have systems. Consistent daily execution inside a clear structure compounds faster than occasional bursts of heroic effort. The 6-7 Claude Code sessions, the morning/afternoon/evening structure, the async batching — none of it is clever. It's just doing the same things every day until the outputs accumulate.</p>
+        </div>
+      </section>
+
+    </article>
+  </div>
+
+  <nav class="post-footer-nav">
+    <a href="index.html" class="btn-ghost">← All Posts</a>
+    <a href="lews-blog/index.html" class="btn-ghost">Next: LEWS Research →</a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-left">
+      <strong>Abid Khan</strong>
+      <span class="footer-muted">Builder, Operator, Shipper</span>
+    </div>
+    <div class="footer-links">
+      <a href="/">Portfolio</a>
+      <a href="index.html">Blog</a>
+      <a href="https://github.com/LarytheLord" target="_blank">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const headings = document.querySelectorAll('.post-article h2, .post-article h3');
+const tocLinks = document.querySelectorAll('.toc-list a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      tocLinks.forEach(l => l.classList.remove('active'));
+      const link = document.querySelector(`.toc-list a[href="#${e.target.id}"]`);
+      if (link) link.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+headings.forEach(h => { if(h.id) observer.observe(h); });
+</script>
+
+</body>
 </html>
