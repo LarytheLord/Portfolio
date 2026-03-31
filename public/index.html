@@ -1344,21 +1344,23 @@ document.addEventListener('keydown', function(e) {
                 void main() {
                     vec2 uv = (gl_FragCoord.xy - 0.5 * uResolution.xy) / min(uResolution.y, uResolution.x);
                     vec2 mouse = (uMouse - 0.5 * uResolution.xy) / min(uResolution.y, uResolution.x);
-                    
+
                     // Time-based animation
                     float time = uTime * 0.5;
-                    
-                    // Create a 3D scene with multiple layers
-                    vec3 color = vec3(0.0);
-                    
-                    // Light theme: silvery liquid glass
-                    color = vec3(0.96, 0.97, 0.99);
 
-                    // Layer 1: Soft iridescent noise
+                    // Light theme: Start with light background and ADD visible effects
+                    vec3 color = vec3(0.97, 0.975, 0.99); // Light background (#F7F8FC)
+
+                    // Layer 1: Iridescent purple-blue gradient noise
                     float n1 = fbm(uv * 2.0 + time * 0.12 + mouse * 0.3);
-                    color -= vec3(0.04, 0.03, 0.02) * n1 * 0.8;
+                    vec3 iridescent = mix(
+                        vec3(0.65, 0.55, 0.85), // Purple
+                        vec3(0.55, 0.75, 0.95), // Blue
+                        sin(n1 * 3.14159 + time * 0.3) * 0.5 + 0.5
+                    );
+                    color += iridescent * n1 * 0.08;
 
-                    // Layer 2: Liquid chrome flow
+                    // Layer 2: Flowing cyan liquid effect
                     vec2 q = vec2(0.0);
                     q.x = fbm(uv + 0.06 * time);
                     q.y = fbm(uv + vec2(1.0));
@@ -1366,19 +1368,28 @@ document.addEventListener('keydown', function(e) {
                     r.x = fbm(uv + 1.0 * q + vec2(1.7, 9.2) + 0.10 * time);
                     r.y = fbm(uv + 1.0 * q + vec2(8.3, 2.8) + 0.08 * time);
                     float f = fbm(uv + r);
-                    color -= vec3(0.08, 0.06, 0.03) * f * f * 0.5;
-                    color += vec3(0.02, 0.04, 0.08) * f * 0.3;
 
-                    // Layer 3: Subtle blue grid lines
-                    vec2 grid = abs(fract(uv * 8.0 + time * 0.04) - 0.5);
-                    float gridLine = min(grid.x, grid.y);
-                    color -= vec3(0.02, 0.01, 0.0) * smoothstep(0.04, 0.008, gridLine) * 0.4;
+                    // Cyan flows
+                    vec3 cyanFlow = vec3(0.2, 0.8, 1.0) * f * f * 0.15;
+                    color += cyanFlow;
 
-                    // Layer 4: Soft edge darkening
-                    float vignette = 1.0 - length(uv) * 0.25;
+                    // Blue accent flows
+                    vec3 blueFlow = vec3(0.3, 0.6, 0.95) * f * 0.08;
+                    color += blueFlow;
+
+                    // Layer 3: Subtle animated nodes (cyan/blue clusters)
+                    float nodes = sin(uv.x * 8.0 + time * 0.4) * cos(uv.y * 8.0 + time * 0.3);
+                    nodes = smoothstep(0.0, 0.3, nodes);
+                    color += vec3(0.4, 0.9, 1.0) * nodes * 0.06;
+
+                    // Layer 4: Glass shimmer at edges
+                    float shimmer = fbm(uv * 4.0 + time * 0.2);
+                    color += vec3(0.7, 0.8, 1.0) * shimmer * shimmer * 0.04;
+
+                    // Vignette - subtle darkening at edges to add depth
+                    float vignette = 1.0 - length(uv) * 0.15;
                     color *= vignette;
-                    color += vec3(0.02, 0.02, 0.03);
-                    
+
                     // Output final color
                     gl_FragColor = vec4(color, 1.0);
                 }
