@@ -6,985 +6,268 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abid Khan — Developer & Creator</title>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap"
         rel="stylesheet">
     <style>
-        /* Base Reset & Variables */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* ============================================================
+           LIQUID GLASS PORTFOLIO — Design System
+           Font: Space Grotesk | Theme: Dark | Accent: #135bec
+           ============================================================ */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --black: #0f0f0f;
-            --white: #ffffff;
-            --gray-900: #171717;
-            --gray-800: #262626;
-            --gray-700: #404040;
-            --gray-600: #525252;
-            --gray-500: #737373;
-            --gray-400: #a3a3a3;
-            --gray-300: #d4d4d4;
-            --gray-200: #e5e5e5;
-            --gray-100: #f5f5f5;
-            --accent: #60a5fa;
-            --accent-hover: #3b82f6;
-            --retro-green: #20c20e;
-            --retro-amber: #ff9f1c;
-            --retro-purple: #8b5cf6;
-
-            --border-radius: 8px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Base Styles */
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--gray-900);
-            color: var(--gray-200);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            color: var(--white);
-            font-weight: 600;
-            line-height: 1.2;
-        }
-
-        a {
-            color: var(--accent);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        a:hover {
-            color: var(--accent-hover);
-        }
-
-        .mono {
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        /* Grid System */
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .grid {
-            display: grid;
-            gap: 24px;
-        }
-
-        @media (min-width: 768px) {
-            .grid-cols-2 {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .grid-cols-3 {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        /* 3D Background Canvas */
-        #background-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            outline: none;
-        }
-
-        /* Content Overlay */
-        .content-overlay {
-            position: relative;
-            z-index: 10;
-        }
-
-        /* Retro Scanline Effect */
-        .scanlines {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: repeating-linear-gradient(0deg,
-                    rgba(0, 0, 0, 0.15),
-                    rgba(0, 0, 0, 0.15) 1px,
-                    transparent 1px,
-                    transparent 2px);
-            pointer-events: none;
-            z-index: 99;
-            opacity: 0.3;
-        }
-
-        /* Improved Glitch Effect */
-        .glitch-title {
-            position: relative;
-            display: inline-block;
-        }
-
-        .glitch-title:hover::before,
-        .glitch-title:hover::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gray-900);
-        }
-
-        .glitch-title:hover::before {
-            left: 2px;
-            text-shadow: -2px 0 var(--retro-purple);
-            clip: rect(44px, 450px, 56px, 0);
-            animation: glitch-anim 0.3s infinite linear alternate-reverse;
-        }
-
-        .glitch-title:hover::after {
-            left: -2px;
-            text-shadow: -2px 0 var(--accent), 2px 2px var(--retro-purple);
-            clip: rect(44px, 450px, 56px, 0);
-            animation: glitch-anim2 0.3s infinite linear alternate-reverse;
-        }
-
-        @keyframes glitch-anim {
-            0% {
-                clip: rect(42px, 9999px, 44px, 0);
-            }
-
-            5% {
-                clip: rect(12px, 9999px, 59px, 0);
-            }
-
-            10% {
-                clip: rect(48px, 9999px, 29px, 0);
-            }
-
-            15% {
-                clip: rect(42px, 9999px, 73px, 0);
-            }
-
-            20% {
-                clip: rect(63px, 9999px, 27px, 0);
-            }
-
-            25% {
-                clip: rect(34px, 9999px, 55px, 0);
-            }
-
-            30% {
-                clip: rect(86px, 9999px, 73px, 0);
-            }
-
-            35% {
-                clip: rect(20px, 9999px, 20px, 0);
-            }
-
-            40% {
-                clip: rect(26px, 9999px, 60px, 0);
-            }
-
-            45% {
-                clip: rect(25px, 9999px, 66px, 0);
-            }
-
-            50% {
-                clip: rect(57px, 9999px, 98px, 0);
-            }
-
-            55% {
-                clip: rect(5px, 9999px, 46px, 0);
-            }
-
-            60% {
-                clip: rect(82px, 9999px, 31px, 0);
-            }
-
-            65% {
-                clip: rect(54px, 9999px, 27px, 0);
-            }
-
-            70% {
-                clip: rect(28px, 9999px, 99px, 0);
-            }
-
-            75% {
-                clip: rect(45px, 9999px, 69px, 0);
-            }
-
-            80% {
-                clip: rect(23px, 9999px, 85px, 0);
-            }
-
-            85% {
-                clip: rect(1px, 9999px, 83px, 0);
-            }
-
-            90% {
-                clip: rect(72px, 9999px, 11px, 0);
-            }
-
-            95% {
-                clip: rect(18px, 9999px, 44px, 0);
-            }
-
-            100% {
-                clip: rect(6px, 9999px, 44px, 0);
-            }
-        }
-
-        @keyframes glitch-anim2 {
-            0% {
-                clip: rect(65px, 9999px, 100px, 0);
-            }
-
-            5% {
-                clip: rect(52px, 9999px, 74px, 0);
-            }
-
-            10% {
-                clip: rect(79px, 9999px, 85px, 0);
-            }
-
-            15% {
-                clip: rect(75px, 9999px, 5px, 0);
-            }
-
-            20% {
-                clip: rect(67px, 9999px, 61px, 0);
-            }
-
-            25% {
-                clip: rect(14px, 9999px, 79px, 0);
-            }
-
-            30% {
-                clip: rect(1px, 9999px, 66px, 0);
-            }
-
-            35% {
-                clip: rect(86px, 9999px, 30px, 0);
-            }
-
-            40% {
-                clip: rect(23px, 9999px, 98px, 0);
-            }
-
-            45% {
-                clip: rect(85px, 9999px, 72px, 0);
-            }
-
-            50% {
-                clip: rect(71px, 9999px, 75px, 0);
-            }
-
-            55% {
-                clip: rect(2px, 9999px, 48px, 0);
-            }
-
-            60% {
-                clip: rect(30px, 9999px, 16px, 0);
-            }
-
-            65% {
-                clip: rect(59px, 9999px, 50px, 0);
-            }
-
-            70% {
-                clip: rect(41px, 9999px, 62px, 0);
-            }
-
-            75% {
-                clip: rect(2px, 9999px, 82px, 0);
-            }
-
-            80% {
-                clip: rect(47px, 9999px, 73px, 0);
-            }
-
-            85% {
-                clip: rect(3px, 9999px, 27px, 0);
-            }
-
-            90% {
-                clip: rect(26px, 9999px, 55px, 0);
-            }
-
-            95% {
-                clip: rect(42px, 9999px, 97px, 0);
-            }
-
-            100% {
-                clip: rect(38px, 9999px, 49px, 0);
-            }
-        }
-
-        /* ===== INTERACTIVE TERMINAL ===== */
-        .terminal {
-            background-color: #0d0d0d;
-            border: 1px solid var(--gray-700);
-            border-radius: var(--border-radius);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            min-height: 360px;
-            transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
-        }
-        .terminal.fullscreen {
-            position: fixed;
-            inset: 0;
-            z-index: 9999;
-            border-radius: 0;
-            min-height: 100vh;
-            border: none;
-        }
-        .terminal-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: #1a1a1a;
-            border-bottom: 1px solid #2a2a2a;
-            padding: 0 14px;
-            height: 36px;
-            flex-shrink: 0;
-            user-select: none;
-        }
-        .terminal-dots {
-            display: flex;
-            gap: 7px;
-            align-items: center;
-        }
-        .terminal-dot {
-            width: 12px; height: 12px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: filter 0.15s;
-        }
-        .terminal-dot:hover { filter: brightness(1.3); }
-        .dot-red   { background: #ff5f57; }
-        .dot-yellow{ background: #febc2e; }
-        .dot-green { background: #28c840; }
-        .terminal-title {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.72rem;
-            color: #666;
-            letter-spacing: 0.02em;
-        }
-        .terminal-actions {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .term-btn {
-            background: none;
-            border: 1px solid #333;
-            color: #666;
-            font-size: 0.7rem;
-            padding: 2px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-family: 'JetBrains Mono', monospace;
-            transition: all 0.15s;
-        }
-        .term-btn:hover { color: var(--retro-green); border-color: var(--retro-green); }
-        .terminal-body {
-            flex: 1;
-            overflow-y: auto;
-            padding: 14px 16px 0;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.825rem;
-            line-height: 1.65;
-            color: #d4d4d4;
-            min-height: 0;
-            scrollbar-width: thin;
-            scrollbar-color: #333 transparent;
-        }
-        .terminal-body::-webkit-scrollbar { width: 4px; }
-        .terminal-body::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
-        .term-line { white-space: pre-wrap; word-break: break-word; }
-        .term-line.cmd  { color: #e2e2e2; }
-        .term-line.prompt-sym { color: var(--retro-green); }
-        .term-line.output { color: #a0aec0; }
-        .term-line.error  { color: #f87171; }
-        .term-line.success{ color: var(--retro-green); }
-        .term-line.info   { color: #60a5fa; }
-        .term-line.dim    { color: #4a5568; }
-        .term-input-row {
-            display: flex;
-            align-items: center;
-            padding: 10px 16px 14px;
-            gap: 6px;
-            flex-shrink: 0;
-            border-top: 1px solid #1a1a1a;
-            margin-top: 4px;
-        }
-        .term-input-prompt {
-            color: var(--retro-green);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.825rem;
-            white-space: nowrap;
-            user-select: none;
-        }
-        .term-input {
-            flex: 1;
-            background: none;
-            border: none;
-            outline: none;
-            color: #e2e2e2;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.825rem;
-            caret-color: var(--retro-green);
-        }
-        .terminal-cursor {
-            display: inline-block;
-            width: 8px;
-            height: 14px;
-            background-color: var(--retro-green);
-            animation: blink 1s infinite;
-            vertical-align: middle;
-            margin-left: 2px;
-        }
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        /* Navigation */
-        .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            background: rgba(15, 15, 15, 0.85);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--gray-800);
-            padding: 16px 0;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-logo {
-            font-weight: 700;
-            font-size: 20px;
-            color: var(--white);
-        }
-
-        .nav-logo span {
-            color: var(--accent);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 32px;
-        }
-
-        .nav-link {
-            color: var(--gray-400);
-            font-size: 15px;
-            font-weight: 500;
-            position: relative;
-            padding: 4px 0;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: var(--accent);
-            transition: var(--transition);
-        }
-
-        .nav-link:hover {
-            color: var(--white);
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 160px 0 100px;
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            position: relative;
-            z-index: 10;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(31, 41, 55, 0.5);
-            border: 1px solid var(--gray-800);
-            border-radius: 20px;
-            padding: 6px 14px;
-            font-size: 14px;
-            margin-bottom: 24px;
-            color: var(--gray-300);
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--retro-green);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0.4;
-            }
-        }
-
-        .hero-title {
-            font-size: clamp(48px, 8vw, 80px);
-            font-weight: 700;
-            margin-bottom: 24px;
-            line-height: 1.1;
-        }
-
-        .hero-title span {
-            color: var(--accent);
-        }
-
-        .hero-subtitle {
-            font-size: 20px;
-            color: var(--gray-400);
-            margin-bottom: 40px;
-            max-width: 600px;
-            line-height: 1.7;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        /* Buttons */
-        .btn {
-            padding: 12px 24px;
-            border-radius: var(--border-radius);
-            font-weight: 500;
-            font-size: 15px;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background: var(--accent);
-            color: var(--white);
-            box-shadow: var(--shadow);
-        }
-
-        .btn-primary:hover {
-            background: var(--accent-hover);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--gray-300);
-            border: 1px solid var(--gray-700);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(31, 41, 55, 0.5);
-            border-color: var(--gray-600);
-            transform: translateY(-2px);
-        }
-
-        /* Sections */
-        .section {
-            padding: 100px 0;
-            position: relative;
-            z-index: 10;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 64px;
-        }
-
-        .section-title {
-            font-size: 36px;
-            margin-bottom: 16px;
-        }
-
-        .section-subtitle {
-            font-size: 18px;
-            color: var(--gray-500);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Cards */
-        .card {
-            background: var(--gray-800);
-            border: 1px solid var(--gray-700);
-            border-radius: var(--border-radius);
-            padding: 32px;
-            transition: var(--transition);
-            position: relative;
-            z-index: 10;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--gray-600);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .project-card {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--accent), var(--retro-purple));
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 20px;
-        }
-
-        .card-icon {
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--gray-700);
-            border-radius: 10px;
-            font-size: 20px;
-        }
-
-        .card-title {
-            font-size: 20px;
-            margin-bottom: 8px;
-        }
-
-        .card-description {
-            color: var(--gray-400);
-            margin-bottom: 24px;
-            line-height: 1.7;
-        }
-
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 24px;
-        }
-
-        .tech-tag {
-            background: rgba(31, 41, 55, 0.5);
-            color: var(--gray-300);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 500;
-        }
-
-        .card-links {
-            display: flex;
-            gap: 20px;
-        }
-
-        .card-link {
-            font-size: 14px;
-            color: var(--gray-400);
-            font-weight: 500;
-            position: relative;
-        }
-
-        .card-link::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: var(--accent);
-            transition: var(--transition);
-        }
-
-        .card-link:hover {
-            color: var(--white);
-        }
-
-        .card-link:hover::after {
-            width: 100%;
-        }
-
-        /* Stats */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 24px;
-            margin-top: 48px;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 24px;
-        }
-
-        .stat-number {
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            background: linear-gradient(90deg, var(--accent), var(--retro-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .stat-label {
-            font-size: 15px;
-            color: var(--gray-500);
-        }
-
-        /* Skills */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-        }
-
-        .skill-category {
-            position: relative;
-        }
-
-        .skill-category::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--accent), var(--retro-purple));
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .skill-category:hover::before {
-            transform: scaleX(1);
-        }
-
-        .skill-title {
-            font-size: 18px;
-            margin-bottom: 16px;
-        }
-
-        .skill-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .skill-item {
-            background: rgba(31, 41, 55, 0.5);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        .skill-item:hover {
-            background: var(--accent);
-            color: var(--white);
-            transform: translateY(-2px);
-        }
-
-        /* Contact */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 24px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .contact-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 32px 24px;
-        }
-
-        .contact-icon {
-            font-size: 24px;
-            margin-bottom: 16px;
-        }
-
-        .contact-label {
-            font-size: 16px;
-            margin-bottom: 8px;
-        }
-
-        .contact-value {
-            font-size: 14px;
-            color: var(--gray-500);
-        }
-
-        /* Footer */
-        .footer {
-            padding: 60px 0 40px;
-            border-top: 1px solid var(--gray-800);
-            text-align: center;
-            position: relative;
-            z-index: 10;
-        }
-
-        .footer-text {
-            color: var(--gray-600);
-            font-size: 14px;
-            margin-bottom: 24px;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            margin-bottom: 32px;
-        }
-
-        .social-link {
-            font-size: 20px;
-            color: var(--gray-500);
-            transition: var(--transition);
-        }
-
-        .social-link:hover {
-            color: var(--white);
-            transform: translateY(-3px);
-        }
-
-        .copyright {
-            color: var(--gray-600);
-            font-size: 14px;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 16px;
-            }
-
-            .hero {
-                padding: 140px 0 80px;
-            }
-
-            .hero-title {
-                font-size: 48px;
-            }
-
-            .hero-subtitle {
-                font-size: 18px;
-            }
-
-            .hero-actions {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .nav-links {
-                gap: 16px;
-            }
-
-            .section {
-                padding: 80px 0;
-            }
-
-            .section-title {
-                font-size: 32px;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Animation Classes */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+            --black: #06090F; --white: #E8ECF4;
+            --gray-900: #0A0E18; --gray-800: #111827; --gray-700: #1E2738;
+            --gray-600: #2A3548; --gray-500: #4A5568; --gray-400: #7A8BA5;
+            --gray-300: #A8B8D0; --gray-200: #C5D0E0; --gray-100: #E8ECF4;
+            --accent: #135bec; --accent-hover: #2B6FF2;
+            --accent-glow: rgba(19,91,236,0.15); --cyan: #00D4FF;
+            --retro-green: #20c20e; --retro-amber: #ff9f1c; --retro-purple: #8b5cf6;
+            --radius: 16px; --radius-sm: 10px; --radius-xs: 6px;
+            --transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.2); --shadow: 0 2px 8px rgba(0,0,0,0.25);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.3); --shadow-lg: 0 12px 40px rgba(0,0,0,0.4);
+            --glass-bg: rgba(255,255,255,0.03); --glass-bg-2: rgba(255,255,255,0.05);
+            --glass-bg-3: rgba(255,255,255,0.07); --glass-border: rgba(255,255,255,0.07);
+            --glass-border-hover: rgba(255,255,255,0.14); --glass-blur: blur(20px);
+        }
+        body { font-family:'Space Grotesk',-apple-system,BlinkMacSystemFont,sans-serif; background:var(--black); color:var(--gray-200); line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+        h1,h2,h3,h4,h5,h6 { color:var(--white); font-weight:700; line-height:1.15; letter-spacing:-0.02em; }
+        a { color:var(--accent); text-decoration:none; transition:var(--transition); }
+        a:hover { color:var(--accent-hover); }
+        .mono { font-family:'JetBrains Mono',monospace; }
+        .container { max-width:1200px; margin:0 auto; padding:0 32px; }
+        .grid { display:grid; gap:20px; }
+        .grid-cols-2 { grid-template-columns:repeat(2,1fr); }
+        .section { padding:100px 0; }
+        .inline-link { color:var(--accent); text-decoration:underline; text-decoration-color:rgba(19,91,236,0.3); text-underline-offset:3px; }
+        .inline-link:hover { text-decoration-color:var(--accent); }
+
+        .card { background:var(--glass-bg-2); backdrop-filter:var(--glass-blur); -webkit-backdrop-filter:var(--glass-blur); border:1px solid var(--glass-border); border-radius:var(--radius); padding:28px; transition:var(--transition); }
+        .card:hover { border-color:var(--glass-border-hover); box-shadow:0 0 40px rgba(19,91,236,0.06),0 8px 32px rgba(0,0,0,0.25); transform:translateY(-3px); }
+
+        .btn { display:inline-flex; align-items:center; gap:8px; font-family:'Space Grotesk',sans-serif; font-size:0.875rem; font-weight:600; padding:12px 24px; border-radius:var(--radius-sm); cursor:pointer; border:none; transition:var(--transition); text-decoration:none; }
+        .btn-primary { background:var(--accent); color:#fff; box-shadow:0 0 24px var(--accent-glow); }
+        .btn-primary:hover { background:var(--accent-hover); color:#fff; box-shadow:0 0 36px rgba(19,91,236,0.25); transform:translateY(-2px); }
+        .btn-secondary { background:var(--glass-bg-2); backdrop-filter:var(--glass-blur); color:var(--gray-200); border:1px solid var(--glass-border); }
+        .btn-secondary:hover { border-color:var(--accent); color:var(--white); }
+        .btn-tertiary { background:transparent; color:var(--gray-300); border:1px solid var(--glass-border); }
+        .btn-tertiary:hover { border-color:var(--glass-border-hover); color:var(--white); }
+        .btn-book { background:linear-gradient(135deg,var(--retro-amber),#e8860c); color:#000; font-weight:700; }
+        .btn-book:hover { box-shadow:0 0 30px rgba(255,159,28,0.2); transform:translateY(-2px); }
+
+        #background-canvas { position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:-1; pointer-events:none; }
+        .scanlines { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:99; background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.015) 2px,rgba(0,0,0,0.015) 4px); }
+        .content-overlay { position:relative; z-index:10; }
+
+        .nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(6,9,15,0.7); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); border-bottom:1px solid rgba(255,255,255,0.05); padding:14px 0; }
+        .nav-container { display:flex; justify-content:space-between; align-items:center; }
+        .nav-logo { font-weight:800; font-size:22px; color:var(--white); letter-spacing:-0.03em; }
+        .nav-logo span { color:var(--accent); }
+        .nav-links { display:flex; gap:6px; }
+        .nav-link { color:var(--gray-400); font-size:0.85rem; font-weight:500; padding:7px 16px; border-radius:100px; border:1px solid transparent; transition:var(--transition); }
+        .nav-link:hover { color:var(--white); background:var(--glass-bg-2); border-color:var(--glass-border); }
+
+        .hero { padding:160px 0 100px; text-align:center; position:relative; }
+        .hero::after { content:''; position:absolute; bottom:0; left:10%; right:10%; height:1px; background:linear-gradient(90deg,transparent,var(--glass-border),transparent); }
+        .hero-content { max-width:800px; margin:0 auto; }
+        .hero-badge { display:inline-flex; align-items:center; gap:10px; padding:6px 18px; border:1px solid rgba(255,255,255,0.08); border-radius:100px; background:var(--glass-bg); font-size:0.8rem; font-weight:500; color:var(--gray-300); margin-bottom:28px; backdrop-filter:blur(12px); }
+        .status-dot { width:8px; height:8px; background:var(--retro-green); border-radius:50%; animation:pulse 2s ease-in-out infinite; }
+        @keyframes pulse { 0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(32,194,14,0.4);} 50%{opacity:0.8;box-shadow:0 0 0 8px rgba(32,194,14,0);} }
+        .hero-title { font-size:clamp(2.8rem,5.5vw,4.2rem); font-weight:800; letter-spacing:-0.04em; line-height:1.05; margin-bottom:20px; }
+        .glitch-title { display:inline; position:relative; }
+        .glitch-title span { background:linear-gradient(135deg,var(--accent),var(--cyan)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+        .glitch-title:hover::before,.glitch-title:hover::after { content:attr(data-text); position:absolute; top:0; left:0; width:100%; height:100%; -webkit-text-fill-color:var(--white); }
+        .glitch-title:hover::before { animation:glitch-anim .3s infinite; color:var(--cyan); clip-path:inset(40% 0 20% 0); }
+        .glitch-title:hover::after { animation:glitch-anim2 .3s infinite; color:var(--accent); clip-path:inset(60% 0 0 0); }
+        @keyframes glitch-anim { 0%{transform:translate(0)} 20%{transform:translate(-3px,2px)} 40%{transform:translate(3px,-2px)} 60%{transform:translate(-2px,1px)} 80%{transform:translate(2px,-1px)} 100%{transform:translate(0)} }
+        @keyframes glitch-anim2 { 0%{transform:translate(0)} 20%{transform:translate(3px,-1px)} 40%{transform:translate(-2px,2px)} 60%{transform:translate(1px,-2px)} 80%{transform:translate(-3px,1px)} 100%{transform:translate(0)} }
+        .hero-subtitle { font-size:1.05rem; color:var(--gray-400); max-width:600px; margin:0 auto 32px; line-height:1.7; }
+        .hero-actions { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom:48px; }
+        .hero-proof-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; max-width:720px; margin:0 auto; }
+        .hero-proof-card { background:var(--glass-bg); backdrop-filter:blur(16px); border:1px solid var(--glass-border); border-radius:var(--radius); padding:20px 16px; text-align:center; transition:var(--transition); }
+        .hero-proof-card:hover { border-color:var(--glass-border-hover); box-shadow:0 0 30px var(--accent-glow); }
+        .hero-proof-value { font-size:1.6rem; font-weight:800; color:var(--white); letter-spacing:-0.03em; line-height:1; margin-bottom:4px; }
+        .hero-proof-label { font-size:0.72rem; color:var(--gray-500); text-transform:uppercase; letter-spacing:0.06em; font-weight:500; }
+
+        .section-header { text-align:center; margin-bottom:48px; }
+        .section-header-left { text-align:left; }
+        .section-title { font-size:clamp(1.75rem,3vw,2.5rem); font-weight:800; letter-spacing:-0.03em; margin-bottom:12px; }
+        .section-subtitle { font-size:1rem; color:var(--gray-400); max-width:520px; }
+        .section-header:not(.section-header-left) .section-subtitle { margin:0 auto; }
+        .section-eyebrow { display:inline-block; font-size:0.7rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); margin-bottom:12px; }
+
+        .project-grid { display:grid; gap:18px; }
+        .project-grid.grid-cols-2 { grid-template-columns:repeat(2,1fr); }
+        .project-card { display:flex; flex-direction:column; gap:16px; }
+        .project-card-featured { grid-column:1/-1; }
+        .project-card-head { display:flex; align-items:flex-start; gap:14px; }
+        .card-icon { font-size:1.6rem; width:48px; height:48px; display:flex; align-items:center; justify-content:center; background:var(--glass-bg-3); border:1px solid var(--glass-border); border-radius:14px; flex-shrink:0; }
+        .project-title-block { flex:1; }
+        .card-title { font-size:1.1rem; font-weight:700; color:var(--white); margin-bottom:2px; }
+        .project-role { font-size:0.78rem; color:var(--gray-400); font-weight:500; }
+        .project-badge { display:inline-block; font-size:0.68rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:4px 10px; border-radius:100px; border-left:3px solid; background:var(--glass-bg-2); }
+        .project-badge.operating { border-color:var(--retro-green); color:var(--retro-green); }
+        .project-badge.live { border-color:var(--accent); color:var(--accent); }
+        .project-badge.finalist { border-color:var(--retro-amber); color:var(--retro-amber); }
+        .project-badge.internal { border-color:var(--gray-500); color:var(--gray-400); }
+        .project-badge.research { border-color:var(--retro-purple); color:var(--retro-purple); }
+        .project-badge.meta { border-color:var(--cyan); color:var(--cyan); }
+        .project-summary,.card-description { font-size:0.9rem; color:var(--gray-400); line-height:1.7; }
+        .project-proof-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--glass-border); border-radius:var(--radius-xs); overflow:hidden; margin:4px 0; }
+        .project-proof { background:var(--gray-900); padding:12px 14px; text-align:center; }
+        .project-proof-value { font-size:1.15rem; font-weight:800; color:var(--white); letter-spacing:-0.02em; }
+        .project-proof-label { font-size:0.65rem; color:var(--gray-500); text-transform:uppercase; letter-spacing:0.06em; font-weight:500; }
+        .tech-tags { display:flex; flex-wrap:wrap; gap:6px; }
+        .tech-tag { font-size:0.72rem; font-weight:500; padding:4px 12px; border-radius:100px; background:var(--glass-bg-2); border:1px solid var(--glass-border); color:var(--gray-300); font-family:'JetBrains Mono',monospace; transition:var(--transition); }
+        .tech-tag:hover { border-color:var(--accent); color:var(--accent); }
+        .card-links { display:flex; gap:8px; flex-wrap:wrap; margin-top:auto; }
+        .card-link { font-size:0.8rem; font-weight:600; color:var(--gray-400); padding:6px 14px; border:1px solid var(--glass-border); border-radius:100px; transition:var(--transition); }
+        .card-link:hover { color:var(--white); border-color:var(--glass-border-hover); }
+        .card-link-primary { color:var(--accent); border-color:rgba(19,91,236,0.3); }
+        .card-link-primary:hover { background:var(--accent); color:#fff; border-color:var(--accent); }
+
+        .terminal { background:rgba(6,9,15,0.9); border:1px solid var(--glass-border); border-radius:var(--radius); box-shadow:0 20px 60px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.03); display:flex; flex-direction:column; min-height:380px; overflow:hidden; transition:var(--transition); }
+        .terminal.fullscreen { position:fixed; inset:0; z-index:9999; border-radius:0; min-height:100vh; border:none; }
+        .terminal-header { display:flex; align-items:center; justify-content:space-between; background:rgba(255,255,255,0.03); border-bottom:1px solid rgba(255,255,255,0.06); padding:0 14px; height:38px; flex-shrink:0; user-select:none; }
+        .terminal-dots { display:flex; gap:7px; align-items:center; }
+        .terminal-dot { width:12px; height:12px; border-radius:50%; cursor:pointer; transition:filter .15s; }
+        .terminal-dot:hover { filter:brightness(1.3); }
+        .dot-red { background:#ff5f57; } .dot-yellow { background:#febc2e; } .dot-green { background:#28c840; }
+        .terminal-title { font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--gray-500); }
+        .terminal-actions { display:flex; align-items:center; gap:8px; }
+        .term-btn { background:none; border:1px solid var(--glass-border); color:var(--gray-500); font-size:0.68rem; padding:3px 10px; border-radius:6px; cursor:pointer; font-family:'JetBrains Mono',monospace; transition:var(--transition); }
+        .term-btn:hover { color:var(--retro-green); border-color:rgba(32,194,14,0.3); }
+        .terminal-body { flex:1; overflow-y:auto; padding:14px 16px 0; font-family:'JetBrains Mono',monospace; font-size:0.82rem; line-height:1.65; color:#d4d4d4; min-height:0; scrollbar-width:thin; scrollbar-color:rgba(255,255,255,0.08) transparent; }
+        .terminal-body::-webkit-scrollbar { width:4px; }
+        .terminal-body::-webkit-scrollbar-thumb { background:rgba(255,255,255,0.08); border-radius:2px; }
+        .term-line { white-space:pre-wrap; word-break:break-word; }
+        .term-line.cmd { color:var(--gray-200); } .term-line.output { color:var(--gray-400); }
+        .term-line.error { color:#f87171; } .term-line.success { color:var(--retro-green); }
+        .term-line.info { color:var(--accent); } .term-line.dim { color:var(--gray-600); }
+        .term-input-row { display:flex; align-items:center; padding:10px 16px 14px; gap:6px; flex-shrink:0; border-top:1px solid rgba(255,255,255,0.04); }
+        .term-input-prompt { color:var(--retro-green); font-family:'JetBrains Mono',monospace; font-size:0.82rem; white-space:nowrap; user-select:none; }
+        .term-input { flex:1; background:none; border:none; outline:none; color:var(--gray-200); font-family:'JetBrains Mono',monospace; font-size:0.82rem; caret-color:var(--retro-green); }
+        .terminal-cursor { display:inline-block; width:8px; height:14px; background:var(--retro-green); animation:blink 1s infinite; vertical-align:middle; }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+        .stats-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:20px; }
+        .stat-item { background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:var(--radius-sm); padding:16px; text-align:center; }
+        .stat-number { font-size:1.5rem; font-weight:800; color:var(--white); letter-spacing:-0.02em; }
+        .stat-label { font-size:0.72rem; color:var(--gray-500); margin-top:2px; }
+
+        .now-grid { display:grid; grid-template-columns:1.2fr 0.8fr; gap:18px; }
+        .now-card-wide { grid-column:1/-1; }
+        .now-card-head { display:flex; align-items:center; gap:10px; margin-bottom:16px; }
+        .now-card-head h3 { font-size:1rem; font-weight:700; }
+        .now-columns { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+        .now-columns h4 { font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--gray-500); margin-bottom:10px; }
+        .now-columns ul { list-style:none; display:flex; flex-direction:column; gap:6px; }
+        .now-columns li { font-size:0.85rem; color:var(--gray-300); }
+        .thought-stack { display:flex; flex-direction:column; gap:14px; }
+        .thought-item { background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:var(--radius-sm); padding:14px 16px; }
+        .thought-label { font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent); margin-bottom:4px; }
+        .thought-item p { font-size:0.85rem; color:var(--gray-400); }
+        .now-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
+        .now-list li { font-size:0.88rem; color:var(--gray-300); line-height:1.6; }
+
+        .oss-grid { display:grid; grid-template-columns:1.2fr 0.8fr; gap:18px; }
+        .oss-feed-card { grid-column:1/-1; }
+        .oss-kicker { display:inline-block; font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--retro-green); margin-bottom:14px; padding:4px 10px; border-radius:100px; background:rgba(32,194,14,0.08); border:1px solid rgba(32,194,14,0.15); }
+        .oss-stats-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-bottom:16px; }
+        .oss-stat { background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:var(--radius-xs); padding:14px; text-align:center; }
+        .oss-stat-value { font-size:1.3rem; font-weight:800; color:var(--white); }
+        .oss-stat-label { font-size:0.68rem; color:var(--gray-500); text-transform:uppercase; letter-spacing:0.06em; }
+        .github-calendar-shell { background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:var(--radius-xs); padding:14px; min-height:100px; overflow:hidden; }
+        .github-calendar-loading { color:var(--gray-500); font-size:0.8rem; text-align:center; padding:24px 0; }
+        .oss-profile-link { display:inline-flex; align-items:center; gap:6px; font-size:0.8rem; color:var(--accent); margin-top:10px; }
+        .activity-overview { display:flex; flex-direction:column; align-items:center; gap:16px; }
+        .activity-radar { position:relative; width:200px; height:200px; }
+        .activity-ring,.activity-axis,.activity-fill,.activity-node { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); }
+        .activity-legend { width:100%; }
+        .activity-legend-row { display:flex; justify-content:space-between; align-items:center; padding:4px 0; font-size:0.78rem; }
+        .activity-legend-label { color:var(--gray-400); }
+        .activity-legend-value { color:var(--white); font-weight:600; font-family:'JetBrains Mono',monospace; }
+        .oss-feed-title { font-size:0.88rem; font-weight:600; color:var(--gray-200); margin-bottom:2px; }
+        .oss-feed-meta { font-size:0.75rem; color:var(--gray-500); }
+
+        .writing-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+        .writing-card { display:flex; flex-direction:column; gap:12px; }
+        .writing-badge { display:inline-block; font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent); padding:3px 10px; border-radius:100px; background:rgba(19,91,236,0.08); border:1px solid rgba(19,91,236,0.15); align-self:flex-start; }
+        .writing-summary { font-size:0.88rem; color:var(--gray-400); line-height:1.65; flex:1; }
+        .writing-meta { font-size:0.75rem; color:var(--gray-500); }
+        .writing-footer { text-align:center; margin-top:32px; }
+
+        .skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; }
+        .skill-category { position:relative; overflow:hidden; }
+        .skill-category::before { content:''; position:absolute; top:0; left:0; width:0; height:2px; background:linear-gradient(90deg,var(--accent),var(--cyan)); transition:width .5s ease; }
+        .skill-category:hover::before { width:100%; }
+        .skill-title { font-size:0.9rem; font-weight:700; color:var(--white); margin-bottom:14px; }
+        .skill-list { display:flex; flex-wrap:wrap; gap:6px; }
+        .skill-item { font-size:0.75rem; font-weight:500; padding:5px 14px; border-radius:100px; background:var(--glass-bg-2); border:1px solid var(--glass-border); color:var(--gray-300); cursor:pointer; transition:var(--transition); }
+        .skill-item:hover { border-color:var(--accent); color:var(--accent); background:rgba(19,91,236,0.06); }
+
+        .contact-shell { display:grid; grid-template-columns:1.2fr 0.8fr; gap:18px; }
+        .contact-panel,.contact-form-panel { padding:32px; }
+        .contact-panel-head { margin-bottom:24px; }
+        .contact-panel-head h3 { font-size:1.2rem; font-weight:700; margin-bottom:6px; }
+        .contact-intro { font-size:0.88rem; color:var(--gray-400); margin-bottom:20px; }
+        .contact-quick-actions { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px; }
+        .contact-chip { font-size:0.78rem; font-weight:500; padding:6px 14px; border-radius:100px; background:var(--glass-bg-2); border:1px solid var(--glass-border); color:var(--gray-300); cursor:pointer; transition:var(--transition); }
+        .contact-chip:hover { border-color:var(--accent); color:var(--accent); }
+        .contact-pill { display:none; }
+        .contact-direct-list { display:flex; flex-direction:column; gap:10px; }
+        .contact-direct-item { display:flex; align-items:center; gap:14px; padding:12px 16px; border-radius:var(--radius-sm); background:var(--glass-bg); border:1px solid var(--glass-border); transition:var(--transition); }
+        .contact-direct-item:hover { border-color:var(--glass-border-hover); }
+        .contact-direct-item-featured { background:rgba(19,91,236,0.04); border-color:rgba(19,91,236,0.2); }
+        .contact-direct-label { font-size:0.72rem; color:var(--gray-500); text-transform:uppercase; letter-spacing:0.06em; font-weight:600; }
+        .contact-direct-value { font-size:0.85rem; color:var(--gray-300); }
+        .contact-direct-link { margin-left:auto; font-size:0.78rem; color:var(--gray-400); padding:4px 12px; border-radius:100px; border:1px solid var(--glass-border); transition:var(--transition); }
+        .contact-direct-link:hover { color:var(--white); border-color:var(--glass-border-hover); }
+        .contact-direct-link-featured { color:var(--accent); border-color:rgba(19,91,236,0.3); }
+        .contact-direct-link-featured:hover { background:var(--accent); color:#fff; }
+        .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+        .form-field { display:flex; flex-direction:column; gap:6px; }
+        .form-field-full { grid-column:1/-1; }
+        .form-label { font-size:0.75rem; font-weight:600; color:var(--gray-400); text-transform:uppercase; letter-spacing:0.06em; }
+        .form-input,.form-textarea { background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:var(--radius-xs); padding:12px 14px; color:var(--gray-200); font-family:'Space Grotesk',sans-serif; font-size:0.88rem; outline:none; transition:var(--transition); }
+        .form-input:focus,.form-textarea:focus { border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-glow); }
+        .form-textarea { resize:vertical; min-height:100px; }
+        .form-note { font-size:0.72rem; color:var(--gray-500); margin-top:8px; }
+        .form-actions { display:flex; gap:10px; margin-top:14px; }
+        .form-status { font-size:0.78rem; color:var(--retro-green); margin-top:8px; min-height:20px; }
+
+        .footer { padding:48px 0; border-top:1px solid var(--glass-border); text-align:center; }
+        .footer-text { font-size:0.88rem; color:var(--gray-400); margin-bottom:16px; }
+        .social-links { display:flex; justify-content:center; gap:12px; margin-bottom:16px; }
+        .social-link { color:var(--gray-400); font-size:0.82rem; font-weight:500; padding:8px 16px; border-radius:100px; border:1px solid var(--glass-border); transition:var(--transition); }
+        .social-link:hover { color:var(--white); border-color:var(--glass-border-hover); }
+        .copyright { font-size:0.72rem; color:var(--gray-600); }
+
+        .fade-in { opacity:0; transform:translateY(24px); transition:opacity .7s ease,transform .7s ease; }
+        .fade-in.visible { opacity:1; transform:translateY(0); }
+
+        @media(max-width:768px) {
+            .container { padding:0 20px; }
+            .section { padding:64px 0; }
+            .nav-links { display:none; }
+            .hero { padding:120px 0 64px; }
+            .hero-title { font-size:2.2rem; }
+            .hero-subtitle { font-size:0.95rem; }
+            .hero-actions { flex-direction:column; align-items:center; }
+            .hero-proof-grid { grid-template-columns:repeat(2,1fr); }
+            .project-grid.grid-cols-2 { grid-template-columns:1fr; }
+            .now-grid { grid-template-columns:1fr; }
+            .now-card-wide { grid-column:auto; }
+            .now-columns { grid-template-columns:1fr; }
+            .oss-grid { grid-template-columns:1fr; }
+            .oss-feed-card { grid-column:auto; }
+            .writing-grid { grid-template-columns:1fr; }
+            .skills-grid { grid-template-columns:1fr; }
+            .contact-shell { grid-template-columns:1fr; }
+            .form-grid { grid-template-columns:1fr; }
+            .form-field-full { grid-column:auto; }
+            .grid-cols-2 { grid-template-columns:1fr; }
+            .stats-grid { grid-template-columns:repeat(3,1fr); }
         }
     </style>
 </head>
@@ -1003,8 +286,8 @@
             <div class="container nav-container">
                 <a href="#" class="nav-logo">Abid<span>.</span></a>
                 <div class="nav-links">
-                    <a href="#about" class="nav-link">About</a>
                     <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#about" class="nav-link">About</a>
                     <a href="/blog" class="nav-link">Blog</a>
                     <a href="#skills" class="nav-link">Skills</a>
                     <a href="#contact" class="nav-link">Contact</a>
@@ -1026,13 +309,524 @@
                     </h1>
                     <p class="hero-subtitle">19-year-old CS student operating across civic tech, healthcare AI, EdTech, and open source. I build systems that ship and scale — usually running multiple at once.</p>
                     <div class="hero-actions">
+                        <a href="https://calendar.app.google/eeccV9tBcsgVaCpC9" class="btn btn-book" target="_blank" rel="noreferrer">
+                            <span>Book a Call</span>
+                        </a>
                         <a href="#projects" class="btn btn-primary">
                             <span>View Projects</span>
                         </a>
-                        <a href="Abid-CV.pdf" class="btn btn-secondary">
-                            <span>Download CV</span>
+                        <a href="Abid-Khan-CV.pdf" class="btn btn-tertiary" download="Abid-Khan-CV.pdf">
+                            <span>Download Resume</span>
                         </a>
                     </div>
+                    <div class="hero-proof-grid">
+                        <div class="hero-proof-card fade-in">
+                            <span class="hero-proof-value">56+</span>
+                            <span class="hero-proof-label">merged pull requests into production open source repos</span>
+                        </div>
+                        <div class="hero-proof-card fade-in">
+                            <span class="hero-proof-value">8+</span>
+                            <span class="hero-proof-label">countries reached through Open Permit's civic intelligence layer</span>
+                        </div>
+                        <div class="hero-proof-card fade-in">
+                            <span class="hero-proof-value">500+</span>
+                            <span class="hero-proof-label">contributors, learners, and builders touched across products and community</span>
+                        </div>
+                        <div class="hero-proof-card fade-in">
+                            <span class="hero-proof-value">11</span>
+                            <span class="hero-proof-label">active bets across healthcare AI, civic tech, OSS, and research</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="section" id="projects">
+            <div class="container">
+                <div class="section-header section-header-left">
+                    <p class="section-eyebrow mono">Selected Work</p>
+                    <h2 class="section-title">A tighter cut of what I'm actually shipping</h2>
+                    <p class="section-subtitle">The homepage now leads with proof instead of listing everything equally. These are the projects with the clearest traction, strongest stories, or most interesting technical constraints.</p>
+                </div>
+
+                <div class="project-grid grid-cols-2">
+                    <article class="card project-card project-card-featured fade-in">
+                        <div class="project-card-head">
+                            <div class="project-title-block">
+                                <div class="card-icon">🧠</div>
+                                <div>
+                                    <h3 class="card-title">Knight Medicare</h3>
+                                    <p class="project-role">AI therapy platform — CTO & Co-founder</p>
+                                </div>
+                            </div>
+                            <span class="project-badge">Operating</span>
+                        </div>
+                        <p class="project-summary">I lead the product and technical stack for an AI-assisted CBT platform being built with a Harvard PhD psychologist. The work sits at the intersection of healthcare UX, therapy workflow design, and reliable system execution.</p>
+                        <div class="project-proof-grid">
+                            <div class="project-proof">
+                                <span class="project-proof-value">27</span>
+                                <span class="project-proof-label">mental health disorders mapped into the product</span>
+                            </div>
+                            <div class="project-proof">
+                                <span class="project-proof-value">10</span>
+                                <span class="project-proof-label">therapy modalities represented across the experience</span>
+                            </div>
+                            <div class="project-proof">
+                                <span class="project-proof-value">CTO</span>
+                                <span class="project-proof-label">ownership across product direction and full-stack delivery</span>
+                            </div>
+                        </div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Next.js 15</span>
+                            <span class="tech-tag">React 19</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">Supabase</span>
+                        </div>
+                        <div class="card-links">
+                            <a href="/blog/knight-medicare.html" class="card-link card-link-primary">Read Case Study</a>
+                        </div>
+                    </article>
+
+                    <article class="card project-card fade-in">
+                        <div class="project-card-head">
+                            <div class="project-title-block">
+                                <div class="card-icon">🌍</div>
+                                <div>
+                                    <h3 class="card-title">Open Permit</h3>
+                                    <p class="project-role">Civic intelligence platform for high-stakes permit monitoring</p>
+                                </div>
+                            </div>
+                            <span class="project-badge">Live</span>
+                        </div>
+                        <p class="project-summary">Built first at C4C Mumbai in under 10 hours, then scaled into a multi-country civic intelligence system that tracks permit activity, legal frameworks, and objection workflows.</p>
+                        <div class="project-proof-grid">
+                            <div class="project-proof">
+                                <span class="project-proof-value">8+</span>
+                                <span class="project-proof-label">countries currently covered</span>
+                            </div>
+                            <div class="project-proof">
+                                <span class="project-proof-value">200+</span>
+                                <span class="project-proof-label">permits ingested into the platform</span>
+                            </div>
+                            <div class="project-proof">
+                                <span class="project-proof-value">40</span>
+                                <span class="project-proof-label">legal frameworks embedded into the workflow</span>
+                            </div>
+                        </div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">Gemini API</span>
+                            <span class="tech-tag">Supabase</span>
+                            <span class="tech-tag">Express</span>
+                        </div>
+                        <div class="card-links">
+                            <a href="https://openpermit.vercel.app" class="card-link card-link-primary" target="_blank" rel="noreferrer">Live Site</a>
+                            <a href="https://github.com/LarytheLord/Automated-Factory-Farm-Objection-Generator" class="card-link" target="_blank" rel="noreferrer">GitHub</a>
+                            <a href="/blog/open-permit.html" class="card-link">Case Study</a>
+                        </div>
+                    </article>
+
+                    <article class="card project-card fade-in">
+                        <div class="project-card-head">
+                            <div class="project-title-block">
+                                <div class="card-icon">⚔️</div>
+                                <div>
+                                    <h3 class="card-title">The Adventurers Guild</h3>
+                                    <p class="project-role">Gamified developer marketplace built to make growth addictive</p>
+                                </div>
+                            </div>
+                            <span class="project-badge">Live</span>
+                        </div>
+                        <p class="project-summary">A marketplace where companies post quests and student builders level up through real execution. It blends product mechanics, reputation design, and hiring signals into one system.</p>
+                        <div class="project-proof-grid">
+                            <div class="project-proof">
+                                <span class="project-proof-value">500+</span>
+                                <span class="project-proof-label">users across the platform</span>
+                            </div>
+                            <div class="project-proof">
+                                <span class="project-proof-value">GSSoC</span>
+                                <span class="project-proof-label">selected for GirlScript Summer of Code 2025</span>
+                            </div>
+                            <div class="project-proof">
+                                <span class="project-proof-value">XP</span>
+                                <span class="project-proof-label">progression-based ranking instead of static resumes</span>
+                            </div>
+                        </div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">Prisma</span>
+                            <span class="tech-tag">Neon Postgres</span>
+                            <span class="tech-tag">TypeScript</span>
+                        </div>
+                        <div class="card-links">
+                            <a href="https://adventurersguild.space" class="card-link card-link-primary" target="_blank" rel="noreferrer">Live Site</a>
+                            <a href="https://github.com/LarytheLord/Adventurers-Guild" class="card-link" target="_blank" rel="noreferrer">GitHub</a>
+                            <a href="/blog/adventurers-guild.html" class="card-link">Case Study</a>
+                        </div>
+                    </article>
+
+                    <article class="card project-card fade-in">
+                        <div class="project-card-head">
+                            <div class="project-title-block">
+                                <div class="card-icon">🌑</div>
+                                <div>
+                                    <h3 class="card-title">LunaBot</h3>
+                                    <p class="project-role">Autonomous lunar reconnaissance rover</p>
+                                </div>
+                            </div>
+                            <span class="project-badge">Finalist</span>
+                        </div>
+                        <p class="project-summary">Built for NASA Space Apps as a rover concept that scouts lunar landing sites before Artemis III astronauts arrive. It pushed me into robotics constraints, simulation thinking, and hardware-aware software decisions.</p>
+                        <div class="project-proof-grid">
+                            <div class="project-proof">
+                                <span class="project-proof-value">NASA</span>
+                                <span class="project-proof-label">Space Apps Global Finalist recognition</span>
+                            </div>
+                            <div class="project-proof">
+                                <span class="project-proof-value">ROS2</span>
+                                <span class="project-proof-label">robotics stack and orchestration backbone</span>
+                            </div>
+                            <div class="project-proof">
+                                <span class="project-proof-value">Jetson</span>
+                                <span class="project-proof-label">NVIDIA hardware for edge compute experimentation</span>
+                            </div>
+                        </div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">ROS2</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Webots</span>
+                            <span class="tech-tag">NVIDIA Jetson</span>
+                        </div>
+                        <div class="card-links">
+                            <a href="/blog/lunabot.html" class="card-link card-link-primary">Read Case Study</a>
+                        </div>
+                    </article>
+
+                    <article class="card project-card fade-in">
+                        <div class="project-card-head">
+                            <div class="project-title-block">
+                                <div class="card-icon">💬</div>
+                                <div>
+                                    <h3 class="card-title">AfA Resource Chatbot</h3>
+                                    <p class="project-role">RAG system for advocacy knowledge retrieval</p>
+                                </div>
+                            </div>
+                            <span class="project-badge">Internal</span>
+                        </div>
+                        <p class="project-summary">A retrieval layer for Open Paws that turns dense animal welfare resources into something teams can actually query in real time. It was less about making a chatbot and more about compressing search friction for operators.</p>
+                        <div class="project-proof-grid">
+                            <div class="project-proof">
+                                <span class="project-proof-value">RAG</span>
+                                <span class="project-proof-label">retrieval-first architecture instead of plain prompting</span>
+                            </div>
+                            <div class="project-proof">
+                                <span class="project-proof-value">Dual</span>
+                                <span class="project-proof-label">vector storage setup for flexible retrieval paths</span>
+                            </div>
+                            <div class="project-proof">
+                                <span class="project-proof-value">Ops</span>
+                                <span class="project-proof-label">built to support actual advocacy workflows</span>
+                            </div>
+                        </div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">OpenAI</span>
+                            <span class="tech-tag">Pinecone</span>
+                            <span class="tech-tag">pgvector</span>
+                            <span class="tech-tag">Python</span>
+                        </div>
+                        <div class="card-links">
+                            <a href="/blog/rag-chatbot.html" class="card-link card-link-primary">Read Case Study</a>
+                        </div>
+                    </article>
+
+                    <article class="card project-card fade-in">
+                        <div class="project-card-head">
+                            <div class="project-title-block">
+                                <div class="card-icon">📡</div>
+                                <div>
+                                    <h3 class="card-title">Project Slingshot UK</h3>
+                                    <p class="project-role">Automated discourse-monitoring pipeline for factory farming</p>
+                                </div>
+                            </div>
+                            <span class="project-badge">Research</span>
+                        </div>
+                        <p class="project-summary">A MEL dashboard that watches UK media, parliamentary activity, and online discourse to surface movement signals early. This one was mostly about data ingestion reliability and making noisy public data usable.</p>
+                        <div class="project-proof-grid">
+                            <div class="project-proof">
+                                <span class="project-proof-value">12+</span>
+                                <span class="project-proof-label">API and source inputs feeding the pipeline</span>
+                            </div>
+                            <div class="project-proof">
+                                <span class="project-proof-value">UK</span>
+                                <span class="project-proof-label">coverage tuned to one policy-heavy market</span>
+                            </div>
+                            <div class="project-proof">
+                                <span class="project-proof-value">MEL</span>
+                                <span class="project-proof-label">dashboarding designed for decision support</span>
+                            </div>
+                        </div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Gemini 2.0 Flash</span>
+                            <span class="tech-tag">Supabase</span>
+                            <span class="tech-tag">Data Pipelines</span>
+                        </div>
+                    </article>
+
+                    <article class="card project-card project-card-featured fade-in">
+                        <div class="project-card-head">
+                            <div class="project-title-block">
+                                <div class="card-icon">🗂️</div>
+                                <div>
+                                    <h3 class="card-title">Everything Else Worth Opening</h3>
+                                    <p class="project-role">Smaller bets, research experiments, and public writing</p>
+                                </div>
+                            </div>
+                            <span class="project-badge">More</span>
+                        </div>
+                        <p class="project-summary">The homepage is intentionally curated now, but there is more behind it: LEWS, Gemini Ambassador work, public essays, and the rest of the portfolio terminal. If you're the kind of person who likes digging, there are more breadcrumbs below.</p>
+                        <div class="card-links">
+                            <a href="https://lews.vercel.app" class="card-link card-link-primary" target="_blank" rel="noreferrer">Open LEWS</a>
+                            <a href="/blog/gemini-ambassador.html" class="card-link">Gemini Ambassador</a>
+                            <a href="/blog/building-in-public.html" class="card-link">Building in Public</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="now">
+            <div class="container">
+                <div class="section-header section-header-left">
+                    <p class="section-eyebrow mono">Now</p>
+                    <h2 class="section-title">What has my attention right now</h2>
+                    <p class="section-subtitle">This is the layer the old homepage was missing. It makes the site feel current, directional, and a little more human instead of reading like a frozen brag sheet.</p>
+                </div>
+
+                <div class="now-grid">
+                    <article class="card now-card now-card-wide fade-in">
+                        <div class="now-card-head">
+                            <div>
+                                <p class="now-kicker">Current Operating System</p>
+                                <h3 class="card-title">Shipping across product, infra, open source, and research</h3>
+                            </div>
+                            <span class="now-pill">Current</span>
+                        </div>
+                        <div class="now-columns">
+                            <div>
+                                <h4 class="now-mini-title">Builds</h4>
+                                <ul class="now-list">
+                                    <li>Knight Medicare is where I spend my highest-focus product energy: therapeutic UX, safety-minded system design, and making the platform reliable enough to matter.</li>
+                                    <li>Open Permit is the most leveraged civic-tech bet in the stack, and I am still pushing on data coverage, objection workflows, and institutional adoption paths.</li>
+                                    <li>The Adventurers Guild keeps pulling me back into game mechanics, talent systems, and how to make developer growth feel earned instead of performative.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="now-mini-title">Ops</h4>
+                                <ul class="now-list">
+                                    <li>Open source remains a daily practice, not a side quest. I care a lot about reviewer-approved work in repos that real teams already depend on.</li>
+                                    <li>I am still thinking deeply about infrastructure portability after the Supabase block, especially how to keep all 11 projects from becoming provider-bound.</li>
+                                    <li>Research is creeping closer to the center through LEWS, methodology writing, and the kinds of questions that deserve more than a hackathon prototype.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card now-card fade-in">
+                        <div>
+                            <p class="now-kicker">Thinking About</p>
+                            <h3 class="card-title">The questions underneath the code</h3>
+                        </div>
+                        <div class="thought-stack">
+                            <div class="thought-item">
+                                <span class="thought-label">Research</span>
+                                <p>How to formalize LEWS into something that survives peer review instead of staying trapped as a strong hackathon artifact.</p>
+                            </div>
+                            <div class="thought-item">
+                                <span class="thought-label">Leverage</span>
+                                <p>Where AI tooling actually compounds execution and where it just creates a shinier version of busywork.</p>
+                            </div>
+                            <div class="thought-item">
+                                <span class="thought-label">Infrastructure</span>
+                                <p>How to design systems that can move when vendors, regions, or constraints change under you.</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card now-card fade-in">
+                        <div>
+                            <p class="now-kicker">Open To</p>
+                            <h3 class="card-title">Conversations worth having</h3>
+                        </div>
+                        <ul class="now-list">
+                            <li>Interesting product, OSS, or research collaborations where execution quality matters more than vibes.</li>
+                            <li>Operator conversations around civic tech, healthcare AI, open source leverage, and building while still in college.</li>
+                            <li>People who want someone technical, fast, and slightly obsessive in the room while something ambitious gets built.</li>
+                        </ul>
+                        <div class="now-inline-links">
+                            <a href="#contact" class="inline-link">Start a conversation</a>
+                            <a href="/blog" class="inline-link">Read the longer thoughts</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="oss">
+            <div class="container">
+                <div class="section-header section-header-left">
+                    <p class="section-eyebrow mono">OSS Activity</p>
+                    <h2 class="section-title">Open source, shown as a live system</h2>
+                    <p class="section-subtitle">The profile proves I contribute. This section is about making that work legible on the portfolio itself, with a live calendar, current counts, and recent merged pull requests.</p>
+                </div>
+
+                <div class="oss-grid">
+                    <article class="card oss-calendar-card fade-in">
+                        <div class="oss-card-head">
+                            <div>
+                                <p class="oss-kicker">GitHub Pulse</p>
+                                <h3 class="card-title">Live contribution calendar</h3>
+                            </div>
+                            <a href="https://github.com/LarytheLord" class="oss-profile-link" target="_blank" rel="noreferrer">Open GitHub</a>
+                        </div>
+                        <p class="oss-calendar-intro">This is fetched live from GitHub and proxied through the site, so it reflects the current public contribution calendar instead of a hardcoded screenshot.</p>
+                        <div class="oss-stats-grid">
+                            <div class="oss-stat">
+                                <span class="oss-stat-value" id="oss-yearly-contributions">1,538</span>
+                                <span class="oss-stat-label">Yearly contributions</span>
+                            </div>
+                            <div class="oss-stat">
+                                <span class="oss-stat-value" id="oss-merged-prs">94</span>
+                                <span class="oss-stat-label">Merged pull requests</span>
+                            </div>
+                            <div class="oss-stat">
+                                <span class="oss-stat-value" id="oss-open-prs">44</span>
+                                <span class="oss-stat-label">Open pull requests</span>
+                            </div>
+                            <div class="oss-stat">
+                                <span class="oss-stat-value" id="oss-public-repos">93</span>
+                                <span class="oss-stat-label">Public repositories</span>
+                            </div>
+                        </div>
+                        <div class="github-calendar-shell" id="github-calendar-shell">
+                            <div class="github-calendar-loading" id="github-calendar-loading">Loading live GitHub activity...</div>
+                        </div>
+                        <p class="oss-calendar-footnote" id="oss-calendar-footnote">If the live call fails, the rest of this section still keeps the OSS story readable.</p>
+                    </article>
+
+                    <article class="card fade-in">
+                        <div class="oss-card-head">
+                            <div>
+                                <p class="oss-kicker">Activity Overview</p>
+                                <h3 class="card-title">Contribution mix</h3>
+                            </div>
+                        </div>
+                        <p class="project-summary">Inspired by GitHub’s native activity overview. The portfolio version turns that shape into a quick read on how the work usually shows up: mostly commits, some pull requests, a little issue activity, and code review where it matters.</p>
+                        <div class="activity-overview" aria-hidden="true">
+                            <svg class="activity-radar" viewBox="0 0 320 320">
+                                <line class="activity-axis" x1="160" y1="28" x2="160" y2="292"></line>
+                                <line class="activity-axis" x1="28" y1="160" x2="292" y2="160"></line>
+                                <circle class="activity-ring" cx="160" cy="160" r="46" fill="none"></circle>
+                                <polygon class="activity-fill" points="45,160 160,115 163,160 160,184"></polygon>
+                                <circle class="activity-node" cx="45" cy="160" r="7"></circle>
+                                <circle class="activity-node" cx="160" cy="115" r="7"></circle>
+                                <circle class="activity-node" cx="163" cy="160" r="7"></circle>
+                                <circle class="activity-node" cx="160" cy="184" r="7"></circle>
+                                <text x="160" y="54" text-anchor="middle" fill="#a3a3a3" font-size="16">Code review</text>
+                                <text x="20" y="156" text-anchor="start" fill="#d4d4d4" font-size="20" font-weight="700">87%</text>
+                                <text x="20" y="182" text-anchor="start" fill="#a3a3a3" font-size="16">Commits</text>
+                                <text x="300" y="156" text-anchor="end" fill="#d4d4d4" font-size="20" font-weight="700">1%</text>
+                                <text x="300" y="182" text-anchor="end" fill="#a3a3a3" font-size="16">Issues</text>
+                                <text x="160" y="270" text-anchor="middle" fill="#d4d4d4" font-size="20" font-weight="700">12%</text>
+                                <text x="160" y="296" text-anchor="middle" fill="#a3a3a3" font-size="16">Pull requests</text>
+                            </svg>
+                        </div>
+                        <div class="activity-legend">
+                            <div class="activity-legend-row">
+                                <span class="activity-legend-label">Primary pattern</span>
+                                <span class="activity-legend-value">shipping fixes and features into real codebases</span>
+                            </div>
+                            <div class="activity-legend-row">
+                                <span class="activity-legend-label">Secondary pattern</span>
+                                <span class="activity-legend-value">pull requests that survive reviewer scrutiny</span>
+                            </div>
+                            <div class="activity-legend-row">
+                                <span class="activity-legend-label">Why this matters</span>
+                                <span class="activity-legend-value">maintainer trust is stronger proof than self-reported skill</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card oss-feed-card fade-in">
+                        <div class="oss-card-head">
+                            <div>
+                                <p class="oss-kicker">Recent Merges</p>
+                                <h3 class="card-title">Reviewer-approved work in public repos</h3>
+                            </div>
+                            <a href="https://github.com/LarytheLord" class="oss-profile-link" target="_blank" rel="noreferrer">View profile activity</a>
+                        </div>
+                        <div class="oss-feed-list" id="oss-feed-list">
+                            <div class="oss-feed-item">
+                                <div>
+                                    <div class="oss-feed-title">Loading merged pull requests...</div>
+                                    <div class="oss-feed-meta">Pulling recent activity from GitHub.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="writing">
+            <div class="container">
+                <div class="section-header section-header-left">
+                    <p class="section-eyebrow mono">Latest Writing</p>
+                    <h2 class="section-title">Case studies, deep dives, and operational notes</h2>
+                    <p class="section-subtitle">The blog already had strong material. The homepage just wasn’t surfacing it. These are the three pieces that best explain how I think, build, and operate.</p>
+                </div>
+
+                <div class="writing-grid">
+                    <article class="card writing-card fade-in">
+                        <span class="writing-badge">Civic Tech</span>
+                        <div>
+                            <h3 class="card-title">Open Permit: From hackathon to 8+ countries</h3>
+                            <p class="writing-summary">The cleanest example of how I like to build: fast initial execution, strong iteration loops, and an insistence that even “hackathon projects” can become real infrastructure.</p>
+                        </div>
+                        <div class="writing-meta">Open Permit • 200+ permits • 40 legal frameworks</div>
+                        <div class="card-links">
+                            <a href="/blog/open-permit.html" class="card-link card-link-primary">Read Case Study</a>
+                        </div>
+                    </article>
+
+                    <article class="card writing-card fade-in">
+                        <span class="writing-badge">Open Source</span>
+                        <div>
+                            <h3 class="card-title">56+ merged PRs in production OSS</h3>
+                            <p class="writing-summary">A breakdown of what those contributions actually looked like, why reviewer-approved work matters, and how I use open source as a forcing function for technical growth.</p>
+                        </div>
+                        <div class="writing-meta">OpenHands • docling • Kubernetes • Prometheus</div>
+                        <div class="card-links">
+                            <a href="/blog/oss-contributions.html" class="card-link card-link-primary">Read Breakdown</a>
+                        </div>
+                    </article>
+
+                    <article class="card writing-card fade-in">
+                        <span class="writing-badge">Workflow</span>
+                        <div>
+                            <h3 class="card-title">How Claude Code manages everything</h3>
+                            <p class="writing-summary">The operational layer behind running multiple projects at once: architecture sessions, data pipelines, infra decisions, and using AI as leverage instead of theater.</p>
+                        </div>
+                        <div class="writing-meta">11 projects • 4 domains • one operating system</div>
+                        <div class="card-links">
+                            <a href="/blog/claude-code.html" class="card-link card-link-primary">Read Deep Dive</a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="writing-footer fade-in">
+                    <a href="/blog" class="btn btn-secondary">Browse All Writing</a>
                 </div>
             </div>
         </section>
@@ -1278,207 +1072,6 @@ document.addEventListener('keydown', function(e) {
             </div>
         </section>
 
-        <!-- Projects Section -->
-        <section class="section" id="projects">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Featured Projects</h2>
-                    <p class="section-subtitle">Some of my recent work</p>
-                </div>
-
-                <div class="grid grid-cols-2">
-                    <!-- LunaBot -->
-                    <div class="card project-card fade-in">
-                        <div class="card-header">
-                            <div class="card-icon">🌑</div>
-                            <div>
-                                <h3 class="card-title">LunaBot</h3>
-                                <p class="card-description">NASA Space Apps Finalist</p>
-                            </div>
-                        </div>
-                        <p class="card-description">Autonomous lunar reconnaissance rover scouting landing sites before
-                            Artemis III astronauts arrive.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">ROS2</span>
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">NVIDIA Jetson</span>
-                        </div>
-                        <div class="card-links">
-                            <a href="/blog/lunabot.html" class="card-link">Read Case Study</a>
-                        </div>
-                    </div>
-
-                    <!-- Open Permit -->
-                    <div class="card project-card fade-in">
-                        <div class="card-header">
-                            <div class="card-icon">🌍</div>
-                            <div>
-                                <h3 class="card-title">Open Permit</h3>
-                                <p class="card-description">Civic Intelligence Platform — Live in 8+ Countries</p>
-                            </div>
-                        </div>
-                        <p class="card-description">AI-powered platform monitoring government permits across 8+ countries, generating legal objection letters. 200+ permits ingested, 40 legal frameworks, 197 funder contacts. Built in 10hrs at C4C Mumbai, scaled through AARC Pre-Accelerator Bangalore.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Next.js</span>
-                            <span class="tech-tag">Gemini API</span>
-                            <span class="tech-tag">Supabase</span>
-                            <span class="tech-tag">Express</span>
-                        </div>
-                        <div class="card-links">
-                            <a href="https://openpermit.vercel.app" class="card-link" target="_blank">Live Site</a>
-                            <a href="https://github.com/LarytheLord/Automated-Factory-Farm-Objection-Generator" class="card-link" target="_blank">GitHub</a>
-                            <a href="/blog/open-permit.html" class="card-link">Case Study</a>
-                        </div>
-                    </div>
-
-                    <!-- Knight Medicare -->
-                    <div class="card project-card fade-in">
-                        <div class="card-header">
-                            <div class="card-icon">🧠</div>
-                            <div>
-                                <h3 class="card-title">Knight Medicare</h3>
-                                <p class="card-description">AI Therapy Platform — CTO & Co-founder</p>
-                            </div>
-                        </div>
-                        <p class="card-description">AI-powered CBT therapy platform built with a Harvard PhD psychologist. 27 disorders, 10 therapy modalities. Leading full technical stack as CTO.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Next.js 15</span>
-                            <span class="tech-tag">React 19</span>
-                            <span class="tech-tag">TypeScript</span>
-                            <span class="tech-tag">Supabase</span>
-                        </div>
-                        <div class="card-links">
-                            <a href="/blog/knight-medicare.html" class="card-link">Read Case Study</a>
-                        </div>
-                    </div>
-
-                    <!-- Adventurers Guild -->
-                    <div class="card project-card fade-in">
-                        <div class="card-header">
-                            <div class="card-icon">⚔️</div>
-                            <div>
-                                <h3 class="card-title">The Adventurers Guild</h3>
-                                <p class="card-description">Gamified Dev Marketplace — 500+ Users</p>
-                            </div>
-                        </div>
-                        <p class="card-description">Companies post "quests," CS students complete them for XP/rewards. F-to-S ranking system. GirlScript Summer of Code 2025. Operating under Open Paws.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Next.js</span>
-                            <span class="tech-tag">Prisma</span>
-                            <span class="tech-tag">Neon Postgres</span>
-                            <span class="tech-tag">TypeScript</span>
-                        </div>
-                        <div class="card-links">
-                            <a href="https://adventurersguild.space" class="card-link" target="_blank">Live Site</a>
-                            <a href="https://github.com/LarytheLord/Adventurers-Guild" class="card-link" target="_blank">GitHub</a>
-                            <a href="/blog/adventurers-guild.html" class="card-link">Case Study</a>
-                        </div>
-                    </div>
-
-                    <!-- RAG Chatbot -->
-                    <div class="card project-card fade-in">
-                        <div class="card-header">
-                            <div class="card-icon">💬</div>
-                            <div>
-                                <h3 class="card-title">AfA Resource Chatbot</h3>
-                                <p class="card-description">RAG System for Open Paws</p>
-                            </div>
-                        </div>
-                        <p class="card-description">RAG system for animal welfare resources using OpenAI embeddings and vector search. Makes advocacy resources instantly accessible for Open Paws.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">RAG</span>
-                            <span class="tech-tag">OpenAI</span>
-                            <span class="tech-tag">Pinecone</span>
-                            <span class="tech-tag">pgvector</span>
-                        </div>
-                        <div class="card-links">
-                            <a href="/blog/rag-chatbot.html" class="card-link">Read Case Study</a>
-                        </div>
-                    </div>
-
-                    <!-- LEWS -->
-                    <div class="card project-card fade-in">
-                        <div class="card-header">
-                            <div class="card-icon">⚠️</div>
-                            <div>
-                                <h3 class="card-title">LEWS</h3>
-                                <p class="card-description">Lock-in Early Warning System</p>
-                            </div>
-                        </div>
-                        <p class="card-description">Predicts when emerging animal technologies approach irreversibility. Built at Code4Compassion Berlin hackathon.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Data Analysis</span>
-                            <span class="tech-tag">Predictive Modeling</span>
-                        </div>
-                        <div class="card-links">
-                            <a href="https://lews.vercel.app" class="card-link" target="_blank">Live Site</a>
-                        </div>
-                    </div>
-
-                    <!-- Project Slingshot -->
-                    <div class="card project-card fade-in">
-                        <div class="card-header">
-                            <div class="card-icon">📡</div>
-                            <div>
-                                <h3 class="card-title">Project Slingshot UK</h3>
-                                <p class="card-description">Public Discourse Tracking Pipeline</p>
-                            </div>
-                        </div>
-                        <p class="card-description">Automated MEL dashboard tracking UK factory farming coverage — media, parliamentary activity, and social sentiment. 12+ API data sources.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Gemini 2.0 Flash</span>
-                            <span class="tech-tag">Supabase</span>
-                            <span class="tech-tag">Data Pipeline</span>
-                        </div>
-                    </div>
-
-                    <!-- Gemini Ambassador -->
-                    <div class="card project-card fade-in">
-                        <div class="card-header">
-                            <div class="card-icon">✨</div>
-                            <div>
-                                <h3 class="card-title">Gemini Ambassador</h3>
-                                <p class="card-description">Google AI Education</p>
-                            </div>
-                        </div>
-                        <p class="card-description">Bringing cutting-edge AI tools to students through workshops and
-                            community building.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Google AI</span>
-                            <span class="tech-tag">Education</span>
-                            <span class="tech-tag">Community</span>
-                        </div>
-                        <div class="card-links">
-                            <a href="/blog/gemini-ambassador.html" class="card-link">Read Case Study</a>
-                        </div>
-                    </div>
-
-                    <!-- Building in Public -->
-                    <div class="card project-card fade-in" style="grid-column: 1 / -1;">
-                        <div class="card-header">
-                            <div class="card-icon">📢</div>
-                            <div>
-                                <h3 class="card-title">Building in Public</h3>
-                                <p class="card-description">Lessons Learned & Personal Growth</p>
-                            </div>
-                        </div>
-                        <p class="card-description">A series on balancing college, CTO roles, hackathons, and personal
-                            growth.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Writing</span>
-                            <span class="tech-tag">Career</span>
-                            <span class="tech-tag">Growth</span>
-                        </div>
-                        <div class="card-links">
-                            <a href="/blog/building-in-public.html" class="card-link">Read Series</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Skills Section -->
         <section class="section" id="skills">
             <div class="container">
@@ -1560,29 +1153,97 @@ document.addEventListener('keydown', function(e) {
         <!-- Contact Section -->
         <section class="section" id="contact">
             <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Get In Touch</h2>
-                    <p class="section-subtitle">Let's work together on something amazing</p>
+                <div class="section-header section-header-left">
+                    <p class="section-eyebrow mono">Contact</p>
+                    <h2 class="section-title">If something interesting is being built, I want to hear about it</h2>
+                    <p class="section-subtitle">I like conversations that are concrete: a product to build, an OSS problem worth solving, a weird systems question, or a collaboration that needs someone technical and fast.</p>
                 </div>
 
-                <div class="contact-grid">
-                    <a href="mailto:llawlietbagsum@gmail.com" class="card contact-item fade-in">
-                        <div class="contact-icon">📧</div>
-                        <div class="contact-label">Email</div>
-                        <div class="contact-value">llawlietbagsum@gmail.com</div>
-                    </a>
+                <div class="contact-shell">
+                    <article class="card contact-panel fade-in">
+                        <div class="contact-panel-head">
+                            <div>
+                                <p class="oss-kicker">Best Entry Points</p>
+                                <h3 class="card-title">Choose the fastest path</h3>
+                            </div>
+                            <span class="contact-pill">Replies in 24-48h</span>
+                        </div>
+                        <p class="contact-intro">If you want the fastest path, book a call. Email is still the cleanest channel for serious conversations with context, and the prompt chips below help you start with something sharper than “hey.”</p>
+                        <div class="contact-quick-actions">
+                            <button class="contact-chip" type="button" data-contact-subject="Build something together">Build together</button>
+                            <button class="contact-chip" type="button" data-contact-subject="Open source collaboration">Open source collaboration</button>
+                            <button class="contact-chip" type="button" data-contact-subject="Research / systems conversation">Research / systems conversation</button>
+                            <button class="contact-chip" type="button" data-contact-subject="Product or operator chat">Product or operator chat</button>
+                        </div>
+                        <div class="contact-direct-list">
+                            <div class="contact-direct-item contact-direct-item-featured">
+                                <div>
+                                    <span class="contact-direct-label">Book a Call</span>
+                                    <span class="contact-direct-value">Fastest way to get time on the calendar</span>
+                                </div>
+                                <a href="https://calendar.app.google/eeccV9tBcsgVaCpC9" class="contact-direct-link contact-direct-link-featured" target="_blank" rel="noreferrer">Schedule</a>
+                            </div>
+                            <div class="contact-direct-item">
+                                <div>
+                                    <span class="contact-direct-label">Email</span>
+                                    <span class="contact-direct-value">llawlietbagsum@gmail.com</span>
+                                </div>
+                                <a href="mailto:llawlietbagsum@gmail.com" class="contact-direct-link">Open mail</a>
+                            </div>
+                            <div class="contact-direct-item">
+                                <div>
+                                    <span class="contact-direct-label">LinkedIn</span>
+                                    <span class="contact-direct-value">linkedin.com/in/abikhn</span>
+                                </div>
+                                <a href="https://linkedin.com/in/abikhn" class="contact-direct-link" target="_blank" rel="noreferrer">Say hi</a>
+                            </div>
+                            <div class="contact-direct-item">
+                                <div>
+                                    <span class="contact-direct-label">GitHub</span>
+                                    <span class="contact-direct-value">github.com/LarytheLord</span>
+                                </div>
+                                <a href="https://github.com/LarytheLord" class="contact-direct-link" target="_blank" rel="noreferrer">See work</a>
+                            </div>
+                            <div class="contact-direct-item">
+                                <div>
+                                    <span class="contact-direct-label">Resume / CV</span>
+                                    <span class="contact-direct-value">Latest one-page PDF</span>
+                                </div>
+                                <a href="Abid-Khan-CV.pdf" class="contact-direct-link" download="Abid-Khan-CV.pdf">Download</a>
+                            </div>
+                        </div>
+                    </article>
 
-                    <a href="https://linkedin.com/in/abikhn" class="card contact-item fade-in">
-                        <div class="contact-icon">💼</div>
-                        <div class="contact-label">LinkedIn</div>
-                        <div class="contact-value">linkedin.com/in/abikhn</div>
-                    </a>
-
-                    <a href="https://github.com/LarytheLord" class="card contact-item fade-in">
-                        <div class="contact-icon">🐙</div>
-                        <div class="contact-label">GitHub</div>
-                        <div class="contact-value">github.com/LarytheLord</div>
-                    </a>
+                    <form class="card contact-form-panel fade-in" id="contact-form" novalidate>
+                        <div>
+                            <p class="oss-kicker">Draft Your Message</p>
+                            <h3 class="card-title">Static-friendly contact flow</h3>
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-field">
+                                <label class="form-label" for="contact-name">Name</label>
+                                <input class="form-input" id="contact-name" name="name" type="text" placeholder="Your name">
+                            </div>
+                            <div class="form-field">
+                                <label class="form-label" for="contact-email">Email</label>
+                                <input class="form-input" id="contact-email" name="email" type="email" placeholder="you@example.com">
+                            </div>
+                            <div class="form-field form-field-full">
+                                <label class="form-label" for="contact-subject">Subject</label>
+                                <input class="form-input" id="contact-subject" name="subject" type="text" placeholder="What are we talking about?">
+                            </div>
+                            <div class="form-field form-field-full">
+                                <label class="form-label" for="contact-message">Message</label>
+                                <textarea class="form-textarea" id="contact-message" name="message" placeholder="Give me the context, what you're building, and where you think I fit."></textarea>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button class="btn btn-primary" type="submit">Open Email Draft</button>
+                            <button class="btn btn-secondary" type="button" id="copy-email-btn">Copy Email</button>
+                        </div>
+                        <p class="form-note">This keeps the site deployable as a static portfolio: the form validates your message, saves your draft locally, and opens your mail app with everything prefilled.</p>
+                        <p class="form-status" id="contact-form-status" aria-live="polite"></p>
+                    </form>
                 </div>
             </div>
         </section>
@@ -1595,7 +1256,7 @@ document.addEventListener('keydown', function(e) {
                 <div class="social-links">
                     <a href="https://github.com/LarytheLord" class="social-link">GitHub</a>
                     <a href="https://linkedin.com/in/abikhn" class="social-link">LinkedIn</a>
-                    <a href="https://twitter.com" class="social-link">Twitter</a>
+                    <a href="/blog" class="social-link">Blog</a>
                 </div>
 
                 <p class="copyright">&copy; 2026 Abid Khan. Built with intent, shipped with urgency.</p>
@@ -1690,28 +1351,29 @@ document.addEventListener('keydown', function(e) {
                     // Create a 3D scene with multiple layers
                     vec3 color = vec3(0.0);
                     
-                    // Layer 1: Base noise field
-                    float n1 = fbm(uv * 2.0 + time * 0.2 + mouse * 0.5);
-                    color += vec3(0.2, 0.4, 0.8) * n1 * 0.5;
-                    
-                    // Layer 2: Moving particles
+                    // Layer 1: Deep navy base noise
+                    float n1 = fbm(uv * 2.0 + time * 0.15 + mouse * 0.4);
+                    color += vec3(0.07, 0.14, 0.35) * n1 * 0.6;
+
+                    // Layer 2: Liquid flow (cyan/blue accent)
                     vec2 q = vec2(0.0);
-                    q.x = fbm(uv + 0.1 * time);
+                    q.x = fbm(uv + 0.08 * time);
                     q.y = fbm(uv + vec2(1.0));
                     vec2 r = vec2(0.0);
-                    r.x = fbm(uv + 1.0 * q + vec2(1.7, 9.2) + 0.15 * time);
-                    r.y = fbm(uv + 1.0 * q + vec2(8.3, 2.8) + 0.126 * time);
+                    r.x = fbm(uv + 1.0 * q + vec2(1.7, 9.2) + 0.12 * time);
+                    r.y = fbm(uv + 1.0 * q + vec2(8.3, 2.8) + 0.10 * time);
                     float f = fbm(uv + r);
-                    color += vec3(0.8, 0.4, 0.2) * f * f * f * 0.5;
-                    
-                    // Layer 3: Grid pattern
-                    vec2 grid = abs(fract(uv * 10.0 + time * 0.1) - 0.5);
+                    color += vec3(0.04, 0.36, 0.92) * f * f * f * 0.35;
+
+                    // Layer 3: Subtle grid (glass effect)
+                    vec2 grid = abs(fract(uv * 8.0 + time * 0.06) - 0.5);
                     float gridLine = min(grid.x, grid.y);
-                    color += vec3(0.3, 0.6, 1.0) * smoothstep(0.05, 0.01, gridLine) * 0.3;
-                    
-                    // Layer 4: Volumetric lighting
-                    float vignette = 1.0 - length(uv) * 0.5;
+                    color += vec3(0.0, 0.52, 1.0) * smoothstep(0.04, 0.008, gridLine) * 0.12;
+
+                    // Layer 4: Vignette with blue tint
+                    float vignette = 1.0 - length(uv) * 0.6;
                     color *= vignette;
+                    color += vec3(0.02, 0.035, 0.06);
                     
                     // Output final color
                     gl_FragColor = vec4(color, 1.0);
@@ -1857,32 +1519,6 @@ document.addEventListener('keydown', function(e) {
             }, { threshold: 0.5 });
             document.querySelectorAll('.stat-number').forEach(el => statObserver.observe(el));
 
-            // ── Project card expand on click ────────────────────────────────
-            document.querySelectorAll('.project-card').forEach(card => {
-                const desc = card.querySelector('.card-description');
-                const tags = card.querySelector('.card-tags');
-                if (!desc) return;
-                card.style.cursor = 'pointer';
-                card.setAttribute('title', 'Click to expand');
-                card.addEventListener('click', function(e) {
-                    if (e.target.closest('a')) return; // don't capture link clicks
-                    const isOpen = card.classList.contains('expanded');
-                    document.querySelectorAll('.project-card.expanded').forEach(c => {
-                        c.classList.remove('expanded');
-                        const d = c.querySelector('.card-description');
-                        const t = c.querySelector('.card-tags');
-                        if (d) d.style.webkitLineClamp = '3';
-                        if (t) t.style.display = '';
-                    });
-                    if (!isOpen) {
-                        card.classList.add('expanded');
-                        if (desc) desc.style.webkitLineClamp = 'unset';
-                        if (tags) tags.style.display = 'flex';
-                        card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                    }
-                });
-            });
-
             // ── Skill item: copy-to-clipboard tooltip ───────────────────────
             document.querySelectorAll('.skill-item').forEach(el => {
                 el.title = 'Click to copy';
@@ -1900,8 +1536,193 @@ document.addEventListener('keydown', function(e) {
                 });
             });
 
+            // ── GitHub activity section ─────────────────────────────────────
+            async function loadGitHubActivity() {
+                const calendarShell = document.getElementById('github-calendar-shell');
+                const loadingEl = document.getElementById('github-calendar-loading');
+                const feedList = document.getElementById('oss-feed-list');
+                const footnote = document.getElementById('oss-calendar-footnote');
+
+                if (!calendarShell || !feedList) return;
+
+                try {
+                    const response = await fetch('/api/github-activity?username=LarytheLord');
+
+                    if (!response.ok) {
+                        throw new Error('GitHub activity request failed');
+                    }
+
+                    const data = await response.json();
+
+                    document.getElementById('oss-yearly-contributions').textContent = data.yearlyContributions?.toLocaleString() || '1,538';
+                    document.getElementById('oss-merged-prs').textContent = data.mergedPrCount?.toLocaleString() || '94';
+                    document.getElementById('oss-open-prs').textContent = data.openPrCount?.toLocaleString() || '44';
+                    document.getElementById('oss-public-repos').textContent = data.publicRepos?.toLocaleString() || '93';
+
+                    if (data.calendarHtml) {
+                        calendarShell.innerHTML = data.calendarHtml;
+                        if (footnote) {
+                            footnote.textContent = `Live public calendar for ${data.username} on GitHub.`;
+                        }
+                    } else if (loadingEl) {
+                        loadingEl.textContent = 'Calendar unavailable right now, but the rest of the activity data loaded.';
+                    }
+
+                    if (Array.isArray(data.recentMergedPrs) && data.recentMergedPrs.length) {
+                        feedList.innerHTML = data.recentMergedPrs.map((item) => {
+                            const updated = new Date(item.updatedAt);
+                            const prettyDate = Number.isNaN(updated.getTime())
+                                ? 'recently'
+                                : updated.toLocaleDateString('en-US', {
+                                    year: 'numeric',
+                                    month: 'short',
+                                    day: 'numeric'
+                                });
+
+                            return `
+                                <article class="oss-feed-item">
+                                    <div>
+                                        <div class="oss-feed-title">${item.title}</div>
+                                        <div class="oss-feed-meta">${item.repo} • PR #${item.number} • updated ${prettyDate}</div>
+                                    </div>
+                                    <a href="${item.url}" class="oss-feed-link" target="_blank" rel="noreferrer">Open PR</a>
+                                </article>
+                            `;
+                        }).join('');
+                    }
+                } catch (error) {
+                    if (loadingEl) {
+                        loadingEl.className = 'github-calendar-error';
+                        loadingEl.textContent = 'GitHub activity is temporarily unavailable. The static portfolio content is still fully usable.';
+                    }
+
+                    if (footnote) {
+                        footnote.textContent = 'The GitHub proxy could not be reached during this page load.';
+                    }
+
+                    feedList.innerHTML = `
+                        <article class="oss-feed-item">
+                            <div>
+                                <div class="oss-feed-title">OpenHands / OpenHands</div>
+                                <div class="oss-feed-meta">fix: treat llm_base_url="" as explicit clear in store_llm_settings</div>
+                            </div>
+                            <a href="https://github.com/OpenHands/OpenHands/pull/13471" class="oss-feed-link" target="_blank" rel="noreferrer">Open PR</a>
+                        </article>
+                        <article class="oss-feed-item">
+                            <div>
+                                <div class="oss-feed-title">docling-project / docling</div>
+                                <div class="oss-feed-meta">fix: release image backend resources after frame extraction</div>
+                            </div>
+                            <a href="https://github.com/docling-project/docling/pull/3134" class="oss-feed-link" target="_blank" rel="noreferrer">Open PR</a>
+                        </article>
+                    `;
+                }
+            }
+
+            loadGitHubActivity();
+
+            // ── Contact flow ────────────────────────────────────────────────
+            const contactForm = document.getElementById('contact-form');
+            const contactStatus = document.getElementById('contact-form-status');
+            const contactEmail = 'llawlietbagsum@gmail.com';
+            const contactFields = {
+                name: document.getElementById('contact-name'),
+                email: document.getElementById('contact-email'),
+                subject: document.getElementById('contact-subject'),
+                message: document.getElementById('contact-message'),
+            };
+            const draftKey = 'portfolio-contact-draft';
+
+            function setContactStatus(message, kind = '') {
+                if (!contactStatus) return;
+                contactStatus.textContent = message;
+                contactStatus.className = 'form-status' + (kind ? ` is-${kind}` : '');
+            }
+
+            function saveContactDraft() {
+                const payload = {
+                    name: contactFields.name?.value || '',
+                    email: contactFields.email?.value || '',
+                    subject: contactFields.subject?.value || '',
+                    message: contactFields.message?.value || '',
+                };
+                localStorage.setItem(draftKey, JSON.stringify(payload));
+            }
+
+            function loadContactDraft() {
+                try {
+                    const raw = localStorage.getItem(draftKey);
+                    if (!raw) return;
+                    const draft = JSON.parse(raw);
+                    Object.entries(contactFields).forEach(([key, el]) => {
+                        if (el && typeof draft[key] === 'string' && !el.value) {
+                            el.value = draft[key];
+                        }
+                    });
+                } catch (error) {
+                    localStorage.removeItem(draftKey);
+                }
+            }
+
+            loadContactDraft();
+
+            Object.values(contactFields).forEach((field) => {
+                field?.addEventListener('input', saveContactDraft);
+            });
+
+            document.querySelectorAll('[data-contact-subject]').forEach((button) => {
+                button.addEventListener('click', function () {
+                    if (contactFields.subject) {
+                        contactFields.subject.value = this.dataset.contactSubject || '';
+                    }
+                    if (contactFields.message && !contactFields.message.value.trim()) {
+                        contactFields.message.value = 'Context:\n\nWhat you are building:\n\nWhere you think I fit:\n\nTimeline / urgency:\n';
+                    }
+                    contactFields.message?.focus();
+                    saveContactDraft();
+                    setContactStatus('Prompt loaded. Finish the details and open the draft.', '');
+                });
+            });
+
+            document.getElementById('copy-email-btn')?.addEventListener('click', async () => {
+                try {
+                    await navigator.clipboard.writeText(contactEmail);
+                    setContactStatus('Email address copied to clipboard.', 'success');
+                } catch (error) {
+                    setContactStatus(`Copy failed. Use ${contactEmail} directly.`, 'error');
+                }
+            });
+
+            contactForm?.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                const name = contactFields.name?.value.trim() || '';
+                const email = contactFields.email?.value.trim() || '';
+                const subject = contactFields.subject?.value.trim() || '';
+                const message = contactFields.message?.value.trim() || '';
+
+                if (!name || !email || !subject || !message) {
+                    setContactStatus('Fill out all four fields so the draft opens with enough context.', 'error');
+                    return;
+                }
+
+                const body = [
+                    `Name: ${name}`,
+                    `Email: ${email}`,
+                    '',
+                    message,
+                    '',
+                    'Sent from abikhn.vercel.app',
+                ].join('\n');
+
+                const href = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                saveContactDraft();
+                setContactStatus('Opening your email client with the draft prefilled.', 'success');
+                window.location.href = href;
+            });
+
             // Add hover effect to all interactive elements
-            const interactiveElements = document.querySelectorAll('.btn, .nav-link, .card, .skill-item, .contact-item, .social-link');
+            const interactiveElements = document.querySelectorAll('.btn, .nav-link, .card, .skill-item, .social-link, .contact-chip, .oss-profile-link, .inline-link');
             interactiveElements.forEach(el => {
                 el.addEventListener('mouseenter', function () {
                     this.style.transform = this.style.transform ?
