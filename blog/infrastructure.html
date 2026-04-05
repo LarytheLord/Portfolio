@@ -81,8 +81,8 @@
           </div>
           <div class="info-card">
             <span class="card-icon">🤖</span>
-            <h4>AfA Chatbot + Slingshot</h4>
-            <p>RAG vector storage (pgvector) and data pipeline storage both on Supabase. Both offline. Research and advocacy work blocked.</p>
+            <h4>AfA Chatbot</h4>
+            <p>RAG vector storage (pgvector) on Supabase. Offline. Research and advocacy work blocked.</p>
           </div>
         </div>
       </section>
@@ -128,12 +128,9 @@ Migration Inventory
 ├── AfA Resource Chatbot (2 services)
 │   ├── Database (PostgreSQL)
 │   └── pgvector (embeddings store)
-├── Project Slingshot UK (2 services)
-│   ├── Database (pipeline storage)
-│   └── Scheduled Functions (ingestion cron)
 └── [7 additional projects] (18 services)
     └── Various auth, database, storage combinations
-Total: 29 services across 11 projects</pre>
+Total: 27 services across 10 projects</pre>
         </div>
       </section>
 
@@ -230,12 +227,6 @@ const sessions = await db.sessions.findMany()
               <td>Supabase pgvector</td>
               <td class="td-amber">Yotta Self-Hosted</td>
               <td>pgvector support on self-hosted, vector search stays local</td>
-            </tr>
-            <tr>
-              <td class="td-em">Project Slingshot</td>
-              <td>Supabase Cloud</td>
-              <td class="td-amber">Yotta Self-Hosted</td>
-              <td>Data pipeline reliability, UK discourse data with Indian processing</td>
             </tr>
           </tbody>
         </table>

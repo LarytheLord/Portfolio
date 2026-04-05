@@ -14,8 +14,6 @@ Supabase — the open-source Firebase alternative that powers multiple projects 
 - **Open Permit:** Civic intelligence platform (200+ permits, 40 legal frameworks) — core database
 - **Adventurers Guild:** Developer marketplace (500+ users) — user data, quest storage
 - **AfA Resource Chatbot:** RAG system — vector storage (pgvector)
-- **Project Slingshot UK:** Data pipeline — 12+ API sources feeding Supabase
-
 When your primary database provider gets blocked in your country, you learn very quickly how important infrastructure abstraction is.
 
 ## The Evaluation: Three Options
@@ -52,9 +50,6 @@ Migration Inventory:
 │   ├── Auth
 │   ├── Database (permits, legal frameworks, users)
 │   └── Edge functions
-├── Project Slingshot
-│   ├── Database (API ingestion data)
-│   └── Scheduled functions
 ├── AfA Chatbot
 │   ├── pgvector (embeddings)
 │   └── Database (resources, conversations)
@@ -108,7 +103,6 @@ Evaluated through Claude Code sessions comparing pricing models, API capabilitie
 | Open Permit | Supabase Cloud | Yotta Self-Hosted | Core platform, needs reliability |
 | Adventurers Guild | Neon Postgres | Keep Neon | Already on Neon, works well, no India block |
 | AfA Chatbot | Supabase pgvector | Yotta Self-Hosted | Vector search needs to be local |
-| Project Slingshot | Supabase Cloud | Yotta Self-Hosted | Data pipeline reliability |
 
 ### Cost Analysis
 

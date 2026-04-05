@@ -28,13 +28,6 @@ Built a Retrieval-Augmented Generation system for animal welfare resources:
 - **Conversational retrieval** — users ask questions in natural language, get relevant resources with citations
 - Makes the entire Open Paws knowledge base instantly searchable
 
-### Project Slingshot UK (Data Pipeline)
-An automated MEL (Monitoring, Evaluation, and Learning) dashboard tracking UK factory farming public discourse:
-- **12+ API data sources:** Media coverage APIs, parliamentary records, social media sentiment
-- **Gemini 2.0 Flash** for content analysis and categorization
-- **Supabase data layer** for structured storage and querying
-- **Stakeholder documentation** for the UK team to understand and maintain the pipeline
-
 ### Code4Compassion Hackathons
 Open Paws organizes the Code4Compassion hackathon series:
 - **Mumbai (Winner):** Built AFOG (now Open Permit) — 10-hour sprint that became a production platform
