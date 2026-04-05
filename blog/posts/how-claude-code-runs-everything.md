@@ -14,7 +14,7 @@ At any given time, I'm running:
 | **Civic Tech** | Open Permit | Codebase dev, pitch decks, funder outreach, legal framework expansion, data pipelines |
 | **Healthcare AI** | Knight Medicare | Full stack dev, Supabase schema, abstraction layers, clinical data modeling |
 | **EdTech** | Adventurers Guild | Next.js/Prisma codebase, financial modeling, feature specs, PM audit |
-| **Open Source** | Open Paws (multiple repos) | RAG systems, data pipelines, platform infrastructure, Project Slingshot |
+| **Open Source** | Open Paws (multiple repos) | RAG systems, data pipelines, platform infrastructure |
 | **OSS Contributions** | 40+ external repos | Codebase understanding, PR preparation, test writing, review responses |
 | **Infrastructure** | Cross-project | Yotta migration evaluation, Supabase alternatives, self-hosting analysis |
 | **Fundraising** | Open Permit + broader | Grant pitches, funder databases, outreach campaigns, pitch iterations |
@@ -37,7 +37,6 @@ Claude Code doesn't just generate code — it helps me **think through architect
 ### Pattern 2: Data Pipeline Development
 A surprising amount of my work is data pipelines, not web UIs:
 - **Open Permit:** CSV processing for 197 funder contacts across 75 countries, recipient routing for objection letters, permit data normalization
-- **Project Slingshot:** 12+ API sources feeding a Supabase data layer for UK factory farming discourse tracking
 - **Financial analysis:** Personal IDFC First Bank data analysis (6.5 months), investment strategy modeling
 - **Outreach campaigns:** Brevo bulk campaigns targeting ~150 NGOs/funders across 30+ countries
 
@@ -91,7 +90,6 @@ A typical day might look like:
 
 ```
 Morning:
-├── Claude Code session: Review overnight Slingshot data pipeline results
 ├── Claude Code session: Fix a bug in Adventurers Guild quest assignment
 └── Claude Code session: Iterate on Open Permit funder email draft
 
