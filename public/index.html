@@ -2,1894 +2,475 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abid Khan — Developer & Creator</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap"
-        rel="stylesheet">
-    <style>
-        /* ============================================================
-           LIQUID GLASS PORTFOLIO — Design System
-           Font: Space Grotesk | Theme: LIGHT | Accent: #135bec
-           ============================================================ */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --black: #F7F8FC; --white: #1A1D2E;
-            --gray-900: #F0F2F6; --gray-800: #E6E9F0; --gray-700: #D0D5E0;
-            --gray-600: #B0B8C8; --gray-500: #8A94A6; --gray-400: #5E6A7E;
-            --gray-300: #3F4B5E; --gray-200: #2A3344; --gray-100: #1A1F2E;
-            --accent: #135bec; --accent-hover: #0F4ACE;
-            --accent-glow: rgba(19,91,236,0.12); --cyan: #0099CC;
-            --retro-green: #16873d; --retro-amber: #d47a06; --retro-purple: #7c3aed;
-            --radius: 16px; --radius-sm: 10px; --radius-xs: 6px;
-            --transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06); --shadow: 0 2px 8px rgba(0,0,0,0.08);
-            --shadow-md: 0 4px 16px rgba(0,0,0,0.10); --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
-            --glass-bg: rgba(255,255,255,0.55); --glass-bg-2: rgba(255,255,255,0.65);
-            --glass-bg-3: rgba(255,255,255,0.75); --glass-border: rgba(0,0,0,0.06);
-            --glass-border-hover: rgba(0,0,0,0.12); --glass-blur: blur(20px);
-        }
-        body { font-family:'Space Grotesk',-apple-system,BlinkMacSystemFont,sans-serif; background:var(--black); color:var(--gray-300); line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden; min-height:100vh; position:relative; isolation:isolate; }
-        h1,h2,h3,h4,h5,h6 { color:var(--white); font-weight:700; line-height:1.15; letter-spacing:-0.02em; }
-        a { color:var(--accent); text-decoration:none; transition:var(--transition); }
-        a:hover { color:var(--accent-hover); }
-        .mono { font-family:'JetBrains Mono',monospace; }
-        .container { max-width:1200px; margin:0 auto; padding:0 32px; }
-        .grid { display:grid; gap:20px; }
-        .grid-cols-2 { grid-template-columns:repeat(2,1fr); }
-        .section { padding:100px 0; }
-        .inline-link { color:var(--accent); text-decoration:underline; text-decoration-color:rgba(19,91,236,0.3); text-underline-offset:3px; }
-        .inline-link:hover { text-decoration-color:var(--accent); }
-
-        .card { background:var(--glass-bg-2); backdrop-filter:var(--glass-blur); -webkit-backdrop-filter:var(--glass-blur); border:1px solid var(--glass-border); border-radius:var(--radius); padding:28px; transition:var(--transition); position:relative; overflow:hidden; }
-        .card::before { content:''; position:absolute; top:0; left:0; right:0; bottom:0; background:linear-gradient(135deg,rgba(0,212,255,0.05) 0%,rgba(19,91,236,0.05) 100%); opacity:0; transition:opacity 0.35s ease; pointer-events:none; }
-        .card:hover { border-color:var(--glass-border-hover); box-shadow:0 0 40px rgba(19,91,236,0.08),0 0 60px rgba(0,212,255,0.06),0 8px 32px rgba(0,0,0,0.06); transform:translateY(-3px); }
-        .card:hover::before { opacity:1; }
-
-        .btn { display:inline-flex; align-items:center; gap:8px; font-family:'Space Grotesk',sans-serif; font-size:0.875rem; font-weight:600; padding:12px 24px; border-radius:var(--radius-sm); cursor:pointer; border:none; transition:var(--transition); text-decoration:none; }
-        .btn-primary { background:var(--accent); color:#fff; box-shadow:0 0 24px var(--accent-glow); }
-        .btn-primary:hover { background:var(--accent-hover); color:#fff; box-shadow:0 0 36px rgba(19,91,236,0.25); transform:translateY(-2px); }
-        .btn-secondary { background:var(--glass-bg-2); backdrop-filter:var(--glass-blur); color:var(--gray-200); border:1.5px solid var(--glass-border); position:relative; overflow:hidden; }
-        .btn-secondary::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(0,212,255,0.1) 0%,rgba(19,91,236,0.05) 100%); opacity:0; transition:opacity 0.3s ease; pointer-events:none; }
-        .btn-secondary:hover { border-color:var(--cyan); color:var(--white); box-shadow:0 0 30px rgba(0,212,255,0.15); }
-        .btn-secondary:hover::before { opacity:1; }
-        .btn-tertiary { background:transparent; color:var(--gray-300); border:1px solid var(--glass-border); }
-        .btn-tertiary:hover { border-color:var(--glass-border-hover); color:var(--white); }
-        .btn-book { background:linear-gradient(135deg,var(--retro-amber),#e8860c); color:#000; font-weight:700; }
-        .btn-book:hover { box-shadow:0 0 30px rgba(255,159,28,0.2); transform:translateY(-2px); }
-
-        .background-stage { position:fixed; inset:0; overflow:hidden; pointer-events:none; z-index:0; }
-        .background-gradient { position:absolute; inset:-12%; background:
-            radial-gradient(circle at 18% 18%, rgba(0,153,204,0.16) 0%, rgba(0,153,204,0.10) 18%, transparent 38%),
-            radial-gradient(circle at 82% 16%, rgba(19,91,236,0.14) 0%, rgba(19,91,236,0.10) 20%, transparent 40%),
-            radial-gradient(circle at 50% 78%, rgba(212,122,6,0.13) 0%, rgba(212,122,6,0.07) 14%, transparent 34%),
-            linear-gradient(180deg, rgba(253,254,255,0.98) 0%, rgba(246,249,254,0.97) 48%, rgba(241,245,251,0.99) 100%);
-            z-index:0; }
-        .background-grid { position:absolute; inset:0; z-index:1; opacity:0.5; background-image:
-            linear-gradient(rgba(19,91,236,0.055) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0,153,204,0.045) 1px, transparent 1px);
-            background-size:140px 140px,140px 140px;
-            mask-image:radial-gradient(circle at center, rgba(0,0,0,0.85), transparent 82%);
-            -webkit-mask-image:radial-gradient(circle at center, rgba(0,0,0,0.85), transparent 82%); }
-        .background-grid::after { content:''; position:absolute; inset:0; background:
-            linear-gradient(110deg, transparent 18%, rgba(255,255,255,0.55) 44%, transparent 68%);
-            transform:translateX(-36%);
-            animation:grid-sheen 16s linear infinite; opacity:0.75; }
-        .background-beam { position:absolute; width:42vw; height:42vw; min-width:340px; min-height:340px; border-radius:50%; filter:blur(24px); opacity:0.42; z-index:2; }
-        .beam-a { top:-10vw; right:-8vw; background:conic-gradient(from 110deg, rgba(19,91,236,0.22), rgba(0,153,204,0.05), transparent 36%, rgba(19,91,236,0.16), transparent 76%); animation:beam-spin 28s linear infinite; }
-        .beam-b { bottom:-12vw; left:-10vw; background:conic-gradient(from 220deg, rgba(212,122,6,0.18), transparent 26%, rgba(0,153,204,0.15), transparent 62%, rgba(19,91,236,0.12)); animation:beam-spin 34s linear infinite reverse; }
-        .background-orb { position:absolute; border-radius:50%; z-index:2; filter:blur(24px); opacity:0.88; mix-blend-mode:screen; }
-        .orb-a { width:min(34vw,520px); height:min(34vw,520px); top:8vh; left:-7vw; background:radial-gradient(circle, rgba(0,153,204,0.24) 0%, rgba(0,153,204,0.16) 32%, rgba(19,91,236,0.06) 60%, transparent 76%); animation:orb-drift-a 20s ease-in-out infinite; }
-        .orb-b { width:min(28vw,420px); height:min(28vw,420px); top:14vh; right:6vw; background:radial-gradient(circle, rgba(19,91,236,0.24) 0%, rgba(19,91,236,0.12) 34%, rgba(0,153,204,0.05) 62%, transparent 78%); animation:orb-drift-b 18s ease-in-out infinite; }
-        .orb-c { width:min(30vw,460px); height:min(30vw,460px); bottom:6vh; left:26vw; background:radial-gradient(circle, rgba(212,122,6,0.18) 0%, rgba(212,122,6,0.10) 30%, rgba(255,255,255,0.05) 58%, transparent 78%); animation:orb-drift-c 24s ease-in-out infinite; }
-        .background-ring { position:absolute; border-radius:50%; border:1px solid rgba(19,91,236,0.12); box-shadow:0 0 0 1px rgba(255,255,255,0.45) inset; z-index:2; opacity:0.7; }
-        .ring-a { width:min(38vw,560px); height:min(38vw,560px); top:10vh; right:12vw; animation:ring-float 24s ease-in-out infinite; }
-        .ring-b { width:min(44vw,660px); height:min(44vw,660px); bottom:-14vw; left:-8vw; border-color:rgba(0,153,204,0.1); animation:ring-float 30s ease-in-out infinite reverse; }
-        #background-canvas { position:absolute; inset:0; width:100%; height:100%; z-index:3; opacity:0.96; }
-        .scanlines { display:none; }
-        .content-overlay { position:relative; z-index:10; }
-        @keyframes grid-sheen { 0% { transform:translateX(-36%); } 100% { transform:translateX(36%); } }
-        @keyframes beam-spin { from { transform:rotate(0deg) scale(1); } 50% { transform:rotate(180deg) scale(1.06); } to { transform:rotate(360deg) scale(1); } }
-        @keyframes orb-drift-a { 0%,100% { transform:translate3d(0,0,0) scale(1); } 50% { transform:translate3d(5vw,4vh,0) scale(1.08); } }
-        @keyframes orb-drift-b { 0%,100% { transform:translate3d(0,0,0) scale(1); } 50% { transform:translate3d(-4vw,5vh,0) scale(0.95); } }
-        @keyframes orb-drift-c { 0%,100% { transform:translate3d(0,0,0) scale(1); } 50% { transform:translate3d(3vw,-4vh,0) scale(1.04); } }
-        @keyframes ring-float { 0%,100% { transform:translate3d(0,0,0) rotate(0deg); } 50% { transform:translate3d(0,-2vh,0) rotate(8deg); } }
-
-        .nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(247,248,252,0.75); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); border-bottom:1px solid rgba(0,0,0,0.06); padding:14px 0; }
-        .nav-container { display:flex; justify-content:space-between; align-items:center; }
-        .nav-logo { font-weight:800; font-size:22px; color:var(--white); letter-spacing:-0.03em; }
-        .nav-logo span { color:var(--accent); }
-        .nav-links { display:flex; gap:6px; }
-        .nav-link { color:var(--gray-400); font-size:0.85rem; font-weight:500; padding:7px 16px; border-radius:100px; border:1px solid transparent; transition:var(--transition); }
-        .nav-link:hover { color:var(--white); background:var(--glass-bg-2); border-color:var(--glass-border); }
-
-        .hero { padding:160px 0 100px; text-align:center; position:relative; }
-        .hero::before { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:600px; height:600px; background:radial-gradient(circle,rgba(0,212,255,0.08) 0%,rgba(19,91,236,0.04) 70%,transparent 100%); border-radius:50%; filter:blur(40px); pointer-events:none; z-index:0; animation:float-slow 8s ease-in-out infinite; }
-        .hero::after { content:''; position:absolute; bottom:0; left:10%; right:10%; height:1px; background:linear-gradient(90deg,transparent,var(--cyan) 20%,var(--accent) 50%,var(--cyan) 80%,transparent); opacity:0.4; }
-        @keyframes float-slow { 0%,100%{transform:translate(-50%,-50%) scale(1);} 50%{transform:translate(-50%,-45%) scale(1.05);} }
-        .hero-content { max-width:800px; margin:0 auto; }
-        .hero-badge { display:inline-flex; align-items:center; gap:10px; padding:6px 18px; border:1px solid rgba(0,0,0,0.08); border-radius:100px; background:var(--glass-bg); font-size:0.8rem; font-weight:500; color:var(--gray-400); margin-bottom:28px; backdrop-filter:blur(12px); }
-        .status-dot { width:8px; height:8px; background:var(--retro-green); border-radius:50%; animation:pulse 2s ease-in-out infinite; }
-        @keyframes pulse { 0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(32,194,14,0.4);} 50%{opacity:0.8;box-shadow:0 0 0 8px rgba(32,194,14,0);} }
-        .hero-title { font-size:clamp(2.8rem,5.5vw,4.2rem); font-weight:800; letter-spacing:-0.04em; line-height:1.05; margin-bottom:20px; }
-        .glitch-title { display:inline; position:relative; }
-        .glitch-title span { background:linear-gradient(135deg,var(--accent),var(--cyan)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-        .glitch-title:hover::before,.glitch-title:hover::after { content:attr(data-text); position:absolute; top:0; left:0; width:100%; height:100%; -webkit-text-fill-color:var(--gray-200); }
-        .glitch-title:hover::before { animation:glitch-anim .3s infinite; color:var(--cyan); clip-path:inset(40% 0 20% 0); }
-        .glitch-title:hover::after { animation:glitch-anim2 .3s infinite; color:var(--accent); clip-path:inset(60% 0 0 0); }
-        @keyframes glitch-anim { 0%{transform:translate(0)} 20%{transform:translate(-3px,2px)} 40%{transform:translate(3px,-2px)} 60%{transform:translate(-2px,1px)} 80%{transform:translate(2px,-1px)} 100%{transform:translate(0)} }
-        @keyframes glitch-anim2 { 0%{transform:translate(0)} 20%{transform:translate(3px,-1px)} 40%{transform:translate(-2px,2px)} 60%{transform:translate(1px,-2px)} 80%{transform:translate(-3px,1px)} 100%{transform:translate(0)} }
-        .hero-subtitle { font-size:1.05rem; color:var(--gray-400); max-width:600px; margin:0 auto 32px; line-height:1.7; }
-        .hero-actions { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom:48px; }
-        .hero-proof-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; max-width:720px; margin:0 auto; }
-        .hero-proof-card { background:var(--glass-bg); backdrop-filter:blur(16px); border:1px solid var(--glass-border); border-radius:var(--radius); padding:20px 16px; text-align:center; transition:var(--transition); position:relative; overflow:hidden; }
-        .hero-proof-card::before { content:''; position:absolute; inset:-100%; background:conic-gradient(from 0deg,transparent 0deg,rgba(0,212,255,0.3) 90deg,transparent 180deg); animation:spin-slow 4s linear infinite; opacity:0; transition:opacity 0.3s ease; }
-        .hero-proof-card:hover { border-color:var(--cyan); box-shadow:0 0 30px rgba(0,212,255,0.15),0 4px 24px rgba(19,91,236,0.10); }
-        .hero-proof-card:hover::before { opacity:0.5; }
-        @keyframes spin-slow { 0%{transform:rotate(0deg);} 100%{transform:rotate(360deg);} }
-        .hero-proof-value { font-size:1.6rem; font-weight:800; color:var(--white); letter-spacing:-0.03em; line-height:1; margin-bottom:4px; }
-        .hero-proof-label { font-size:0.72rem; color:var(--gray-500); text-transform:uppercase; letter-spacing:0.06em; font-weight:500; }
-
-        .section-header { text-align:center; margin-bottom:48px; }
-        .section-header-left { text-align:left; }
-        .section-title { font-size:clamp(1.75rem,3vw,2.5rem); font-weight:800; letter-spacing:-0.03em; margin-bottom:12px; }
-        .section-subtitle { font-size:1rem; color:var(--gray-400); max-width:520px; }
-        .section-header:not(.section-header-left) .section-subtitle { margin:0 auto; }
-        .section-eyebrow { display:inline-block; font-size:0.7rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); margin-bottom:12px; }
-
-        /* Liquid Glass Accent Elements */
-        .accent-node { position:absolute; width:12px; height:12px; border-radius:50%; border:2px solid var(--cyan); background:rgba(0,212,255,0.2); box-shadow:0 0 20px rgba(0,212,255,0.4); animation:pulse-glow 2.5s ease-in-out infinite; }
-        .accent-node.blue { border-color:var(--accent); background:rgba(19,91,236,0.2); box-shadow:0 0 20px rgba(19,91,236,0.4); }
-        .accent-node.mid { animation:pulse-glow 3s ease-in-out infinite; animation-delay:0.5s; }
-        @keyframes pulse-glow { 0%,100%{opacity:0.6;transform:scale(1);} 50%{opacity:1;transform:scale(1.2);} }
-
-        /* Flowing accent line */
-        .accent-line { position:absolute; height:2px; background:linear-gradient(90deg,transparent,var(--cyan),var(--accent),transparent); opacity:0.3; }
-        .accent-line.horizontal { width:100%; }
-        .accent-line.vertical { width:2px; height:100%; }
-
-        /* Glass badge with glow */
-        .badge-glow { display:inline-flex; align-items:center; gap:8px; padding:8px 16px; border-radius:100px; background:var(--glass-bg-2); backdrop-filter:blur(12px); border:1.5px solid var(--cyan); font-size:0.8rem; font-weight:600; color:var(--cyan); box-shadow:0 0 20px rgba(0,212,255,0.15); transition:all 0.3s ease; }
-        .badge-glow:hover { box-shadow:0 0 30px rgba(0,212,255,0.3),0 8px 16px rgba(0,212,255,0.1); border-color:var(--accent); color:var(--accent); }
-
-        .project-grid { display:grid; gap:18px; }
-        .project-grid.grid-cols-2 { grid-template-columns:repeat(2,1fr); }
-        .project-card { display:flex; flex-direction:column; gap:16px; }
-        .project-card-featured { grid-column:1/-1; }
-        .project-card-head { display:flex; align-items:flex-start; gap:14px; }
-        .card-icon { font-size:1.6rem; width:48px; height:48px; display:flex; align-items:center; justify-content:center; background:var(--glass-bg-3); border:1.5px solid var(--cyan); border-radius:14px; flex-shrink:0; box-shadow:0 0 20px rgba(0,212,255,0.15); }
-        .project-title-block { flex:1; }
-        .card-title { font-size:1.1rem; font-weight:700; color:var(--white); margin-bottom:2px; }
-        .project-role { font-size:0.78rem; color:var(--gray-400); font-weight:500; }
-        .project-badge { display:inline-block; font-size:0.68rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:4px 10px; border-radius:100px; border-left:3px solid; background:var(--glass-bg-2); }
-        .project-badge.operating { border-color:var(--retro-green); color:var(--retro-green); }
-        .project-badge.live { border-color:var(--accent); color:var(--accent); }
-        .project-badge.finalist { border-color:var(--retro-amber); color:var(--retro-amber); }
-        .project-badge.internal { border-color:var(--gray-500); color:var(--gray-400); }
-        .project-badge.research { border-color:var(--retro-purple); color:var(--retro-purple); }
-        .project-badge.meta { border-color:var(--cyan); color:var(--cyan); }
-        .project-summary,.card-description { font-size:0.9rem; color:var(--gray-400); line-height:1.7; }
-        .project-proof-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--glass-border); border-radius:var(--radius-xs); overflow:hidden; margin:4px 0; }
-        .project-proof { background:rgba(255,255,255,0.7); padding:12px 14px; text-align:center; }
-        .project-proof-value { font-size:1.15rem; font-weight:800; color:var(--white); letter-spacing:-0.02em; }
-        .project-proof-label { font-size:0.65rem; color:var(--gray-500); text-transform:uppercase; letter-spacing:0.06em; font-weight:500; }
-        .tech-tags { display:flex; flex-wrap:wrap; gap:6px; }
-        .tech-tag { font-size:0.72rem; font-weight:500; padding:4px 12px; border-radius:100px; background:var(--glass-bg-2); border:1px solid var(--glass-border); color:var(--gray-300); font-family:'JetBrains Mono',monospace; transition:var(--transition); backdrop-filter:blur(8px); }
-        .tech-tag:hover { border-color:var(--cyan); color:var(--cyan); box-shadow:0 0 15px rgba(0,212,255,0.2); background:rgba(0,212,255,0.05); }
-        .card-links { display:flex; gap:8px; flex-wrap:wrap; margin-top:auto; }
-        .card-link { font-size:0.8rem; font-weight:600; color:var(--gray-400); padding:6px 14px; border:1px solid var(--glass-border); border-radius:100px; transition:var(--transition); }
-        .card-link:hover { color:var(--white); border-color:var(--glass-border-hover); }
-        .card-link-primary { color:var(--accent); border-color:rgba(19,91,236,0.3); }
-        .card-link-primary:hover { background:var(--accent); color:#fff; border-color:var(--accent); }
-
-        .terminal { background:#0C1018; border:1px solid rgba(0,0,0,0.15); border-radius:var(--radius); box-shadow:0 20px 60px rgba(0,0,0,0.15),0 0 0 1px rgba(0,0,0,0.05); display:flex; flex-direction:column; min-height:380px; overflow:hidden; transition:var(--transition); }
-        .terminal.fullscreen { position:fixed; inset:0; z-index:9999; border-radius:0; min-height:100vh; border:none; }
-        .terminal-header { display:flex; align-items:center; justify-content:space-between; background:rgba(255,255,255,0.04); border-bottom:1px solid rgba(255,255,255,0.08); padding:0 14px; height:38px; flex-shrink:0; user-select:none; }
-        .terminal-dots { display:flex; gap:7px; align-items:center; }
-        .terminal-dot { width:12px; height:12px; border-radius:50%; cursor:pointer; transition:filter .15s; }
-        .terminal-dot:hover { filter:brightness(1.3); }
-        .dot-red { background:#ff5f57; } .dot-yellow { background:#febc2e; } .dot-green { background:#28c840; }
-        .terminal-title { font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--gray-500); }
-        .terminal-actions { display:flex; align-items:center; gap:8px; }
-        .term-btn { background:none; border:1px solid rgba(255,255,255,0.1); color:#7A8BA5; font-size:0.68rem; padding:3px 10px; border-radius:6px; cursor:pointer; font-family:'JetBrains Mono',monospace; transition:var(--transition); }
-        .term-btn:hover { color:var(--retro-green); border-color:rgba(32,194,14,0.3); }
-        .terminal-body { flex:1; overflow-y:auto; padding:14px 16px 0; font-family:'JetBrains Mono',monospace; font-size:0.82rem; line-height:1.65; color:#d4d4d4; min-height:0; scrollbar-width:thin; scrollbar-color:rgba(255,255,255,0.08) transparent; }
-        .terminal-body::-webkit-scrollbar { width:4px; }
-        .terminal-body::-webkit-scrollbar-thumb { background:rgba(255,255,255,0.08); border-radius:2px; }
-        .term-line { white-space:pre-wrap; word-break:break-word; }
-        .term-line.cmd { color:#C5D0E0; } .term-line.output { color:#7A8BA5; }
-        .term-line.error { color:#f87171; } .term-line.success { color:#20c20e; }
-        .term-line.info { color:#5B9CF6; } .term-line.dim { color:#3A4558; }
-        .term-input-row { display:flex; align-items:center; padding:10px 16px 14px; gap:6px; flex-shrink:0; border-top:1px solid rgba(255,255,255,0.06); }
-        .term-input-prompt { color:#20c20e; font-family:'JetBrains Mono',monospace; font-size:0.82rem; white-space:nowrap; user-select:none; }
-        .term-input { flex:1; background:none; border:none; outline:none; color:#C5D0E0; font-family:'JetBrains Mono',monospace; font-size:0.82rem; caret-color:#20c20e; }
-        .terminal-cursor { display:inline-block; width:8px; height:14px; background:var(--retro-green); animation:blink 1s infinite; vertical-align:middle; }
-        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-
-        .stats-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:20px; }
-        .stat-item { background:var(--glass-bg); border:1.5px solid var(--glass-border); border-radius:var(--radius-sm); padding:16px; text-align:center; transition:var(--transition); position:relative; overflow:hidden; }
-        .stat-item::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(0,212,255,0.08) 0%,transparent 100%); opacity:0; transition:opacity 0.3s ease; pointer-events:none; }
-        .stat-item:hover { border-color:var(--cyan); box-shadow:0 0 25px rgba(0,212,255,0.1); }
-        .stat-item:hover::before { opacity:1; }
-        .stat-number { font-size:1.5rem; font-weight:800; color:var(--white); letter-spacing:-0.02em; }
-        .stat-label { font-size:0.72rem; color:var(--gray-500); margin-top:2px; }
-
-        .now-grid { display:grid; grid-template-columns:1.2fr 0.8fr; gap:18px; }
-        .now-card-wide { grid-column:1/-1; }
-        .now-card-head { display:flex; align-items:center; gap:10px; margin-bottom:16px; }
-        .now-card-head h3 { font-size:1rem; font-weight:700; }
-        .now-columns { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
-        .now-columns h4 { font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--gray-500); margin-bottom:10px; }
-        .now-columns ul { list-style:none; display:flex; flex-direction:column; gap:6px; }
-        .now-columns li { font-size:0.85rem; color:var(--gray-300); }
-        .thought-stack { display:flex; flex-direction:column; gap:14px; }
-        .thought-item { background:var(--glass-bg); border:1.5px solid var(--glass-border); border-radius:var(--radius-sm); padding:14px 16px; transition:var(--transition); position:relative; overflow:hidden; }
-        .thought-item::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(19,91,236,0.05) 0%,transparent 100%); opacity:0; transition:opacity 0.3s ease; pointer-events:none; }
-        .thought-item:hover { border-color:var(--accent); box-shadow:0 0 25px rgba(19,91,236,0.08); }
-        .thought-item:hover::before { opacity:1; }
-        .thought-label { font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--cyan); margin-bottom:4px; }
-        .thought-item p { font-size:0.85rem; color:var(--gray-400); }
-        .now-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
-        .now-list li { font-size:0.88rem; color:var(--gray-300); line-height:1.6; }
-
-        .oss-grid { display:grid; grid-template-columns:1.2fr 0.8fr; gap:18px; }
-        .oss-feed-card { grid-column:1/-1; }
-        .oss-kicker { display:inline-block; font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--retro-green); margin-bottom:14px; padding:4px 10px; border-radius:100px; background:rgba(22,135,61,0.08); border:1px solid rgba(22,135,61,0.2); }
-        .oss-stats-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-bottom:16px; }
-        .oss-stat { background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:var(--radius-xs); padding:14px; text-align:center; }
-        .oss-stat-value { font-size:1.3rem; font-weight:800; color:var(--white); }
-        .oss-stat-label { font-size:0.68rem; color:var(--gray-500); text-transform:uppercase; letter-spacing:0.06em; }
-        .github-calendar-shell { background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:var(--radius-xs); padding:14px; min-height:100px; overflow:hidden; }
-        .github-calendar-loading { color:var(--gray-500); font-size:0.8rem; text-align:center; padding:24px 0; }
-        .oss-profile-link { display:inline-flex; align-items:center; gap:6px; font-size:0.8rem; color:var(--accent); margin-top:10px; }
-        .activity-overview { display:flex; flex-direction:column; align-items:center; gap:16px; }
-        .activity-radar { position:relative; width:200px; height:200px; }
-        .activity-ring,.activity-axis,.activity-fill,.activity-node { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); }
-        .activity-legend { width:100%; }
-        .activity-legend-row { display:flex; justify-content:space-between; align-items:center; padding:4px 0; font-size:0.78rem; }
-        .activity-legend-label { color:var(--gray-400); }
-        .activity-legend-value { color:var(--white); font-weight:600; font-family:'JetBrains Mono',monospace; }
-        .oss-feed-title { font-size:0.88rem; font-weight:600; color:var(--gray-200); margin-bottom:2px; }
-        .oss-feed-meta { font-size:0.75rem; color:var(--gray-500); }
-
-        .writing-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
-        .writing-card { display:flex; flex-direction:column; gap:12px; }
-        .writing-badge { display:inline-block; font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent); padding:3px 10px; border-radius:100px; background:rgba(19,91,236,0.08); border:1.5px solid rgba(19,91,236,0.3); align-self:flex-start; transition:var(--transition); }
-        .writing-badge:hover { border-color:var(--accent); box-shadow:0 0 15px rgba(19,91,236,0.15); background:rgba(19,91,236,0.12); }
-        .writing-summary { font-size:0.88rem; color:var(--gray-400); line-height:1.65; flex:1; }
-        .writing-meta { font-size:0.75rem; color:var(--gray-500); }
-        .writing-footer { text-align:center; margin-top:32px; }
-
-        .skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; }
-        .skill-category { position:relative; overflow:hidden; }
-        .skill-category::before { content:''; position:absolute; top:0; left:0; width:0; height:2px; background:linear-gradient(90deg,var(--accent),var(--cyan)); transition:width .5s ease; }
-        .skill-category:hover::before { width:100%; }
-        .skill-title { font-size:0.9rem; font-weight:700; color:var(--white); margin-bottom:14px; }
-        .skill-list { display:flex; flex-wrap:wrap; gap:6px; }
-        .skill-item { font-size:0.75rem; font-weight:500; padding:5px 14px; border-radius:100px; background:var(--glass-bg-2); border:1px solid var(--glass-border); color:var(--gray-300); cursor:pointer; transition:var(--transition); backdrop-filter:blur(8px); }
-        .skill-item:hover { border-color:var(--cyan); color:var(--cyan); background:rgba(0,212,255,0.08); box-shadow:0 0 15px rgba(0,212,255,0.15); }
-
-        .contact-shell { display:grid; grid-template-columns:1.2fr 0.8fr; gap:18px; }
-        .contact-panel,.contact-form-panel { padding:32px; }
-        .contact-panel-head { margin-bottom:24px; }
-        .contact-panel-head h3 { font-size:1.2rem; font-weight:700; margin-bottom:6px; }
-        .contact-intro { font-size:0.88rem; color:var(--gray-400); margin-bottom:20px; }
-        .contact-quick-actions { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px; }
-        .contact-chip { font-size:0.78rem; font-weight:500; padding:6px 14px; border-radius:100px; background:var(--glass-bg-2); border:1px solid var(--glass-border); color:var(--gray-300); cursor:pointer; transition:var(--transition); backdrop-filter:blur(8px); }
-        .contact-chip:hover { border-color:var(--cyan); color:var(--cyan); box-shadow:0 0 15px rgba(0,212,255,0.15); }
-        .contact-pill { display:none; }
-        .contact-direct-list { display:flex; flex-direction:column; gap:10px; }
-        .contact-direct-item { display:flex; align-items:center; gap:14px; padding:12px 16px; border-radius:var(--radius-sm); background:var(--glass-bg); border:1.5px solid var(--glass-border); transition:var(--transition); position:relative; overflow:hidden; }
-        .contact-direct-item::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(0,212,255,0.05) 0%,transparent 100%); opacity:0; transition:opacity 0.3s ease; pointer-events:none; }
-        .contact-direct-item:hover { border-color:var(--cyan); box-shadow:0 0 20px rgba(0,212,255,0.1); }
-        .contact-direct-item:hover::before { opacity:1; }
-        .contact-direct-item-featured { background:rgba(19,91,236,0.06); border-color:rgba(19,91,236,0.18); }
-        .contact-direct-label { font-size:0.72rem; color:var(--gray-500); text-transform:uppercase; letter-spacing:0.06em; font-weight:600; }
-        .contact-direct-value { font-size:0.85rem; color:var(--gray-300); }
-        .contact-direct-link { margin-left:auto; font-size:0.78rem; color:var(--gray-400); padding:4px 12px; border-radius:100px; border:1px solid var(--glass-border); transition:var(--transition); }
-        .contact-direct-link:hover { color:var(--white); border-color:var(--glass-border-hover); }
-        .contact-direct-link-featured { color:var(--accent); border-color:rgba(19,91,236,0.3); }
-        .contact-direct-link-featured:hover { background:var(--accent); color:#fff; }
-        .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
-        .form-field { display:flex; flex-direction:column; gap:6px; }
-        .form-field-full { grid-column:1/-1; }
-        .form-label { font-size:0.75rem; font-weight:600; color:var(--gray-400); text-transform:uppercase; letter-spacing:0.06em; }
-        .form-input,.form-textarea { background:rgba(255,255,255,0.7); border:1.5px solid var(--glass-border); border-radius:var(--radius-xs); padding:12px 14px; color:var(--gray-200); font-family:'Space Grotesk',sans-serif; font-size:0.88rem; outline:none; transition:var(--transition); backdrop-filter:blur(8px); }
-        .form-input:focus,.form-textarea:focus { border-color:var(--cyan); box-shadow:0 0 0 3px rgba(0,212,255,0.1),0 0 20px rgba(0,212,255,0.15); background:rgba(255,255,255,0.8); }
-        .form-textarea { resize:vertical; min-height:100px; }
-        .form-note { font-size:0.72rem; color:var(--gray-500); margin-top:8px; }
-        .form-actions { display:flex; gap:10px; margin-top:14px; }
-        .form-status { font-size:0.78rem; color:var(--retro-green); margin-top:8px; min-height:20px; }
-
-        .footer { padding:48px 0; border-top:1px solid var(--glass-border); text-align:center; }
-        .footer-text { font-size:0.88rem; color:var(--gray-400); margin-bottom:16px; }
-        .social-links { display:flex; justify-content:center; gap:12px; margin-bottom:16px; }
-        .social-link { color:var(--gray-400); font-size:0.82rem; font-weight:500; padding:8px 16px; border-radius:100px; border:1.5px solid var(--glass-border); transition:var(--transition); backdrop-filter:blur(8px); position:relative; overflow:hidden; }
-        .social-link::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(0,212,255,0.1) 0%,transparent 100%); opacity:0; transition:opacity 0.3s ease; pointer-events:none; }
-        .social-link:hover { color:var(--cyan); border-color:var(--cyan); box-shadow:0 0 20px rgba(0,212,255,0.15); }
-        .social-link:hover::before { opacity:1; }
-        .copyright { font-size:0.72rem; color:var(--gray-600); }
-
-        .fade-in { opacity:0; transform:translateY(24px); transition:opacity .7s ease,transform .7s ease; }
-        .fade-in.visible { opacity:1; transform:translateY(0); }
-
-        @media(max-width:768px) {
-            .container { padding:0 20px; }
-            .section { padding:64px 0; }
-            .nav-links { display:none; }
-            .background-grid { background-size:92px 92px,92px 92px; opacity:0.42; }
-            .background-beam { opacity:0.28; }
-            .background-ring { opacity:0.38; }
-            .background-orb { filter:blur(36px); }
-            #background-canvas { opacity:0.84; }
-            .hero { padding:120px 0 64px; }
-            .hero-title { font-size:2.2rem; }
-            .hero-subtitle { font-size:0.95rem; }
-            .hero-actions { flex-direction:column; align-items:center; }
-            .hero-proof-grid { grid-template-columns:repeat(2,1fr); }
-            .project-grid.grid-cols-2 { grid-template-columns:1fr; }
-            .now-grid { grid-template-columns:1fr; }
-            .now-card-wide { grid-column:auto; }
-            .now-columns { grid-template-columns:1fr; }
-            .oss-grid { grid-template-columns:1fr; }
-            .oss-feed-card { grid-column:auto; }
-            .writing-grid { grid-template-columns:1fr; }
-            .skills-grid { grid-template-columns:1fr; }
-            .contact-shell { grid-template-columns:1fr; }
-            .form-grid { grid-template-columns:1fr; }
-            .form-field-full { grid-column:auto; }
-            .grid-cols-2 { grid-template-columns:1fr; }
-            .stats-grid { grid-template-columns:repeat(3,1fr); }
-        }
-        @media (prefers-reduced-motion: reduce) {
-            .background-grid::after,
-            .background-beam,
-            .background-orb,
-            .background-ring,
-            .hero::before,
-            .status-dot,
-            .hero-proof-card::before {
-                animation:none !important;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Abid Khan's portfolio: full-stack and AI/ML engineer, GSoC 2026 contributor at NumFOCUS/scikit-bio, open-source builder, and CTO at Knight Medicare.">
+  <title>Abid Khan - Full-Stack & AI/ML Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #F7F8FC;
+      --ink: #1A1D2E;
+      --muted: #5E6A7E;
+      --soft: #8A94A6;
+      --line: rgba(0,0,0,0.08);
+      --glass: rgba(255,255,255,0.66);
+      --glass-strong: rgba(255,255,255,0.78);
+      --accent: #135bec;
+      --accent-dark: #0F4ACE;
+      --cyan: #0099CC;
+      --green: #16873d;
+      --amber: #d47a06;
+      --purple: #7c3aed;
+      --radius: 18px;
+      --radius-sm: 12px;
+      --shadow: 0 18px 60px rgba(19,91,236,0.12);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--muted);
+      line-height: 1.65;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: -20%;
+      z-index: -2;
+      background:
+        radial-gradient(circle at 18% 16%, rgba(0,153,204,0.20), transparent 28%),
+        radial-gradient(circle at 82% 12%, rgba(19,91,236,0.18), transparent 30%),
+        radial-gradient(circle at 50% 82%, rgba(212,122,6,0.14), transparent 28%),
+        linear-gradient(180deg, #fbfdff 0%, #f4f7fc 52%, #edf3fb 100%);
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      opacity: 0.55;
+      background-image:
+        linear-gradient(rgba(19,91,236,0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,153,204,0.045) 1px, transparent 1px);
+      background-size: 132px 132px;
+      mask-image: radial-gradient(circle at center, #000, transparent 82%);
+    }
+    a { color: var(--accent); text-decoration: none; transition: 0.25s ease; }
+    a:hover { color: var(--accent-dark); }
+    h1,h2,h3 { color: var(--ink); line-height: 1.08; letter-spacing: -0.035em; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
+    .section { padding: 92px 0; }
+    .nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 20;
+      padding: 14px 0;
+      background: rgba(247,248,252,0.78);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(24px);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .logo { color: var(--ink); font-weight: 800; font-size: 1.35rem; }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-link { color: var(--muted); font-size: 0.84rem; font-weight: 600; padding: 8px 13px; border: 1px solid transparent; border-radius: 999px; }
+    .nav-link:hover { background: var(--glass); border-color: var(--line); color: var(--ink); }
+    .hero { padding: 150px 0 88px; text-align: center; position: relative; }
+    .hero-content { max-width: 920px; margin: 0 auto; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: var(--glass);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+      backdrop-filter: blur(18px);
+      margin-bottom: 26px;
+    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 7px rgba(22,135,61,0.12); }
+    .hero h1 { font-size: clamp(3rem, 7vw, 5.8rem); font-weight: 800; margin-bottom: 22px; }
+    .gradient-text { background: linear-gradient(135deg, var(--accent), var(--cyan)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero-subtitle { max-width: 740px; margin: 0 auto 28px; font-size: 1.08rem; color: var(--muted); }
+    .hero-meta { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin: 0 auto 34px; }
+    .pill { display: inline-flex; align-items: center; padding: 6px 12px; border-radius: 999px; background: var(--glass); border: 1px solid var(--line); font-size: 0.78rem; font-weight: 700; color: var(--muted); }
+    .actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-bottom: 46px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 22px; border-radius: 12px; font-weight: 800; border: 1px solid var(--line); transition: 0.25s ease; }
+    .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); box-shadow: 0 18px 40px rgba(19,91,236,0.22); }
+    .btn-primary:hover { background: var(--accent-dark); color: #fff; transform: translateY(-2px); }
+    .btn-secondary { background: var(--glass); color: var(--ink); }
+    .btn-secondary:hover { border-color: rgba(19,91,236,0.28); transform: translateY(-2px); }
+    .proof-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .proof-card, .card {
+      background: var(--glass);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      backdrop-filter: blur(22px);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+      transition: 0.25s ease;
+    }
+    .proof-card { padding: 20px 15px; }
+    .card { padding: 26px; }
+    .proof-card:hover, .card:hover { transform: translateY(-3px); border-color: rgba(19,91,236,0.20); box-shadow: var(--shadow); }
+    .proof-value { display: block; color: var(--ink); font-size: 1.65rem; font-weight: 800; line-height: 1; margin-bottom: 6px; }
+    .proof-label { display: block; font-size: 0.71rem; color: var(--soft); text-transform: uppercase; letter-spacing: 0.07em; font-weight: 700; }
+    .section-header { margin-bottom: 38px; max-width: 760px; }
+    .section-eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: 0.14em; font-weight: 800; font-size: 0.72rem; margin-bottom: 10px; }
+    .section-title { font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 12px; }
+    .section-subtitle { color: var(--muted); font-size: 1rem; }
+    .grid { display: grid; gap: 18px; }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .project-card.featured { grid-column: 1 / -1; }
+    .card-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 18px; margin-bottom: 14px; }
+    .card-title { font-size: 1.25rem; margin-bottom: 6px; }
+    .role { color: var(--soft); font-size: 0.84rem; font-weight: 700; }
+    .status { display: inline-flex; flex-shrink: 0; padding: 5px 10px; border-radius: 999px; border-left: 3px solid var(--accent); background: var(--glass-strong); color: var(--accent); font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; }
+    .status.building { border-left-color: var(--amber); color: var(--amber); }
+    .status.concept { border-left-color: var(--purple); color: var(--purple); }
+    .status.accepted { border-left-color: var(--green); color: var(--green); }
+    .card p { color: var(--muted); font-size: 0.93rem; }
+    .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; overflow: hidden; border: 1px solid var(--line); border-radius: 10px; margin: 18px 0; background: var(--line); }
+    .metric { padding: 12px; background: rgba(255,255,255,0.62); text-align: center; }
+    .metric strong { display: block; color: var(--ink); font-size: 1rem; }
+    .metric span { font-size: 0.66rem; color: var(--soft); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin: 18px 0; }
+    .tag { padding: 5px 10px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); background: var(--glass-strong); font-size: 0.72rem; font-family: 'JetBrains Mono', monospace; }
+    .links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+    .link-chip { padding: 7px 13px; border-radius: 999px; border: 1px solid var(--line); font-size: 0.8rem; font-weight: 800; }
+    .timeline { display: grid; gap: 14px; }
+    .role-item, .achievement-item { padding: 18px; border-radius: 14px; border: 1px solid var(--line); background: rgba(255,255,255,0.54); }
+    .role-item h3, .achievement-item h3 { font-size: 1rem; margin-bottom: 5px; }
+    .role-item p, .achievement-item p { font-size: 0.9rem; }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--glass); backdrop-filter: blur(22px); }
+    table { width: 100%; border-collapse: collapse; min-width: 780px; }
+    th, td { padding: 15px 16px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); font-size: 0.9rem; }
+    th { color: var(--ink); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; background: rgba(255,255,255,0.56); }
+    tr:last-child td { border-bottom: 0; }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; }
+    .skill-list { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+    .contact-list { display: grid; gap: 11px; }
+    .contact-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 13px 15px; border: 1px solid var(--line); border-radius: 12px; background: rgba(255,255,255,0.56); }
+    .contact-row span { display: block; color: var(--soft); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.07em; font-weight: 800; }
+    .contact-row strong { color: var(--ink); font-size: 0.9rem; }
+    .footer { padding: 44px 0; text-align: center; border-top: 1px solid var(--line); }
+    .socials { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin: 18px 0; }
+    .fade-in { opacity: 0; transform: translateY(18px); transition: 0.65s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 860px) {
+      .nav-links { display: none; }
+      .hero { padding-top: 120px; }
+      .proof-grid, .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .metrics { grid-template-columns: 1fr; }
+      .project-card.featured { grid-column: auto; }
+      .contact-row { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 520px) {
+      .container { padding: 0 18px; }
+      .section { padding: 66px 0; }
+      .hero h1 { font-size: 2.55rem; }
+      .actions { flex-direction: column; }
+      .btn { width: 100%; }
+      .card-head { flex-direction: column; }
+    }
+  </style>
 </head>
 
 <body>
-    <!-- Stitch-inspired layered background -->
-    <div class="background-stage" aria-hidden="true">
-        <div class="background-gradient"></div>
-        <div class="background-grid"></div>
-        <div class="background-beam beam-a"></div>
-        <div class="background-beam beam-b"></div>
-        <div class="background-orb orb-a"></div>
-        <div class="background-orb orb-b"></div>
-        <div class="background-orb orb-c"></div>
-        <div class="background-ring ring-a"></div>
-        <div class="background-ring ring-b"></div>
-        <canvas id="background-canvas"></canvas>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="#" class="logo">Abid<span>.</span></a>
+      <div class="nav-links">
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#roles" class="nav-link">Roles</a>
+        <a href="#oss" class="nav-link">Open Source</a>
+        <a href="/blog" class="nav-link">Blog</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
     </div>
+  </nav>
 
-    <!-- Scanlines Effect -->
-    <div class="scanlines"></div>
+  <main>
+    <section class="hero">
+      <div class="container hero-content">
+        <div class="badge"><span class="dot"></span>GSoC 2026 accepted - NumFOCUS / scikit-bio</div>
+        <h1>Abid Khan builds <span class="gradient-text">AI, open-source, and civic tech</span> that ships.</h1>
+        <p class="hero-subtitle">Full-Stack & AI/ML Engineer | Open Source Builder | CTO @ Knight Medicare. Building AI-powered civic tools, gamified dev platforms, and healthcare tech. GSoC 2026 @ NumFOCUS.</p>
+        <div class="hero-meta">
+          <span class="pill">Abi</span>
+          <span class="pill">19 years old</span>
+          <span class="pill">Computer Engineering, GTU - GIDC Navsari</span>
+          <span class="pill">India, UTC+5:30</span>
+        </div>
+        <div class="actions">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="mailto:abid@openpaws.ai" class="btn btn-secondary">Email Abid</a>
+          <a href="Abid-Khan-CV.pdf" class="btn btn-secondary" download="Abid-Khan-CV.pdf">Download Resume</a>
+        </div>
+        <div class="proof-grid">
+          <div class="proof-card fade-in"><span class="proof-value">GSoC</span><span class="proof-label">2026 accepted</span></div>
+          <div class="proof-card fade-in"><span class="proof-value">500+</span><span class="proof-label">Adventurers Guild users</span></div>
+          <div class="proof-card fade-in"><span class="proof-value">8+</span><span class="proof-label">OSS repos contributed to</span></div>
+          <div class="proof-card fade-in"><span class="proof-value">NASA</span><span class="proof-label">Regional Finalist</span></div>
+        </div>
+      </div>
+    </section>
 
-    <!-- Content Overlay -->
-    <div class="content-overlay">
-        <!-- Navigation -->
-        <nav class="nav">
-            <div class="container nav-container">
-                <a href="#" class="nav-logo">Abid<span>.</span></a>
-                <div class="nav-links">
-                    <a href="#projects" class="nav-link">Projects</a>
-                    <a href="#about" class="nav-link">About</a>
-                    <a href="/blog" class="nav-link">Blog</a>
-                    <a href="#skills" class="nav-link">Skills</a>
-                    <a href="#contact" class="nav-link">Contact</a>
-                </div>
+    <section class="section" id="roles">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow mono">Current Roles</p>
+          <h2 class="section-title">What Abid is doing now</h2>
+          <p class="section-subtitle">Current real-world commitments as of May 2026, led by GSoC and active product work across healthcare, animal welfare AI, and developer ecosystems.</p>
+        </div>
+        <div class="grid grid-2">
+          <article class="card fade-in">
+            <div class="card-head"><div><h3 class="card-title">Google Summer of Code 2026</h3><p class="role">Contributor @ NumFOCUS / scikit-bio</p></div><span class="status accepted">Accepted</span></div>
+            <p>Implementing Numba-optimized algorithms for performance-critical bioinformatics functions. Mentors: Igor Sfiligoi (SDSC), Qiyun Zhu (ASU). Accepted May 2026.</p>
+          </article>
+          <article class="card fade-in">
+            <div class="card-head"><div><h3 class="card-title">Rapid Impact Developer</h3><p class="role">Open Paws</p></div><span class="status">Active</span></div>
+            <p>Building AI tools for animal advocacy, including chatbots, permit objection systems, and campaign automations.</p>
+          </article>
+          <article class="card fade-in">
+            <div class="card-head"><div><h3 class="card-title">CTO & Co-Founder</h3><p class="role">Knight Medicare</p></div><span class="status building">Building</span></div>
+            <p>AI-powered healthcare startup co-founded with a Harvard MD. Building clinical AI tools for diagnosis support and patient data management.</p>
+          </article>
+          <article class="card fade-in">
+            <div class="card-head"><div><h3 class="card-title">Google Gemini Campus Ambassador</h3><p class="role">Google</p></div><span class="status">Campus</span></div>
+            <p>Representing the Google AI and Gemini ecosystem on campus.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow mono">Projects</p>
+          <h2 class="section-title">Flagship builds and active bets</h2>
+          <p class="section-subtitle">Project cards include the current status, stack, and links. Adventurers Guild leads because it is the flagship public product.</p>
+        </div>
+        <div class="grid grid-2">
+          <article class="card project-card featured fade-in">
+            <div class="card-head"><div><h3 class="card-title">Adventurers Guild</h3><p class="role">Gamified open-source developer platform</p></div><span class="status">Live</span></div>
+            <p>Developers complete real Quests, earn XP, and rank up from F to S tier. Selected for GirlScript Summer of Code 2025 and NSOC (Nexus Spring of Code), with 500+ users, an active contributor community, and monetization live in branches. Recent work includes 8 PRs in one day on Apr 28 across Stripe Connect payouts, Revenue Dashboard, Quest Streak System, Party Panel, and Squad Quest Board.</p>
+            <div class="metrics"><div class="metric"><strong>500+</strong><span>users</span></div><div class="metric"><strong>10</strong><span>stars</span></div><div class="metric"><strong>25</strong><span>forks</span></div></div>
+            <div class="tags"><span class="tag">TypeScript</span><span class="tag">Next.js</span><span class="tag">PostgreSQL</span><span class="tag">Stripe Connect</span><span class="tag">Vercel</span></div>
+            <div class="links"><a class="link-chip" href="https://adventurersguild.space" target="_blank" rel="noreferrer">Live Site</a><a class="link-chip" href="https://github.com/LarytheLord/Adventurers-Guild" target="_blank" rel="noreferrer">GitHub</a></div>
+          </article>
+          <article class="card project-card fade-in">
+            <div class="card-head"><div><h3 class="card-title">Open Permit (AFOG)</h3><p class="role">Civic AI for legal permit objections</p></div><span class="status">Live</span></div>
+            <p>Auto-generates legal objections to factory farm and planning permit proposals across 8 countries and 37 legal frameworks. Born at Code 4 Compassion hackathon, Mumbai. Under consideration for a16z Speedrun SR007 and submitted for the O'Shaughnessy Fellowship.</p>
+            <div class="tags"><span class="tag">JavaScript</span><span class="tag">AI/NLP</span><span class="tag">Vercel</span></div>
+            <div class="links"><a class="link-chip" href="https://openpermit.vercel.app" target="_blank" rel="noreferrer">Live Site</a><a class="link-chip" href="https://github.com/LarytheLord/Automated-Factory-Farm-Objection-Generator" target="_blank" rel="noreferrer">GitHub</a></div>
+          </article>
+          <article class="card project-card fade-in">
+            <div class="card-head"><div><h3 class="card-title">Knight Medicare</h3><p class="role">Clinical AI tools</p></div><span class="status building">In Development</span></div>
+            <p>AI-powered healthcare startup building diagnosis support and patient data management tools. Abid is CTO & Co-Founder, co-founded with a Harvard MD.</p>
+            <div class="tags"><span class="tag">Full-stack</span><span class="tag">Supabase</span><span class="tag">AI</span></div>
+            <div class="links"><span class="link-chip">knightmedicare.com</span></div>
+          </article>
+          <article class="card project-card fade-in">
+            <div class="card-head"><div><h3 class="card-title">NASA Space Apps - Civilization in Space</h3><p class="role">Simulation and data project</p></div><span class="status building">Regional Finalist</span></div>
+            <p>Simulation/data project for NASA Space Apps Challenge 2024. Achievement: Regional Finalist.</p>
+            <div class="tags"><span class="tag">Python</span></div>
+            <div class="links"><a class="link-chip" href="https://github.com/LarytheLord/Civilization-in-Space-Nasa-Space-App-Challenge" target="_blank" rel="noreferrer">GitHub</a></div>
+          </article>
+          <article class="card project-card fade-in">
+            <div class="card-head"><div><h3 class="card-title">Pocket Quant</h3><p class="role">AI crypto portfolio analytics</p></div><span class="status building">Planning</span></div>
+            <p>AI-powered crypto portfolio analytics tool inspired by Polymarket strategy research and 86M+ free trade data from poly_data.</p>
+            <div class="tags"><span class="tag">Python</span><span class="tag">TypeScript</span><span class="tag">AI/ML</span></div>
+          </article>
+          <article class="card project-card fade-in">
+            <div class="card-head"><div><h3 class="card-title">Guild Protocol</h3><p class="role">Verifiable developer credentials</p></div><span class="status concept">Concept</span></div>
+            <p>Verifiable on-chain credentials for developers. Pitched at VibeCon.</p>
+            <div class="tags"><span class="tag">Blockchain</span><span class="tag">TypeScript</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="oss">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow mono">Open Source</p>
+          <h2 class="section-title">Selected contributions</h2>
+          <p class="section-subtitle">Verified public work across scientific Python, developer infrastructure, docs, climate tooling, and sustainability repositories.</p>
+        </div>
+        <div class="proof-grid" style="margin-bottom:18px;">
+          <div class="proof-card fade-in"><span class="proof-value">86</span><span class="proof-label">public repos</span></div>
+          <div class="proof-card fade-in"><span class="proof-value">8+</span><span class="proof-label">OSS repos contributed to</span></div>
+          <div class="proof-card fade-in"><span class="proof-value">GSoC</span><span class="proof-label">NumFOCUS / scikit-bio</span></div>
+          <div class="proof-card fade-in"><span class="proof-value">PR #4107</span><span class="proof-label">daytona merged</span></div>
+        </div>
+        <div class="table-wrap fade-in">
+          <table>
+            <thead><tr><th>Project</th><th>PR</th><th>What</th></tr></thead>
+            <tbody>
+              <tr><td>scikit-bio (NumFOCUS)</td><td><a href="https://github.com/scikit-bio/scikit-bio/pull/2429" target="_blank" rel="noreferrer">#2429</a>, <a href="https://github.com/scikit-bio/scikit-bio/pull/2436" target="_blank" rel="noreferrer">#2436</a></td><td>GSoC 2026 - Numba-optimized bioinformatics algorithms</td></tr>
+              <tr><td>daytona</td><td><a href="https://github.com/daytonaio/daytona/pull/4107" target="_blank" rel="noreferrer">#4107</a></td><td>Merged Mar 2026</td></tr>
+              <tr><td>thoughtbot/shoulda-matchers (3.6K stars)</td><td><a href="https://github.com/thoughtbot/shoulda-matchers/pull/1700" target="_blank" rel="noreferrer">#1700</a></td><td>Fixed README anchor for matcher usage docs</td></tr>
+              <tr><td>nextflow-io/nextflow (3.3K stars)</td><td><a href="https://github.com/nextflow-io/nextflow/pull/6869" target="_blank" rel="noreferrer">#6869</a></td><td>Clarified Path.name behavior for staged process paths</td></tr>
+              <tr><td>scverse/scanpy</td><td><a href="https://github.com/scverse/scanpy/pull/3986" target="_blank" rel="noreferrer">#3986</a></td><td>Reduced duplicated parameter docs</td></tr>
+              <tr><td>mlco2/codecarbon</td><td><a href="https://github.com/mlco2/codecarbon/pull/1080" target="_blank" rel="noreferrer">#1080</a>, <a href="https://github.com/mlco2/codecarbon/pull/1081" target="_blank" rel="noreferrer">#1081</a></td><td>CLI robustness and quickstart docs</td></tr>
+              <tr><td>sustainable-computing-io/kepler</td><td><a href="https://github.com/sustainable-computing-io/kepler/pull/2431" target="_blank" rel="noreferrer">#2431</a></td><td>Minimal install path without Prometheus Operator</td></tr>
+              <tr><td>protontypes/open-sustainable-technology</td><td><a href="https://github.com/protontypes/open-sustainable-technology/pull/1369" target="_blank" rel="noreferrer">#1369</a></td><td>Fixed broken sustainability resource links</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="achievements">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow mono">Recognition</p>
+          <h2 class="section-title">Achievements and recognitions</h2>
+        </div>
+        <div class="grid grid-2">
+          <div class="achievement-item fade-in"><h3>GSoC 2026 Accepted</h3><p>NumFOCUS / scikit-bio, May 2026.</p></div>
+          <div class="achievement-item fade-in"><h3>NASA Space Apps 2024</h3><p>Regional Finalist.</p></div>
+          <div class="achievement-item fade-in"><h3>GSSoC 2025</h3><p>Adventurers Guild selected as a participating organization.</p></div>
+          <div class="achievement-item fade-in"><h3>AARC Pre-accelerator</h3><p>Completed in Bangalore.</p></div>
+          <div class="achievement-item fade-in"><h3>Code 4 Compassion, Mumbai</h3><p>Open Permit was born here.</p></div>
+          <div class="achievement-item fade-in"><h3>IIM-A AI Summer Residency 2026</h3><p>Final consideration stage.</p></div>
+          <div class="achievement-item fade-in"><h3>O'Shaughnessy Fellowship 2026</h3><p>Submitted for $100K equity-free fellowship.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow mono">About</p>
+          <h2 class="section-title">Computer Engineering student, product builder, open-source contributor</h2>
+          <p class="section-subtitle">Abid Khan goes by Abi. He is 19, based in India, and studies Computer Engineering at GTU (GIDC Navsari, India). His work centers on AI-powered civic tools, gamified developer platforms, healthcare technology, and scientific open source.</p>
+        </div>
+        <div class="grid grid-3">
+          <article class="card fade-in"><h3 class="card-title">Builder</h3><p>Ships public products like Adventurers Guild and Open Permit, with clear user workflows and live deployments.</p></article>
+          <article class="card fade-in"><h3 class="card-title">Open Source</h3><p>Contributes to production repositories across scientific Python, infra, sustainability, and developer tooling.</p></article>
+          <article class="card fade-in"><h3 class="card-title">AI/ML</h3><p>Builds AI workflows for healthcare, civic intelligence, animal advocacy, and bioinformatics performance work.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow mono">Stack</p>
+          <h2 class="section-title">Skills and technologies</h2>
+        </div>
+        <div class="skills-grid">
+          <article class="card fade-in"><h3 class="card-title">Languages</h3><div class="skill-list"><span class="tag">TypeScript</span><span class="tag">JavaScript</span><span class="tag">Python</span><span class="tag">Java</span></div></article>
+          <article class="card fade-in"><h3 class="card-title">Frontend</h3><div class="skill-list"><span class="tag">React</span><span class="tag">Next.js</span><span class="tag">HTML/CSS</span></div></article>
+          <article class="card fade-in"><h3 class="card-title">Backend</h3><div class="skill-list"><span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">FastAPI</span></div></article>
+          <article class="card fade-in"><h3 class="card-title">Database</h3><div class="skill-list"><span class="tag">PostgreSQL</span><span class="tag">Supabase</span></div></article>
+          <article class="card fade-in"><h3 class="card-title">AI/ML</h3><div class="skill-list"><span class="tag">TensorFlow</span><span class="tag">PyTorch</span><span class="tag">OpenAI API</span><span class="tag">scikit-learn</span><span class="tag">Numba</span></div></article>
+          <article class="card fade-in"><h3 class="card-title">Quant</h3><div class="skill-list"><span class="tag">pandas</span><span class="tag">numpy</span><span class="tag">algorithmic trading models</span></div></article>
+          <article class="card fade-in"><h3 class="card-title">Cloud/Infra</h3><div class="skill-list"><span class="tag">Vercel</span><span class="tag">Railway</span><span class="tag">AWS</span><span class="tag">Docker</span></div></article>
+          <article class="card fade-in"><h3 class="card-title">Tools</h3><div class="skill-list"><span class="tag">Git</span><span class="tag">GitHub Actions</span><span class="tag">Stripe Connect</span><span class="tag">Resend</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="writing">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow mono">Writing</p>
+          <h2 class="section-title">Blog and case studies</h2>
+          <p class="section-subtitle">The blog is preserved as-is. Read the longer notes, project stories, and technical writing at the existing blog route.</p>
+        </div>
+        <a href="https://abikhn.vercel.app/blog" class="btn btn-primary">Open Blog</a>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow mono">Contact</p>
+          <h2 class="section-title">Find Abid online</h2>
+          <p class="section-subtitle">Use email for serious context. Social links are current as of May 2026.</p>
+        </div>
+        <div class="grid grid-2">
+          <article class="card fade-in">
+            <div class="contact-list">
+              <div class="contact-row"><div><span>Email</span><strong>abid@openpaws.ai</strong></div><a class="link-chip" href="mailto:abid@openpaws.ai">Email</a></div>
+              <div class="contact-row"><div><span>GitHub</span><strong>github.com/LarytheLord</strong></div><a class="link-chip" href="https://github.com/LarytheLord" target="_blank" rel="noreferrer">Open</a></div>
+              <div class="contact-row"><div><span>LinkedIn</span><strong>linkedin.com/in/abikhn</strong></div><a class="link-chip" href="https://linkedin.com/in/abikhn" target="_blank" rel="noreferrer">Open</a></div>
+              <div class="contact-row"><div><span>X / Twitter</span><strong>x.com/larysonlawliet</strong></div><a class="link-chip" href="https://x.com/larysonlawliet" target="_blank" rel="noreferrer">Open</a></div>
+              <div class="contact-row"><div><span>Instagram</span><strong>@aulterabid</strong></div><a class="link-chip" href="https://instagram.com/aulterabid" target="_blank" rel="noreferrer">Open</a></div>
+              <div class="contact-row"><div><span>Portfolio</span><strong>abikhn.vercel.app</strong></div><a class="link-chip" href="https://abikhn.vercel.app" target="_blank" rel="noreferrer">Open</a></div>
             </div>
-        </nav>
-
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <div class="hero-badge">
-                        <div class="status-dot"></div>
-                        <span>Building & shipping — CTO @ Knight Medicare | SWE @ Open Paws</span>
-                    </div>
-                    <h1 class="hero-title">
-                        <span class="glitch-title" data-text="Full Stack Developer">Builder, Operator,
-                            <span>Shipper</span></span>
-                    </h1>
-                    <p class="hero-subtitle">19-year-old CS student operating across civic tech, healthcare AI, EdTech, and open source. I build systems that ship and scale — usually running multiple at once.</p>
-                    <div class="hero-actions">
-                        <a href="https://calendar.app.google/eeccV9tBcsgVaCpC9" class="btn btn-book" target="_blank" rel="noreferrer">
-                            <span>Book a Call</span>
-                        </a>
-                        <a href="#projects" class="btn btn-primary">
-                            <span>View Projects</span>
-                        </a>
-                        <a href="Abid-Khan-CV.pdf" class="btn btn-tertiary" download="Abid-Khan-CV.pdf">
-                            <span>Download Resume</span>
-                        </a>
-                    </div>
-                    <div class="hero-proof-grid">
-                        <div class="hero-proof-card fade-in">
-                            <span class="hero-proof-value">56+</span>
-                            <span class="hero-proof-label">merged pull requests into production open source repos</span>
-                        </div>
-                        <div class="hero-proof-card fade-in">
-                            <span class="hero-proof-value">8+</span>
-                            <span class="hero-proof-label">countries reached through Open Permit's civic intelligence layer</span>
-                        </div>
-                        <div class="hero-proof-card fade-in">
-                            <span class="hero-proof-value">500+</span>
-                            <span class="hero-proof-label">contributors, learners, and builders touched across products and community</span>
-                        </div>
-                        <div class="hero-proof-card fade-in">
-                            <span class="hero-proof-value">11</span>
-                            <span class="hero-proof-label">active bets across healthcare AI, civic tech, OSS, and research</span>
-                        </div>
-                    </div>
-                </div>
+          </article>
+          <form class="card fade-in" id="contact-form">
+            <h3 class="card-title">Draft an email</h3>
+            <p style="margin-bottom:14px;">This form opens your mail app with a prefilled draft to Abid.</p>
+            <div class="grid" style="gap:12px;">
+              <input id="contact-name" name="name" placeholder="Your name" required style="padding:12px;border-radius:10px;border:1px solid var(--line);font:inherit;">
+              <input id="contact-email" name="email" type="email" placeholder="Your email" required style="padding:12px;border-radius:10px;border:1px solid var(--line);font:inherit;">
+              <input id="contact-subject" name="subject" placeholder="Subject" required style="padding:12px;border-radius:10px;border:1px solid var(--line);font:inherit;">
+              <textarea id="contact-message" name="message" placeholder="Context, project, timeline..." required style="min-height:120px;padding:12px;border-radius:10px;border:1px solid var(--line);font:inherit;resize:vertical;"></textarea>
+              <button class="btn btn-primary" type="submit">Open Email Draft</button>
+              <p id="contact-status" class="role" aria-live="polite"></p>
             </div>
-        </section>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
 
-        <!-- Projects Section -->
-        <section class="section" id="projects">
-            <div class="container">
-                <div class="section-header section-header-left">
-                    <p class="section-eyebrow mono">Selected Work</p>
-                    <h2 class="section-title">A tighter cut of what I'm actually shipping</h2>
-                    <p class="section-subtitle">The homepage now leads with proof instead of listing everything equally. These are the projects with the clearest traction, strongest stories, or most interesting technical constraints.</p>
-                </div>
-
-                <div class="project-grid grid-cols-2">
-                    <article class="card project-card project-card-featured fade-in">
-                        <div class="project-card-head">
-                            <div class="project-title-block">
-                                <div class="card-icon">🧠</div>
-                                <div>
-                                    <h3 class="card-title">Knight Medicare</h3>
-                                    <p class="project-role">AI therapy platform — CTO & Co-founder</p>
-                                </div>
-                            </div>
-                            <span class="project-badge">Operating</span>
-                        </div>
-                        <p class="project-summary">I lead the product and technical stack for an AI-assisted CBT platform being built with a Harvard PhD psychologist. The work sits at the intersection of healthcare UX, therapy workflow design, and reliable system execution.</p>
-                        <div class="project-proof-grid">
-                            <div class="project-proof">
-                                <span class="project-proof-value">27</span>
-                                <span class="project-proof-label">mental health disorders mapped into the product</span>
-                            </div>
-                            <div class="project-proof">
-                                <span class="project-proof-value">10</span>
-                                <span class="project-proof-label">therapy modalities represented across the experience</span>
-                            </div>
-                            <div class="project-proof">
-                                <span class="project-proof-value">CTO</span>
-                                <span class="project-proof-label">ownership across product direction and full-stack delivery</span>
-                            </div>
-                        </div>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Next.js 15</span>
-                            <span class="tech-tag">React 19</span>
-                            <span class="tech-tag">TypeScript</span>
-                            <span class="tech-tag">Supabase</span>
-                        </div>
-                        <div class="card-links">
-                            <a href="/blog/knight-medicare.html" class="card-link card-link-primary">Read Case Study</a>
-                        </div>
-                    </article>
-
-                    <article class="card project-card fade-in">
-                        <div class="project-card-head">
-                            <div class="project-title-block">
-                                <div class="card-icon">🌍</div>
-                                <div>
-                                    <h3 class="card-title">Open Permit</h3>
-                                    <p class="project-role">Civic intelligence platform for high-stakes permit monitoring</p>
-                                </div>
-                            </div>
-                            <span class="project-badge">Live</span>
-                        </div>
-                        <p class="project-summary">Built first at C4C Mumbai in under 10 hours, then scaled into a multi-country civic intelligence system that tracks permit activity, legal frameworks, and objection workflows.</p>
-                        <div class="project-proof-grid">
-                            <div class="project-proof">
-                                <span class="project-proof-value">8+</span>
-                                <span class="project-proof-label">countries currently covered</span>
-                            </div>
-                            <div class="project-proof">
-                                <span class="project-proof-value">200+</span>
-                                <span class="project-proof-label">permits ingested into the platform</span>
-                            </div>
-                            <div class="project-proof">
-                                <span class="project-proof-value">40</span>
-                                <span class="project-proof-label">legal frameworks embedded into the workflow</span>
-                            </div>
-                        </div>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Next.js</span>
-                            <span class="tech-tag">Gemini API</span>
-                            <span class="tech-tag">Supabase</span>
-                            <span class="tech-tag">Express</span>
-                        </div>
-                        <div class="card-links">
-                            <a href="https://openpermit.vercel.app" class="card-link card-link-primary" target="_blank" rel="noreferrer">Live Site</a>
-                            <a href="https://github.com/LarytheLord/Automated-Factory-Farm-Objection-Generator" class="card-link" target="_blank" rel="noreferrer">GitHub</a>
-                            <a href="/blog/open-permit.html" class="card-link">Case Study</a>
-                        </div>
-                    </article>
-
-                    <article class="card project-card fade-in">
-                        <div class="project-card-head">
-                            <div class="project-title-block">
-                                <div class="card-icon">⚔️</div>
-                                <div>
-                                    <h3 class="card-title">The Adventurers Guild</h3>
-                                    <p class="project-role">Gamified developer marketplace built to make growth addictive</p>
-                                </div>
-                            </div>
-                            <span class="project-badge">Live</span>
-                        </div>
-                        <p class="project-summary">A marketplace where companies post quests and student builders level up through real execution. It blends product mechanics, reputation design, and hiring signals into one system.</p>
-                        <div class="project-proof-grid">
-                            <div class="project-proof">
-                                <span class="project-proof-value">500+</span>
-                                <span class="project-proof-label">users across the platform</span>
-                            </div>
-                            <div class="project-proof">
-                                <span class="project-proof-value">GSSoC</span>
-                                <span class="project-proof-label">selected for GirlScript Summer of Code 2025</span>
-                            </div>
-                            <div class="project-proof">
-                                <span class="project-proof-value">XP</span>
-                                <span class="project-proof-label">progression-based ranking instead of static resumes</span>
-                            </div>
-                        </div>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Next.js</span>
-                            <span class="tech-tag">Prisma</span>
-                            <span class="tech-tag">Neon Postgres</span>
-                            <span class="tech-tag">TypeScript</span>
-                        </div>
-                        <div class="card-links">
-                            <a href="https://adventurersguild.space" class="card-link card-link-primary" target="_blank" rel="noreferrer">Live Site</a>
-                            <a href="https://github.com/LarytheLord/Adventurers-Guild" class="card-link" target="_blank" rel="noreferrer">GitHub</a>
-                            <a href="/blog/adventurers-guild.html" class="card-link">Case Study</a>
-                        </div>
-                    </article>
-
-                    <article class="card project-card fade-in">
-                        <div class="project-card-head">
-                            <div class="project-title-block">
-                                <div class="card-icon">🌑</div>
-                                <div>
-                                    <h3 class="card-title">LunaBot</h3>
-                                    <p class="project-role">Autonomous lunar reconnaissance rover</p>
-                                </div>
-                            </div>
-                            <span class="project-badge">Finalist</span>
-                        </div>
-                        <p class="project-summary">Built for NASA Space Apps as a rover concept that scouts lunar landing sites before Artemis III astronauts arrive. It pushed me into robotics constraints, simulation thinking, and hardware-aware software decisions.</p>
-                        <div class="project-proof-grid">
-                            <div class="project-proof">
-                                <span class="project-proof-value">NASA</span>
-                                <span class="project-proof-label">Space Apps Global Finalist recognition</span>
-                            </div>
-                            <div class="project-proof">
-                                <span class="project-proof-value">ROS2</span>
-                                <span class="project-proof-label">robotics stack and orchestration backbone</span>
-                            </div>
-                            <div class="project-proof">
-                                <span class="project-proof-value">Jetson</span>
-                                <span class="project-proof-label">NVIDIA hardware for edge compute experimentation</span>
-                            </div>
-                        </div>
-                        <div class="tech-tags">
-                            <span class="tech-tag">ROS2</span>
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Webots</span>
-                            <span class="tech-tag">NVIDIA Jetson</span>
-                        </div>
-                        <div class="card-links">
-                            <a href="/blog/lunabot.html" class="card-link card-link-primary">Read Case Study</a>
-                        </div>
-                    </article>
-
-                    <article class="card project-card fade-in">
-                        <div class="project-card-head">
-                            <div class="project-title-block">
-                                <div class="card-icon">💬</div>
-                                <div>
-                                    <h3 class="card-title">AfA Resource Chatbot</h3>
-                                    <p class="project-role">RAG system for advocacy knowledge retrieval</p>
-                                </div>
-                            </div>
-                            <span class="project-badge">Internal</span>
-                        </div>
-                        <p class="project-summary">A retrieval layer for Open Paws that turns dense animal welfare resources into something teams can actually query in real time. It was less about making a chatbot and more about compressing search friction for operators.</p>
-                        <div class="project-proof-grid">
-                            <div class="project-proof">
-                                <span class="project-proof-value">RAG</span>
-                                <span class="project-proof-label">retrieval-first architecture instead of plain prompting</span>
-                            </div>
-                            <div class="project-proof">
-                                <span class="project-proof-value">Dual</span>
-                                <span class="project-proof-label">vector storage setup for flexible retrieval paths</span>
-                            </div>
-                            <div class="project-proof">
-                                <span class="project-proof-value">Ops</span>
-                                <span class="project-proof-label">built to support actual advocacy workflows</span>
-                            </div>
-                        </div>
-                        <div class="tech-tags">
-                            <span class="tech-tag">OpenAI</span>
-                            <span class="tech-tag">Pinecone</span>
-                            <span class="tech-tag">pgvector</span>
-                            <span class="tech-tag">Python</span>
-                        </div>
-                        <div class="card-links">
-                            <a href="/blog/rag-chatbot.html" class="card-link card-link-primary">Read Case Study</a>
-                        </div>
-                    </article>
-
-                    <article class="card project-card project-card-featured fade-in">
-                        <div class="project-card-head">
-                            <div class="project-title-block">
-                                <div class="card-icon">🗂️</div>
-                                <div>
-                                    <h3 class="card-title">Everything Else Worth Opening</h3>
-                                    <p class="project-role">Smaller bets, research experiments, and public writing</p>
-                                </div>
-                            </div>
-                            <span class="project-badge">More</span>
-                        </div>
-                        <p class="project-summary">The homepage is intentionally curated now, but there is more behind it: LEWS, Gemini Ambassador work, public essays, and the rest of the portfolio terminal. If you're the kind of person who likes digging, there are more breadcrumbs below.</p>
-                        <div class="card-links">
-                            <a href="https://lews.vercel.app" class="card-link card-link-primary" target="_blank" rel="noreferrer">Open LEWS</a>
-                            <a href="/blog/gemini-ambassador.html" class="card-link">Gemini Ambassador</a>
-                            <a href="/blog/building-in-public.html" class="card-link">Building in Public</a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="now">
-            <div class="container">
-                <div class="section-header section-header-left">
-                    <p class="section-eyebrow mono">Now</p>
-                    <h2 class="section-title">What has my attention right now</h2>
-                    <p class="section-subtitle">This is the layer the old homepage was missing. It makes the site feel current, directional, and a little more human instead of reading like a frozen brag sheet.</p>
-                </div>
-
-                <div class="now-grid">
-                    <article class="card now-card now-card-wide fade-in">
-                        <div class="now-card-head">
-                            <div>
-                                <p class="now-kicker">Current Operating System</p>
-                                <h3 class="card-title">Shipping across product, infra, open source, and research</h3>
-                            </div>
-                            <span class="now-pill">Current</span>
-                        </div>
-                        <div class="now-columns">
-                            <div>
-                                <h4 class="now-mini-title">Builds</h4>
-                                <ul class="now-list">
-                                    <li>Knight Medicare is where I spend my highest-focus product energy: therapeutic UX, safety-minded system design, and making the platform reliable enough to matter.</li>
-                                    <li>Open Permit is the most leveraged civic-tech bet in the stack, and I am still pushing on data coverage, objection workflows, and institutional adoption paths.</li>
-                                    <li>The Adventurers Guild keeps pulling me back into game mechanics, talent systems, and how to make developer growth feel earned instead of performative.</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="now-mini-title">Ops</h4>
-                                <ul class="now-list">
-                                    <li>Open source remains a daily practice, not a side quest. I care a lot about reviewer-approved work in repos that real teams already depend on.</li>
-                                    <li>I am still thinking deeply about infrastructure portability after the Supabase block, especially how to keep all 11 projects from becoming provider-bound.</li>
-                                    <li>Research is creeping closer to the center through LEWS, methodology writing, and the kinds of questions that deserve more than a hackathon prototype.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="card now-card fade-in">
-                        <div>
-                            <p class="now-kicker">Thinking About</p>
-                            <h3 class="card-title">The questions underneath the code</h3>
-                        </div>
-                        <div class="thought-stack">
-                            <div class="thought-item">
-                                <span class="thought-label">Research</span>
-                                <p>How to formalize LEWS into something that survives peer review instead of staying trapped as a strong hackathon artifact.</p>
-                            </div>
-                            <div class="thought-item">
-                                <span class="thought-label">Leverage</span>
-                                <p>Where AI tooling actually compounds execution and where it just creates a shinier version of busywork.</p>
-                            </div>
-                            <div class="thought-item">
-                                <span class="thought-label">Infrastructure</span>
-                                <p>How to design systems that can move when vendors, regions, or constraints change under you.</p>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="card now-card fade-in">
-                        <div>
-                            <p class="now-kicker">Open To</p>
-                            <h3 class="card-title">Conversations worth having</h3>
-                        </div>
-                        <ul class="now-list">
-                            <li>Interesting product, OSS, or research collaborations where execution quality matters more than vibes.</li>
-                            <li>Operator conversations around civic tech, healthcare AI, open source leverage, and building while still in college.</li>
-                            <li>People who want someone technical, fast, and slightly obsessive in the room while something ambitious gets built.</li>
-                        </ul>
-                        <div class="now-inline-links">
-                            <a href="#contact" class="inline-link">Start a conversation</a>
-                            <a href="/blog" class="inline-link">Read the longer thoughts</a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="oss">
-            <div class="container">
-                <div class="section-header section-header-left">
-                    <p class="section-eyebrow mono">OSS Activity</p>
-                    <h2 class="section-title">Open source, shown as a live system</h2>
-                    <p class="section-subtitle">The profile proves I contribute. This section is about making that work legible on the portfolio itself, with a live calendar, current counts, and recent merged pull requests.</p>
-                </div>
-
-                <div class="oss-grid">
-                    <article class="card oss-calendar-card fade-in">
-                        <div class="oss-card-head">
-                            <div>
-                                <p class="oss-kicker">GitHub Pulse</p>
-                                <h3 class="card-title">Live contribution calendar</h3>
-                            </div>
-                            <a href="https://github.com/LarytheLord" class="oss-profile-link" target="_blank" rel="noreferrer">Open GitHub</a>
-                        </div>
-                        <p class="oss-calendar-intro">This is fetched live from GitHub and proxied through the site, so it reflects the current public contribution calendar instead of a hardcoded screenshot.</p>
-                        <div class="oss-stats-grid">
-                            <div class="oss-stat">
-                                <span class="oss-stat-value" id="oss-yearly-contributions">1,538</span>
-                                <span class="oss-stat-label">Yearly contributions</span>
-                            </div>
-                            <div class="oss-stat">
-                                <span class="oss-stat-value" id="oss-merged-prs">94</span>
-                                <span class="oss-stat-label">Merged pull requests</span>
-                            </div>
-                            <div class="oss-stat">
-                                <span class="oss-stat-value" id="oss-open-prs">44</span>
-                                <span class="oss-stat-label">Open pull requests</span>
-                            </div>
-                            <div class="oss-stat">
-                                <span class="oss-stat-value" id="oss-public-repos">93</span>
-                                <span class="oss-stat-label">Public repositories</span>
-                            </div>
-                        </div>
-                        <div class="github-calendar-shell" id="github-calendar-shell">
-                            <div class="github-calendar-loading" id="github-calendar-loading">Loading live GitHub activity...</div>
-                        </div>
-                        <p class="oss-calendar-footnote" id="oss-calendar-footnote">If the live call fails, the rest of this section still keeps the OSS story readable.</p>
-                    </article>
-
-                    <article class="card fade-in">
-                        <div class="oss-card-head">
-                            <div>
-                                <p class="oss-kicker">Activity Overview</p>
-                                <h3 class="card-title">Contribution mix</h3>
-                            </div>
-                        </div>
-                        <p class="project-summary">Inspired by GitHub’s native activity overview. The portfolio version turns that shape into a quick read on how the work usually shows up: mostly commits, some pull requests, a little issue activity, and code review where it matters.</p>
-                        <div class="activity-overview" aria-hidden="true">
-                            <svg class="activity-radar" viewBox="0 0 320 320">
-                                <line class="activity-axis" x1="160" y1="28" x2="160" y2="292"></line>
-                                <line class="activity-axis" x1="28" y1="160" x2="292" y2="160"></line>
-                                <circle class="activity-ring" cx="160" cy="160" r="46" fill="none"></circle>
-                                <polygon class="activity-fill" points="45,160 160,115 163,160 160,184"></polygon>
-                                <circle class="activity-node" cx="45" cy="160" r="7"></circle>
-                                <circle class="activity-node" cx="160" cy="115" r="7"></circle>
-                                <circle class="activity-node" cx="163" cy="160" r="7"></circle>
-                                <circle class="activity-node" cx="160" cy="184" r="7"></circle>
-                                <text x="160" y="54" text-anchor="middle" fill="#a3a3a3" font-size="16">Code review</text>
-                                <text x="20" y="156" text-anchor="start" fill="#d4d4d4" font-size="20" font-weight="700">87%</text>
-                                <text x="20" y="182" text-anchor="start" fill="#a3a3a3" font-size="16">Commits</text>
-                                <text x="300" y="156" text-anchor="end" fill="#d4d4d4" font-size="20" font-weight="700">1%</text>
-                                <text x="300" y="182" text-anchor="end" fill="#a3a3a3" font-size="16">Issues</text>
-                                <text x="160" y="270" text-anchor="middle" fill="#d4d4d4" font-size="20" font-weight="700">12%</text>
-                                <text x="160" y="296" text-anchor="middle" fill="#a3a3a3" font-size="16">Pull requests</text>
-                            </svg>
-                        </div>
-                        <div class="activity-legend">
-                            <div class="activity-legend-row">
-                                <span class="activity-legend-label">Primary pattern</span>
-                                <span class="activity-legend-value">shipping fixes and features into real codebases</span>
-                            </div>
-                            <div class="activity-legend-row">
-                                <span class="activity-legend-label">Secondary pattern</span>
-                                <span class="activity-legend-value">pull requests that survive reviewer scrutiny</span>
-                            </div>
-                            <div class="activity-legend-row">
-                                <span class="activity-legend-label">Why this matters</span>
-                                <span class="activity-legend-value">maintainer trust is stronger proof than self-reported skill</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="card oss-feed-card fade-in">
-                        <div class="oss-card-head">
-                            <div>
-                                <p class="oss-kicker">Recent Merges</p>
-                                <h3 class="card-title">Reviewer-approved work in public repos</h3>
-                            </div>
-                            <a href="https://github.com/LarytheLord" class="oss-profile-link" target="_blank" rel="noreferrer">View profile activity</a>
-                        </div>
-                        <div class="oss-feed-list" id="oss-feed-list">
-                            <div class="oss-feed-item">
-                                <div>
-                                    <div class="oss-feed-title">Loading merged pull requests...</div>
-                                    <div class="oss-feed-meta">Pulling recent activity from GitHub.</div>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="writing">
-            <div class="container">
-                <div class="section-header section-header-left">
-                    <p class="section-eyebrow mono">Latest Writing</p>
-                    <h2 class="section-title">Case studies, deep dives, and operational notes</h2>
-                    <p class="section-subtitle">The blog already had strong material. The homepage just wasn’t surfacing it. These are the three pieces that best explain how I think, build, and operate.</p>
-                </div>
-
-                <div class="writing-grid">
-                    <article class="card writing-card fade-in">
-                        <span class="writing-badge">Civic Tech</span>
-                        <div>
-                            <h3 class="card-title">Open Permit: From hackathon to 8+ countries</h3>
-                            <p class="writing-summary">The cleanest example of how I like to build: fast initial execution, strong iteration loops, and an insistence that even “hackathon projects” can become real infrastructure.</p>
-                        </div>
-                        <div class="writing-meta">Open Permit • 200+ permits • 40 legal frameworks</div>
-                        <div class="card-links">
-                            <a href="/blog/open-permit.html" class="card-link card-link-primary">Read Case Study</a>
-                        </div>
-                    </article>
-
-                    <article class="card writing-card fade-in">
-                        <span class="writing-badge">Open Source</span>
-                        <div>
-                            <h3 class="card-title">56+ merged PRs in production OSS</h3>
-                            <p class="writing-summary">A breakdown of what those contributions actually looked like, why reviewer-approved work matters, and how I use open source as a forcing function for technical growth.</p>
-                        </div>
-                        <div class="writing-meta">OpenHands • docling • Kubernetes • Prometheus</div>
-                        <div class="card-links">
-                            <a href="/blog/oss-contributions.html" class="card-link card-link-primary">Read Breakdown</a>
-                        </div>
-                    </article>
-
-                    <article class="card writing-card fade-in">
-                        <span class="writing-badge">Workflow</span>
-                        <div>
-                            <h3 class="card-title">How Claude Code manages everything</h3>
-                            <p class="writing-summary">The operational layer behind running multiple projects at once: architecture sessions, data pipelines, infra decisions, and using AI as leverage instead of theater.</p>
-                        </div>
-                        <div class="writing-meta">11 projects • 4 domains • one operating system</div>
-                        <div class="card-links">
-                            <a href="/blog/claude-code.html" class="card-link card-link-primary">Read Deep Dive</a>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="writing-footer fade-in">
-                    <a href="/blog" class="btn btn-secondary">Browse All Writing</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section class="section" id="about">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">About Me</h2>
-                    <p class="section-subtitle">A bit about who I am and what I do</p>
-                </div>
-
-                <div class="grid grid-cols-2">
-                    <div class="terminal fade-in" id="portfolio-terminal">
-                        <div class="terminal-header">
-                            <div class="terminal-dots">
-                                <div class="terminal-dot dot-red" title="close" onclick="document.getElementById('portfolio-terminal').classList.remove('fullscreen')"></div>
-                                <div class="terminal-dot dot-yellow" title="minimize"></div>
-                                <div class="terminal-dot dot-green" title="fullscreen" onclick="document.getElementById('portfolio-terminal').classList.toggle('fullscreen');document.getElementById('term-input').focus()"></div>
-                            </div>
-                            <span class="terminal-title">abid@portfolio:~</span>
-                            <div class="terminal-actions">
-                                <button class="term-btn" onclick="termClear()">clear</button>
-                                <button class="term-btn" onclick="document.getElementById('portfolio-terminal').classList.toggle('fullscreen');document.getElementById('term-input').focus()">⛶ fullscreen</button>
-                            </div>
-                        </div>
-                        <div class="terminal-body" id="term-body"></div>
-                        <div class="term-input-row">
-                            <span class="term-input-prompt">abid@portfolio:~$</span>
-                            <input class="term-input" id="term-input" type="text" autocomplete="off" autocorrect="off" spellcheck="false" placeholder="type a command — try 'help'" aria-label="Terminal input">
-                        </div>
-                    </div>
-
-                    <script>
-(function(){
-const body = document.getElementById('term-body');
-const input = document.getElementById('term-input');
-let history = [], hIdx = -1;
-
-const COMMANDS = {
-  whoami: () => ['Abid Khan — 19, CS @ GTU (2027)', 'Builder. Operator. Shipper.'],
-  'cat roles.txt': () => [
-    'CTO & Co-founder @ Knight Medicare',
-    'Software Engineer @ Open Paws',
-    'Local Director @ Open Paws India Pvt Ltd',
-    'Founder @ Open Permit',
-    'Founder @ The Adventurers Guild',
-    'Google Gemini Campus Ambassador',
-  ],
-  'cat skills.txt': () => [
-    'Languages:  TypeScript · Python · JavaScript · Go',
-    'Frontend:   Next.js · React 19 · Tailwind CSS',
-    'Backend:    Express · FastAPI · Node.js',
-    'Database:   PostgreSQL · Supabase · Neon · Prisma',
-    'AI/ML:      RAG systems · Gemini · OpenAI · LangChain',
-    'DevOps:     Docker · Vercel · Railway · ROS2',
-  ],
-  'cat projects.txt': () => [
-    '01  Knight Medicare     — AI CBT therapy platform (CTO)',
-    '02  Open Permit         — Civic intel, 8+ countries',
-    '03  Adventurers Guild   — Gamified dev marketplace, 500+ users',
-    '04  LunaBot             — NASA Space Apps Global Finalist',
-    '05  Open Paws           — AI tools for animal advocacy',
-    '07  RAG Chatbot         — Dual vector storage knowledge system',
-    '08  LEWS                — Lock-in Early Warning System',
-    '09  AFOG                — Origin of Open Permit',
-    '10  Gemini Ambassador   — AI education at GTU',
-    '11  OSS Contributions   — 56+ merged PRs in prod repos',
-  ],
-  'git log --oneline -5': () => [
-    'a3f9c2e feat: 56+ merged PRs across OSS repos',
-    'b12d8a1 feat: Knight Medicare CBT engine v2.0',
-    'c9e4f3b feat: Open Permit live in 8+ countries',
-    'd7c2190 feat: NASA Space Apps Global Finalist',
-    'e1a4f82 feat: 500+ GitHub contributions (2026 YTD)',
-  ],
-  'git status': () => ['On branch main', 'Nothing to commit — all systems shipping.'],
-  ls: () => [
-    'projects/     blog/         cv.pdf',
-    'open-permit/  knight/       adventurers-guild/',
-    'lunabot/      lews/         open-paws/',
-  ],
-  'ls -la': () => [
-    'drwxr-xr-x  projects/',
-    'drwxr-xr-x  blog/',
-    '-rw-r--r--  cv.pdf       (27KB)',
-    '-rw-r--r--  README.md    (coming soon)',
-  ],
-  pwd: () => ['/Users/abid/portfolio'],
-  date: () => [new Date().toDateString() + ' — still shipping'],
-  uname: () => ['MacOS (mind) + Linux (servers) + Cloud (soul)'],
-  'cat readme.md': () => [
-    '# Abid Khan',
-    '',
-    'Building civic tech, healthcare AI, and EdTech.',
-    'Running 11 projects while studying CS.',
-    'Using Claude Code as force multiplier.',
-    '',
-    'Contact: see portfolio → /about',
-  ],
-  help: () => [
-    'Available commands:',
-    '',
-    '  whoami              who is Abid?',
-    '  cat roles.txt       current roles & positions',
-    '  cat skills.txt      technical skill stack',
-    '  cat projects.txt    all 11 active projects',
-    '  cat readme.md       the short bio',
-    '  git log --oneline -5  recent achievements',
-    '  git status          current state',
-    '  ls / ls -la         list portfolio items',
-    '  pwd                 current directory',
-    '  date                current date',
-    '  uname               system info',
-    '  clear               clear screen',
-    '  history             command history',
-    '',
-    'Tip: press ↑↓ to navigate command history',
-  ],
-  history: () => history.length ? history.map((h,i) => `  ${i+1}  ${h}`) : ['No history yet.'],
-  clear: () => null,
-};
-
-function addLine(text, cls='output') {
-  if (text === '') { const br = document.createElement('br'); body.appendChild(br); return; }
-  const d = document.createElement('div');
-  d.className = 'term-line ' + cls;
-  d.textContent = text;
-  body.appendChild(d);
-}
-
-function run(cmd) {
-  const trimmed = cmd.trim();
-  if (!trimmed) return;
-  history.unshift(trimmed);
-  hIdx = -1;
-
-  // show the prompt + command
-  addLine('abid@portfolio:~$ ' + trimmed, 'cmd');
-
-  if (trimmed === 'clear') { termClear(); return; }
-
-  const fn = COMMANDS[trimmed] || COMMANDS[trimmed.toLowerCase()];
-  if (fn) {
-    const lines = fn();
-    if (lines) lines.forEach(l => addLine(l || '', 'output'));
-  } else {
-    addLine('bash: ' + trimmed + ': command not found', 'error');
-    addLine('Type \'help\' to see available commands.', 'dim');
-  }
-  addLine('');
-  body.scrollTop = body.scrollHeight;
-}
-
-window.termClear = function() {
-  body.innerHTML = '';
-  addLine('Terminal cleared. Type \'help\' for commands.', 'dim');
-  addLine('');
-};
-
-// Boot sequence
-const boot = [
-  {t:'info', l:'Last login: ' + new Date().toDateString()},
-  {t:'dim',  l:'──────────────────────────────────────────'},
-  {t:'success', l:'Welcome to Abid\'s portfolio terminal.'},
-  {t:'dim',  l:'Type \'help\' to see available commands.'},
-  {t:'', l:''},
-];
-let i = 0;
-function nextBoot() {
-  if (i >= boot.length) {
-    // then auto-run the intro
-    setTimeout(() => { run('whoami'); }, 200);
-    setTimeout(() => { run('cat roles.txt'); }, 600);
-    setTimeout(() => { run('git log --oneline -5'); }, 1100);
-    return;
-  }
-  addLine(boot[i].l, boot[i].t);
-  body.scrollTop = body.scrollHeight;
-  i++;
-  setTimeout(nextBoot, 80);
-}
-setTimeout(nextBoot, 300);
-
-// Input handling
-input.addEventListener('keydown', function(e) {
-  if (e.key === 'Enter') {
-    run(this.value);
-    this.value = '';
-  } else if (e.key === 'ArrowUp') {
-    e.preventDefault();
-    if (hIdx < history.length - 1) { hIdx++; this.value = history[hIdx]; }
-  } else if (e.key === 'ArrowDown') {
-    e.preventDefault();
-    if (hIdx > 0) { hIdx--; this.value = history[hIdx]; }
-    else { hIdx = -1; this.value = ''; }
-  } else if (e.key === 'Tab') {
-    e.preventDefault();
-    // Tab complete
-    const partial = this.value.trim();
-    const matches = Object.keys(COMMANDS).filter(k => k.startsWith(partial));
-    if (matches.length === 1) this.value = matches[0];
-    else if (matches.length > 1) { addLine(matches.join('  '), 'dim'); body.scrollTop = body.scrollHeight; }
-  } else if (e.key === 'l' && e.ctrlKey) {
-    e.preventDefault(); termClear();
-  }
-});
-
-// Click anywhere on terminal body → focus input
-body.addEventListener('click', () => input.focus());
-
-// Escape = exit fullscreen
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    document.getElementById('portfolio-terminal').classList.remove('fullscreen');
-  }
-});
-})();
-                    </script>
-
-                    <div class="card fade-in">
-                        <h3 class="card-title">My Journey</h3>
-                        <p class="card-description">I'm a Computer Science student at Gujarat Technological University (graduating 2027) and CTO of Knight Medicare — an AI therapy platform built with a Harvard PhD psychologist covering 27 disorders and 10 therapy types. I also serve as Software Engineer & Local Director at Open Paws, building AI tools for animal advocacy.</p>
-                        <p class="card-description">I founded Open Permit — a civic intelligence platform live across 8+ countries with 200+ permits and 40 legal frameworks — and The Adventurers Guild, a gamified developer marketplace with 500+ users. NASA Space Apps Global Finalist, hackathon veteran, and currently exploring quantitative finance and gaming/investment consulting.</p>
-
-                        <div class="stats-grid">
-                            <div class="stat-item">
-                                <div class="stat-number">500+</div>
-                                <div class="stat-label">GitHub Contributions (2026)</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number">56+</div>
-                                <div class="stat-label">Merged PRs (2026)</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number">8+</div>
-                                <div class="stat-label">Countries Reached</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section class="section" id="skills">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Skills & Technologies</h2>
-                    <p class="section-subtitle">Tools and technologies I work with</p>
-                </div>
-
-                <div class="skills-grid">
-                    <div class="card skill-category fade-in">
-                        <h3 class="skill-title">Frontend Development</h3>
-                        <div class="skill-list">
-                            <span class="skill-item">React</span>
-                            <span class="skill-item">Next.js</span>
-                            <span class="skill-item">TypeScript</span>
-                            <span class="skill-item">TailwindCSS</span>
-                            <span class="skill-item">HTML5/CSS3</span>
-                            <span class="skill-item">Framer Motion</span>
-                        </div>
-                    </div>
-
-                    <div class="card skill-category fade-in">
-                        <h3 class="skill-title">Backend & Data</h3>
-                        <div class="skill-list">
-                            <span class="skill-item">Node.js</span>
-                            <span class="skill-item">Express</span>
-                            <span class="skill-item">Python</span>
-                            <span class="skill-item">FastAPI</span>
-                            <span class="skill-item">Supabase</span>
-                            <span class="skill-item">PostgreSQL</span>
-                            <span class="skill-item">Prisma</span>
-                            <span class="skill-item">Neon</span>
-                        </div>
-                    </div>
-
-                    <div class="card skill-category fade-in">
-                        <h3 class="skill-title">AI & Machine Learning</h3>
-                        <div class="skill-list">
-                            <span class="skill-item">Google Gemini</span>
-                            <span class="skill-item">OpenAI API</span>
-                            <span class="skill-item">LangChain</span>
-                            <span class="skill-item">RAG Systems</span>
-                            <span class="skill-item">pgvector</span>
-                            <span class="skill-item">Pinecone</span>
-                            <span class="skill-item">Hugging Face</span>
-                            <span class="skill-item">TensorFlow</span>
-                            <span class="skill-item">PyTorch</span>
-                        </div>
-                    </div>
-
-                    <div class="card skill-category fade-in">
-                        <h3 class="skill-title">Quant & Data Science</h3>
-                        <div class="skill-list">
-                            <span class="skill-item">pandas</span>
-                            <span class="skill-item">numpy</span>
-                            <span class="skill-item">scikit-learn</span>
-                            <span class="skill-item">Algorithmic Trading</span>
-                            <span class="skill-item">Data Pipelines</span>
-                        </div>
-                    </div>
-
-                    <div class="card skill-category fade-in">
-                        <h3 class="skill-title">Infrastructure & Tools</h3>
-                        <div class="skill-list">
-                            <span class="skill-item">Git</span>
-                            <span class="skill-item">Vercel</span>
-                            <span class="skill-item">Docker</span>
-                            <span class="skill-item">AWS</span>
-                            <span class="skill-item">Figma</span>
-                            <span class="skill-item">Claude Code</span>
-                            <span class="skill-item">ROS2</span>
-                            <span class="skill-item">Webots</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section class="section" id="contact">
-            <div class="container">
-                <div class="section-header section-header-left">
-                    <p class="section-eyebrow mono">Contact</p>
-                    <h2 class="section-title">If something interesting is being built, I want to hear about it</h2>
-                    <p class="section-subtitle">I like conversations that are concrete: a product to build, an OSS problem worth solving, a weird systems question, or a collaboration that needs someone technical and fast.</p>
-                </div>
-
-                <div class="contact-shell">
-                    <article class="card contact-panel fade-in">
-                        <div class="contact-panel-head">
-                            <div>
-                                <p class="oss-kicker">Best Entry Points</p>
-                                <h3 class="card-title">Choose the fastest path</h3>
-                            </div>
-                            <span class="contact-pill">Replies in 24-48h</span>
-                        </div>
-                        <p class="contact-intro">If you want the fastest path, book a call. Email is still the cleanest channel for serious conversations with context, and the prompt chips below help you start with something sharper than “hey.”</p>
-                        <div class="contact-quick-actions">
-                            <button class="contact-chip" type="button" data-contact-subject="Build something together">Build together</button>
-                            <button class="contact-chip" type="button" data-contact-subject="Open source collaboration">Open source collaboration</button>
-                            <button class="contact-chip" type="button" data-contact-subject="Research / systems conversation">Research / systems conversation</button>
-                            <button class="contact-chip" type="button" data-contact-subject="Product or operator chat">Product or operator chat</button>
-                        </div>
-                        <div class="contact-direct-list">
-                            <div class="contact-direct-item contact-direct-item-featured">
-                                <div>
-                                    <span class="contact-direct-label">Book a Call</span>
-                                    <span class="contact-direct-value">Fastest way to get time on the calendar</span>
-                                </div>
-                                <a href="https://calendar.app.google/eeccV9tBcsgVaCpC9" class="contact-direct-link contact-direct-link-featured" target="_blank" rel="noreferrer">Schedule</a>
-                            </div>
-                            <div class="contact-direct-item">
-                                <div>
-                                    <span class="contact-direct-label">Email</span>
-                                    <span class="contact-direct-value">llawlietbagsum@gmail.com</span>
-                                </div>
-                                <a href="mailto:llawlietbagsum@gmail.com" class="contact-direct-link">Open mail</a>
-                            </div>
-                            <div class="contact-direct-item">
-                                <div>
-                                    <span class="contact-direct-label">LinkedIn</span>
-                                    <span class="contact-direct-value">linkedin.com/in/abikhn</span>
-                                </div>
-                                <a href="https://linkedin.com/in/abikhn" class="contact-direct-link" target="_blank" rel="noreferrer">Say hi</a>
-                            </div>
-                            <div class="contact-direct-item">
-                                <div>
-                                    <span class="contact-direct-label">GitHub</span>
-                                    <span class="contact-direct-value">github.com/LarytheLord</span>
-                                </div>
-                                <a href="https://github.com/LarytheLord" class="contact-direct-link" target="_blank" rel="noreferrer">See work</a>
-                            </div>
-                            <div class="contact-direct-item">
-                                <div>
-                                    <span class="contact-direct-label">Resume / CV</span>
-                                    <span class="contact-direct-value">Latest one-page PDF</span>
-                                </div>
-                                <a href="Abid-Khan-CV.pdf" class="contact-direct-link" download="Abid-Khan-CV.pdf">Download</a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <form class="card contact-form-panel fade-in" id="contact-form" novalidate>
-                        <div>
-                            <p class="oss-kicker">Draft Your Message</p>
-                            <h3 class="card-title">Static-friendly contact flow</h3>
-                        </div>
-                        <div class="form-grid">
-                            <div class="form-field">
-                                <label class="form-label" for="contact-name">Name</label>
-                                <input class="form-input" id="contact-name" name="name" type="text" placeholder="Your name">
-                            </div>
-                            <div class="form-field">
-                                <label class="form-label" for="contact-email">Email</label>
-                                <input class="form-input" id="contact-email" name="email" type="email" placeholder="you@example.com">
-                            </div>
-                            <div class="form-field form-field-full">
-                                <label class="form-label" for="contact-subject">Subject</label>
-                                <input class="form-input" id="contact-subject" name="subject" type="text" placeholder="What are we talking about?">
-                            </div>
-                            <div class="form-field form-field-full">
-                                <label class="form-label" for="contact-message">Message</label>
-                                <textarea class="form-textarea" id="contact-message" name="message" placeholder="Give me the context, what you're building, and where you think I fit."></textarea>
-                            </div>
-                        </div>
-                        <div class="form-actions">
-                            <button class="btn btn-primary" type="submit">Open Email Draft</button>
-                            <button class="btn btn-secondary" type="button" id="copy-email-btn">Copy Email</button>
-                        </div>
-                        <p class="form-note">This keeps the site deployable as a static portfolio: the form validates your message, saves your draft locally, and opens your mail app with everything prefilled.</p>
-                        <p class="form-status" id="contact-form-status" aria-live="polite"></p>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="container">
-                <p class="footer-text">Building the future with AI and code.</p>
-
-                <div class="social-links">
-                    <a href="https://github.com/LarytheLord" class="social-link">GitHub</a>
-                    <a href="https://linkedin.com/in/abikhn" class="social-link">LinkedIn</a>
-                    <a href="/blog" class="social-link">Blog</a>
-                </div>
-
-                <p class="copyright">&copy; 2026 Abid Khan. Built with intent, shipped with urgency.</p>
-            </div>
-        </footer>
+  <footer class="footer">
+    <div class="container">
+      <p>Full-Stack & AI/ML Engineer | Open Source Builder | CTO @ Knight Medicare</p>
+      <div class="socials">
+        <a class="link-chip" href="https://github.com/LarytheLord" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="link-chip" href="https://linkedin.com/in/abikhn" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="link-chip" href="https://x.com/larysonlawliet" target="_blank" rel="noreferrer">X</a>
+        <a class="link-chip" href="/blog">Blog</a>
+      </div>
+      <p class="role">&copy; 2026 Abid Khan. Built in India, shipping globally.</p>
     </div>
-
-    <script>
-        // Stitch-inspired background motion
-        document.addEventListener('DOMContentLoaded', function () {
-            const canvas = document.getElementById('background-canvas');
-            const ctx = canvas ? canvas.getContext('2d') : null;
-
-            if (canvas && ctx) {
-                const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-                const palette = {
-                    cyan: '0,153,204',
-                    blue: '19,91,236',
-                    amber: '212,122,6'
-                };
-                const pointer = {
-                    x: window.innerWidth * 0.58,
-                    y: window.innerHeight * 0.24,
-                    tx: window.innerWidth * 0.58,
-                    ty: window.innerHeight * 0.24
-                };
-
-                let width = 0;
-                let height = 0;
-                let dpr = 1;
-                let dust = [];
-                let nodes = [];
-                let animationFrame = null;
-                let lastTime = 0;
-
-                function rand(min, max) {
-                    return min + Math.random() * (max - min);
-                }
-
-                function drawGlow(x, y, radius, stops) {
-                    const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius);
-                    stops.forEach((stop) => gradient.addColorStop(stop[0], stop[1]));
-                    ctx.fillStyle = gradient;
-                    ctx.beginPath();
-                    ctx.arc(x, y, radius, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-
-                function buildScene() {
-                    dust = Array.from({ length: Math.min(72, Math.max(26, Math.round(width / 24))) }, () => ({
-                        x: rand(0, width),
-                        y: rand(0, height),
-                        size: rand(0.6, 2.4),
-                        sway: rand(10, 42),
-                        speed: rand(0.12, 0.45),
-                        alpha: rand(0.12, 0.38),
-                        phase: rand(0, Math.PI * 2)
-                    }));
-
-                    nodes = Array.from({ length: Math.min(20, Math.max(12, Math.round(width / 82))) }, (_, index) => ({
-                        homeX: rand(width * 0.05, width * 0.95),
-                        homeY: rand(height * 0.08, height * 0.92),
-                        radiusX: rand(18, width * 0.09),
-                        radiusY: rand(18, height * 0.08),
-                        speed: rand(0.14, 0.36) * (index % 2 ? 1 : -1),
-                        size: rand(1.4, 3.6),
-                        phase: rand(0, Math.PI * 2),
-                        tint: index % 3 === 0 ? palette.cyan : index % 3 === 1 ? palette.blue : palette.amber
-                    }));
-                }
-
-                function resizeCanvas() {
-                    dpr = Math.min(window.devicePixelRatio || 1, 1.8);
-                    width = window.innerWidth;
-                    height = window.innerHeight;
-                    canvas.width = Math.round(width * dpr);
-                    canvas.height = Math.round(height * dpr);
-                    canvas.style.width = width + 'px';
-                    canvas.style.height = height + 'px';
-                    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-                    buildScene();
-                    drawFrame(lastTime);
-                }
-
-                function drawRibbon(time, index, colorA, colorB) {
-                    const baseY = height * (0.22 + index * 0.18);
-                    const amplitude = height * (0.048 + index * 0.007);
-                    const steps = 26;
-                    const offset = index * 1.37;
-                    const pointerLift = (pointer.y - height * 0.5) * 0.03;
-
-                    ctx.beginPath();
-                    for (let step = 0; step <= steps; step += 1) {
-                        const progress = step / steps;
-                        const x = width * progress;
-                        const wave = Math.sin(progress * 7.8 + time * 0.9 + offset) * amplitude
-                            + Math.cos(progress * 13.2 - time * 0.42 + offset) * amplitude * 0.36
-                            + Math.sin(progress * 3.1 + time * 0.25) * height * 0.02;
-                        const y = baseY + wave + pointerLift + Math.sin(time * 0.3 + offset) * 12;
-
-                        if (step === 0) {
-                            ctx.moveTo(x, y);
-                            continue;
-                        }
-
-                        const prevProgress = (step - 1) / steps;
-                        const prevX = width * prevProgress;
-                        const prevWave = Math.sin(prevProgress * 7.8 + time * 0.9 + offset) * amplitude
-                            + Math.cos(prevProgress * 13.2 - time * 0.42 + offset) * amplitude * 0.36
-                            + Math.sin(prevProgress * 3.1 + time * 0.25) * height * 0.02;
-                        const prevY = baseY + prevWave + pointerLift + Math.sin(time * 0.3 + offset) * 12;
-                        const midX = (prevX + x) * 0.5;
-                        const midY = (prevY + y) * 0.5;
-                        ctx.quadraticCurveTo(prevX, prevY, midX, midY);
-                    }
-
-                    const gradient = ctx.createLinearGradient(0, baseY - amplitude, width, baseY + amplitude);
-                    gradient.addColorStop(0, `rgba(${colorA}, 0.02)`);
-                    gradient.addColorStop(0.28, `rgba(${colorA}, 0.18)`);
-                    gradient.addColorStop(0.56, `rgba(${colorB}, 0.28)`);
-                    gradient.addColorStop(1, `rgba(${colorB}, 0.02)`);
-
-                    ctx.lineCap = 'round';
-                    ctx.lineJoin = 'round';
-                    ctx.shadowBlur = 34;
-                    ctx.shadowColor = `rgba(${colorB}, 0.18)`;
-                    ctx.strokeStyle = gradient;
-                    ctx.lineWidth = 26 - index * 4;
-                    ctx.globalAlpha = 0.72;
-                    ctx.stroke();
-
-                    ctx.shadowBlur = 0;
-                    ctx.strokeStyle = `rgba(${colorB}, 0.38)`;
-                    ctx.lineWidth = 2.2;
-                    ctx.globalAlpha = 0.95;
-                    ctx.stroke();
-                }
-
-                function computeNodePositions(time) {
-                    return nodes.map((node, index) => {
-                        const pointerShiftX = (pointer.x - width * 0.5) * 0.022 * (index % 2 ? 1 : -1);
-                        const pointerShiftY = (pointer.y - height * 0.5) * 0.018;
-
-                        return {
-                            x: node.homeX + Math.cos(time * node.speed + node.phase) * node.radiusX + pointerShiftX,
-                            y: node.homeY + Math.sin(time * node.speed * 1.15 + node.phase) * node.radiusY + pointerShiftY,
-                            size: node.size,
-                            tint: node.tint
-                        };
-                    });
-                }
-
-                function drawConstellation(time) {
-                    const positions = computeNodePositions(time);
-                    const maxDistance = Math.min(width, height) * 0.22;
-
-                    ctx.lineWidth = 1;
-                    ctx.shadowBlur = 0;
-
-                    for (let i = 0; i < positions.length; i += 1) {
-                        for (let j = i + 1; j < positions.length; j += 1) {
-                            const dx = positions[i].x - positions[j].x;
-                            const dy = positions[i].y - positions[j].y;
-                            const distance = Math.hypot(dx, dy);
-
-                            if (distance > maxDistance) continue;
-
-                            const alpha = (1 - distance / maxDistance) * 0.15;
-                            ctx.strokeStyle = `rgba(19, 91, 236, ${alpha})`;
-                            ctx.beginPath();
-                            ctx.moveTo(positions[i].x, positions[i].y);
-                            ctx.lineTo(positions[j].x, positions[j].y);
-                            ctx.stroke();
-                        }
-                    }
-
-                    positions.forEach((node, index) => {
-                        const pulse = 1 + Math.sin(time * 1.4 + index) * 0.15;
-                        drawGlow(node.x, node.y, 18 * pulse, [
-                            [0, `rgba(${node.tint}, 0.22)`],
-                            [0.35, `rgba(${node.tint}, 0.10)`],
-                            [1, `rgba(${node.tint}, 0)`]
-                        ]);
-                        ctx.beginPath();
-                        ctx.fillStyle = `rgba(${node.tint}, 0.54)`;
-                        ctx.arc(node.x, node.y, node.size * pulse, 0, Math.PI * 2);
-                        ctx.fill();
-                    });
-                }
-
-                function drawDust(time) {
-                    dust.forEach((particle, index) => {
-                        const x = particle.x + Math.cos(time * particle.speed + particle.phase) * particle.sway;
-                        const y = (particle.y + time * (particle.speed * 8 + index % 3)
-                            + Math.sin(time * particle.speed + particle.phase) * 6) % (height + 24) - 12;
-                        ctx.beginPath();
-                        ctx.fillStyle = `rgba(255, 255, 255, ${particle.alpha})`;
-                        ctx.arc(x, y, particle.size, 0, Math.PI * 2);
-                        ctx.fill();
-                    });
-                }
-
-                function drawFrame(time) {
-                    lastTime = time;
-                    ctx.clearRect(0, 0, width, height);
-
-                    const parallaxX = (pointer.x - width * 0.5) * 0.06;
-                    const parallaxY = (pointer.y - height * 0.5) * 0.05;
-                    const shortEdge = Math.min(width, height);
-
-                    ctx.globalCompositeOperation = 'screen';
-
-                    drawGlow(width * 0.18 + parallaxX * 0.4 + Math.sin(time * 0.35) * 28, height * 0.22 + parallaxY * 0.25 + Math.cos(time * 0.42) * 18, shortEdge * 0.34, [
-                        [0, 'rgba(0, 153, 204, 0.26)'],
-                        [0.3, 'rgba(0, 153, 204, 0.16)'],
-                        [0.62, 'rgba(19, 91, 236, 0.06)'],
-                        [1, 'rgba(19, 91, 236, 0)']
-                    ]);
-                    drawGlow(width * 0.82 + parallaxX * -0.28 + Math.cos(time * 0.28) * 24, height * 0.18 + parallaxY * 0.18 + Math.sin(time * 0.24) * 18, shortEdge * 0.24, [
-                        [0, 'rgba(19, 91, 236, 0.22)'],
-                        [0.34, 'rgba(19, 91, 236, 0.12)'],
-                        [0.72, 'rgba(255, 255, 255, 0.02)'],
-                        [1, 'rgba(255, 255, 255, 0)']
-                    ]);
-                    drawGlow(width * 0.54 + parallaxX * 0.18, height * 0.78 + parallaxY * -0.15 + Math.sin(time * 0.3) * 18, shortEdge * 0.22, [
-                        [0, 'rgba(212, 122, 6, 0.16)'],
-                        [0.32, 'rgba(212, 122, 6, 0.08)'],
-                        [0.72, 'rgba(255, 255, 255, 0.02)'],
-                        [1, 'rgba(255, 255, 255, 0)']
-                    ]);
-
-                    drawRibbon(time, 0, palette.cyan, palette.blue);
-                    drawRibbon(time + 0.7, 1, palette.blue, palette.cyan);
-                    drawRibbon(time + 1.2, 2, palette.cyan, palette.amber);
-                    drawRibbon(time + 1.9, 3, palette.blue, palette.cyan);
-
-                    ctx.globalCompositeOperation = 'source-over';
-                    drawConstellation(time);
-                    drawDust(time);
-                }
-
-                function animate(now) {
-                    const time = now * 0.001;
-                    pointer.x += (pointer.tx - pointer.x) * 0.05;
-                    pointer.y += (pointer.ty - pointer.y) * 0.05;
-                    drawFrame(time);
-                    animationFrame = window.requestAnimationFrame(animate);
-                }
-
-                function stopAnimation() {
-                    if (animationFrame) {
-                        window.cancelAnimationFrame(animationFrame);
-                        animationFrame = null;
-                    }
-                }
-
-                function syncMotionPreference() {
-                    stopAnimation();
-
-                    if (reducedMotionQuery.matches) {
-                        pointer.x = pointer.tx;
-                        pointer.y = pointer.ty;
-                        drawFrame(lastTime || 0);
-                        return;
-                    }
-
-                    animationFrame = window.requestAnimationFrame(animate);
-                }
-
-                window.addEventListener('resize', resizeCanvas, { passive: true });
-                document.addEventListener('pointermove', (event) => {
-                    pointer.tx = event.clientX;
-                    pointer.ty = event.clientY;
-                }, { passive: true });
-                document.addEventListener('pointerleave', () => {
-                    pointer.tx = width * 0.58;
-                    pointer.ty = height * 0.24;
-                });
-                document.addEventListener('visibilitychange', () => {
-                    if (document.hidden) {
-                        stopAnimation();
-                    } else {
-                        syncMotionPreference();
-                    }
-                });
-
-                if (typeof reducedMotionQuery.addEventListener === 'function') {
-                    reducedMotionQuery.addEventListener('change', syncMotionPreference);
-                } else if (typeof reducedMotionQuery.addListener === 'function') {
-                    reducedMotionQuery.addListener(syncMotionPreference);
-                }
-
-                resizeCanvas();
-                syncMotionPreference();
-            }
-
-            // Intersection Observer for fade-in animations
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            });
-
-            // Observe all fade-in elements
-            document.querySelectorAll('.fade-in').forEach(el => {
-                observer.observe(el);
-            });
-
-            // Smooth scrolling for navigation links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-
-            // ── Stat counter animation ──────────────────────────────────────
-            function animateCounter(el) {
-                const raw = el.textContent.trim();
-                const suffix = raw.replace(/[\d.]/g, '');
-                const num = parseFloat(raw);
-                if (isNaN(num)) return;
-                const duration = 1600;
-                const start = performance.now();
-                function step(now) {
-                    const p = Math.min((now - start) / duration, 1);
-                    const ease = 1 - Math.pow(1 - p, 3);
-                    el.textContent = (num < 10 ? (num * ease).toFixed(1) : Math.round(num * ease)) + suffix;
-                    if (p < 1) requestAnimationFrame(step);
-                    else el.textContent = raw;
-                }
-                requestAnimationFrame(step);
-            }
-            const statObserver = new IntersectionObserver(entries => {
-                entries.forEach(e => {
-                    if (e.isIntersecting) {
-                        animateCounter(e.target);
-                        statObserver.unobserve(e.target);
-                    }
-                });
-            }, { threshold: 0.5 });
-            document.querySelectorAll('.stat-number').forEach(el => statObserver.observe(el));
-
-            // ── Skill item: copy-to-clipboard tooltip ───────────────────────
-            document.querySelectorAll('.skill-item').forEach(el => {
-                el.title = 'Click to copy';
-                el.addEventListener('click', function() {
-                    navigator.clipboard?.writeText(this.textContent.trim()).catch(()=>{});
-                    const orig = this.textContent;
-                    this.textContent = '✓ copied';
-                    this.style.background = 'rgba(32,194,14,0.15)';
-                    this.style.borderColor = 'var(--retro-green)';
-                    setTimeout(() => {
-                        this.textContent = orig;
-                        this.style.background = '';
-                        this.style.borderColor = '';
-                    }, 1200);
-                });
-            });
-
-            // ── GitHub activity section ─────────────────────────────────────
-            async function loadGitHubActivity() {
-                const calendarShell = document.getElementById('github-calendar-shell');
-                const loadingEl = document.getElementById('github-calendar-loading');
-                const feedList = document.getElementById('oss-feed-list');
-                const footnote = document.getElementById('oss-calendar-footnote');
-
-                if (!calendarShell || !feedList) return;
-
-                try {
-                    const response = await fetch('/api/github-activity?username=LarytheLord');
-
-                    if (!response.ok) {
-                        throw new Error('GitHub activity request failed');
-                    }
-
-                    const data = await response.json();
-
-                    document.getElementById('oss-yearly-contributions').textContent = data.yearlyContributions?.toLocaleString() || '1,538';
-                    document.getElementById('oss-merged-prs').textContent = data.mergedPrCount?.toLocaleString() || '94';
-                    document.getElementById('oss-open-prs').textContent = data.openPrCount?.toLocaleString() || '44';
-                    document.getElementById('oss-public-repos').textContent = data.publicRepos?.toLocaleString() || '93';
-
-                    if (data.calendarHtml) {
-                        calendarShell.innerHTML = data.calendarHtml;
-                        if (footnote) {
-                            footnote.textContent = `Live public calendar for ${data.username} on GitHub.`;
-                        }
-                    } else if (loadingEl) {
-                        loadingEl.textContent = 'Calendar unavailable right now, but the rest of the activity data loaded.';
-                    }
-
-                    if (Array.isArray(data.recentMergedPrs) && data.recentMergedPrs.length) {
-                        feedList.innerHTML = data.recentMergedPrs.map((item) => {
-                            const updated = new Date(item.updatedAt);
-                            const prettyDate = Number.isNaN(updated.getTime())
-                                ? 'recently'
-                                : updated.toLocaleDateString('en-US', {
-                                    year: 'numeric',
-                                    month: 'short',
-                                    day: 'numeric'
-                                });
-
-                            return `
-                                <article class="oss-feed-item">
-                                    <div>
-                                        <div class="oss-feed-title">${item.title}</div>
-                                        <div class="oss-feed-meta">${item.repo} • PR #${item.number} • updated ${prettyDate}</div>
-                                    </div>
-                                    <a href="${item.url}" class="oss-feed-link" target="_blank" rel="noreferrer">Open PR</a>
-                                </article>
-                            `;
-                        }).join('');
-                    }
-                } catch (error) {
-                    if (loadingEl) {
-                        loadingEl.className = 'github-calendar-error';
-                        loadingEl.textContent = 'GitHub activity is temporarily unavailable. The static portfolio content is still fully usable.';
-                    }
-
-                    if (footnote) {
-                        footnote.textContent = 'The GitHub proxy could not be reached during this page load.';
-                    }
-
-                    feedList.innerHTML = `
-                        <article class="oss-feed-item">
-                            <div>
-                                <div class="oss-feed-title">OpenHands / OpenHands</div>
-                                <div class="oss-feed-meta">fix: treat llm_base_url="" as explicit clear in store_llm_settings</div>
-                            </div>
-                            <a href="https://github.com/OpenHands/OpenHands/pull/13471" class="oss-feed-link" target="_blank" rel="noreferrer">Open PR</a>
-                        </article>
-                        <article class="oss-feed-item">
-                            <div>
-                                <div class="oss-feed-title">docling-project / docling</div>
-                                <div class="oss-feed-meta">fix: release image backend resources after frame extraction</div>
-                            </div>
-                            <a href="https://github.com/docling-project/docling/pull/3134" class="oss-feed-link" target="_blank" rel="noreferrer">Open PR</a>
-                        </article>
-                    `;
-                }
-            }
-
-            loadGitHubActivity();
-
-            // ── Contact flow ────────────────────────────────────────────────
-            const contactForm = document.getElementById('contact-form');
-            const contactStatus = document.getElementById('contact-form-status');
-            const contactEmail = 'llawlietbagsum@gmail.com';
-            const contactFields = {
-                name: document.getElementById('contact-name'),
-                email: document.getElementById('contact-email'),
-                subject: document.getElementById('contact-subject'),
-                message: document.getElementById('contact-message'),
-            };
-            const draftKey = 'portfolio-contact-draft';
-
-            function setContactStatus(message, kind = '') {
-                if (!contactStatus) return;
-                contactStatus.textContent = message;
-                contactStatus.className = 'form-status' + (kind ? ` is-${kind}` : '');
-            }
-
-            function saveContactDraft() {
-                const payload = {
-                    name: contactFields.name?.value || '',
-                    email: contactFields.email?.value || '',
-                    subject: contactFields.subject?.value || '',
-                    message: contactFields.message?.value || '',
-                };
-                localStorage.setItem(draftKey, JSON.stringify(payload));
-            }
-
-            function loadContactDraft() {
-                try {
-                    const raw = localStorage.getItem(draftKey);
-                    if (!raw) return;
-                    const draft = JSON.parse(raw);
-                    Object.entries(contactFields).forEach(([key, el]) => {
-                        if (el && typeof draft[key] === 'string' && !el.value) {
-                            el.value = draft[key];
-                        }
-                    });
-                } catch (error) {
-                    localStorage.removeItem(draftKey);
-                }
-            }
-
-            loadContactDraft();
-
-            Object.values(contactFields).forEach((field) => {
-                field?.addEventListener('input', saveContactDraft);
-            });
-
-            document.querySelectorAll('[data-contact-subject]').forEach((button) => {
-                button.addEventListener('click', function () {
-                    if (contactFields.subject) {
-                        contactFields.subject.value = this.dataset.contactSubject || '';
-                    }
-                    if (contactFields.message && !contactFields.message.value.trim()) {
-                        contactFields.message.value = 'Context:\n\nWhat you are building:\n\nWhere you think I fit:\n\nTimeline / urgency:\n';
-                    }
-                    contactFields.message?.focus();
-                    saveContactDraft();
-                    setContactStatus('Prompt loaded. Finish the details and open the draft.', '');
-                });
-            });
-
-            document.getElementById('copy-email-btn')?.addEventListener('click', async () => {
-                try {
-                    await navigator.clipboard.writeText(contactEmail);
-                    setContactStatus('Email address copied to clipboard.', 'success');
-                } catch (error) {
-                    setContactStatus(`Copy failed. Use ${contactEmail} directly.`, 'error');
-                }
-            });
-
-            contactForm?.addEventListener('submit', function (event) {
-                event.preventDefault();
-
-                const name = contactFields.name?.value.trim() || '';
-                const email = contactFields.email?.value.trim() || '';
-                const subject = contactFields.subject?.value.trim() || '';
-                const message = contactFields.message?.value.trim() || '';
-
-                if (!name || !email || !subject || !message) {
-                    setContactStatus('Fill out all four fields so the draft opens with enough context.', 'error');
-                    return;
-                }
-
-                const body = [
-                    `Name: ${name}`,
-                    `Email: ${email}`,
-                    '',
-                    message,
-                    '',
-                    'Sent from abikhn.vercel.app',
-                ].join('\n');
-
-                const href = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-                saveContactDraft();
-                setContactStatus('Opening your email client with the draft prefilled.', 'success');
-                window.location.href = href;
-            });
-
-            // Add hover effect to all interactive elements
-            const interactiveElements = document.querySelectorAll('.btn, .nav-link, .card, .skill-item, .social-link, .contact-chip, .oss-profile-link, .inline-link');
-            interactiveElements.forEach(el => {
-                el.addEventListener('mouseenter', function () {
-                    this.style.transform = this.style.transform ?
-                        this.style.transform + ' translateY(-2px)' :
-                        'translateY(-2px)';
-                });
-
-                el.addEventListener('mouseleave', function () {
-                    this.style.transform = this.style.transform ?
-                        this.style.transform.replace(' translateY(-2px)', '') :
-                        '';
-                });
-            });
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
         });
-    </script>
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+
+      const form = document.getElementById('contact-form');
+      const status = document.getElementById('contact-status');
+      form?.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const name = document.getElementById('contact-name').value.trim();
+        const email = document.getElementById('contact-email').value.trim();
+        const subject = document.getElementById('contact-subject').value.trim();
+        const message = document.getElementById('contact-message').value.trim();
+        if (!name || !email || !subject || !message) {
+          status.textContent = 'Please fill all fields before opening the draft.';
+          return;
+        }
+        const body = [`Name: ${name}`, `Email: ${email}`, '', message, '', 'Sent from abikhn.vercel.app'].join('\n');
+        status.textContent = 'Opening your email client...';
+        window.location.href = `mailto:abid@openpaws.ai?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      });
+    });
+  </script>
 </body>
 
 </html>
