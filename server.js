@@ -8,7 +8,6 @@ const port = process.env.PORT || 3000;
 // Middleware
 app.use(express.json());
 app.use(express.static('public'));
-app.use('/blog', express.static(path.join(__dirname, 'blog')));
 
 // Serve HTML files
 app.get('/', (req, res) => {

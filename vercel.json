@@ -1,8 +1,8 @@
 {
   "rewrites": [
     { "source": "/api/:path*", "destination": "/api/:path*" },
-    { "source": "/blog", "destination": "/blog/index.html" },
-    { "source": "/blog/:path*", "destination": "/blog/:path*" },
+    { "source": "/blog", "destination": "/public/blog/index.html" },
+    { "source": "/blog/:path*", "destination": "/public/blog/:path*" },
     { "source": "/(.*)", "destination": "/public/$1" }
   ]
 }
