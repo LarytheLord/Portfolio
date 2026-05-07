@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GSoC 2026 with NumFOCUS/scikit-bio — Numba-Optimized Bioinformatics</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/post.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="nav-container">
+      <h1><a href="../index.html">Abid Khan</a></h1>
+      <a href="index.html" class="nav-back">← All Posts</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="post-hero">
+    <div class="post-hero-inner">
+      <span class="post-eyebrow">GSoC 2026 · NumFOCUS · scikit-bio</span>
+      <h1>GSoC 2026: Bringing Numba-Optimized Performance to scikit-bio</h1>
+      <p class="post-hero-lead">I was accepted into Google Summer of Code 2026 with NumFOCUS/scikit-bio for a 350-hour project replacing performance-critical Cython paths with Numba CPU and GPU implementations.</p>
+      <div class="post-meta-row">
+        <span class="badge green">Accepted May 1, 2026</span>
+        <span class="badge amber">350h Large Project</span>
+        <span class="badge blue">Numba + CUDA</span>
+        <span class="badge purple">Scientific Python</span>
+      </div>
+      <div class="post-hero-links">
+        <a href="https://github.com/scikit-bio/scikit-bio" target="_blank" class="btn-primary">scikit-bio ↗</a>
+        <a href="https://summerofcode.withgoogle.com/programs/2026/organizations/numfocus" target="_blank" class="btn-ghost">NumFOCUS GSoC →</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="post-hero-inner">
+    <div class="stat-strip">
+      <div class="stat-strip-item"><strong>350h</strong><span>Large project</span></div>
+      <div class="stat-strip-item"><strong>2.4x</strong><span>Prototype speedup</span></div>
+      <div class="stat-strip-item"><strong>&lt;1e-15</strong><span>Numerical agreement</span></div>
+      <div class="stat-strip-item"><strong>May 25</strong><span>Coding starts</span></div>
+    </div>
+  </div>
+
+  <div class="post-layout">
+    <aside class="post-toc">
+      <div class="toc-title">Contents</div>
+      <ul class="toc-list">
+        <li><a href="#acceptance">Acceptance</a></li>
+        <li><a href="#problem">The Problem</a></li>
+        <li><a href="#solution">The Solution</a></li>
+        <li><a href="#prototype">Prototype</a></li>
+        <li><a href="#scope">Project Scope</a></li>
+        <li><a href="#mentors">Mentors</a></li>
+        <li><a href="#timeline">Timeline</a></li>
+        <li><a href="#why-it-matters">Why It Matters</a></li>
+      </ul>
+    </aside>
+
+    <article class="post-article">
+      <section id="acceptance">
+        <span class="section-label">Announcement</span>
+        <h2>Accepted into GSoC 2026</h2>
+        <p>On May 1, 2026, Google notified me that my proposal with NumFOCUS had been accepted for Google Summer of Code 2026. The accepted project title is <strong>Numba Optimized Implementations for scikit-bio's Performance-Critical Functions</strong>.</p>
+        <p>The project is under <a href="https://github.com/scikit-bio/scikit-bio" target="_blank">scikit-bio</a>, a BSD-licensed Python library for biological omic data analysis. It sits inside the NumFOCUS ecosystem and is used in workflows around distance matrices, ordination, compositional data analysis, diversity metrics, and biological sequence analysis.</p>
+        <div class="callout green">
+          <p>This is not a generic performance project. The work targets the computational core behind PCoA, Mantel tests, PERMANOVA, and related bioinformatics workflows where large biological datasets make performance and memory behavior matter.</p>
+        </div>
+      </section>
+
+      <section id="problem">
+        <span class="section-label">Context</span>
+        <h2>The Problem: Fast CPU Code, GPU-Blind Internals</h2>
+        <p>scikit-bio currently has two important execution paths for numerical code:</p>
+        <table class="data-table">
+          <thead>
+            <tr><th>Path</th><th>Strength</th><th>Limitation</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="td-em">Cython</td><td>Fast on CPU with single-pass memory patterns</td><td>Cannot directly operate on GPU-backed arrays because typed memoryviews require host memory</td></tr>
+            <tr><td class="td-em">Array API / xp</td><td>Works across NumPy, CuPy, JAX, PyTorch, and Dask-style backends</td><td>Often slower on CPU because vectorized operations make multiple passes through the matrix</td></tr>
+          </tbody>
+        </table>
+        <p>That creates a divergence problem: the fastest CPU code paths are locked behind Cython, while the GPU-capable paths live in separate pure Array API implementations. Over time, two parallel implementations become harder to maintain and easier to subtly diverge.</p>
+      </section>
+
+      <section id="solution">
+        <span class="section-label">Architecture</span>
+        <h2>The Proposed Solution: One Source, Three Execution Paths</h2>
+        <p>The accepted proposal replaces selected Cython functions with Numba implementations. Numba lets us write Python code that compiles to optimized native CPU code via LLVM, while also giving an explicit CUDA kernel path for GPU execution.</p>
+        <div class="card-grid">
+          <div class="info-card highlight-card">
+            <h4>1. Numba CPU</h4>
+            <p><code>@njit(parallel=True, cache=True)</code> for NumPy arrays on CPU. This is the default fast path and should match or exceed the existing Cython implementation.</p>
+          </div>
+          <div class="info-card highlight-card">
+            <h4>2. Numba CUDA</h4>
+            <p><code>@cuda.jit</code> for memory-bandwidth-bound operations where a fused kernel beats multiple Array API kernels on GPU-backed arrays.</p>
+          </div>
+          <div class="info-card highlight-card">
+            <h4>3. Array API fallback</h4>
+            <p>The <code>xp</code> path remains the safety net for backends like JAX, PyTorch, Dask, or environments where Numba is not installed.</p>
+          </div>
+        </div>
+        <p>Numba will be an optional dependency. If it is unavailable, users still get correct results through the existing Array API-compatible fallback path.</p>
+      </section>
+
+      <section id="prototype">
+        <span class="section-label">Proof</span>
+        <h2>The Prototype That Made the Proposal Concrete</h2>
+        <p>The core prototype was for <code>center_distance_matrix</code>, which is used in Principal Coordinates Analysis (PCoA). The algorithm performs Gower centering: square the distance matrix, accumulate row means, compute a global mean, and apply centering.</p>
+        <div class="code-block">
+          <div class="code-block-header"><span>center_distance_matrix Numba shape</span></div>
+          <pre>from numba import njit, prange
+import numpy as np
+
+@njit(parallel=True)
+def center_distance_matrix_numba(D):
+    n = D.shape[0]
+    E = np.empty((n, n), dtype=D.dtype)
+    row_means = np.empty(n, dtype=D.dtype)
+    global_sum = 0.0
+
+    for i in prange(n):
+        row_sum = 0.0
+        for j in range(n):
+            val = -0.5 * D[i, j] * D[i, j]
+            E[i, j] = val
+            row_sum += val
+        row_means[i] = row_sum / n
+        global_sum += row_sum
+
+    global_mean = global_sum / (n * n)
+    for i in prange(n):
+        for j in range(n):
+            E[i, j] = E[i, j] - row_means[i] - row_means[j] + global_mean
+    return E</pre>
+        </div>
+        <p>The important part is not the decorator alone. It is the memory-access pattern: one pass for squaring and row accumulation, then one pass for centering. That mirrors the Cython advantage while keeping the implementation in Python.</p>
+        <table class="data-table">
+          <thead>
+            <tr><th>Matrix size</th><th>Cython</th><th>Numba <code>@njit(parallel=True)</code></th></tr>
+          </thead>
+          <tbody>
+            <tr><td>n = 500</td><td>0.39 ms</td><td>0.34 ms</td></tr>
+            <tr><td>n = 1000</td><td>1.75 ms</td><td>1.01 ms</td></tr>
+            <tr><td>n = 3000</td><td>19.3 ms</td><td>7.91 ms</td></tr>
+          </tbody>
+        </table>
+        <p>At <code>n=3000</code>, the Numba prototype was 2.4x faster than Cython in the same benchmark session, with numerical agreement below <code>1e-15</code>.</p>
+      </section>
+
+      <section id="scope">
+        <span class="section-label">Deliverables</span>
+        <h2>What I Will Build</h2>
+        <p>The accepted scope focuses on the distance and ordination modules: the places where performance-critical matrix operations appear repeatedly.</p>
+        <div class="pr-list">
+          <div class="pr-entry">
+            <span class="pr-repo-badge">Tier 1</span>
+            <div>
+              <h4>Ordination Cython replacements</h4>
+              <p>Replace <code>e_matrix_means_cy</code>, <code>f_matrix_inplace_cy</code>, and <code>center_distance_matrix_cy</code>. These underpin PCoA and are the direct continuation of the working prototype.</p>
+            </div>
+          </div>
+          <div class="pr-entry">
+            <span class="pr-repo-badge">Tier 2</span>
+            <div>
+              <h4>Distance module Cython replacements</h4>
+              <p>Implement Numba versions of Mantel permutation correlation, PERMANOVA pseudo-F statistics, and geometric median routines where the loop and reduction patterns fit Numba.</p>
+            </div>
+          </div>
+          <div class="pr-entry">
+            <span class="pr-repo-badge">Tier 3</span>
+            <div>
+              <h4>Distance utilities</h4>
+              <p>Port validation and matrix reordering utilities such as <code>is_symmetric_and_hollow</code> and <code>distmat_reorder</code> where straightforward Numba implementations can remove more Cython dependency surface.</p>
+            </div>
+          </div>
+          <div class="pr-entry">
+            <span class="pr-repo-badge">Tier 4</span>
+            <div>
+              <h4>Ordination utilities</h4>
+              <p>Add Array API and Numba-aware paths for utilities like <code>mean_and_std</code>, <code>scale</code>, <code>corr</code>, <code>e_matrix</code>, and <code>f_matrix</code>.</p>
+            </div>
+          </div>
+        </div>
+        <p>Not every Cython file is a good Numba target. Alignment traceback, tree traversal, phylogenetic dictionary lookups, and treap-like metadata structures are explicitly out of scope because they do not match Numba's strengths.</p>
+      </section>
+
+      <section id="mentors">
+        <span class="section-label">People</span>
+        <h2>Mentorship</h2>
+        <div class="card-grid">
+          <div class="info-card highlight-card">
+            <h4>Igor Sfiligoi</h4>
+            <p>Primary mentor from UC San Diego / San Diego Supercomputer Center. His work focuses on HPC, GPU acceleration, cache-aware restructuring, and bioinformatics performance.</p>
+          </div>
+          <div class="info-card">
+            <h4>Qiyun Zhu</h4>
+            <p>Co-mentor from Arizona State University and a key architect of scikit-bio's Array API migration, including the <code>ingest_array</code> / <code>xp</code> pattern.</p>
+          </div>
+          <div class="info-card">
+            <h4>Matthew Aton</h4>
+            <p>Co-mentor from Arizona State University working on Array API infrastructure such as decorators for backend-compatible functions and tests.</p>
+          </div>
+        </div>
+        <p>The technical bar is clear: benchmarks must be honest, numerical claims must be verified, and performance work must respect memory access patterns rather than chasing decorator-based speedups blindly.</p>
+      </section>
+
+      <section id="timeline">
+        <span class="section-label">Plan</span>
+        <h2>Timeline</h2>
+        <div class="timeline">
+          <div class="timeline-item"><div class="timeline-dot">1</div><div class="timeline-content"><h4>Community Bonding: May 1 - May 24</h4><p>Set up the development environment, confirm scope, audit Cython files, reproduce prototype benchmarks, study mentor papers, and prepare a warm-up PR.</p></div></div>
+          <div class="timeline-item"><div class="timeline-dot">2</div><div class="timeline-content"><h4>Weeks 1-6: May 25 - July 5</h4><p>Build Numba integration infrastructure, replace ordination Cython functions, implement Mantel and PERMANOVA Numba paths, and prepare for midterm evaluation.</p></div></div>
+          <div class="timeline-item"><div class="timeline-dot">3</div><div class="timeline-content"><h4>Midterm: July 6 - July 10</h4><p>Target state: Tier 1 complete and merged, with Mantel and PERMANOVA implementations ready for review.</p></div></div>
+          <div class="timeline-item"><div class="timeline-dot">4</div><div class="timeline-content"><h4>Weeks 7-12: July 11 - August 17</h4><p>Finish utilities, GPU kernels, benchmark tables, documentation, review cleanup, final report, and final blog post.</p></div></div>
+        </div>
+      </section>
+
+      <section id="why-it-matters">
+        <span class="section-label">Impact</span>
+        <h2>Why This Matters</h2>
+        <p>scikit-bio is not an isolated library. It supports downstream scientific workflows in ecosystems like QIIME 2, Emperor, and Qiita. When performance-critical matrix operations become faster and more GPU-capable, the benefit can propagate into real biological data analysis pipelines.</p>
+        <p>The engineering lesson is bigger than one library: modern scientific Python needs graceful heterogeneity. CPU should be fast. GPU should be possible. Fallback paths should be correct. Maintainers should not have to carry multiple drifting implementations forever.</p>
+        <div class="callout amber">
+          <p>My goal for the summer is simple: make scikit-bio's fastest paths easier to maintain, easier to benchmark, and ready for CPU and GPU execution without compromising numerical correctness.</p>
+        </div>
+      </section>
+    </article>
+  </div>
+
+  <nav class="post-footer-nav">
+    <a href="index.html" class="btn-ghost">← All Posts</a>
+    <a href="oss-contributions.html" class="btn-ghost">Next: OSS Contributions →</a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-left">
+      <strong>Abid Khan</strong>
+      <span class="footer-muted">Builder, Operator, Shipper</span>
+    </div>
+    <div class="footer-links">
+      <a href="../index.html">Portfolio</a>
+      <a href="index.html">Blog</a>
+      <a href="https://github.com/LarytheLord" target="_blank">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

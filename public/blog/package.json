@@ -1,0 +1,24 @@
+{
+  "name": "blog-portfolio",
+  "version": "1.0.0",
+  "description": "Multi-Blog Portfolio System - Featuring LEWS Blog and other specialized blogs",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "test": "echo \"No tests specified for static site\" && exit 0"
+  },
+  "keywords": [
+    "blog-portfolio",
+    "multi-blog",
+    "static-site",
+    "lews-blog",
+    "animal-welfare",
+    "early-warning-system",
+    "effective-altruism"
+  ],
+  "author": "Blog Portfolio",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}
