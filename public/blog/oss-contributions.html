@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selected OSS Contributions — Scientific Python, Sustainability, and Developer Tools</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/post.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="nav-container">
+      <h1><a href="../index.html">Abid Khan</a></h1>
+      <a href="index.html" class="nav-back">← All Posts</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="post-hero">
+    <div class="post-hero-inner">
+      <span class="post-eyebrow">Open Source · Contributions</span>
+      <h1>Selected OSS Contributions: Scientific Python, Sustainability, and Developer Tools</h1>
+      <p class="post-hero-lead">A verified snapshot of public OSS work: GSoC at NumFOCUS/scikit-bio, reviewer-approved fixes in established repositories, and recent Open Paws production tooling.</p>
+      <div class="post-meta-row">
+        <span class="badge green">GSoC 2026</span>
+        <span class="badge amber">Scientific Python</span>
+        <span class="badge blue">Sustainability Tooling</span>
+        <span class="badge purple">Open Paws</span>
+      </div>
+      <div class="post-hero-links">
+        <a href="https://github.com/LarytheLord" target="_blank" class="btn-primary">GitHub Profile ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="post-hero-inner">
+    <div class="stat-strip">
+      <div class="stat-strip-item"><strong>99</strong><span>Public repos</span></div>
+      <div class="stat-strip-item"><strong>GSoC</strong><span>NumFOCUS / scikit-bio</span></div>
+      <div class="stat-strip-item"><strong>PR #36</strong><span>desloppify merged</span></div>
+      <div class="stat-strip-item"><strong>PR #4107</strong><span>daytona merged</span></div>
+    </div>
+  </div>
+
+  <div class="post-layout">
+    <aside class="post-toc">
+      <div class="toc-title">Contents</div>
+      <ul class="toc-list">
+        <li><a href="#philosophy">Philosophy</a></li>
+        <li><a href="#highlighted-prs">Highlighted PRs</a></li>
+        <li><a href="#recent-work">Recent Work</a></li>
+        <li><a href="#patterns">Patterns</a></li>
+        <li><a href="#workflow">Workflow</a></li>
+        <li><a href="#lesson">Key Lesson</a></li>
+      </ul>
+    </aside>
+
+    <article class="post-article">
+
+      <section id="philosophy">
+        <span class="section-label">Approach</span>
+        <h2>Philosophy</h2>
+        <div class="callout">
+          <p>Open source is high signal when the contribution survives maintainer review. The point is not a large vanity count; the point is whether the change is useful enough for another project to ship.</p>
+        </div>
+        <p>I prioritize repositories where the work has a real user context: scientific computing, climate and sustainability tooling, developer infrastructure, and animal advocacy engineering. Small changes count when they remove confusion, unblock installation, harden a CLI, or make production systems safer.</p>
+        <div class="tech-grid">
+          <span class="tech-pill amber">Python</span>
+          <span class="tech-pill">TypeScript</span>
+          <span class="tech-pill purple">Ruby</span>
+          <span class="tech-pill green">Go</span>
+          <span class="tech-pill blue">Bioinformatics</span>
+          <span class="tech-pill green">Sustainability Tech</span>
+        </div>
+      </section>
+
+      <section id="highlighted-prs">
+        <span class="section-label">Work</span>
+        <h2>Highlighted Public Contributions</h2>
+        <div class="pr-list">
+          <div class="pr-entry">
+            <span class="pr-repo-badge">scikit-bio / NumFOCUS</span>
+            <div>
+              <h4>GSoC 2026: Numba-optimized bioinformatics algorithms</h4>
+              <p>Accepted for Google Summer of Code 2026 under NumFOCUS/scikit-bio. The work focuses on performance-critical bioinformatics functions where algorithmic speed directly affects research workflows.</p>
+            </div>
+          </div>
+          <div class="pr-entry">
+            <span class="pr-repo-badge">thoughtbot/shoulda-matchers</span>
+            <div>
+              <h4><a href="https://github.com/thoughtbot/shoulda-matchers/pull/1700" target="_blank">PR #1700: Fix README anchor</a></h4>
+              <p>Documentation fixes matter in widely used testing libraries because broken navigation compounds across every developer trying to find the correct matcher reference.</p>
+            </div>
+          </div>
+          <div class="pr-entry">
+            <span class="pr-repo-badge">nextflow-io/nextflow</span>
+            <div>
+              <h4><a href="https://github.com/nextflow-io/nextflow/pull/6869" target="_blank">PR #6869: Clarify staged Path.name behavior</a></h4>
+              <p>Clarified behavior in a computational pipeline framework used by bioinformatics teams, reducing ambiguity around staged process input paths.</p>
+            </div>
+          </div>
+          <div class="pr-entry">
+            <span class="pr-repo-badge">scverse/scanpy</span>
+            <div>
+              <h4><a href="https://github.com/scverse/scanpy/pull/3986" target="_blank">PR #3986: Reduce duplicated parameter docs</a></h4>
+              <p>Reduced duplicated Louvain/Leiden parameter documentation so scientific docs stay consistent as APIs evolve.</p>
+            </div>
+          </div>
+          <div class="pr-entry">
+            <span class="pr-repo-badge">mlco2/codecarbon</span>
+            <div>
+              <h4><a href="https://github.com/mlco2/codecarbon/pull/1080" target="_blank">PR #1080: CLI robustness for auth/config failures</a></h4>
+              <p>Improved graceful handling for CLI failure paths in carbon-emissions tooling used to measure computing workloads.</p>
+            </div>
+          </div>
+          <div class="pr-entry">
+            <span class="pr-repo-badge">sustainable-computing-io/kepler</span>
+            <div>
+              <h4><a href="https://github.com/sustainable-computing-io/kepler/pull/2431" target="_blank">PR #2431: Minimal install path</a></h4>
+              <p>Added a lighter installation route for Kubernetes energy monitoring without requiring the Prometheus Operator by default.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="recent-work">
+        <span class="section-label">May 2026</span>
+        <h2>Recent GitHub Activity</h2>
+        <div class="card-grid">
+          <div class="info-card highlight-card">
+            <h4><a href="https://github.com/Open-Paws/desloppify/pull/36" target="_blank">Open-Paws/desloppify #36</a></h4>
+            <p>Merged an intelligence gate for API veracity, aimed at reducing hallucinated or low-confidence AI output in production workflows.</p>
+          </div>
+          <div class="info-card">
+            <h4><a href="https://github.com/Open-Paws/eslint-plugin-no-animal-violence/pull/39" target="_blank">eslint-plugin-no-animal-violence #39</a></h4>
+            <p>Contributed to developer tooling that flags speciesist or animal-violence language in code and content pipelines.</p>
+          </div>
+          <div class="info-card">
+            <h4><a href="https://github.com/Open-Paws/vscode-no-animal-violence/pull/38" target="_blank">vscode-no-animal-violence #38</a></h4>
+            <p>Extended the same animal-advocacy language tooling into the editor workflow where developers write content.</p>
+          </div>
+          <div class="info-card">
+            <h4><a href="https://github.com/LarytheLord/Adventurers-Guild/pull/215" target="_blank">Adventurers Guild #215</a></h4>
+            <p>Opened security hardening work covering TLS production guards, PII log removal, and URL sanitization.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="patterns">
+        <span class="section-label">Strategy</span>
+        <h2>Patterns Across Contributions</h2>
+        <div class="card-grid">
+          <div class="info-card">
+            <h4>Small Fixes, Real Users</h4>
+            <p>A broken docs anchor or ambiguous path behavior can waste time for every downstream user. I do not dismiss small patches when the repo has real adoption.</p>
+          </div>
+          <div class="info-card">
+            <h4>Domain Fit</h4>
+            <p>Scientific Python, sustainability, and animal advocacy are not random targets. They overlap with GSoC, Open Paws, and the products I already build.</p>
+          </div>
+          <div class="info-card">
+            <h4>Maintainer Empathy</h4>
+            <p>A good PR reduces reviewer effort: narrow scope, clear description, tests or docs where appropriate, and no unrelated cleanup.</p>
+          </div>
+          <div class="info-card">
+            <h4>Production Bias</h4>
+            <p>The most valuable work tends to improve reliability, installation, documentation correctness, or security posture.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="workflow">
+        <span class="section-label">Workflow</span>
+        <h2>How I Work on OSS</h2>
+        <div class="timeline">
+          <div class="timeline-item"><div class="timeline-dot">1</div><div class="timeline-content"><h4>Read the project first</h4><p>Understand maintainers' conventions, testing style, and whether the issue has a real user impact.</p></div></div>
+          <div class="timeline-item"><div class="timeline-dot">2</div><div class="timeline-content"><h4>Keep the patch narrow</h4><p>One behavioral fix or documentation improvement per PR. Avoid opportunistic refactors.</p></div></div>
+          <div class="timeline-item"><div class="timeline-dot">3</div><div class="timeline-content"><h4>Explain the tradeoff</h4><p>The PR body should make the maintainer's review easier: why this matters, what changed, and how it was verified.</p></div></div>
+          <div class="timeline-item"><div class="timeline-dot">4</div><div class="timeline-content"><h4>Iterate on review</h4><p>Maintainer feedback is part of the work, not a blocker. The final merged shape matters more than the first draft.</p></div></div>
+        </div>
+      </section>
+
+      <section id="lesson">
+        <span class="section-label">Takeaway</span>
+        <h2>Key Lesson</h2>
+        <div class="callout green">
+          <p>The best OSS signal is not the biggest number. It is a pattern of useful, reviewed changes in projects with standards. That is the portfolio value: other maintainers trusted the patch enough to ship it.</p>
+        </div>
+      </section>
+
+    </article>
+  </div>
+
+  <nav class="post-footer-nav">
+    <a href="lunabot.html" class="btn-ghost">← LunaBot</a>
+    <a href="recent-github-work.html" class="btn-ghost">Next: Recent GitHub Work →</a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-left">
+      <strong>Abid Khan</strong>
+      <span class="footer-muted">Builder, Operator, Shipper</span>
+    </div>
+    <div class="footer-links">
+      <a href="../index.html">Portfolio</a>
+      <a href="index.html">Blog</a>
+      <a href="https://github.com/LarytheLord" target="_blank">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

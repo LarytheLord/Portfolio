@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open Permit — From 10-Hour Hackathon to Civic Intelligence Platform</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/post.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="nav-container">
+      <h1><a href="../index.html">Abid Khan</a></h1>
+      <a href="index.html" class="nav-back">← All Posts</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="post-hero">
+    <div class="post-hero-inner">
+      <span class="post-eyebrow">Civic Tech · Case Study</span>
+      <h1>Open Permit: From 10-Hour Hackathon to Civic Intelligence Platform</h1>
+      <p class="post-hero-lead">How a 10-hour hackathon sprint became a civic intelligence platform serving 8+ countries — 200+ permits, 40 legal frameworks, 197 funder contacts.</p>
+      <div class="post-meta-row">
+        <span class="badge green">Live in 8+ Countries</span>
+        <span class="badge amber">Code4Compassion Winner</span>
+        <span class="badge blue">AARC Pre-Accelerator</span>
+        <span class="badge">Apache 2.0</span>
+      </div>
+      <div class="post-hero-links">
+        <a href="https://openpermit.vercel.app" target="_blank" class="btn-primary">Visit Open Permit ↗</a>
+        <a href="https://github.com/LarytheLord/Automated-Factory-Farm-Objection-Generator" target="_blank" class="btn-ghost">GitHub →</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="post-hero-inner">
+    <div class="stat-strip">
+      <div class="stat-strip-item"><strong>10hrs</strong><span>Hackathon build</span></div>
+      <div class="stat-strip-item"><strong>8+</strong><span>Countries</span></div>
+      <div class="stat-strip-item"><strong>200+</strong><span>Permits ingested</span></div>
+      <div class="stat-strip-item"><strong>40</strong><span>Legal frameworks</span></div>
+      <div class="stat-strip-item"><strong>197</strong><span>Funder contacts</span></div>
+    </div>
+  </div>
+
+  <div class="post-layout">
+    <aside class="post-toc">
+      <div class="toc-title">Contents</div>
+      <ul class="toc-list">
+        <li><a href="#tldr">TL;DR</a></li>
+        <li><a href="#problem">The Problem</a></li>
+        <li><a href="#origin">Origin: C4C Mumbai</a></li>
+        <li><a href="#scaling">Scaling via AARC</a></li>
+        <li><a href="#architecture">Architecture</a></li>
+        <li><a href="#claude-code">Claude Code's Role</a></li>
+        <li><a href="#whats-next">What's Next</a></li>
+        <li><a href="#lesson">Key Lesson</a></li>
+      </ul>
+    </aside>
+
+    <article class="post-article">
+
+      <section id="tldr">
+        <span class="section-label">Overview</span>
+        <h2>TL;DR</h2>
+        <p>Open Permit started as AFOG — a prototype built in 10 hours at a Mumbai hackathon. It used Google Gemini to ingest planning permits and generate legally-sound objection letters with proper citations. After winning the hackathon, it was accepted into the AARC Pre-Accelerator in Bangalore, rebranded, and expanded to 8+ countries. It now holds 200+ permits, 40 legal frameworks, and a funder database of 197 contacts.</p>
+        <div class="tech-grid">
+          <span class="tech-pill">Next.js</span>
+          <span class="tech-pill">Express.js</span>
+          <span class="tech-pill">Supabase</span>
+          <span class="tech-pill">Google Gemini</span>
+          <span class="tech-pill">TypeScript</span>
+          <span class="tech-pill amber">Railway</span>
+          <span class="tech-pill amber">Vercel</span>
+        </div>
+      </section>
+
+      <section id="problem">
+        <span class="section-label">Context</span>
+        <h2>The Problem</h2>
+        <p>Communities lose battles against harmful development proposals — factory farms, polluting facilities, questionable zoning changes — not because they lack passion, but because they lack legal firepower. The advocacy pipeline is fundamentally broken.</p>
+        <div class="card-grid">
+          <div class="info-card">
+            <span class="card-icon">💸</span>
+            <h4>Cost Barrier</h4>
+            <p>Hiring lawyers to draft objection letters costs thousands per permit. NGOs with limited budgets can't scale this.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">⏱</span>
+            <h4>Time Barrier</h4>
+            <p>Permit objection windows are often 21 days. Legal drafting takes weeks. The math doesn't work.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">⚖</span>
+            <h4>Knowledge Barrier</h4>
+            <p>Legal citations vary by jurisdiction. What's valid in India differs from the UK, Ireland, or Australia.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🌍</span>
+            <h4>Scale Barrier</h4>
+            <p>NGOs can't monitor every permit in every region. Coverage is spotty. Bad actors exploit the gaps.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="origin">
+        <span class="section-label">Origin Story</span>
+        <h2>Origin: Code4Compassion Mumbai (10 Hours)</h2>
+        <p>Built at the Code4Compassion hackathon in Mumbai, hosted by Open Paws and Electric Sheep. The original prototype — called AFOG (Automated Factory Farm Objection Generator) — was scoped tightly: ingest a planning permit, run it through Gemini, generate a letter, export it.</p>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot">1</div>
+            <div class="timeline-content">
+              <h4>Ingest Permit Document</h4>
+              <p>Upload PDF or paste permit text. Pipeline extracts key fields: location, type, applicant, deadline.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">2</div>
+            <div class="timeline-content">
+              <h4>Gemini Analysis</h4>
+              <p>Google Gemini processes the permit against the relevant legal framework, identifying objection grounds and applicable statutes.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">3</div>
+            <div class="timeline-content">
+              <h4>Generate Objection Letter</h4>
+              <p>Produces a legally-structured objection letter with jurisdiction-specific citations, formatted for the relevant planning authority.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">4</div>
+            <div class="timeline-content">
+              <h4>Export and Submit</h4>
+              <p>Download as PDF or Word. Recipient routing suggests the correct authority inbox based on permit type and location.</p>
+            </div>
+          </div>
+        </div>
+        <div class="callout amber">
+          <p>"We won the hackathon. The real question: could this scale beyond factory farms, beyond India, beyond a demo?"</p>
+        </div>
+      </section>
+
+      <section id="scaling">
+        <span class="section-label">Growth</span>
+        <h2>Scaling Through AARC Pre-Accelerator</h2>
+        <p>Open Permit was accepted into the AARC Pre-Accelerator in Bangalore. The rebrand from AFOG to Open Permit reflected reality: the technology was jurisdiction-agnostic and could handle any government permit. The name needed to reflect that broader civic intelligence vision.</p>
+        <div class="metric-grid">
+          <div class="metric-card">
+            <div class="metric-val green">200+</div>
+            <div class="metric-label">Real permits processed</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val blue">40</div>
+            <div class="metric-label">Legal frameworks built</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val">197</div>
+            <div class="metric-label">Funder contacts</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val purple">150+</div>
+            <div class="metric-label">NGOs reached via Brevo</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="architecture">
+        <span class="section-label">Technical</span>
+        <h2>Technical Architecture</h2>
+        <div class="code-block">
+          <div class="code-block-header"><span>Stack Overview</span></div>
+          <pre>
+Frontend    →  Next.js (TypeScript) — Vercel deployment
+Backend     →  Express.js API — Railway hosting
+Data Layer  →  Supabase (PostgreSQL) — permits, legal frameworks, users
+AI Layer    →  Google Gemini — permit analysis, letter generation, multi-lang NLP</pre>
+        </div>
+        <div class="card-grid">
+          <div class="info-card">
+            <span class="card-icon">📁</span>
+            <h4>Monorepo Structure</h4>
+            <p>Frontend and backend live in the same repo under <code>/apps</code>. Shared types via a <code>/packages/common</code> workspace.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🛡</span>
+            <h4>Graceful AI Degradation</h4>
+            <p>If Gemini API is unavailable, the system falls back to template-based generation using pre-loaded legal frameworks.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🔐</span>
+            <h4>Access Control</h4>
+            <p>Supabase Row Level Security enforces per-user permit access. Admin panel gated behind role claims.</p>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">📚</span>
+            <h4>Legal Framework Store</h4>
+            <p>40 jurisdiction-specific legal frameworks stored as structured JSON. Each includes applicable statutes, citation formats, and authority routing rules.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="claude-code">
+        <span class="section-label">Workflow</span>
+        <h2>Claude Code's Role</h2>
+        <div class="card-grid">
+          <div class="info-card highlight-card">
+            <span class="card-icon">💻</span>
+            <h4>Codebase Development</h4>
+            <p>The entire Next.js + Express stack was built and iterated through Claude Code sessions — permit ingestion pipeline, Gemini integration, recipient routing system.</p>
+          </div>
+          <div class="info-card highlight-card">
+            <span class="card-icon">📊</span>
+            <h4>Pitch &amp; Funder Materials</h4>
+            <p>Every AARC Demo Day pitch deck iteration, the SFF grant framing, and funder database structure were developed through Claude Code.</p>
+          </div>
+          <div class="info-card highlight-card">
+            <span class="card-icon">🔄</span>
+            <h4>Data Pipeline</h4>
+            <p>CSV work for permit normalization, funder contacts, Brevo campaign structuring, and bulk recipient routing all ran through Claude Code sessions.</p>
+          </div>
+          <div class="info-card highlight-card">
+            <span class="card-icon">⚖</span>
+            <h4>Legal Framework Expansion</h4>
+            <p>Each new country's framework — researching jurisdiction requirements, drafting templates, validating citation formats — goes through Claude Code before entering the platform.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="whats-next">
+        <span class="section-label">Roadmap</span>
+        <h2>What's Next</h2>
+        <ul>
+          <li>Infrastructure migration to Yotta (Indian sovereign cloud) following Supabase India block</li>
+          <li>ALPN partnership for India-specific permit tracking and routing</li>
+          <li>Expand to 15+ countries with dedicated legal framework parsers</li>
+          <li>Automated permit detection pipeline — proactive monitoring, not just reactive generation</li>
+          <li>NGO dashboard with bulk permit tracking and campaign management</li>
+          <li>SFF grant application for sustainability-focused civic infrastructure funding</li>
+        </ul>
+      </section>
+
+      <section id="lesson">
+        <span class="section-label">Takeaway</span>
+        <h2>Key Lesson</h2>
+        <div class="callout green">
+          <p>Civic tech doesn't need to be slow, bureaucratic, or expensive to build. A 10-hour hackathon proved the core technology works. AARC proved it could scale. The constraint wasn't the code — it was building the legal framework library and reaching the right NGOs. Claude Code handled the code. The domain work was the real leverage.</p>
+        </div>
+      </section>
+
+    </article>
+  </div>
+
+  <nav class="post-footer-nav">
+    <a href="index.html" class="btn-ghost">← All Posts</a>
+    <a href="adventurers-guild.html" class="btn-ghost">Next: Adventurers Guild →</a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-left">
+      <strong>Abid Khan</strong>
+      <span class="footer-muted">Builder, Operator, Shipper</span>
+    </div>
+    <div class="footer-links">
+      <a href="../index.html">Portfolio</a>
+      <a href="index.html">Blog</a>
+      <a href="https://github.com/LarytheLord" target="_blank">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const headings = document.querySelectorAll('.post-article h2, .post-article h3');
+const tocLinks = document.querySelectorAll('.toc-list a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      tocLinks.forEach(l => l.classList.remove('active'));
+      const link = document.querySelector(`.toc-list a[href="#${e.target.id}"]`);
+      if (link) link.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+headings.forEach(h => { if(h.id) observer.observe(h); });
+</script>
+
+</body>
+</html>

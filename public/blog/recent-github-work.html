@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recent GitHub Work: May 2026 — Abid Khan</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/post.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="nav-container">
+      <h1><a href="../index.html">Abid Khan</a></h1>
+      <a href="index.html" class="nav-back">← All Posts</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="post-hero">
+    <div class="post-hero-inner">
+      <span class="post-eyebrow">GitHub · May 2026</span>
+      <h1>Recent GitHub Work: What the Latest PRs Actually Show</h1>
+      <p class="post-hero-lead">A short, evidence-based snapshot of recent public work across Open Paws, Adventurers Guild, Knight Medicare, and OSS contribution targets.</p>
+      <div class="post-meta-row">
+        <span class="badge green">Open Paws</span>
+        <span class="badge amber">Security Hardening</span>
+        <span class="badge blue">Developer Tooling</span>
+        <span class="badge purple">Product Ops</span>
+      </div>
+      <div class="post-hero-links">
+        <a href="https://github.com/LarytheLord" target="_blank" class="btn-primary">GitHub Profile ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="post-layout">
+    <aside class="post-toc">
+      <div class="toc-title">Contents</div>
+      <ul class="toc-list">
+        <li><a href="#summary">Summary</a></li>
+        <li><a href="#merged">Merged Work</a></li>
+        <li><a href="#open">Open Work</a></li>
+        <li><a href="#themes">Themes</a></li>
+      </ul>
+    </aside>
+
+    <article class="post-article">
+      <section id="summary">
+        <span class="section-label">Snapshot</span>
+        <h2>Summary</h2>
+        <p>The recent public GitHub trail is less about vanity metrics and more about the type of work being shipped: reliability layers for AI output, editor and lint tooling for Open Paws, security hardening in Adventurers Guild, and production readiness in Knight Medicare.</p>
+        <div class="callout">
+          <p>The strongest signal: the work clusters around production risk. AI veracity, PII logs, TLS guards, URL sanitization, backend hardening, maintainer ownership, and operational tooling.</p>
+        </div>
+      </section>
+
+      <section id="merged">
+        <span class="section-label">Merged</span>
+        <h2>Recently Merged PRs</h2>
+        <div class="pr-list">
+          <div class="pr-entry">
+            <span class="pr-repo-badge">Open-Paws/desloppify</span>
+            <div>
+              <h4><a href="https://github.com/Open-Paws/desloppify/pull/36" target="_blank">PR #36: Intelligence gate for API veracity</a></h4>
+              <p>Added a de-hallucination gate for AI output quality. This is the kind of reliability layer AI products need before users can trust generated responses.</p>
+            </div>
+          </div>
+          <div class="pr-entry">
+            <span class="pr-repo-badge">Adventurers Guild</span>
+            <div>
+              <h4><a href="https://github.com/LarytheLord/Adventurers-Guild/pull/207" target="_blank">PR #207: Maintainers and CODEOWNERS</a></h4>
+              <p>Added project ownership structure as Adventurers Guild grows beyond a solo project into a community-backed product.</p>
+            </div>
+          </div>
+          <div class="pr-entry">
+            <span class="pr-repo-badge">Material Innovation MII</span>
+            <div>
+              <h4><a href="https://github.com/LarytheLord/Material-Innovation-MII/pull/21" target="_blank">PR #21: Recent product work</a></h4>
+              <p>Continued applied product development around material innovation tooling.</p>
+            </div>
+          </div>
+          <div class="pr-entry">
+            <span class="pr-repo-badge">jay-suggests</span>
+            <div>
+              <h4><a href="https://github.com/LarytheLord/jay-suggests/pull/1" target="_blank">PR #1: Master plan implementation</a></h4>
+              <p>Initial implementation work for a new recommendation/suggestion project.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="open">
+        <span class="section-label">In Review</span>
+        <h2>Open PRs Worth Watching</h2>
+        <div class="card-grid">
+          <div class="info-card highlight-card">
+            <h4><a href="https://github.com/LarytheLord/Adventurers-Guild/pull/215" target="_blank">Adventurers Guild #215</a></h4>
+            <p>Security hardening across TLS production guards, PII log removal, and URL sanitization.</p>
+          </div>
+          <div class="info-card highlight-card">
+            <h4><a href="https://github.com/LarytheLord/knight-medicare/pull/206" target="_blank">Knight Medicare #206</a></h4>
+            <p>Production readiness, security hardening, and backend enhancements for the healthcare product.</p>
+          </div>
+          <div class="info-card highlight-card">
+            <h4><a href="https://github.com/pydantic/pydantic-ai/pull/5239" target="_blank">pydantic/pydantic-ai #5239</a></h4>
+            <p>Strict runtime validation for tool outputs in a major Python AI framework.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="themes">
+        <span class="section-label">Pattern</span>
+        <h2>The Theme: Production Trust</h2>
+        <p>Across these PRs, the work keeps returning to the same question: can users, maintainers, and operators trust the system?</p>
+        <ul>
+          <li><strong>AI output trust:</strong> de-hallucination gates and strict validation.</li>
+          <li><strong>Security trust:</strong> TLS guards, PII log removal, URL sanitization, and backend readiness.</li>
+          <li><strong>Project trust:</strong> maintainers, CODEOWNERS, and clear contribution structure.</li>
+          <li><strong>Workflow trust:</strong> tooling that catches harmful language before it reaches production content.</li>
+        </ul>
+        <div class="callout green">
+          <p>That is the current engineering center of gravity: not just building features, but adding the guardrails that let products survive real users.</p>
+        </div>
+      </section>
+    </article>
+  </div>
+
+  <nav class="post-footer-nav">
+    <a href="oss-contributions.html" class="btn-ghost">← OSS Contributions</a>
+    <a href="open-paws-india.html" class="btn-ghost">Next: Open Paws India →</a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-left">
+      <strong>Abid Khan</strong>
+      <span class="footer-muted">Builder, Operator, Shipper</span>
+    </div>
+    <div class="footer-links">
+      <a href="../index.html">Portfolio</a>
+      <a href="index.html">Blog</a>
+      <a href="https://github.com/LarytheLord" target="_blank">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
