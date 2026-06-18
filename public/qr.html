@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scan to connect — Abid Khan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4zsqxKHyltg8s6WXVAlIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0A0A0A;
+      --surface: #141414;
+      --border: rgba(255,255,255,0.08);
+      --orange: #FF6B3A;
+      --text: #F2F2F2;
+      --text-secondary: #888;
+      --font: 'Space Grotesk', -apple-system, sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100dvh;
+      gap: 28px;
+      padding: 32px 24px;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      bottom: -20vh;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60vw;
+      height: 60vw;
+      background: radial-gradient(circle, rgba(255,107,58,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .header {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    .subtitle {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .subtitle span {
+      color: var(--orange);
+    }
+
+    .qr-wrapper {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 60px rgba(255,107,58,0.15), 0 0 120px rgba(255,107,58,0.06);
+    }
+
+    #qrcode canvas,
+    #qrcode img {
+      display: block;
+    }
+
+    .url-pill {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 8px 18px;
+      letter-spacing: 0.01em;
+    }
+
+    .cta-text {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .cta-text strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .back-link {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-family: var(--mono);
+      opacity: 0.5;
+      transition: opacity 0.2s;
+    }
+
+    .back-link:hover {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="name">Abid Khan</div>
+    <div class="subtitle">Founder · <span>Guild</span></div>
+  </div>
+
+  <div class="qr-wrapper">
+    <div id="qrcode"></div>
+  </div>
+
+  <div class="url-pill" id="card-url-display">loading...</div>
+
+  <div class="cta-text">
+    <strong>Scan to connect</strong><br>
+    Get my details, Guild info &amp; links
+  </div>
+
+  <a class="back-link" href="./card.html">← back to card</a>
+
+  <script>
+    // ── Update this URL to your deployed card URL ──
+    var CARD_URL = (function() {
+      var origin = window.location.origin;
+      var path = window.location.pathname.replace('qr.html', 'card.html').replace('/qr', '/card');
+      return origin + path;
+    })();
+
+    document.getElementById('card-url-display').textContent = CARD_URL;
+
+    new QRCode(document.getElementById('qrcode'), {
+      text: CARD_URL,
+      width: 240,
+      height: 240,
+      colorDark: '#0A0A0A',
+      colorLight: '#ffffff',
+      correctLevel: QRCode.CorrectLevel.H
+    });
+  </script>
+
+</body>
+</html>
