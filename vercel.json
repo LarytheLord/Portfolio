@@ -3,6 +3,8 @@
     { "source": "/api/:path*", "destination": "/api/:path*" },
     { "source": "/blog", "destination": "/public/blog/index.html" },
     { "source": "/blog/:path*", "destination": "/public/blog/:path*" },
+    { "source": "/card", "destination": "/public/card.html" },
+    { "source": "/qr", "destination": "/public/qr.html" },
     { "source": "/(.*)", "destination": "/public/$1" }
   ]
 }
