@@ -74,7 +74,7 @@
     .nav-link { color: var(--muted); font: 700 0.72rem 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.08em; padding: 8px 11px; border-radius: 999px; }
     .nav-link:hover { background: rgba(34, 87, 214, 0.08); color: var(--blue); }
     .hero { padding: 138px 0 70px; }
-    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) 380px; gap: 34px; align-items: end; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) 380px; gap: 34px; align-items: start; }
     .eyebrow { color: var(--blue); font: 800 0.72rem 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.16em; margin-bottom: 16px; }
     .hero h1 { font-size: clamp(3rem, 8vw, 7.2rem); max-width: 870px; }
     .hero h1 .serif { color: var(--amber); font-style: italic; letter-spacing: -0.025em; }
@@ -261,6 +261,131 @@
     .footer p { color: var(--soft); font-size: 0.86rem; }
     .fade-in { opacity: 0; transform: translateY(18px); transition: 0.7s ease; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── Meetup card (hero right column) ── */
+    .hero-right { display: flex; flex-direction: column; gap: 14px; }
+    .meetup-card {
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, var(--paper) 0%, rgba(240, 234, 223, 0.9) 100%);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .mc-head {
+      padding: 18px 20px 0;
+    }
+    .mc-eyebrow {
+      color: var(--blue);
+      font: 800 0.66rem 'JetBrains Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 6px;
+    }
+    .mc-name {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--ink);
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+    }
+    .mc-role {
+      margin-top: 3px;
+      color: var(--soft);
+      font: 700 0.75rem 'JetBrains Mono', monospace;
+      letter-spacing: 0.04em;
+    }
+    .mc-guild {
+      margin: 14px 20px;
+      border: 1px solid rgba(34, 87, 214, 0.16);
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, rgba(34, 87, 214, 0.06), rgba(22, 128, 61, 0.04));
+      padding: 14px;
+      text-decoration: none;
+      display: block;
+      transition: 0.2s ease;
+    }
+    .mc-guild:hover { border-color: rgba(34, 87, 214, 0.32); transform: translateY(-1px); }
+    .mc-guild-label {
+      color: var(--amber);
+      font: 800 0.62rem 'JetBrains Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 5px;
+    }
+    .mc-guild-name {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--ink);
+      letter-spacing: -0.03em;
+    }
+    .mc-guild-desc {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 0.8rem;
+      line-height: 1.45;
+    }
+    .mc-guild-url {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+    }
+    .mc-guild-url span:first-child {
+      font: 700 0.72rem 'JetBrains Mono', monospace;
+      color: var(--blue);
+    }
+    .mc-guild-url span:last-child {
+      font: 800 0.72rem 'JetBrains Mono', monospace;
+      color: var(--blue);
+    }
+    .mc-socials {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      border-top: 1px solid var(--line);
+      background: var(--line);
+    }
+    .mc-social {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      padding: 11px 6px;
+      background: rgba(255, 253, 247, 0.9);
+      text-decoration: none;
+      transition: 0.15s ease;
+    }
+    .mc-social:hover { background: rgba(34, 87, 214, 0.06); }
+    .mc-social svg { width: 16px; height: 16px; fill: var(--soft); transition: 0.15s ease; }
+    .mc-social:hover svg { fill: var(--blue); }
+    .mc-social span {
+      font: 700 0.6rem 'JetBrains Mono', monospace;
+      color: var(--soft);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .mc-social:hover span { color: var(--blue); }
+    .mc-qr-row {
+      display: flex;
+      justify-content: flex-end;
+      padding: 10px 14px 14px;
+    }
+    .mc-qr-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font: 700 0.66rem 'JetBrains Mono', monospace;
+      color: var(--soft);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      padding: 5px 10px;
+      text-decoration: none;
+      transition: 0.15s ease;
+    }
+    .mc-qr-btn:hover { color: var(--blue); border-color: var(--blue); }
+
     @media (max-width: 980px) {
       .hero-grid, .evidence-grid, .two-col, .contact-grid { grid-template-columns: 1fr; }
       .blog-highlight { grid-template-columns: 1fr; }
@@ -316,16 +441,59 @@
               <a class="btn btn-secondary" href="mailto:abid@openpaws.ai">abid@openpaws.ai</a>
             </div>
           </div>
-          <aside class="console fade-in" aria-label="Current operating context">
-            <div class="console-head"><div class="lights"><span class="light"></span><span class="light"></span><span class="light"></span></div><span class="console-title mono">operating-context.log</span></div>
-            <div class="console-body">
-              <div class="log"><span>current</span><span>GSoC 2026 · NumFOCUS / scikit-bio</span></div>
-              <div class="log"><span>focus</span><span>Numba CPU + CUDA paths for bioinformatics kernels</span></div>
-              <div class="log"><span>shipping</span><span>Adventurers Guild · Open Paws tooling · Knight Medicare</span></div>
-              <div class="log"><span>timezone</span><span>India · UTC+5:30</span></div>
-              <div class="log"><span>signal</span><span>prototype: 2.4x faster than Cython at n=3000</span></div>
+          <div class="hero-right fade-in">
+
+            <!-- meetup card -->
+            <div class="meetup-card">
+              <div class="mc-head">
+                <p class="mc-eyebrow">Connect at the meetup</p>
+                <div class="mc-name">Abid Khan</div>
+                <div class="mc-role">Founder · Builder · AI/ML + Full-Stack</div>
+              </div>
+
+              <a class="mc-guild" href="https://guilds.work" target="_blank" rel="noreferrer">
+                <p class="mc-guild-label">My Startup</p>
+                <div class="mc-guild-name">Guild ⚔️</div>
+                <p class="mc-guild-desc">Quest-based platform where developers level up by building real products for real companies — and get paid.</p>
+                <div class="mc-guild-url">
+                  <span>guilds.work</span>
+                  <span>Visit →</span>
+                </div>
+              </a>
+
+              <div class="mc-socials">
+                <a class="mc-social" href="https://linkedin.com/in/abikhn" target="_blank" rel="noreferrer">
+                  <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                  <span>LinkedIn</span>
+                </a>
+                <a class="mc-social" href="https://github.com/LarytheLord" target="_blank" rel="noreferrer">
+                  <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                  <span>GitHub</span>
+                </a>
+                <a class="mc-social" href="mailto:abid@openpaws.ai">
+                  <svg viewBox="0 0 24 24"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
+                  <span>Email</span>
+                </a>
+                <a class="mc-social" href="public/qr.html" target="_blank" rel="noreferrer">
+                  <svg viewBox="0 0 24 24"><path d="M3 11V3h8v8H3zm2-2h4V5H5v4zm8-6h8v8h-8V3zm2 6h4V5h-4v4zM3 13h8v8H3v-8zm2 6h4v-4H5v4zm13-6h2v2h-2v-2zm0 4h2v2h-2v-2zm-4-4h2v2h-2v-2zm4 4h-2v2h2v2h-2v2h-2v-4h-2v4h-2v-6h4v-2h2v2z"/></svg>
+                  <span>QR Code</span>
+                </a>
+              </div>
             </div>
-          </aside>
+
+            <!-- original console, unchanged -->
+            <aside class="console" aria-label="Current operating context">
+              <div class="console-head"><div class="lights"><span class="light"></span><span class="light"></span><span class="light"></span></div><span class="console-title mono">operating-context.log</span></div>
+              <div class="console-body">
+                <div class="log"><span>current</span><span>GSoC 2026 · NumFOCUS / scikit-bio</span></div>
+                <div class="log"><span>focus</span><span>Numba CPU + CUDA paths for bioinformatics kernels</span></div>
+                <div class="log"><span>shipping</span><span>Adventurers Guild · Open Paws tooling · Knight Medicare</span></div>
+                <div class="log"><span>timezone</span><span>India · UTC+5:30</span></div>
+                <div class="log"><span>signal</span><span>prototype: 2.4x faster than Cython at n=3000</span></div>
+              </div>
+            </aside>
+
+          </div>
         </div>
 
         <div class="proof-strip fade-in" aria-label="Proof points">

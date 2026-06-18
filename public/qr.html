@@ -4,27 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Scan to connect — Abid Khan</title>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4zsqxKHyltg8s6WXVAlIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --bg: #0A0A0A;
-      --surface: #141414;
-      --border: rgba(255,255,255,0.08);
-      --orange: #FF6B3A;
-      --text: #F2F2F2;
-      --text-secondary: #888;
-      --font: 'Space Grotesk', -apple-system, sans-serif;
-      --mono: 'JetBrains Mono', monospace;
+      --bg: #f7f4ec;
+      --paper: #fffdf7;
+      --ink: #161a22;
+      --muted: #596273;
+      --soft: #8790a0;
+      --line: rgba(22, 26, 34, 0.1);
+      --line-strong: rgba(22, 26, 34, 0.18);
+      --blue: #2257d6;
+      --amber: #b86500;
+      --green: #16803d;
+      --radius: 22px;
+      --radius-sm: 14px;
+      --shadow: 0 24px 70px rgba(44, 37, 25, 0.12);
     }
 
     html, body {
       height: 100%;
       background: var(--bg);
-      color: var(--text);
-      font-family: var(--font);
+      color: var(--ink);
+      font-family: 'Space Grotesk', -apple-system, sans-serif;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -34,136 +38,116 @@
       align-items: center;
       justify-content: center;
       min-height: 100dvh;
-      gap: 28px;
+      gap: 24px;
       padding: 32px 24px;
-    }
-
-    body::before {
-      content: '';
-      position: fixed;
-      bottom: -20vh;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60vw;
-      height: 60vw;
-      background: radial-gradient(circle, rgba(255,107,58,0.06) 0%, transparent 70%);
-      pointer-events: none;
     }
 
     .header {
       text-align: center;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
+    }
+
+    .eyebrow {
+      color: var(--blue);
+      font: 800 0.68rem 'JetBrains Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 6px;
     }
 
     .name {
-      font-size: 1.5rem;
-      font-weight: 700;
-      letter-spacing: -0.03em;
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      color: var(--ink);
     }
 
     .subtitle {
-      font-size: 0.875rem;
-      color: var(--text-secondary);
-      font-weight: 500;
+      margin-top: 4px;
+      font: 700 0.75rem 'JetBrains Mono', monospace;
+      color: var(--soft);
+      letter-spacing: 0.04em;
     }
 
-    .subtitle span {
-      color: var(--orange);
-    }
-
-    .qr-wrapper {
-      background: #ffffff;
-      border-radius: 20px;
+    .qr-frame {
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius);
+      background: var(--paper);
       padding: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 60px rgba(255,107,58,0.15), 0 0 120px rgba(255,107,58,0.06);
+      box-shadow: var(--shadow);
     }
 
-    #qrcode canvas,
-    #qrcode img {
+    .qr-frame img {
       display: block;
+      border-radius: 10px;
     }
 
     .url-pill {
-      font-family: var(--mono);
-      font-size: 0.8rem;
-      color: var(--text-secondary);
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      padding: 8px 18px;
-      letter-spacing: 0.01em;
+      font: 700 0.78rem 'JetBrains Mono', monospace;
+      color: var(--soft);
+      background: var(--paper);
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      padding: 7px 16px;
+      letter-spacing: 0.02em;
     }
 
-    .cta-text {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
+    .cta {
       text-align: center;
-      line-height: 1.5;
     }
 
-    .cta-text strong {
-      color: var(--text);
-      font-weight: 600;
+    .cta strong {
+      display: block;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
     }
 
-    .back-link {
-      font-size: 0.78rem;
-      color: var(--text-secondary);
+    .cta p {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .back {
+      font: 700 0.7rem 'JetBrains Mono', monospace;
+      color: var(--soft);
       text-decoration: none;
-      font-family: var(--mono);
-      opacity: 0.5;
-      transition: opacity 0.2s;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      opacity: 0.6;
+      transition: opacity 0.15s;
     }
 
-    .back-link:hover {
-      opacity: 1;
-    }
+    .back:hover { opacity: 1; color: var(--blue); }
   </style>
 </head>
 <body>
 
   <div class="header">
+    <p class="eyebrow">Founders meetup</p>
     <div class="name">Abid Khan</div>
-    <div class="subtitle">Founder · <span>Guild</span></div>
+    <div class="subtitle">Founder · Guild · AI/ML</div>
   </div>
 
-  <div class="qr-wrapper">
-    <div id="qrcode"></div>
+  <!-- QR generated server-side — no JS required, always works -->
+  <div class="qr-frame">
+    <img
+      src="https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=http%3A%2F%2Fabikhn.me%2FPortfolio%2Fpublic%2Fcard.html&bgcolor=fffdf7&color=161a22&margin=8&qzone=1"
+      width="260"
+      height="260"
+      alt="QR code linking to Abid Khan's contact card"
+    >
   </div>
 
-  <div class="url-pill" id="card-url-display">loading...</div>
+  <div class="url-pill">abikhn.me/Portfolio/public/card.html</div>
 
-  <div class="cta-text">
-    <strong>Scan to connect</strong><br>
-    Get my details, Guild info &amp; links
+  <div class="cta">
+    <strong>Scan to connect</strong>
+    <p>Get my details, Guild info &amp; links</p>
   </div>
 
-  <a class="back-link" href="./card.html">← back to card</a>
-
-  <script>
-    // ── Update this URL to your deployed card URL ──
-    var CARD_URL = (function() {
-      var origin = window.location.origin;
-      var path = window.location.pathname.replace('qr.html', 'card.html').replace('/qr', '/card');
-      return origin + path;
-    })();
-
-    document.getElementById('card-url-display').textContent = CARD_URL;
-
-    new QRCode(document.getElementById('qrcode'), {
-      text: CARD_URL,
-      width: 240,
-      height: 240,
-      colorDark: '#0A0A0A',
-      colorLight: '#ffffff',
-      correctLevel: QRCode.CorrectLevel.H
-    });
-  </script>
+  <a class="back" href="card.html">← back to card</a>
 
 </body>
 </html>
