@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GSoC 2026: Making scikit-bio's Distance Matrices GPU-Capable</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/post.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="nav-container">
+      <h1><a href="../index.html">Abid Khan</a></h1>
+      <a href="index.html" class="nav-back">← All Posts</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="post-hero">
+    <div class="post-hero-inner">
+      <span class="post-eyebrow">GSoC 2026 · scikit-bio · GPU + Array API</span>
+      <h1>Making scikit-bio's Distance Matrices GPU-Capable</h1>
+      <p class="post-hero-lead">A progress update from my GSoC 2026 project: bringing first-class GPU support to scikit-bio's distance workflows through the Array API, so a distance matrix that already lives in GPU memory can flow through functions like PERMANOVA and Mantel without a round-trip to the CPU.</p>
+      <div class="post-meta-row">
+        <span class="badge green">Numba CPU merged</span>
+        <span class="badge blue">Array API</span>
+        <span class="badge amber">NVIDIA + AMD</span>
+        <span class="badge purple">Development branch</span>
+      </div>
+      <div class="post-hero-links">
+        <a href="https://github.com/scikit-bio/scikit-bio" target="_blank" class="btn-primary">scikit-bio ↗</a>
+        <a href="gsoc-scikit-bio-numba.html" class="btn-ghost">← Project announcement</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="post-hero-inner">
+    <div class="stat-strip">
+      <div class="stat-strip-item"><strong>1 source</strong><span>CPU + GPU path</span></div>
+      <div class="stat-strip-item"><strong>NVIDIA + AMD</strong><span>Same code, both vendors</span></div>
+      <div class="stat-strip-item"><strong>3 GPUs</strong><span>Verified on hardware</span></div>
+      <div class="stat-strip-item"><strong>&lt;1e-15</strong><span>Agreement vs reference</span></div>
+    </div>
+  </div>
+
+  <div class="post-layout">
+    <aside class="post-toc">
+      <div class="toc-title">Contents</div>
+      <ul class="toc-list">
+        <li><a href="#status">Where things stand</a></li>
+        <li><a href="#dispatch">Dispatch by where the data lives</a></li>
+        <li><a href="#dm">A GPU-capable DistanceMatrix</a></li>
+        <li><a href="#functions">PERMANOVA & Mantel on the Array API</a></li>
+        <li><a href="#cross-vendor">One source, two vendors</a></li>
+        <li><a href="#lessons">Engineering notes</a></li>
+        <li><a href="#next">What's next</a></li>
+      </ul>
+    </aside>
+
+    <article class="post-article">
+      <section id="status">
+        <span class="section-label">Progress</span>
+        <h2>Where things stand</h2>
+        <p>The first phase of the project — replacing selected Cython hot paths with Numba CPU implementations — has landed upstream. PERMANOVA and Mantel now have an optional Numba compute engine, selectable per call, with numerical agreement asserted against the existing implementations and coverage measured with the JIT disabled.</p>
+        <p>With the CPU story in place, the project moved to the part that motivated it in the first place: <strong>GPU support</strong>. The goal is not just "run faster on a GPU," but something more structural — let scientific data that is <em>already on the GPU</em> stay there as it passes through scikit-bio's distance functions.</p>
+      </section>
+
+      <section id="dispatch">
+        <span class="section-label">Design</span>
+        <h2>Dispatch by where the data lives</h2>
+        <p>The guiding idea is the Python Array Interface Protocol: the execution path is chosen by <em>where the input array lives</em>, not by a manual flag.</p>
+        <table class="data-table">
+          <thead>
+            <tr><th>Input</th><th>Path</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="td-em">In CPU memory (NumPy)</td><td>The existing Cython / Numba CPU fast path</td></tr>
+            <tr><td class="td-em">In GPU memory (CuPy / PyTorch / JAX)</td><td>A GPU-capable backend, with the Array API path as the vendor-neutral layer</td></tr>
+          </tbody>
+        </table>
+        <p>Downgrading from GPU to CPU is allowed when no suitable GPU backend is present; silently promoting CPU data onto the GPU is not. The Array API (<code>xp</code>) layer is the safety net that runs correctly on any compliant backend — NumPy, CuPy, PyTorch, or JAX — from a single implementation.</p>
+      </section>
+
+      <section id="dm">
+        <span class="section-label">Data model</span>
+        <h2>A GPU-capable DistanceMatrix</h2>
+        <p>For a GPU-resident distance matrix to reach the functions, the <code>DistanceMatrix</code> class itself had to be able to <em>hold</em> a non-NumPy buffer. Previously it coerced everything to NumPy at construction, which quietly forced a copy back to the host.</p>
+        <div class="card-grid">
+          <div class="info-card highlight-card">
+            <h4>Preserve the buffer</h4>
+            <p>Construction keeps a CuPy / PyTorch / JAX array as-is instead of coercing it to NumPy; NumPy, lists and tuples still normalise exactly as before.</p>
+          </div>
+          <div class="info-card highlight-card">
+            <h4>Backend-aware internals</h4>
+            <p>Validation (symmetry, hollowness, dtype), reordering, copy and filtering all learned to work on a non-NumPy buffer through the Array API namespace.</p>
+          </div>
+          <div class="info-card highlight-card">
+            <h4>NumPy path unchanged</h4>
+            <p>Every new branch is guarded, so behaviour for ordinary NumPy inputs is byte-for-byte identical — no regressions for existing users.</p>
+          </div>
+        </div>
+        <p>This first-class class support is the foundation the function-level GPU work builds on, and it went up as a focused pull request against the project's development branch.</p>
+      </section>
+
+      <section id="functions">
+        <span class="section-label">Functions</span>
+        <h2>PERMANOVA & Mantel on the Array API</h2>
+        <p>Both statistics were given an Array API compute path so the whole calculation — the test statistic and the Monte-Carlo permutation distribution — runs in the array namespace, keeping the matrix on its device.</p>
+        <p>A couple of details made this exact rather than approximate:</p>
+        <ul>
+          <li>PERMANOVA's within-group sum of squares and pseudo-F reduce to a handful of Array API reductions, reusing the same permutation scheme as the reference so p-values match exactly for a given seed.</li>
+          <li>Mantel's normalisation constants are permutation-invariant, so each permuted correlation reuses them; the Spearman variant needed an on-device average-tie ranking that reproduces <code>scipy</code>'s ranking element-for-element, including ties.</li>
+        </ul>
+        <p>Across sizes and backends the Array API results match the existing implementation to floating-point precision, with identical p-values.</p>
+      </section>
+
+      <section id="cross-vendor">
+        <span class="section-label">Result</span>
+        <h2>One source, two vendors</h2>
+        <p>The most satisfying result: the <strong>same source</strong> runs correctly on both NVIDIA and AMD GPUs. The Array API compute is vendor-neutral, and the fused GPU kernels use one code body that a single-source toolchain compiles for each vendor's hardware.</p>
+        <table class="data-table">
+          <thead>
+            <tr><th>Vendor</th><th>GPU</th><th>Backend</th><th>Result</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="td-em">NVIDIA</td><td>GeForce RTX 4060</td><td>CUDA / CuPy</td><td>Matches reference</td></tr>
+            <tr><td class="td-em">AMD</td><td>Instinct MI210</td><td>ROCm / PyTorch</td><td>Matches reference</td></tr>
+            <tr><td class="td-em">AMD</td><td>Instinct MI300</td><td>ROCm / HIP</td><td>Matches reference</td></tr>
+          </tbody>
+        </table>
+        <div class="callout green">
+          <p>A distance matrix built directly on an AMD Instinct MI210 was run through the distance-class test suite on the GPU — construction, validation, reordering, copy and filter all behaved correctly on real hardware, not just in a CPU stand-in.</p>
+        </div>
+      </section>
+
+      <section id="lessons">
+        <span class="section-label">Notes</span>
+        <h2>Engineering notes</h2>
+        <ul>
+          <li><strong>Portability bites in small places.</strong> An operation that worked on NumPy needed an explicit axis on another backend — the kind of gap you only find by actually running on multiple backends, not by reading docs.</li>
+          <li><strong>Device placement is invisible until it isn't.</strong> Intermediate index arrays have to be created on the same device as the data; on a single-device backend this is free, but on a CPU/GPU split it has to be explicit. Testing only on CPU hides this — verifying on a real GPU surfaced it.</li>
+          <li><strong>A fallback path is worth keeping.</strong> Making the Array API layer the safety net means correctness never depends on a specialised kernel being available, which keeps the fast paths honest.</li>
+          <li><strong>Match the codebase, don't reinvent it.</strong> Pushing the backend-awareness down into shared helper functions kept the class methods clean and reused existing structure instead of duplicating logic inline.</li>
+        </ul>
+      </section>
+
+      <section id="next">
+        <span class="section-label">Ahead</span>
+        <h2>What's next</h2>
+        <p>The near-term arc: finish first-class GPU support for the distance-matrix classes with CI, extend GPU support to PERMANOVA and Mantel end-to-end, then improve GPU performance and bring the ordination path (PCoA and its centering step) along too. Work proceeds as stacked pull requests against the development branch so review and the next step can happen in parallel.</p>
+        <div class="callout amber">
+          <p>The through-line stays the same as the proposal: one readable source of truth that runs fast on the CPU and, when the data is already on a GPU, stays there — across vendors.</p>
+        </div>
+      </section>
+    </article>
+  </div>
+
+  <nav class="post-footer-nav">
+    <a href="gsoc-scikit-bio-numba.html" class="btn-ghost">← Project announcement</a>
+    <a href="oss-contributions.html" class="btn-ghost">Next: OSS Contributions →</a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-left">
+      <strong>Abid Khan</strong>
+      <span class="footer-muted">Builder, Operator, Shipper</span>
+    </div>
+    <div class="footer-links">
+      <a href="../index.html">Portfolio</a>
+      <a href="index.html">Blog</a>
+      <a href="https://github.com/LarytheLord" target="_blank">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
